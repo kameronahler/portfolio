@@ -1,15 +1,13 @@
-// main section wrapper
-.designer-type {
-    padding: (5 * $unit) 0;
-}
-
-
 // cards - non grid
 .designer-type {
 
     // card
     &__card {
         margin-bottom: 2 * $unit;
+
+        &:last-of-type{
+        	margin-bottom: 0;
+        }
     }
 
     // card image

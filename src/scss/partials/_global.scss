@@ -4,6 +4,11 @@ main {
     background: $gradient-background;
 }
 
+// content section
+.content-section {
+	margin-bottom: 5 * $unit;
+}
+
 // section headers
 .section-header {
     > h2 {
