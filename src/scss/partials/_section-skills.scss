@@ -1,0 +1,26 @@
+// skills
+.skills {
+
+    // tiles wrapper
+    &__tiles{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    // tiles (images)
+    &__tile{
+        width: calc(50% - #{$unit});
+        border-radius: $border-radius-card;
+        background: #fff;
+        box-shadow: $box-shadow-card;
+        margin-bottom: 2 * $unit;
+        height: 50%;
+        display: block;
+        flex: 1 1 auto;
+
+        &:nth-of-type(odd){
+            margin-right: 2 * $unit
+        }
+    }
+}
