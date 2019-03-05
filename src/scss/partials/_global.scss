@@ -22,10 +22,18 @@ main {
             position: absolute;
             width: 11 * $unit;
             height: 4 * $unit;
-            top: -2 * $unit;
+            top: -1.5 * $unit;
             left: -1 * $unit;
             background: transparent url('../img/heading-motif-wide.svg') no-repeat 0% 50%;
             z-index: -1;
         }
     }
+}
+
+// card
+.card{
+	padding: $unit;
+    border-radius: $unit / 4;
+    background: #fff;
+    box-shadow: $box-shadow-card;
 }

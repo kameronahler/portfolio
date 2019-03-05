@@ -1,3 +1,77 @@
+// main section wrapper
 .designer-type {
     padding: (5 * $unit) 0;
+}
+
+
+// cards - non grid
+.designer-type {
+
+    // card
+    &__card {
+        margin-bottom: 2 * $unit;
+    }
+
+    // card image
+    &__card-image {
+        width: 100%;
+        height: 9 * $unit;
+        background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 50%;
+        background-size: cover;
+        border-radius: $border-radius-card;
+        margin-bottom: $unit;
+    }
+
+    // card header wrapper
+    &__card-header {
+        h3 {
+            text-align: center
+        }
+    }
+
+    // card description
+    &__card-description {
+        margin-bottom: 0;
+    }
+}
+
+// grid supported cards - change structure for even odd
+@supports(display:grid) {
+    .designer-type {
+
+        // card wrapper
+        &__card {
+            display: grid;
+            grid-gap: 0 $unit;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        // even card rearrange order
+        &__card:nth-of-type(even) {
+            .designer-type__card-header {
+                order: -1;
+            }
+        }
+
+        // 
+        &__card-image {
+            grid-column: span 1;
+            margin-bottom: 0
+        }
+
+        // center header in column
+        &__card-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-column: span 1
+        }
+
+        // description spans both columns
+        &__card-description {
+            grid-column: span 2;
+            margin-top: $unit;
+        }
+
+    }
 }
