@@ -1,0 +1,31 @@
+// main content section
+main {
+    padding: 0 16px;
+    background: $gradient-background;
+}
+
+// section headers
+.section-header {
+    > h2 {
+        text-align: center;
+    }
+}
+
+// heading motif
+.heading-motif {
+    &__anchor {
+        position: relative;
+        z-index: 0;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 11 * $unit;
+            height: 4 * $unit;
+            top: -2 * $unit;
+            left: -1 * $unit;
+            background: transparent url('../img/heading-motif-wide.svg') no-repeat 0% 50%;
+            z-index: -1;
+        }
+    }
+}

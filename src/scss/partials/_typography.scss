@@ -1,53 +1,53 @@
-html{
-	font-size: 100%;
+html {
+    font-size: 100%;
 }
 
-body{
-	font-family: $font-family-body, $font-family-fallback;
-	font-size: 14px;
-	line-height: 1.75;
+body {
+    font-family: $font-family-body, $font-family-fallback;
+    font-size: 14px;
+    line-height: 1.75;
 
-	@include bp(sm){
-		font-size: 18px;		
-		line-height: 1.75;
-	}
+    @include bp(lg) {
+        font-size: 18px;
+        line-height: 1.75;
+    }
 }
 
-p{
-	margin-top: 0;
-	margin-bottom: 32px;
+p {
+    margin-top: 0;
+    margin-bottom: 2 * $unit;
 }
 
 h1,
 h2,
-h3{
-	font-family: $font-family-heading, $font-family-fallback;
-	color: $color-grayscale;
-	font-weight: 900;
+h3 {
+    font-family: $font-family-heading, $font-family-fallback;
+    color: $color-grayscale;
+    font-weight: 900;
+    margin-top: 0;
 }
 
-h1{
-	font-size: 61px;
-	line-height: 1.05;
-	letter-spacing: -1px;
-	margin-bottom: 16px;
+h1 {
+    font-size: 61px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: $unit;
 }
 
-h2{
-	font-size: 41px;
-	line-height: 1.56;
-	letter-spacing: -1px;
-	margin-bottom: 16px;
+h2 {
+    font-size: 41px;
+    line-height: 1.56;
+    letter-spacing: -1px;
+    margin-bottom: $unit;
 }
 
-h3{
-	font-size: 14px;
-	line-height: 1.75;
-	letter-spacing: -0.25px;
-	margin-bottom: 0;
+h3 {
+    font-size: 14px;
+    line-height: 1.75;
+    letter-spacing: -0.25px;
+    margin-bottom: 0;
 
-	@include bp(sm){
-		font-size: 18px;
-	}
+    @include bp(lg) {
+        font-size: 18px;
+    }
 }
-

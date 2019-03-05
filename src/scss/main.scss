@@ -3,12 +3,21 @@
 Project Specific
 
 =========================== */
-// imports here...
+
+// global
 @import "partials/variables";
 @import "partials/mixins";
 @import "partials/base";
-@import "partials/normalize";
 @import "partials/typography";
+@import "partials/global";
+
+// sections
+@import "partials/section-site-header";
+@import "partials/section-designer-type";
+
+
+
+
 
 
 // Boilerplate Print Styles -- LAST
