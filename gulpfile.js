@@ -19,7 +19,7 @@ gulp.task('sass', function() {
             rootValue:16,
             unitPrecision:5,
             propList:['*'],
-            replace:false
+            replace:true
             }),
         postcsscssnano({
             calc: false,

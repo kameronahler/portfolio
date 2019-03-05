@@ -1,0 +1,25 @@
+// breakpoints
+$bp-375: 23.44em;
+$bp-768: 48em;
+$bp-1200: 75em;
+$bp-1440: 90em;
+
+// color
+$color-grayscale: #1F2225;
+$color-grayscale-light: #40474F;
+$color-grayscale-lighter: #636E79;
+$color-primary: #FFE800;
+$color-secondary-blue: #003AE6;
+$color-secondary-purple: #6000E6;
+
+// box shadows
+$box-shadow-card: 0 32px 24px -16px rgba(0,0,0,0.05);
+$box-shadow-button: 0 14px 14px -14px rgba(0,0,0,0.40);
+$box-shadow-tab--active: 0 32px 24px -16px rgba($color-secondary-blue,0.15);
+
+// typography
+$font-family-fallback: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    "Droid Sans", "Helvetica Neue", sans-serif;
+$font-family-heading: Biryani;
+$font-family-body: Assistant;

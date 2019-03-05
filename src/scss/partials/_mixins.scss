@@ -1,0 +1,6 @@
+@mixin bp($bp){
+	@if $bp=='xs'{@media(min-width:#{$bp-375}){@content}}
+	@elseif $bp=='sm'{@media(min-width:#{$bp-768}){@content}}
+	@elseif $bp=='lg'{@media(min-width:#{$bp-1200}){@content}}
+	@elseif $bp=='xl'{@media(min-width:#{$bp-1440}){@content}}
+}
