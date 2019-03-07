@@ -1,6 +1,49 @@
-@mixin bp($bp){
-	@if $bp=='xs'{@media(min-width:#{$bp-375}){@content}}
-	@elseif $bp=='sm'{@media(min-width:#{$bp-768}){@content}}
-	@elseif $bp=='lg'{@media(min-width:#{$bp-1200}){@content}}
-	@elseif $bp=='xl'{@media(min-width:#{$bp-1440}){@content}}
+@mixin bp($bp) {
+    @if $bp=='xs' {
+        @media(min-width:#{$bp-375}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='sm' {
+        @media(min-width:#{$bp-768}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='lg' {
+        @media(min-width:#{$bp-1200}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='xl' {
+        @media(min-width:#{$bp-1440}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='max-xs' {
+        @media(max-width:#{$bp-max-374}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='max-sm' {
+        @media(max-width:#{$bp-max-767}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='max-lg' {
+        @media(max-width:#{$bp-max-1199}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='max-xl' {
+        @media(max-width:#{$bp-max-1439}) {
+            @content
+        }
+    }
 }

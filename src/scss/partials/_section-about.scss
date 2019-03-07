@@ -1,0 +1,29 @@
+// about
+.about {
+
+    // about card
+    &__content {
+        padding: 0;
+
+        // about header
+        &-header {
+            padding: 0 $unit;
+
+            h3 {
+                text-align: center;
+            }
+        }
+
+        // about description
+        &-description {
+            padding: 0 $unit $unit;
+
+            p {
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+}

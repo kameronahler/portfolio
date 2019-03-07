@@ -1,0 +1,29 @@
+// portfolio
+.portfolio {
+
+    // articles
+    &__example {
+        padding: 0;
+        margin-bottom: 2 * $unit;
+
+        // article header
+        &-header {
+            padding: 0 $unit;
+
+            h3 {
+                text-align: center;
+            }
+        }
+
+        // article description
+        &-description {
+            padding: 0 $unit $unit;
+
+            p {
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
