@@ -1,39 +1,40 @@
-// cards - non grid
+// designer type
 .designer-type {
 
-    // card
+    // cards - non-grid support
     &__card {
         margin-bottom: 2 * $unit;
 
-        &:last-of-type{
-        	margin-bottom: 0;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        // card image
+        &-image {
+            width: 100%;
+            height: 9 * $unit;
+            background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 50%;
+            background-size: cover;
+            border-radius: $border-radius-card;
+            margin-bottom: $unit;
+        }
+
+        // card header wrapper
+        &-header {
+            h3 {
+                text-align: center
+            }
+        }
+
+        // card description
+        &-description {
+            margin-bottom: 0;
         }
     }
 
-    // card image
-    &__card-image {
-        width: 100%;
-        height: 9 * $unit;
-        background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 50%;
-        background-size: cover;
-        border-radius: $border-radius-card;
-        margin-bottom: $unit;
-    }
-
-    // card header wrapper
-    &__card-header {
-        h3 {
-            text-align: center
-        }
-    }
-
-    // card description
-    &__card-description {
-        margin-bottom: 0;
-    }
 }
 
-// grid supported cards - change structure for even odd
+// css grid supported cards - change structure for even odd
 @supports(display:grid) {
     .designer-type {
 
@@ -42,34 +43,33 @@
             display: grid;
             grid-gap: 0 $unit;
             grid-template-columns: 1fr 1fr;
-        }
 
-        // even card rearrange order
-        &__card:nth-of-type(even) {
-            .designer-type__card-header {
-                order: -1;
+            // even card rearrange order
+            &:nth-of-type(even) {
+                .designer-type__card-header {
+                    order: -1;
+                }
+            }
+
+            // image
+            &-image {
+                grid-column: span 1;
+                margin-bottom: 0
+            }
+
+            // center header in column
+            &-header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                grid-column: span 1
+            }
+
+            // description spans both columns
+            &-description {
+                grid-column: span 2;
+                margin-top: $unit;
             }
         }
-
-        // 
-        &__card-image {
-            grid-column: span 1;
-            margin-bottom: 0
-        }
-
-        // center header in column
-        &__card-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            grid-column: span 1
-        }
-
-        // description spans both columns
-        &__card-description {
-            grid-column: span 2;
-            margin-top: $unit;
-        }
-
     }
 }

@@ -1,15 +1,15 @@
 // skills
 .skills {
 
-    // tiles wrapper
-    &__tiles{
+    // tiles wrapper - non-grid
+    &__tiles {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
     }
 
-    // tiles (images)
-    &__tile{
+    // tiles (images) - non-grid
+    &__tile {
         width: calc(50% - #{$unit});
         border-radius: $border-radius-card;
         background: #fff;
@@ -19,30 +19,38 @@
         display: block;
         flex: 0 1 auto;
 
-        &:nth-of-type(odd){
+        &:nth-of-type(odd) {
             margin-right: 2 * $unit
+        }
+
+        &:nth-last-of-type(-n+2) {
+            margin-bottom: 0;
         }
     }
 
     // css grid supported tiles    
-    // @supports (display:grid){
-    //     &__tiles{
-    //         display: grid;
-    //         flex-wrap: initial;
-    //         justify-content: initial;
-    //         grid-template-columns: 1fr 1fr;
-    //         grid-gap: 2 * $unit;
-    //     }
+    @supports (display:grid) {
+        &__tiles {
+            display: grid;
+            flex-wrap: initial;
+            justify-content: initial;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 2 * $unit;
+        }
 
-    //     &__tile{
-    //         width: 100%;
-    //         height: initial;
-    //         flex: initial;
-    //         margin-bottom: 0;
+        &__tile {
+            width: 100%;
+            height: initial;
+            flex: initial;
+            margin-bottom: 0;
 
-    //         &:nth-of-type(odd){
-    //             margin-right: initial;
-    //         }
-    //     }
-    // }
+            &:nth-of-type(odd) {
+                margin-right: initial;
+            }
+
+            &:nth-last-of-type(-n+2) {
+                margin-bottom: initial;
+            }
+        }
+    }
 }
