@@ -17,10 +17,32 @@
         margin-bottom: 2 * $unit;
         height: 50%;
         display: block;
-        flex: 1 1 auto;
+        flex: 0 1 auto;
 
         &:nth-of-type(odd){
             margin-right: 2 * $unit
         }
     }
+
+    // css grid supported tiles    
+    // @supports (display:grid){
+    //     &__tiles{
+    //         display: grid;
+    //         flex-wrap: initial;
+    //         justify-content: initial;
+    //         grid-template-columns: 1fr 1fr;
+    //         grid-gap: 2 * $unit;
+    //     }
+
+    //     &__tile{
+    //         width: 100%;
+    //         height: initial;
+    //         flex: initial;
+    //         margin-bottom: 0;
+
+    //         &:nth-of-type(odd){
+    //             margin-right: initial;
+    //         }
+    //     }
+    // }
 }
