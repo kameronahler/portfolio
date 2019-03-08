@@ -1,10 +1,10 @@
 // main content section
-main{
+main {
     background: $gradient-background;
 }
 
 .main-padded {
-    padding: 5*$unit $unit;
+    padding: 5 * $unit $unit;
 }
 
 // content section
@@ -19,6 +19,29 @@ main{
     >h2 {
         text-align: center;
     }
+}
+
+// button
+button,
+.button {
+    display: inline-block;
+    background: $gradient-button;
+    padding: 23px 32px;
+}
+
+// labels
+label {
+    display: block;
+}
+
+// inputs
+input {
+    display: block;
+
+    // reset chrome
+    border: none;
+    padding: 0;
+
 }
 
 // images
@@ -62,4 +85,5 @@ img {
 .card-hero {
     border-radius: $border-radius-portfolio-hero;
     margin-bottom: $unit;
+    width: 100%;
 }
