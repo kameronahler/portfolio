@@ -1,15 +1,17 @@
 // contact
 .contact {
+
+    // section-level
     position: relative;
     min-height: 24 * $unit;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
     z-index: 0;
     padding: 5 * $unit $unit;
 
-    // gradient
+    h2 {
+        text-align: center;
+    }
+
+    // section-level gradient
     &::before {
         content: "";
         width: 100%;
@@ -21,7 +23,7 @@
         z-index: -1;
     }
 
-    // background image
+    // section-level background image
     &::after {
         content: "";
         width: 100%;
@@ -31,5 +33,64 @@
         top: 0;
         background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 100%;
         z-index: -2;
+    }
+
+    // social icons wrapper
+    &__social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 2 * $unit;
+    }
+
+    // social icons
+    &__social-icon {
+        display: flex;
+        width: 4 * $unit;
+        height: 4 * $unit;
+        border-radius: 50%;
+        background: $gradient-button;
+        margin: $unit;
+        box-shadow: $box-shadow-button;
+
+        @include bp(xs) {
+            margin: 0 $unit 0 0;
+        }
+
+
+        // fix margin on last of type
+        &:last-of-type {
+            @include bp(xs) {
+                margin-right: 0;
+            }
+        }
+
+        svg,
+        img {
+            width: 50%;
+            height: 50%;
+            fill: #fff;
+            margin: auto;
+        }
+    }
+
+    // contact form
+
+    &__form {
+        input[type="text"],
+        input[type="submit"] {
+            height: 4 * $unit;
+            border-radius: $border-radius-card;
+            box-shadow: $box-shadow-button;
+            margin-bottom: $unit;
+        }
+     
+        input[type="text"] {
+            width: 100%;
+        }
+     
+        input[type="submit"] {
+            margin-top: $unit;
+        }
     }
 }

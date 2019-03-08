@@ -2,14 +2,14 @@
 $unit: 16px;
 
 // breakpoints
-$bp-375: 23.44em;
+$bp-375: 23.4375em;
 $bp-768: 48em;
 $bp-1200: 75em;
 $bp-1440: 90em;
-$bp-max-374: 23.38em;
-$bp-max-767: 47.94em;
-$bp-max-1199: 74.94em;
-$bp-max-1439: 89.94em;
+$bp-max-374: 23.375em;
+$bp-max-767: 47.9375em;
+$bp-max-1199: 74.9375em;
+$bp-max-1439: 89.9375em;
 
 // border radius
 $border-radius-card: $unit/4;
@@ -35,5 +35,5 @@ $gradient-button: linear-gradient(135deg, $color-secondary-purple 0%, $color-sec
 
 // box shadows
 $box-shadow-card: 0 32px 24px -16px rgba(0, 0, 0, 0.05);
-$box-shadow-button: 0 14px 14px -14px rgba(0, 0, 0, 0.40);
+$box-shadow-button: 0 14px 14px -14px rgba(0, 0, 0, 0.20);
 $box-shadow-tab--active: 0 32px 24px -16px rgba($color-secondary-blue, 0.15);
