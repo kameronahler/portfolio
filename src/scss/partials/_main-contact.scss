@@ -1,11 +1,10 @@
 // contact
 .contact {
-
     // section-level
     position: relative;
     min-height: 24 * $unit;
     z-index: 0;
-    padding: 5 * $unit $unit;
+    padding: 5 * $unit $unit 8 * $unit $unit;
 
     h2 {
         text-align: center;
@@ -32,7 +31,15 @@
         left: 0;
         top: 0;
         background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 100%;
+        background-size: cover;
         z-index: -2;
+    }
+
+    // intro
+    &__intro {
+        p {
+            text-align: center;
+        }
     }
 
     // social icons wrapper
@@ -75,22 +82,14 @@
     }
 
     // contact form
-
     &__form {
-        input[type="text"],
-        input[type="submit"] {
-            height: 4 * $unit;
-            border-radius: $border-radius-card;
-            box-shadow: $box-shadow-button;
-            margin-bottom: $unit;
-        }
-     
-        input[type="text"] {
-            width: 100%;
-        }
-     
-        input[type="submit"] {
+        &-section-wrapper--submit {
             margin-top: $unit;
+            text-align: center;
+
+            .button {
+                width: 100%;
+            }
         }
     }
 }

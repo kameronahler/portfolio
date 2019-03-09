@@ -19,7 +19,7 @@
         <h1>Kameron Ahler</h1>
         <h2>Boop Meow</h2>
     </header>
-    <main>
+    <main class="site-main">
         <div class="main-padded">
             <section class="content-section designer-type">
                 <header class="section-header designer-type__header">
@@ -72,7 +72,7 @@
             </section>
             <section class="content-section portfolio">
                 <header class="section-header portfolio__header">
-                    <h2 class="heading-motif"><span class="heading-motif__anchor">Catastrophes</span> Skills & Tools</h2>
+                    <h2 class="heading-motif"><span class="heading-motif__anchor">Catastrophes</span></h2>
                 </header>
                 <section class="portfolio__intro">
                     <p>Want to hear more? Due to NDAs I’m unable to show certain work. <a class="inline-link" href="#0">Contact me</a> if you’d like to chat about about my work experience.</p>
@@ -130,24 +130,36 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum veniam deleniti illo reprehenderit ut, aut beatae minus nulla est? Facilis in doloribus reprehenderit quibusdam quae perspiciatis quas sed et quisquam.</p>
             </section>
             <section class="contact__social-icons">
-                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="../portfolio/img/icons.svg#icon-codepen"></svg></a>
-                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="../portfolio/img/icons.svg#icon-github"></svg></a>
-                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="../portfolio/img/icons.svg#icon-instagram"></svg></a>
-                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="../portfolio/img/icons.svg#icon-linkedin"></svg></a>
+                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="portfolio/img/icons.svg#icon-codepen"></svg></a>
+                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="portfolio/img/icons.svg#icon-github"></svg></a>
+                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="portfolio/img/icons.svg#icon-instagram"></svg></a>
+                <a href="#0" class="contact__social-icon"><svg role="img"><use xlink:href="portfolio/img/icons.svg#icon-linkedin"></svg></a>
             </section>
             <section class="contact__form">
-                <form action="" class="contact__form">
-                    <label for="">First Name *</label>
-                    <input type="text">
-                    <label for="">Last Name *</label>
-                    <input type="text">
-                    <label for="">Message *</label>
-                    <input type="text">
-                    <input class="button" type="submit">
+            <form id="contact-form" role="form" class="contact__form" method="POST" action="https://getsimpleform.com/messages?form_api_token=e9369a7cf31eb8fac4c36d2c14bc46c6">
+                <!-- <input type='hidden' name='redirect_to' value='' /> -->
+                <div class="contact__form-section-wrapper contact__form-section-wrapper--name">
+                    <label for="contact-form-name">Name *</label>
+                    <input id="contact-form-name" name="Name" type="text">
+                </div>
+                <div class="contact__form-section-wrapper contact__form-section-wrapper--email">
+                    <label for="contact-form-email">Email *</label>
+                    <input id="contact-form-email" name="Email" type="email">
+                </div>
+                <div class="contact__form-section-wrapper contact__form-section-wrapper--message">
+                    <label for="contact-form-message">Message *</label>
+                    <textarea id="contact-form-message" name="Message"></textarea>
+                </div>
+                <div class="contact__form-section-wrapper contact__form-section-wrapper--submit">
+                    <button type="submit" class="button button--icon"><svg aria-hidden="true" role="img"><use xlink:href="portfolio/img/icons.svg#icon-plane"></svg><span>Send</span></button>
+                </div>
                 </form>
             </section>
         </section>
     </main>
+    <footer class="site-footer">
+        <p>&copy;2019 Kameron Ahler</p>
+    </footer>
     <!-- Scripts -->
     <script type="text/javascript" src="js/main.js"></script>
 </body>

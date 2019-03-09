@@ -12,16 +12,14 @@ Project Specific
 @import "partials/global";
 
 // sections
-@import "partials/section-site-header";
-@import "partials/section-designer-type";
-@import "partials/section-skills";
-@import "partials/section-portfolio";
-@import "partials/section-about";
-@import "partials/section-contact";
-
-
-
-
+@import "partials/site-header";
+@import "partials/site-main";
+@import "partials/site-footer";
+@import "partials/main-designer-type";
+@import "partials/main-skills";
+@import "partials/main-portfolio";
+@import "partials/main-about";
+@import "partials/main-contact";
 
 
 // Boilerplate Print Styles -- LAST
