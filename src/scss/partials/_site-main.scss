@@ -1,0 +1,22 @@
+// main content section
+main {
+    background: $gradient-background;
+}
+
+.main-padded {
+    padding: 5 * $unit $unit;
+}
+
+// content section
+.content-section {
+    margin-bottom: 5 * $unit;
+}
+
+// section headers
+.section-header {
+    position: relative;
+
+    >h2 {
+        text-align: center;
+    }
+}

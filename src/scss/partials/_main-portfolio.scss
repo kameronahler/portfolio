@@ -1,6 +1,13 @@
 // portfolio
 .portfolio {
 
+    // portfolio section intro
+    &__intro {
+        p {
+            text-align: center;
+        }
+    }
+
     // articles
     &__example {
         padding: 0;

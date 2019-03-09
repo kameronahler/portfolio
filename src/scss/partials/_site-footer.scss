@@ -1,0 +1,9 @@
+.site-footer {
+    p {
+        text-align: center;
+        margin: 0;
+        padding: $unit / 2 $unit;
+        background: $color-primary;
+        color: $color-grayscale;
+    }
+}

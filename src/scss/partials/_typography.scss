@@ -18,6 +18,7 @@ p {
     margin-bottom: 2 * $unit;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: $color-grayscale--light;
 }
 
 .inline-link {
@@ -84,9 +85,10 @@ button,
     font-family: $font-family-heading;
     font-weight: 900;
     font-size: 18px;
-    color: #fff;
     line-height: 1;
-    letter-spacing: -.5px;
+    color: #fff;
+    letter-spacing: -.25px;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
