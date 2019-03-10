@@ -153,8 +153,11 @@ function AJAXform() {
         };
 
         xhr.open("POST", "https://getsimpleform.com/messages?form_api_token=e9369a7cf31eb8fac4c36d2c14bc46c6");
+        console.log('open post ' + xhr.status);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+        console.log('set request header ' + xhr.status);
         xhr.send(data);
+        console.log('email: ' + formEmail + ' and message: ' + formMessage + ' ' + xhr.status);
     };
 
     submit.onclick = function() {
