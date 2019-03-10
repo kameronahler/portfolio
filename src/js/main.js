@@ -1,5 +1,4 @@
 // svg4everybody
-
 !function(root, factory) {
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
         define([], function() {
@@ -134,3 +133,38 @@ svg4everybody({
         return 'fallback.png'; // ok, always return fallback.png
     }
 });
+
+function AJAXform() {
+    var form = document.getElementById('contact-form'); // Select the form by ID.
+    var submit = document.getElementById('contact-form-submit-button'); // Select the button by ID.
+    var formSubmitted = function() {
+        var formEmail = document.getElementById('contact-form-email').value;
+        var formMessage = document.getElementById('contact-form-message').value;
+        var xhr = new XMLHttpRequest();
+        var data = {
+            email: formEmail,
+            message: formMessage
+        };
+        
+        console.log("submitted with " + data);
+        
+        xhr.onreadystatechange = function() {
+            console.log(xhr.status);
+        };
+
+        xhr.open("POST", "https://getsimpleform.com/messages?form_api_token=e9369a7cf31eb8fac4c36d2c14bc46c6");
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+        xhr.send(data);
+    };
+
+    submit.onclick = function() {
+        formSubmitted();
+    };
+
+    form.onsubmit = function() {
+        // Prevent page refresh
+        return false;
+    };
+}
+
+AJAXform();
