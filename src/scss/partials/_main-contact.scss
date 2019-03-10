@@ -61,6 +61,10 @@
         box-shadow: $box-shadow-button;
         overflow:hidden;
 
+        @include bp(xs) {
+            margin: 0 $unit 0 0;
+        }
+
         &::before{
             content:"";
             width: 200%;
@@ -70,22 +74,8 @@
             left:0;
             top:0;
             background: $gradient-button;
-            transition: .3s $easing all;
+            transition: $transition-default;
         }
-
-        &:hover{
-            box-shadow: $box-shadow-button--hover;
-
-            &::before{
-                transform:translateX(-50%);
-            }
-        }   
-
-
-        @include bp(xs) {
-            margin: 0 $unit 0 0;
-        }
-
 
         // fix margin on last of type
         &:last-of-type {
@@ -100,8 +90,27 @@
             height: 50%;
             fill: #fff;
             margin: auto;
-            transform-origin: 50% 50%;
-            transition: $easing .2s all;
+            opacity: .9;
+            transition: $transition-default;
+        }
+
+        // hover styles for social icons
+        &:hover{
+            @include bp(lg){
+                box-shadow: $box-shadow-button--hover;
+            }
+            
+            svg,
+            img{
+                opacity: 1;
+            }
+
+            // background gradient changes
+            &::before{
+                @include bp(lg){
+                    transform:translateX(-50%);
+                }
+            }
         }
     }
 
@@ -148,6 +157,7 @@
                 }
             }
         }
+
         // form has been submitted
         &.js-submitted{
 
@@ -163,8 +173,12 @@
             .contact__form-section-wrapper--submit{
                 .button{
                     color: $color-grayscale--light;
-                    background: rgba(white,.75);
                     box-shadow: none;
+                    cursor: not-allowed;
+
+                    &::before{
+                        background: rgba(white,.75);
+                    }
 
                     svg{
                         fill: $color-grayscale;
