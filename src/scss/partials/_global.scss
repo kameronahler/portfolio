@@ -95,12 +95,19 @@ textarea {
     box-shadow: $box-shadow-input;
     transition: .2s $easing all, 0s border, 0s padding;
 
+    @include bp(sm){                
+        padding: $unit 2 * $unit;
+    }
     &:focus{
         outline: none;
         padding: $unit - 1px;
         border: 1px solid $color-grayscale--lighter;
         box-shadow: $box-shadow-input--active;
         background: #fff;
+
+        @include bp(sm){                
+            padding: $unit - 1px ((2 * $unit) - 1px);
+        }
     }
 }
 
@@ -151,4 +158,8 @@ img {
     border-radius: $border-radius-portfolio-hero;
     margin-bottom: $unit;
     width: 100%;
+
+    @include bp(sm){
+        margin-bottom: 2 * $unit;
+    }
 }

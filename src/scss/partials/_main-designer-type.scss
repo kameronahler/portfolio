@@ -44,17 +44,50 @@
             grid-gap: 0 $unit;
             grid-template-columns: 1fr 1fr;
 
+            @include bp(sm){
+                padding: 0;
+                grid-gap: 0 2 * $unit
+            }
+
             // even card rearrange order
             &:nth-of-type(even) {
                 .designer-type__card-header {
                     order: -1;
                 }
+
+                .designer-type__card-image {
+                    @include bp(sm){
+                        height: 100%;
+                        grid-row: span 2;
+                        border-radius: 0 $border-radius-card $border-radius-card 0;
+                    }
+                }
+
+                .designer-type__card-header {
+                    @include bp(sm){
+                        padding: 2 * $unit 0 0 2 * $unit;
+                    }
+                }
+
+                .designer-type__card-description {
+                    @include bp(sm){
+                        grid-column: 1 / 2;
+                        padding: 0 0 2 * $unit 2 * $unit ;
+                    }
+                }
+
             }
 
             // image
             &-image {
                 grid-column: span 1;
-                margin-bottom: 0
+                margin-bottom: 0;
+
+                @include bp(sm){
+                    height: 100%;
+                    grid-row: span 2;
+                    border-radius: $border-radius-card 0 0 $border-radius-card
+                }
             }
 
             // center header in column
@@ -62,13 +95,24 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                grid-column: span 1
+                grid-column: span 1;
+
+                @include bp(sm){
+                    grid-row: span 1;
+                    padding: 2 * $unit 2 * $unit 0 0;
+                }
             }
 
             // description spans both columns
             &-description {
                 grid-column: span 2;
                 margin-top: $unit;
+
+                @include bp(sm){
+                    margin-top:0;
+                    grid-column: 2 / 3;
+                    padding: 0 2 * $unit 2 * $unit 0;
+                }
             }
         }
     }

@@ -15,10 +15,12 @@ $color-background-gray--dark: #F8F8F8;
 // breakpoints
 $bp-375: 23.4375em;
 $bp-768: 48em;
+$bp-992: 62em;
 $bp-1200: 75em;
 $bp-1440: 90em;
 $bp-max-374: 23.375em;
 $bp-max-767: 47.9375em;
+$bp-max-991: 62.9375em;
 $bp-max-1199: 74.9375em;
 $bp-max-1439: 89.9375em;
 
@@ -27,7 +29,7 @@ $border-radius-card: $unit/8;
 $border-radius-portfolio-hero: $unit/8 $unit/8 0 0;
 
 // box shadows
-$box-shadow-card: 0 32px 24px -16px rgba(0, 0, 0, 0.05);
+$box-shadow-card: 0 32px 24px -16px rgba(0, 0, 0, 0.1);
 $box-shadow-button: 0 14px 14px -14px rgba(0, 0, 0, 0.20);
 $box-shadow-button--hover: 0 20px 14px -16px rgba(0, 0, 0, 0.20);
 $box-shadow-input: 0 14px 14px -14px rgba(0, 0, 0, 0.20);

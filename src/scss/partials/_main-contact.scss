@@ -6,6 +6,10 @@
     z-index: 0;
     padding: 5 * $unit $unit 8 * $unit $unit;
 
+    @include bp(sm){
+        padding: 8 * $unit $unit * 2;
+    }
+
     h2 {
         text-align: center;
     }
@@ -39,6 +43,10 @@
     &__intro {
         p {
             text-align: center;
+
+            @include bp(sm){
+                text-align: left;
+            }
         }
     }
 
@@ -124,6 +132,11 @@
 
             .button {
                 width: 100%;
+
+                @include bp(sm){
+                    width: auto;
+                    min-width: 200px;
+                }
             }
         }
 

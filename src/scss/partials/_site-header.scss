@@ -9,6 +9,11 @@
     z-index: 0;
     padding: 0 $unit;
 
+    @include bp(sm){
+        min-height: 35 * $unit;
+        padding: 8 * $unit $unit * 2;
+    }
+
     // gradient
     &::before {
         content: "";

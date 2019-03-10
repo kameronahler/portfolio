@@ -5,11 +5,19 @@ main {
 
 .main-padded {
     padding: 5 * $unit $unit;
+
+    @include bp(sm){
+    	padding: 8 * $unit $unit * 2;
+    }
 }
 
 // content section
 .content-section {
     margin-bottom: 5 * $unit;
+
+    @include bp(sm){
+    	margin-bottom: 8 * $unit;
+    }
 }
 
 // section headers

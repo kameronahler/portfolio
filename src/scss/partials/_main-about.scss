@@ -4,6 +4,16 @@
     // about card
     &__content {
         padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        
+        // hero
+        &-hero{
+            width: 100%;
+            min-height: 300px;
+            background: transparent url('https://picsum.photos/800/400?image=547') 50% 50% no-repeat;
+            background-size: cover;
+        }
 
         // about header
         &-header {
@@ -25,5 +35,56 @@
             }
         }
     }
+}
 
+// supports css
+@supports(display:grid){
+    .about{
+        &__content{
+            @include bp(sm){
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            &-hero{
+                @include bp(sm){
+                    order: 2;
+                    width: auto;
+                    height: 100%;
+                    margin-bottom: 0;
+                    grid-column: 2/3;
+                    border-radius: 0 $border-radius-card $border-radius-card 0
+                }
+            }
+
+            &-wrapper{
+                @include bp(sm){
+                    display: flex;
+                    flex-wrap: wrap;
+                    order: 1;
+                    padding: 2 * $unit;
+                    grid-column: 1/2;
+                    align-content: center;
+                }
+            }
+
+            &-header{
+                @include bp(sm){
+                    padding: 0;
+                }
+                
+                h3{
+                    @include bp(sm){
+                        text-align: left;
+                    }
+                }
+            }
+
+            &-description{
+                @include bp(sm){
+                    padding: 0;
+                }
+            }            
+        }
+    }
 }
