@@ -3,15 +3,39 @@ button,
 .button {
     display: inline-block;
     max-width: 100%;
-    background: $gradient-button;
+    background: transparent;
     padding: 22px 32px 24px;
     border: none;
     box-shadow: $box-shadow-button;
     border-radius: $border-radius-card;
     cursor: pointer;
     text-decoration: none;
+    position:relative;
+    overflow: hidden;
+    transition: .3s $easing all;
+
+    &::before{
+        content:"";
+        width: 200%;
+        z-index:-1;
+        height:100%;
+        position:absolute;
+        left:0;
+        top:0;
+        background: $gradient-button;
+        transition: .3s $easing all;
+    }
+
+    &:hover{
+        box-shadow: $box-shadow-button--hover;
+
+        &::before{
+            transform:translateX(-50%);
+        }
+    }
 }
 
+// icon button
 .button{
     &--icon{
         svg,
@@ -19,7 +43,7 @@ button,
             width: 18px;
             height: 18px;
             fill: #fff;
-            margin-right: $unit / 2;
+            margin-right: $unit;
             transform: translateY(2px);
         }
     }
@@ -28,19 +52,34 @@ button,
 // labels
 label {
     display: block;
+    transform-origin: 0% 100%;
+    transition: .1s $easing all;
+}
+
+label.js-focused{
+    color: $color-secondary-blue;
+    transform: scale(1.2);
+    transition: .2s $easing all;
 }
 
 // inputs
-input[type="text"],
 input[type="email"],
 textarea {
     width: 100%;
     height: 4 * $unit;
     padding: $unit;
-    border-radius: $border-radius-card;
-    box-shadow: $box-shadow-button;
     margin-bottom: $unit;
     border: none;
+    border-radius: $border-radius-card;
+    box-shadow: $box-shadow-input;
+    transition: $easing .2s box-shadow;
+
+    &:focus{
+        padding: $unit - 1px;
+        outline: none;
+        border: 1px solid $color-secondary-blue;
+        box-shadow: $box-shadow-input--active;
+    }
 }
 
 textarea {

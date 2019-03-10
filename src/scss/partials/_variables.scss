@@ -1,6 +1,15 @@
 // negative space
 $unit: 16px;
 
+// color
+$color-grayscale: rgba(black, .8);
+$color-grayscale--light: rgba(black, .65);
+$color-grayscale--lighter: rgba(black, .5);
+$color-primary: #FFE800;
+$color-secondary-blue: #003AE6;
+$color-secondary-blue--light: lighten($color-secondary-blue,10%);
+$color-secondary-purple: #6000E6;
+
 // breakpoints
 $bp-375: 23.4375em;
 $bp-768: 48em;
@@ -15,25 +24,24 @@ $bp-max-1439: 89.9375em;
 $border-radius-card: $unit/4;
 $border-radius-portfolio-hero: $unit/4 $unit/4 0 0;
 
-// typography
-$font-family-fallback: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,"Droid Sans","Helvetica Neue",sans-serif;
-$font-family-heading: Biryani;
-$font-family-body: Assistant;
+// box shadows
+$box-shadow-card: 0 32px 24px -16px rgba(0, 0, 0, 0.05);
+$box-shadow-button: 0 14px 14px -14px rgba(0, 0, 0, 0.20);
+$box-shadow-button--hover: 0 20px 14px -16px rgba(0, 0, 0, 0.20);
+$box-shadow-input: 0 14px 14px -14px rgba(0, 0, 0, 0.20);
+$box-shadow-input--active: 0 20px 14px -16px rgba(0, 0, 0, 0.20);
+$box-shadow-tab--active: 0 32px 24px -16px rgba($color-secondary-blue, 0.15);
 
-// color
-$color-grayscale: rgba(black, .8);
-$color-grayscale--light: rgba(black, .65);
-$color-grayscale--lighter: rgba(black, .5);
-$color-primary: #FFE800;
-$color-secondary-blue: #003AE6;
-$color-secondary-purple: #6000E6;
 
 // gradient
 $gradient-background: linear-gradient(135deg, #FCFCFC 0%, #F8F8F8 100%);
 $gradient-primary: linear-gradient(135deg, $color-primary 0%, rgba($color-primary, 0.75) 100%);
-$gradient-button: linear-gradient(135deg, $color-secondary-purple 0%, $color-secondary-blue 100%);
+$gradient-button: linear-gradient(135deg, $color-secondary-purple 0%, $color-secondary-blue--light 100%);
 
-// box shadows
-$box-shadow-card: 0 32px 24px -16px rgba(0, 0, 0, 0.05);
-$box-shadow-button: 0 14px 14px -14px rgba(0, 0, 0, 0.20);
-$box-shadow-tab--active: 0 32px 24px -16px rgba($color-secondary-blue, 0.15);
+// transitions
+$easing: cubic-bezier(.75,.25,.6,.9);
+
+// typography
+$font-family-fallback: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,"Droid Sans","Helvetica Neue",sans-serif;
+$font-family-heading: Biryani;
+$font-family-body: Assistant;

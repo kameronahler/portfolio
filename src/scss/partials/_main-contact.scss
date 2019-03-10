@@ -52,13 +52,35 @@
 
     // social icons
     &__social-icon {
+        position:relative;
         display: flex;
         width: 4 * $unit;
         height: 4 * $unit;
         border-radius: 50%;
-        background: $gradient-button;
         margin: $unit;
         box-shadow: $box-shadow-button;
+        overflow:hidden;
+
+        &::before{
+            content:"";
+            width: 200%;
+            z-index:-1;
+            height:100%;
+            position:absolute;
+            left:0;
+            top:0;
+            background: $gradient-button;
+            transition: .3s $easing all;
+        }
+
+        &:hover{
+            box-shadow: $box-shadow-button--hover;
+
+            &::before{
+                transform:translateX(-50%);
+            }
+        }   
+
 
         @include bp(xs) {
             margin: 0 $unit 0 0;
@@ -78,17 +100,79 @@
             height: 50%;
             fill: #fff;
             margin: auto;
+            transform-origin: 50% 50%;
+            transition: $easing .2s all;
         }
     }
 
     // contact form
     &__form {
+
+        // button area
         &-section-wrapper--submit {
             margin-top: $unit;
             text-align: center;
 
             .button {
                 width: 100%;
+            }
+        }
+
+        // ajax submission stuff
+        // form is submitting
+        &.js-submitting{
+            // inputs
+            input[type="email"],
+            textarea{
+                cursor: not-allowed;
+                background: rgba(white,.75);
+                box-shadow: none;
+            }
+
+            // submit button and icons
+            .contact__form-section-wrapper--submit{
+                .button{
+                    // change color
+                    opacity: .75;
+                    
+                    @supports(filter:grayscale(1)){
+                        opacity: 1;
+                        filter: grayscale(1);
+                    }
+                    
+                    // js adds new icon, and we add css3 animation
+                    svg,
+                    img{
+                        animation: submit-button-icon-spin .5s infinite forwards linear;
+                    }
+                }
+            }
+        }
+        // form has been submitted
+        &.js-submitted{
+
+            // inputs
+            input[type="email"],
+            textarea{
+                cursor: not-allowed;
+                background: rgba(white,.75);
+                box-shadow: none;
+            }
+            
+            // submit button and icons
+            .contact__form-section-wrapper--submit{
+                .button{
+                    color: $color-grayscale--light;
+                    background: rgba(white,.75);
+                    box-shadow: none;
+
+                    svg{
+                        fill: $color-grayscale;
+                    }
+                    img{
+                        display:none;
+                    }
+                }
             }
         }
     }
