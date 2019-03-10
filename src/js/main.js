@@ -1,5 +1,5 @@
 // svg4everybody
-!function(root, factory) {
+! function(root, factory) {
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
         define([], function() {
             return root.svg4everybody = factory();
@@ -122,52 +122,202 @@
         return svg;
     }
     return svg4everybody;
+
+    svg4everybody({
+        fallback: function(src, use) {
+            // src: current xlink:href String 
+            // svg: current SVG Element 
+            // use: current USE Element 
+
+            return 'fallback.png'; // ok, always return fallback.png
+        }
+    });
 });
 
-svg4everybody({
-    fallback: function(src, use) {
-        // src: current xlink:href String 
-        // svg: current SVG Element 
-        // use: current USE Element 
 
-        return 'fallback.png'; // ok, always return fallback.png
+
+
+
+
+
+
+// contact form
+(function() {
+
+    // add broader variables that are reused
+    var button = document.getElementById("contact-form-submit-button");
+    var form = document.getElementById("contact-form");
+    var icon = button.querySelector("#contact-form-submit-button-icon");
+
+
+    function validEmail(email) {
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
     }
-});
 
-function AJAXform() {
-    var form = document.getElementById('contact-form'); // Select the form by ID.
-    var submit = document.getElementById('contact-form-submit-button'); // Select the button by ID.
-    var formSubmitted = function() {
-        var formEmail = document.getElementById('contact-form-email').value;
-        var formMessage = document.getElementById('contact-form-message').value;
-        var xhr = new XMLHttpRequest();
-        var data = {
-            email: formEmail,
-            message: formMessage
-        };
-        
-        console.log("submitted with " + data);
-        
-        xhr.onreadystatechange = function() {
-            console.log(xhr.status);
-        };
+    function validateHuman(honeypot) {
+        if (honeypot) { //if hidden form filled up
+            console.log("Robot Detected!");
+            return true;
+        } else {
+            console.log("Welcome Human!");
+        }
+    }
 
-        xhr.open("POST", "https://getsimpleform.com/messages?form_api_token=e9369a7cf31eb8fac4c36d2c14bc46c6");
-        console.log('open post ' + xhr.status);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-        console.log('set request header ' + xhr.status);
-        xhr.send(data);
-        console.log('email: ' + formEmail + ' and message: ' + formMessage + ' ' + xhr.status);
+    // get all data in form and return object
+    function getFormData(form) {
+        var elements = form.elements;
+
+        var fields = Object.keys(elements).filter(function(k) {
+            return (elements[k].name !== "honeypot");
+        }).map(function(k) {
+            if (elements[k].name !== undefined) {
+                return elements[k].name;
+                // special case for Edge's html collection
+            } else if (elements[k].length > 0) {
+                return elements[k].item(0).name;
+            }
+        }).filter(function(item, pos, self) {
+            return self.indexOf(item) == pos && item;
+        });
+
+        var formData = {};
+        fields.forEach(function(name) {
+            var element = elements[name];
+
+            // singular form elements just have one value
+            formData[name] = element.value;
+
+            // when our element has multiple items, get their values
+            if (element.length) {
+                var data = [];
+                for (var i = 0; i < element.length; i++) {
+                    var item = element.item(i);
+                    if (item.checked || item.selected) {
+                        data.push(item.value);
+                    }
+                }
+                formData[name] = data.join(', ');
+            }
+        });
+
+        // add form-specific values into the data
+        formData.formDataNameOrder = JSON.stringify(fields);
+        formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
+        formData.formGoogleSendEmail = form.dataset.email || ""; // no email by default
+
+        console.log(formData);
+        return formData;
+    }
+
+    function handleFormSubmit(event) { // handles form submit without any jquery
+        event.preventDefault(); // we are submitting via xhr below
+        // var form = event.target;
+        var data = getFormData(form); // get the values submitted in the form
+
+        /* OPTION: Remove this comment to enable SPAM prevention, see README.md
+        if (validateHuman(data.honeypot)) {  //if form is filled, form will not be submitted
+          return false;
+        }
+        */
+
+        if (data.email && !validEmail(data.email)) { // if email is not valid show error
+            var invalidEmail = form.querySelector(".email-invalid");
+            if (invalidEmail) {
+                invalidEmail.style.display = "block";
+                return false;
+            }
+        } else {
+            disableAllButtons(form);
+            var url = form.action;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            // xhr.withCredentials = true;
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                // console.log(xhr.status, xhr.statusText);
+                // console.log(xhr.responseText);
+                window.setTimeout(function(){
+                    form.classList.remove('js-submitting'); // remove waiting class
+                    form.classList.add('js-submitted'); // add finished state class
+                    icon.setAttribute('xlink:href','../portfolio/img/icons.svg#icon-check'); // change icon on button back
+                    button.querySelector('span').innerHTML="Sent"; // change button text
+                }, 4000)
+                // var formElements = form.querySelector(".contact__form-elements")
+                // if (formElements) {
+                //     formElements.style.display = "none"; // hide form
+                // }
+                // var thankYouMessage = form.querySelector(".contact__form-submitted");
+                // if (thankYouMessage) {
+                //     thankYouMessage.style.display = "block";
+                // }
+                return;
+            };
+            // url encode form data for sending as post data
+            var encoded = Object.keys(data).map(function(k) {
+                return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+            }).join('&');
+            xhr.send(encoded);
+        }
+    }
+
+    function loaded() {
+        // console.log("Contact form submission handler loaded successfully.");
+        // bind to the submit event of our form
+        // var forms = document.querySelectorAll("form.contact__form");
+        // for (var i = 0; i < forms.length; i++) {
+        //     forms[i].addEventListener("submit", handleFormSubmit, false);
+        // }
+        // var buttons = document.querySelectorAll("#contact-form-submit-button");
+        form.addEventListener("submit", handleFormSubmit, false);
     };
 
-    submit.onclick = function() {
-        formSubmitted();
+    function loaded() {
+        // console.log("Contact form submission handler loaded successfully.");
+        // bind to the submit event of our form
+        // var forms = document.querySelectorAll("form.contact__form");
+        // for (var i = 0; i < forms.length; i++) {
+        //     forms[i].addEventListener("submit", handleFormSubmit, false);
+        // }
+        // var buttons = document.querySelectorAll("#contact-form-submit-button");
+        form.addEventListener("submit", handleFormSubmit, false);
     };
+    
+    function disableAllButtons(form) {
+        icon.setAttribute('xlink:href','../portfolio/img/icons.svg#icon-form-spinner');
+        button.querySelector('span').innerHTML="Sending";
+        button.disabled = true;
+        form.classList.add('js-submitting');
+        form.querySelector('input').disabled = true;
+        form.querySelector('textarea').disabled = true;
+    }
 
-    form.onsubmit = function() {
-        // Prevent page refresh
-        return false;
-    };
-}
+    document.addEventListener("DOMContentLoaded", loaded, false);
+})();
 
-AJAXform();
+
+
+
+
+
+// contact form styling
+(function(){
+    var email = document.getElementById('contact-form').querySelector('input');
+    var message = document.getElementById('contact-form').querySelector('textarea');
+    var labelFocused = function(){
+        this.previousElementSibling.classList.add('js-focused');
+    }
+    var labelBlurred = function(){
+        this.previousElementSibling.classList.remove('js-focused');
+    }
+
+    function addFocusStyles(){
+        email.addEventListener('focus',labelFocused);
+        email.addEventListener('blur',labelBlurred);
+        message.addEventListener('focus',labelFocused);
+        message.addEventListener('blur',labelBlurred);
+    }
+
+    addFocusStyles();
+})();
+
