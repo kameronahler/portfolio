@@ -5,18 +5,37 @@ main {
 
 .main-padded {
     padding: 5 * $unit $unit;
+
+    @include bp(sm){
+        padding: 8 * $unit $unit * 2;
+    }
+    @include bp(sm){
+    	padding: 8 * $unit $unit * 4;
+    }
 }
 
 // content section
 .content-section {
     margin-bottom: 5 * $unit;
+
+    @include bp(sm){
+    	margin-bottom: 8 * $unit;
+    }
 }
 
 // section headers
 .section-header {
     position: relative;
 
+    @include bp(md){
+        margin-bottom: 2 * $unit;
+    }
+
     >h2 {
         text-align: center;
+
+        @include bp(md){
+            text-align: left;
+        }
     }
 }

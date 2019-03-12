@@ -1,30 +1,72 @@
 // portfolio
 .portfolio {
-
+    
     // portfolio section intro
     &__intro {
         p {
             text-align: center;
+
+            @include bp(sm){
+                text-align: left;
+            }
+        }
+    }
+    // portfolio tablist - hidden under 992
+    &__tablist {
+        display: none;
+
+        @include bp(md){
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2 * $unit;
+        }
+
+        &-tab{
+            @include bp(md){
+                margin-right: 2 * $unit
+            }
+
+            &:last-of-type{
+                margin-right: 0;
+            }
         }
     }
 
-    // articles
+    // card
     &__example {
         padding: 0;
         margin-bottom: 2 * $unit;
 
-        // article header
+        @include bp(md){
+            display: none;
+        }
+
+        &--active{
+            @include bp(md){
+                display:block;
+            }
+        }
+
+        // card header
         &-header {
             padding: 0 $unit;
+
+            @include bp(sm){                
+                padding: 0 2 * $unit;
+            }
 
             h3 {
                 text-align: center;
             }
         }
 
-        // article description
+        // card description
         &-description {
             padding: 0 $unit $unit;
+
+            @include bp(sm){                
+                padding: 0 2 * $unit 2 * $unit;
+            }
 
             p {
                 &:last-of-type {

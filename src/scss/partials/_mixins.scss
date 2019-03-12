@@ -11,6 +11,12 @@
         }
     }
 
+    @elseif $bp=='md' {
+        @media(min-width:#{$bp-992}) {
+            @content
+        }
+    }
+
     @elseif $bp=='lg' {
         @media(min-width:#{$bp-1200}) {
             @content
@@ -31,6 +37,12 @@
 
     @elseif $bp=='max-sm' {
         @media(max-width:#{$bp-max-767}) {
+            @content
+        }
+    }
+
+    @elseif $bp=='max-md' {
+        @media(max-width:#{$bp-max-991}) {
             @content
         }
     }

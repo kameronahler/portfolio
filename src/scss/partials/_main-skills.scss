@@ -19,11 +19,26 @@
         display: block;
         flex: 0 1 auto;
 
-        &:nth-of-type(odd) {
-            margin-right: 2 * $unit
+        @include bp(sm){
+           width: calc((100% - #{6 * $unit}) / 4);
+           margin-right: 2 * $unit;
         }
 
-        &:nth-last-of-type(-n+2) {
+        &:nth-of-type(odd) {
+            margin-right: 2 * $unit;
+
+            @include bp(sm){
+               margin-right: 2 * $unit;
+            }
+        }
+
+        &:nth-of-type(4n+4){
+            @include bp(sm){
+                margin-right: 0;
+            }
+        }
+
+        &:nth-last-of-type(-n+4) {
             margin-bottom: 0;
         }
     }
@@ -36,6 +51,10 @@
             justify-content: initial;
             grid-template-columns: 1fr 1fr;
             grid-gap: 2 * $unit;
+
+            @include bp(sm){
+                grid-template-columns: repeat(4,1fr);
+            }
         }
 
         &__tile {
