@@ -74,11 +74,17 @@
                 <header class="section-header portfolio__header">
                     <h2 class="heading-motif"><span class="heading-motif__anchor">Catastrophes</span></h2>
                 </header>
+                <section role="tablist" aria-hidden="false" class="portfolio__tablist portfolio__tablist--active">
+                    <button class="portfolio__tablist-tab tab tab--active"><span>Boop</span></button>
+                    <button class="portfolio__tablist-tab tab"><span>Booper</span></button>
+                    <button class="portfolio__tablist-tab tab"><span>Boopier</span></button>
+                    <button class="portfolio__tablist-tab tab"><span>Boopiestest</span></button>
+                </section>
                 <section class="portfolio__intro">
                     <p>Want to hear more? Due to NDAs I’m unable to show certain work. <a class="inline-link" href="#0">Contact me</a> if you’d like to chat about about my work experience.</p>
                 </section>
                 <section class="portfolio__examples">
-                    <article id="article1" class="portfolio__example card">
+                    <article id="article1" class="portfolio__example portfolio__example--active card">
                         <img aria-hidden="true" src="https://picsum.photos/800/400?image=543" alt="coming soon" class="portfolio__example-hero card-hero">
                         <header class="portfolio__example-header">
                             <h3>Babila Ebwele</h3>
@@ -130,21 +136,23 @@
             </header>
             <section class="contact__intro">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum veniam deleniti illo reprehenderit ut, aut beatae minus nulla est? Facilis in doloribus reprehenderit quibusdam quae perspiciatis quas sed et quisquam.</p>
+
+                <ul class="plain-list contact__social-icons">
+                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                            <use xlink:href="../img/icons.svg#icon-codepen">
+                        </svg></a></li>
+                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                            <use xlink:href="../img/icons.svg#icon-github">
+                        </svg></a></li>
+                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                            <use xlink:href="../img/icons.svg#icon-instagram">
+                        </svg></a></li>
+                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                            <use xlink:href="../img/icons.svg#icon-linkedin">
+                        </svg></a></li>
+                </ul>
             </section>
-            <section class="contact__social-icons">
-                <a href="#0" class="contact__social-icon"><svg role="img">
-                        <use xlink:href="../img/icons.svg#icon-codepen">
-                    </svg></a>
-                <a href="#0" class="contact__social-icon"><svg role="img">
-                        <use xlink:href="../img/icons.svg#icon-github">
-                    </svg></a>
-                <a href="#0" class="contact__social-icon"><svg role="img">
-                        <use xlink:href="../img/icons.svg#icon-instagram">
-                    </svg></a>
-                <a href="#0" class="contact__social-icon"><svg role="img">
-                        <use xlink:href="../img/icons.svg#icon-linkedin">
-                    </svg></a>
-            </section>
+
             <section class="contact__forms">
                 <form id="contact-form" role="form" method="POST" action="https://script.google.com/macros/s/AKfycbzV5pj_tHcXaqeHdZirBXBU4UoFzb5HUvI6rLDTVrpnXtdTYCU/exec" class="contact__form">
                     <!-- <div class="contact__form-elements"> -->

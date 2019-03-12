@@ -9,9 +9,16 @@
     @include bp(sm){
         padding: 8 * $unit $unit * 2;
     }
+    @include bp(md){
+        padding: 8 * $unit $unit * 4;
+    }
 
     h2 {
         text-align: center;
+
+        @include bp(md){
+            text-align: left;
+        }
     }
 
     // section-level gradient
@@ -50,12 +57,27 @@
         }
     }
 
-    // social icons wrapper
+    // social icons list
     &__social-icons {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 2 * $unit;
+
+        li{
+            margin: $unit;
+
+            @include bp(xs) {
+                margin: 0 $unit 0 0;
+            }
+
+            // fix margin on last of type
+            &:last-of-type {
+                @include bp(xs) {
+                    margin-right: 0;
+                }
+            }
+        }
     }
 
     // social icons
@@ -65,13 +87,8 @@
         width: 4 * $unit;
         height: 4 * $unit;
         border-radius: 50%;
-        margin: $unit;
         box-shadow: $box-shadow-button;
         overflow:hidden;
-
-        @include bp(xs) {
-            margin: 0 $unit 0 0;
-        }
 
         &::before{
             content:"";
@@ -84,14 +101,7 @@
             background: $gradient-button;
             transition: $transition-default;
         }
-
-        // fix margin on last of type
-        &:last-of-type {
-            @include bp(xs) {
-                margin-right: 0;
-            }
-        }
-
+        
         svg,
         img {
             width: 50%;
@@ -101,10 +111,10 @@
             opacity: .9;
             transition: $transition-default;
         }
-
+        
         // hover styles for social icons
         &:hover{
-            @include bp(lg){
+            @include bp(md){
                 box-shadow: $box-shadow-button--hover;
             }
             
@@ -115,7 +125,7 @@
 
             // background gradient changes
             &::before{
-                @include bp(lg){
+                @include bp(md){
                     transform:translateX(-50%);
                 }
             }
@@ -198,6 +208,66 @@
                     }
                     img{
                         display:none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// css grid enabled md bp and above
+@supports (display:grid){
+    .contact{
+        @include bp(md){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 0 2 * $unit;
+        }
+
+        &__header{
+            @include bp(md){
+                grid-column: 1 / -1;
+                grid-row: 1 / 2;
+            }
+
+            h2{
+                @include bp(md){
+                    margin-bottom: 2 * $unit
+                }
+            }
+        }
+        &__intro{
+            @include bp(md){
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+            }
+
+            h2{
+                @include bp(md){
+                    margin-bottom: 2 * $unit
+                }
+            }
+        }
+        &__social-icons{
+            @include bp(md){
+                justify-content: flex-start            
+            }
+        }
+        &__forms{
+            @include bp(md){
+                grid-column: 2 / 3;
+                grid-row: 2 / span 2;
+            }
+        }
+        &__form{
+            &-section-wrapper--submit{
+                @include bp(md){
+                    text-align: right;
+                }
+
+                .button{
+                    @include bp(md){
+                        min-width: unset;
                     }
                 }
             }

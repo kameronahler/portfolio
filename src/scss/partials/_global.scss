@@ -1,18 +1,19 @@
 // button
 button,
 .button {
+    position:relative;
+    overflow: hidden;
     display: inline-block;
     max-width: 100%;
     background: transparent;
-    padding: 22px 32px 24px;
+    padding: $padding-button;
     border: none;
-    box-shadow: $box-shadow-button;
-    border-radius: $border-radius-card;
     cursor: pointer;
     text-decoration: none;
-    position:relative;
-    overflow: hidden;
-    transition: $transition-default;
+    box-shadow: $box-shadow-button;
+    border-radius: $border-radius-card;
+    transition: $transition-default, 0s border, 0s padding;
+    z-index: 0;
 
     span{
         opacity: .9;
@@ -32,7 +33,7 @@ button,
     }
 
     &:hover{
-        @include bp(lg){
+        @include bp(md){
             box-shadow: $box-shadow-button--hover;
         }
 
@@ -41,7 +42,7 @@ button,
         }
 
         &::before{
-            @include bp(lg){
+            @include bp(md){
                 transform:translateX(-50%);
             }
         }
@@ -72,6 +73,65 @@ button,
     }
 }
 
+// tab
+.tab{
+
+    &:not(.tab--active){
+        box-shadow: $box-shadow-tab--inactive;
+
+        span{
+            color: $color-grayscale;
+        }
+
+        &::before{
+            opacity: .05;
+        }
+    
+        &:hover{
+            box-shadow: $box-shadow-tab--inactive-hover;
+
+            &::before{
+                opacity: .2;
+            }
+        }
+    }
+
+    &--active{
+        box-shadow: $box-shadow-tab--active;
+
+        span{
+            transition: $transition-default;
+        }
+
+        &::before{
+            opacity: .9;
+        }
+
+        &:hover{
+            box-shadow: $box-shadow-tab--active-hover;
+            color: #fff;
+
+            &::before{
+                opacity: 1;
+            }
+        }
+    }
+
+    &:focus{
+        outline: none;
+        border: 1px solid $color-grayscale--lighter;
+        padding: $padding-button--focus;
+    }
+}
+
+// list
+.plain-list{
+    padding-left: 0;
+    list-style: none;
+    margin-top: unset;
+    margin-bottom: unset;
+}
+
 // labels
 label {
     // display: block;
@@ -93,14 +153,13 @@ textarea {
     border-radius: $border-radius-card;
     background: $color-background-gray--dark;
     box-shadow: $box-shadow-input;
-    transition: .2s $easing all, 0s border, 0s padding;
+    transition: $transition-default, 0s border, 0s padding;
 
     @include bp(sm){                
         padding: $unit 2 * $unit;
     }
     &:focus{
         outline: none;
-        padding: $unit - 1px;
         border: 1px solid $color-grayscale--lighter;
         box-shadow: $box-shadow-input--active;
         background: #fff;
@@ -148,7 +207,7 @@ img {
 // card
 .card {
     padding: $unit;
-    border-radius: $unit / 4;
+    border-radius: $border-radius-card;
     background: #fff;
     box-shadow: $box-shadow-card;
 }

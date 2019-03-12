@@ -13,6 +13,9 @@
         min-height: 35 * $unit;
         padding: 8 * $unit $unit * 2;
     }
+    @include bp(md){
+        padding: 8 * $unit $unit * 4;
+    }
 
     // gradient
     &::before {
@@ -41,10 +44,15 @@
 
     h1,
     h2 {
-        text-align: center
+        text-align: center;
+
+        @include bp(md){
+            text-align: left;
+        }
     }
 
-    h1 {
+    h1,
+    h2 {
         flex-basis: 100%;
     }
 

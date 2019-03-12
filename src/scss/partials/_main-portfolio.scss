@@ -1,6 +1,6 @@
 // portfolio
 .portfolio {
-
+    
     // portfolio section intro
     &__intro {
         p {
@@ -11,11 +11,41 @@
             }
         }
     }
+    // portfolio tablist - hidden under 992
+    &__tablist {
+        display: none;
 
-    // cards
+        @include bp(md){
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2 * $unit;
+        }
+
+        &-tab{
+            @include bp(md){
+                margin-right: 2 * $unit
+            }
+
+            &:last-of-type{
+                margin-right: 0;
+            }
+        }
+    }
+
+    // card
     &__example {
         padding: 0;
         margin-bottom: 2 * $unit;
+
+        @include bp(md){
+            display: none;
+        }
+
+        &--active{
+            @include bp(md){
+                display:block;
+            }
+        }
 
         // card header
         &-header {
