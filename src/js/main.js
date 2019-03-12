@@ -300,24 +300,85 @@
 
 
 
-// contact form styling
+
+// portfolio article switcher
 (function(){
-    var email = document.getElementById('contact-form').querySelector('input');
-    var message = document.getElementById('contact-form').querySelector('textarea');
-    var labelFocused = function(){
-        this.previousElementSibling.classList.add('js-focused');
-    }
-    var labelBlurred = function(){
-        this.previousElementSibling.classList.remove('js-focused');
-    }
+    var tabs = document.querySelectorAll('.portfolio__tablist-tab');
+    var articles = document.querySelectorAll('.portfolio__example');
+    var tabClick = function(){
+        // create sibling array for this tab by looking for all of children of parent that aren't this tab
+        var tabArticle = this.getAttribute('data-article');
+        var siblings = Array.prototype.filter.call(this.parentNode.children, function(child){
+            return child !== this;
+        });
+        
+        // loop sibling array and remove active classes
+        function removeSiblingClasses(){
+            Array.prototype.forEach.call(siblings, function(el, i){
+                el.classList.remove('tab--active');
+            });
+        }
+        removeSiblingClasses();
+        
+        // get this tab's article value
+        var dataArticle = this.getAttribute('data-article');
 
-    function addFocusStyles(){
-        email.addEventListener('focus',labelFocused);
-        email.addEventListener('blur',labelBlurred);
-        message.addEventListener('focus',labelFocused);
-        message.addEventListener('blur',labelBlurred);
-    }
+        // add active class to this tab
+        this.classList.add('tab--active');
 
-    addFocusStyles();
+        // check to see if the article number matches the data attribute of the tab being clicked, remove classes, and 
+        function checkArticle(){
+            Array.prototype.forEach.call(articles, function(el, i){
+                if(el.id == tabArticle){
+                    el.classList.add('portfolio__example--active');
+                } else {
+                    el.classList.remove('portfolio__example--active')
+                };
+            });
+        }
+        checkArticle();
+    };
+
+    function addTabListeners() {
+        Array.prototype.forEach.call(tabs, function(el, i){
+            el.addEventListener('click',tabClick);
+        });
+    };
+
+    addTabListeners();
 })();
+
+
+
+
+
+
+
+// contact form styling
+// (function(){
+//     var email = document.getElementById('contact-form').querySelector('input');
+//     var message = document.getElementById('contact-form').querySelector('textarea');
+//     var labelFocused = function(){
+//         this.previousElementSibling.classList.add('js-focused');
+//     }
+//     var labelBlurred = function(){
+//         this.previousElementSibling.classList.remove('js-focused');
+//     }
+
+//     function addFocusStyles(){
+//         email.addEventListener('focus',labelFocused);
+//         email.addEventListener('blur',labelBlurred);
+//         message.addEventListener('focus',labelFocused);
+//         message.addEventListener('blur',labelBlurred);
+//     }
+
+//     addFocusStyles();
+// })();
+
+
+
+
+
+
+
 
