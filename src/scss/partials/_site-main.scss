@@ -1,16 +1,26 @@
 // main content section
 main {
     background: $gradient-background;
+
+    @include bp(lg){
+        width: calc(100% - (#{4 * $unit}));
+        margin-left: 4 * $unit
+    }
 }
 
 .main-padded {
     padding: 5 * $unit $unit;
 
     @include bp(sm){
-        padding: 8 * $unit $unit * 2;
+        padding: 8 * $unit $unit * 4;
     }
-    @include bp(sm){
-    	padding: 8 * $unit $unit * 4;
+
+    @include bp(md){
+        padding: 8 * $unit 4 * $unit;
+    }
+
+    @include bp(lg){
+        padding: 9 * $unit 4 * $unit;
     }
 }
 
@@ -20,6 +30,10 @@ main {
 
     @include bp(sm){
     	margin-bottom: 8 * $unit;
+    }
+
+    @include bp(lg){
+        margin-bottom: 9 * $unit;
     }
 }
 

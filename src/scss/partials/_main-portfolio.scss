@@ -1,6 +1,6 @@
 // portfolio
 .portfolio {
-    
+
     // portfolio section intro
     &__intro {
         p {
@@ -36,14 +36,23 @@
     &__example {
         padding: 0;
         margin-bottom: 2 * $unit;
-
+        overflow: hidden;
+        
         @include bp(md){
-            display: none;
+            max-height: 0;
+            visibility: hidden;
+            transform: translateY(-#{$unit});
+            opacity: 0;
+            margin-bottom: 0;
         }
 
         &--active{
             @include bp(md){
-                display:block;
+                max-height: 100%;
+                visibility: visible;
+                transform: translateY(0);
+                opacity: 1;
+                transition: transform .5s .5s, opacity .5s .5s
             }
         }
 
@@ -71,6 +80,65 @@
             p {
                 &:last-of-type {
                     margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+
+// grid support for lg bp
+
+@supports (display:grid){
+    .portfolio{
+        @include bp(lg){
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);           
+            grid-gap: 0 2 * $unit;
+        }
+
+        &__header{
+            @include bp(lg){
+                grid-column: 1 / -1
+            }
+        }
+
+        &__tablist{
+            @include bp(lg){
+                grid-column: 1 / 4;
+                display: block;
+            }
+
+            &-tab{
+                @include bp(lg){
+                    margin-bottom: 2 * $unit;
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+        }
+
+        &__intro{
+            @include bp(lg){
+                grid-column: 1 / -1;
+                grid-row-start: 2;
+            }
+        }
+
+        &__examples{
+            @include bp(lg){
+                grid-column: 4 / -1;
+            }
+        }
+
+        &__example{
+            @include bp(lg){
+                transform: translateX(#{$unit});
+            }
+
+            &--active{
+                @include bp(lg){
+                    transform: translateX(0);
                 }
             }
         }

@@ -1,4 +1,8 @@
 .site-footer {
+	@include bp(lg){
+        width: calc(100% - (#{4 * $unit}));
+        margin-left: 4 * $unit
+	}
     p {
         text-align: center;
         margin: 0;

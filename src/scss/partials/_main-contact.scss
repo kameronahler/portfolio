@@ -65,6 +65,7 @@
         margin-bottom: 2 * $unit;
 
         li{
+            display: block;
             margin: $unit;
 
             @include bp(xs) {
@@ -82,28 +83,19 @@
 
     // social icons
     &__social-icon {
-        position:relative;
         display: flex;
         width: 4 * $unit;
         height: 4 * $unit;
         border-radius: 50%;
-        box-shadow: $box-shadow-button;
-        overflow:hidden;
+        padding: 0;
 
-        &::before{
-            content:"";
-            width: 200%;
-            z-index:-1;
-            height:100%;
-            position:absolute;
-            left:0;
-            top:0;
-            background: $gradient-button;
-            transition: $transition-default;
+        &::after{
+            border-radius: 99em;
         }
-        
+
         svg,
         img {
+            display: block;
             width: 50%;
             height: 50%;
             fill: #fff;
@@ -114,19 +106,10 @@
         
         // hover styles for social icons
         &:hover{
-            @include bp(md){
-                box-shadow: $box-shadow-button--hover;
-            }
-            
             svg,
             img{
-                opacity: 1;
-            }
-
-            // background gradient changes
-            &::before{
                 @include bp(md){
-                    transform:translateX(-50%);
+                    opacity: 1;
                 }
             }
         }

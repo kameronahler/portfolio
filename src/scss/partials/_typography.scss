@@ -22,15 +22,15 @@ p {
 }
 
 .inline-link {
-    display: inline-block;
+    display: inline;
     color: $color-secondary-blue;
     opacity: .8;
     font-weight: 700;
 
-    &:hover {
+    &:hover,
+    &:focus {
         opacity: 1;
         text-decoration: none;
-        text-overflow: b
     }
 }
 

@@ -15,13 +15,22 @@
 </head>
 
 <body>
-    <header class="site-header">
+    <nav class="site-nav">
+        <ul class="plain-list">
+            <li><a href="#home"><svg role="img"><use xlink:href="../img/icons.svg#icon-codepen"></svg></a></li>
+            <li><a href="#designer-type"><svg role="img"><use xlink:href="../img/icons.svg#icon-codepen"></svg></a></li>
+            <li><a href="#skills-and-tools"><svg role="img"><use xlink:href="../img/icons.svg#icon-codepen"></svg></a></li>
+            <li><a href="#portfolio"><svg role="img"><use xlink:href="../img/icons.svg#icon-codepen"></svg></a></li>
+            <li><a href="#contact"><svg role="img"><use xlink:href="../img/icons.svg#icon-codepen"></svg></a></li>
+        </ul>
+    </nav>
+    <header id="home" class="site-header">
         <h1>Kameron Ahler</h1>
         <h2>Boop Meow</h2>
     </header>
     <main class="site-main">
         <div class="main-padded">
-            <section class="content-section designer-type">
+            <section id="designer-type" class="content-section designer-type">
                 <header class="section-header designer-type__header">
                     <h2 class="heading-motif"><span class="heading-motif__anchor">Kind</span> of Cat That I Am</h2>
                 </header>
@@ -55,7 +64,7 @@
                     </div>
                 </section>
             </section>
-            <section class="content-section skills">
+            <section id="skills-and-tools" class="content-section skills">
                 <header class="section-header skills__header">
                     <h2 class="heading-motif"><span class="heading-motif__anchor">Cat</span> Skills & Tools</h2>
                 </header>
@@ -70,15 +79,15 @@
                     <img src="https://picsum.photos/400?image=657" alt="coming soon" class="skills__tile">
                 </section>
             </section>
-            <section class="content-section portfolio">
+            <section id="portfolio" class="content-section portfolio">
                 <header class="section-header portfolio__header">
                     <h2 class="heading-motif"><span class="heading-motif__anchor">Catastrophes</span></h2>
                 </header>
                 <section id="portfolio-tablist" role="tablist" aria-hidden="false" class="portfolio__tablist portfolio__tablist--active">
-                    <button data-article="article1" class="portfolio__tablist-tab tab tab--active"><span>Boop</span></button>
-                    <button data-article="article2" class="portfolio__tablist-tab tab"><span>Booper</span></button>
-                    <button data-article="article3" class="portfolio__tablist-tab tab"><span>Boopier</span></button>
-                    <button data-article="article4" class="portfolio__tablist-tab tab"><span>Boopiestest</span></button>
+                    <button data-article="article1" class="portfolio__tablist-tab tab button tab--active"><span>Boop</span></button>
+                    <button data-article="article2" class="portfolio__tablist-tab tab button"><span>Booper</span></button>
+                    <button data-article="article3" class="portfolio__tablist-tab tab button"><span>Boopier</span></button>
+                    <button data-article="article4" class="portfolio__tablist-tab tab button"><span>Boopiestest</span></button>
                 </section>
                 <section class="portfolio__intro">
                     <p>Want to hear more? Due to NDAs I’m unable to show certain work. <a class="inline-link" href="#0">Contact me</a> if you’d like to chat about about my work experience.</p>
@@ -139,7 +148,7 @@
                 </section>
             </section>
         </div>
-        <section class="contact">
+        <section id="contact" class="contact">
             <header class="contact__header">
                 <h2>Cat I Just Text?</h2>
             </header>
@@ -147,16 +156,16 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum veniam deleniti illo reprehenderit ut, aut beatae minus nulla est? Facilis in doloribus reprehenderit quibusdam quae perspiciatis quas sed et quisquam.</p>
 
                 <ul class="plain-list contact__social-icons">
-                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                    <li><a href="#0" class="contact__social-icon button"><svg role="img">
                             <use xlink:href="../img/icons.svg#icon-codepen">
                         </svg></a></li>
-                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                    <li><a href="#0" class="contact__social-icon button"><svg role="img">
                             <use xlink:href="../img/icons.svg#icon-github">
                         </svg></a></li>
-                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                    <li><a href="#0" class="contact__social-icon button"><svg role="img">
                             <use xlink:href="../img/icons.svg#icon-instagram">
                         </svg></a></li>
-                    <li><a href="#0" class="contact__social-icon"><svg role="img">
+                    <li><a href="#0" class="contact__social-icon button"><svg role="img">
                             <use xlink:href="../img/icons.svg#icon-linkedin">
                         </svg></a></li>
                 </ul>

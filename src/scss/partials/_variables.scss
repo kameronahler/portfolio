@@ -11,6 +11,7 @@ $color-secondary-blue--light: lighten($color-secondary-blue,10%);
 $color-secondary-purple: #6000E6;
 $color-background-gray: #FCFCFC;
 $color-background-gray--dark: #F8F8F8;
+$color-background-gray--darker: #F5F5F5;
 
 // breakpoints
 $bp-375: 23.4375em;
@@ -30,20 +31,23 @@ $border-radius-portfolio-hero: $unit/8 $unit/8 0 0;
 
 // box shadows
 $box-shadow-card: 0 32px 24px -16px rgba(0, 0, 0, 0.1);
-$box-shadow-button: 0 14px 14px -14px rgba(0, 0, 0, 0.20);
-$box-shadow-button--hover: 0 20px 14px -16px rgba(0, 0, 0, 0.20);
-$box-shadow-input: $box-shadow-button;
-$box-shadow-input--active: $box-shadow-button--hover;
-$box-shadow-tab--inactive: $box-shadow-button;
-$box-shadow-tab--inactive-hover: $box-shadow-button--hover;
-$box-shadow-tab--active: 0 20px 14px -16px rgba($color-secondary-purple, 0.5);
-$box-shadow-tab--active-hover: 0 20px 14px -16px rgba($color-secondary-blue, 0.5);
 
+$box-shadow-button: 0 14px 14px -10px rgba(0, 0, 0, 0.20);
+$box-shadow-button--hover: 0 16px 16px -10px rgba(0, 0, 0, 0.20);
+
+$box-shadow-tab--inactive: none;
+$box-shadow-tab--inactive-hover: $box-shadow-button--hover;
+
+$box-shadow-tab--active: 0 16px 16px -10px rgba($color-secondary-purple, 0.5);
+$box-shadow-tab--active-hover: 0 16px 16px -10px rgba($color-secondary-blue, 0.5);
+
+$box-shadow-input: $box-shadow-button;
 
 // gradient
 $gradient-background: linear-gradient(135deg, $color-background-gray 0%, $color-background-gray--dark 100%);
 $gradient-primary: linear-gradient(135deg, $color-primary 0%, rgba($color-primary, 0.75) 100%);
 $gradient-button: linear-gradient(135deg, $color-secondary-purple 0%, $color-secondary-blue--light 100%);
+// $gradient-button: linear-gradient(135deg, $color-grayscale--light 0%, $color-grayscale 100%);
 
 // padding
 $padding-button: 24px 32px 22px;
