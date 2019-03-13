@@ -1,19 +1,18 @@
-// button
-button,
+// buttons
 .button {
     position:relative;
+    z-index: 0;
     overflow: hidden;
     display: inline-block;
     max-width: 100%;
-    background: transparent;
     padding: $padding-button;
+    background: none;
     border: none;
     cursor: pointer;
     text-decoration: none;
     box-shadow: $box-shadow-button;
     border-radius: $border-radius-card;
-    transition: $transition-default, 0s border, 0s padding;
-    z-index: 0;
+    transition: $transition-default, 0s outline;
 
     span{
         opacity: .9;
@@ -23,13 +22,13 @@ button,
     &::before{
         content:"";
         width: 200%;
-        z-index:-1;
         height:100%;
         position:absolute;
         left:0;
         top:0;
         background: $gradient-button;
         transition: $transition-default;
+        z-index: -2;
     }
 
     &:hover{
@@ -91,7 +90,8 @@ button,
             box-shadow: $box-shadow-tab--inactive-hover;
 
             &::before{
-                opacity: .2;
+                opacity: .3;
+                transform: translateX(-50%);
             }
         }
     }
@@ -116,12 +116,6 @@ button,
             }
         }
     }
-
-    &:focus{
-        outline: none;
-        border: 1px solid $color-grayscale--lighter;
-        padding: $padding-button--focus;
-    }
 }
 
 // list
@@ -132,41 +126,25 @@ button,
     margin-bottom: unset;
 }
 
-// labels
-label {
-    // display: block;
-    // transition: $transition-default;
-}
-
-label.js-focused{
-    // transform: translateY(-#{$unit/4});
-}
-
 // inputs
 input[type="email"],
 textarea {
     width: 100%;
     height: 4 * $unit;
-    padding: $unit;
+    padding: $unit; 
     margin-bottom: $unit;
     border: none;
     border-radius: $border-radius-card;
-    background: $color-background-gray--dark;
+    background: $color-background-gray--darker;
     box-shadow: $box-shadow-input;
-    transition: $transition-default, 0s border, 0s padding;
+    transition: $transition-default;
 
     @include bp(sm){                
         padding: $unit 2 * $unit;
     }
     &:focus{
-        outline: none;
-        border: 1px solid $color-grayscale--lighter;
-        box-shadow: $box-shadow-input--active;
         background: #fff;
-
-        @include bp(sm){                
-            padding: $unit - 1px ((2 * $unit) - 1px);
-        }
+        transition: unset;
     }
 }
 
