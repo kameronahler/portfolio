@@ -1,43 +1,38 @@
 // nav 1200 and above
 
 .site-nav{
-	display: none;
-
-	@include bp(lg){
-		position: fixed;
-		width: $unit * 4;
-		height: 100%;
-		top: 0;
-		z-index: 99;
-		background: $color-grayscale;
-		display: flex;
-		justify-content: center;
-		padding-top: 2 * $unit;
+	@include bp(max-lg){
+		@include hide;
 	}
+
+	position: fixed;
+	width: $unit * 4;
+	height: 100%;
+	top: 0;
+	z-index: 99;
+	background: $color-grayscale;
+	display: flex;
+	justify-content: center;
+	padding-top: 2 * $unit;
 	
-	a{
-		@include bp(lg){
-			display: flex;
-			width: 2 * $unit;
-			height: 2 * $unit;
-			border-radius: 50%;
-			margin-bottom: $unit;
-		}
+	&__link{
+		display: flex;
+		width: 2 * $unit;
+		height: 2 * $unit;
+		border-radius: 50%;
+		margin-bottom: $unit;
 
 		svg{
-			@include bp(lg){
-				width: 50%;
-				height: 50%;
-				margin: auto;
-				fill: #fff;
+			width: 50%;
+			height: 50%;
+			margin: auto;
+			fill: #fff;
+		}
+
+		&--current{
+			svg{
+				fill: red;
 			}
 		}
 	}
-
-	&:hover{
-		@include bp(lg){
-			opacity: 1;		
-		}
-	}
-
 }
