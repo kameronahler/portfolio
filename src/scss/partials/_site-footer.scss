@@ -1,7 +1,7 @@
 .site-footer {
 	@include bp(lg){
-        width: calc(100% - (#{4 * $unit}));
-        margin-left: 4 * $unit
+        width: calc(100% - (#{3 * $unit}));
+        margin-left: 3 * $unit
 	}
     p {
         text-align: center;

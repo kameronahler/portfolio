@@ -5,33 +5,68 @@
 		@include hide;
 	}
 
-	position: fixed;
-	width: $unit * 4;
-	height: 100%;
-	top: 0;
-	z-index: 99;
-	background: $color-grayscale;
-	display: flex;
-	justify-content: center;
-	padding-top: 2 * $unit;
+	@include bp(lg){
+		position: fixed;
+		width: $unit * 3;
+		height: 100%;
+		top: 0;
+		z-index: 99;
+		background: $color-grayscale;
+		display: flex;
+		justify-content: center;
+	}
 	
 	&__link{
-		display: flex;
-		width: 2 * $unit;
-		height: 2 * $unit;
-		border-radius: 50%;
-		margin-bottom: $unit;
+		@include bp(lg){
+			position:relative;
+			display: flex;
+			width: 3 * $unit;
+			height: 3 * $unit;
+			transition: $transition-default;
+		}
 
 		svg{
-			width: 50%;
-			height: 50%;
-			margin: auto;
-			fill: #fff;
+			@include bp(lg){
+				width: 33%;
+				height: 33%;
+				margin: auto;
+				opacity: .9;
+				fill: #fff;
+				transition: $transition-default;
+			}
+		}
+
+		&:hover{
+			@include bp(lg){
+				background: rgba(white, .05);
+			}
+
+			svg{
+				opacity: 1;
+			}
 		}
 
 		&--current{
-			svg{
-				fill: red;
+			@include bp(lg){
+				background: $gradient-button;
+			}
+
+			&:hover{
+				@include bp(lg){
+					background: $gradient-button;
+				}
+			}
+		}
+
+		&-tooltip{
+			@include bp(lg){
+				position:absolute;
+				display:inline-block;
+				height: 100%;
+				top:0;
+				left: 110%;
+				background: white;
+				text-align: left;
 			}
 		}
 	}

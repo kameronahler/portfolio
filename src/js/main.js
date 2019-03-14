@@ -413,20 +413,28 @@
             for (var i = 0; i<scrollAnchors.length; i++){
 
                 // if user scroll loop count is not last loop, and both window position is above current sections's distance to top, but less than the next section's distance to top 
-                if ( (i < scrollAnchors.length - 1) && ((window.scrollY >= scrollAnchors[i].offsetTop-128) && (window.scrollY < scrollAnchors[i + 1].offsetTop-128)) ) {
-                    // remove all js-active states in nav
+                if ( (i < scrollAnchors.length - 1) && ((window.scrollY >= scrollAnchors[i].offsetTop-144) && (window.scrollY < scrollAnchors[i + 1].offsetTop-144)) ) {
+                    // remove all js-active states in nav and content sections
                     Array.prototype.forEach.call(navLinks, function(el, i){
                         el.classList.remove('site-nav__link--current');
-                    })
-                    // readd new js-active state to current section
+                    });
+
+                    // read new js-active state to current section
                     navLinks[i].classList.add('site-nav__link--current');
+
+                    // add class to sections if scrolled to
+                    scrollAnchors[i].classList.add('scroll-anchor--seen');
+
                     return true;
                 } else if (i == scrollAnchors.length - 1) {
+
                     // solely for last section, because it has no next section to compare to
                     Array.prototype.forEach.call(navLinks, function(el, i){
                         el.classList.remove('site-nav__link--current');
                     });
+
                     navLinks[i].classList.add('site-nav__link--current');
+                    scrollAnchors[i].classList.add('scroll-anchor--seen');
                     return false;
                 }
             }
@@ -441,38 +449,10 @@
             window.clearTimeout(isScrolling);
 
             // fire function when user stops for 500ms
-            isScrolling = setTimeout(doneScrolling, 1000);
+            isScrolling = setTimeout(doneScrolling, 800);
         }, false);
     }, false);
 })();
-
-
-
-
-
-
-// contact form styling
-// (function(){
-//     var email = document.getElementById('contact-form').querySelector('input');
-//     var message = document.getElementById('contact-form').querySelector('textarea');
-//     var labelFocused = function(){
-//         this.previousElementSibling.classList.add('js-focused');
-//     }
-//     var labelBlurred = function(){
-//         this.previousElementSibling.classList.remove('js-focused');
-//     }
-
-//     function addFocusStyles(){
-//         email.addEventListener('focus',labelFocused);
-//         email.addEventListener('blur',labelBlurred);
-//         message.addEventListener('focus',labelFocused);
-//         message.addEventListener('blur',labelBlurred);
-//     }
-
-//     addFocusStyles();
-// })();
-
-
 
 
 

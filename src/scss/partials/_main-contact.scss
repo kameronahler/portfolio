@@ -150,10 +150,10 @@
                     // change color
                     opacity: .75;
                     
-                    @supports(filter:grayscale(1)){
-                        opacity: 1;
-                        filter: grayscale(1);
-                    }
+                    // @supports(filter:grayscale(1)){
+                    //     opacity: 1;
+                    //     filter: grayscale(1);
+                    // }
                     
                     // js adds new icon, and we add css3 animation
                     svg,
