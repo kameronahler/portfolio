@@ -9,7 +9,7 @@
     padding: 0 $unit;
 
     @include bp(sm){
-        min-height: 35 * $unit;
+        min-height: 24 * $unit;
         padding: 8 * $unit $unit * 2;
     }
     @include bp(md){
@@ -18,9 +18,8 @@
     }
 
     @include bp(lg){
-        // padding: 8 * $unit $unit * 4 8 * $unit 8 * $unit;
-        width: calc(100% - (#{4 * $unit}));
-        margin-left: 4 * $unit
+        width: calc(100% - (#{3 * $unit}));
+        margin-left: 3 * $unit
     }
 
     // gradient
@@ -43,9 +42,20 @@
         position: absolute;
         left: 0;
         top: 0;
-        background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 100%;
-        background-size: cover;
+        background: transparent url('../img/site-header-bg.svg') no-repeat 50% 25%;
+        background-size: 400px 800px;
         z-index: -2;
+
+        @include bp(sm){
+            background-position: 50% 25%;
+        }
+        @include bp(md){
+            background-position: 92% 10%;
+        }
+        @include bp(lg){
+            background-size: 700px 800px;
+            background-position: 100% 0%;
+        }
     }
 
     h1,
