@@ -71,7 +71,7 @@ h2 {
 
 h3,
 label {
-    font-family: $font-family-body, $font-family-fallback;
+    font-family: $font-family-heading, $font-family-fallback;
     font-size: 14px;
     line-height: 1.75;
     letter-spacing: -0.25px;
@@ -93,7 +93,7 @@ textarea{
 
 button,
 .button {
-    font-family: $font-family-body;
+    font-family: $font-family-heading;
     font-weight: 700;
     font-size: 18px;
     line-height: 1;

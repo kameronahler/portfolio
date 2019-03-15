@@ -30,7 +30,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        background-image: $gradient-primary;
+        background-image: $gradient-dark;
         z-index: -1;
     }
 
@@ -42,9 +42,13 @@
         position: absolute;
         left: 0;
         top: 0;
-        background: transparent url('../img/site-header-bg.svg') no-repeat 50% 25%;
+        background: transparent url('../portfolio/img/site-header-bg.svg') no-repeat 50% 25%;
         background-size: 400px 800px;
         z-index: -2;
+
+        @supports(filter:grayscale(1)){
+            filter: saturate(.5)
+        }
 
         @include bp(sm){
             background-position: 50% 25%;
@@ -61,15 +65,12 @@
     h1,
     h2 {
         text-align: center;
+        flex-basis: 100%;
+        color: $color-primary;
 
         @include bp(md){
             text-align: left;
         }
-    }
-
-    h1,
-    h2 {
-        flex-basis: 100%;
     }
 
     h2 {
