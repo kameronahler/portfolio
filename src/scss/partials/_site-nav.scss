@@ -31,8 +31,7 @@
 				height: 33%;
 				margin: auto;
 				opacity: .9;
-				fill: #fff;
-				transition: $transition-default;
+				fill: $color-primary;
 			}
 		}
 
@@ -42,18 +41,26 @@
 			}
 
 			svg{
-				opacity: 1;
+				@include bp(lg){
+					opacity: 1;
+				}
 			}
 		}
 
 		&--current{
 			@include bp(lg){
-				background: $gradient-button;
+				background: $gradient-primary;
 			}
 
 			&:hover{
 				@include bp(lg){
-					background: $gradient-button;
+					background: $gradient-primary;
+				}
+			}
+
+			svg{
+				@include bp(lg){
+					fill: $color-grayscale;
 				}
 			}
 		}
