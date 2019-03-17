@@ -7,7 +7,7 @@ $color-grayscale--light: rgba(black, .65);
 $color-grayscale--lighter: rgba(black, .5);
 $color-primary: #FFE800;
 $color-secondary-blue: #005DA0;
-$color-secondary-blue--light: lighten($color-secondary-blue,10%);
+$color-secondary-blue--light: lighten($color-secondary-blue, 10%);
 $color-secondary-purple: #6000E6;
 $color-background-gray: #FCFCFC;
 $color-background-gray--dark: #F8F8F8;
@@ -30,7 +30,7 @@ $border-radius-card: $unit/8;
 $border-radius-portfolio-hero: $unit/8 $unit/8 0 0;
 
 // box shadows
-$box-shadow-card: 0 48px 32px -24px rgba(0, 0, 0, 0.1);
+$box-shadow-card: 0 48px 32px -24px rgba(0, 0, 0, 0.05);
 
 $box-shadow-button: 0 14px 14px -10px rgba(0, 0, 0, 0.20);
 $box-shadow-button--hover: 0 16px 16px -10px rgba(0, 0, 0, 0.20);
@@ -38,8 +38,8 @@ $box-shadow-button--hover: 0 16px 16px -10px rgba(0, 0, 0, 0.20);
 $box-shadow-tab--inactive: none;
 $box-shadow-tab--inactive-hover: $box-shadow-button--hover;
 
-$box-shadow-tab--active: 0 16px 16px -10px rgba(0,0,0, 0.5);
-$box-shadow-tab--active-hover: 0 16px 16px -10px rgba(0,0,0, 0.5);
+$box-shadow-tab--active: $box-shadow-button--hover;
+$box-shadow-tab--active-hover: $box-shadow-button--hover;
 
 $box-shadow-input: $box-shadow-button;
 
@@ -54,10 +54,21 @@ $padding-button: 24px 32px 22px;
 $padding-button--focus: 23px 31px 21px;
 
 // transitions
-$easing: cubic-bezier(.75,.25,.6,.9);
+$easing: cubic-bezier(.75, .25, .6, .9);
 $transition-default: $easing .2s all;
 
 // typography
-$font-family-fallback: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,"Droid Sans","Helvetica Neue",sans-serif;
+$font-family-fallback: system-ui,
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Oxygen,
+Ubuntu,
+Cantarell,
+Fira Sans,
+"Droid Sans",
+"Helvetica Neue",
+sans-serif;
 $font-family-heading: "Hind";
 $font-family-body: Assistant;

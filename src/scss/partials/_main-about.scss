@@ -6,9 +6,9 @@
         padding: 0;
         display: flex;
         flex-wrap: wrap;
-        
+
         // hero
-        &-hero{
+        &-hero {
             width: 100%;
             min-height: 300px;
             background: transparent url('https://picsum.photos/800/400?image=547') 50% 50% no-repeat;
@@ -38,16 +38,16 @@
 }
 
 // supports css
-@supports(display:grid){
-    .about{
-        &__content{
-            @include bp(sm){
+@supports(display:grid) {
+    .about {
+        &__content {
+            @include bp(sm) {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
 
-            &-hero{
-                @include bp(sm){
+            &-hero {
+                @include bp(sm) {
                     order: 2;
                     width: auto;
                     height: 100%;
@@ -57,8 +57,8 @@
                 }
             }
 
-            &-wrapper{
-                @include bp(sm){
+            &-wrapper {
+                @include bp(sm) {
                     display: flex;
                     flex-wrap: wrap;
                     order: 1;
@@ -68,23 +68,23 @@
                 }
             }
 
-            &-header{
-                @include bp(sm){
+            &-header {
+                @include bp(sm) {
                     padding: 0;
                 }
-                
-                h3{
-                    @include bp(sm){
+
+                h3 {
+                    @include bp(sm) {
                         text-align: left;
                     }
                 }
             }
 
-            &-description{
-                @include bp(sm){
+            &-description {
+                @include bp(sm) {
                     padding: 0;
                 }
-            }            
+            }
         }
     }
 }
