@@ -1,5 +1,6 @@
 // contact
 .contact {
+
     // section-level
     position: relative;
     min-height: 24 * $unit;
@@ -22,19 +23,7 @@
         }
     }
 
-    // section-level gradient
-    &::before {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-image: $gradient-primary;
-        z-index: -1;
-    }
-
-    // section-level background image
+    // section-level background gradient
     &::after {
         content: "";
         width: 100%;
@@ -42,10 +31,23 @@
         position: absolute;
         left: 0;
         top: 0;
-        background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 100%;
-        background-size: cover;
-        z-index: -2;
+        background: $gradient-primary 50% 50%;
+        z-index: -1;
     }
+
+    // section-level image
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: .66;
+        z-index: -2;
+        background: transparent url('/portfolio/img/site-header-bg-grid.svg');
+    }
+
 
     // intro
     &__intro {
@@ -153,10 +155,6 @@
                     // change color
                     opacity: .75;
 
-                    // @supports(filter:grayscale(1)){
-                    //     opacity: 1;
-                    //     filter: grayscale(1);
-                    // }
 
                     // js adds new icon, and we add css3 animation
                     svg,

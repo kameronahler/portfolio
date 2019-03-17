@@ -23,33 +23,3 @@ main {
         padding: 9 * $unit 4 * $unit;
     }
 }
-
-// content section
-.content-section {
-    margin-bottom: 5 * $unit;
-
-    @include bp(sm) {
-        margin-bottom: 8 * $unit;
-    }
-
-    @include bp(lg) {
-        margin-bottom: 9 * $unit;
-    }
-}
-
-// section headers
-.section-header {
-    position: relative;
-
-    // @include bp(md){
-    //     margin-bottom: 2 * $unit;
-    // }
-
-    >h2 {
-        text-align: center;
-
-        @include bp(md) {
-            text-align: left;
-        }
-    }
-}

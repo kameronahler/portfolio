@@ -1,3 +1,58 @@
+// content sections
+.content-section {
+    margin-bottom: 5 * $unit;
+
+    @include bp(sm) {
+        margin-bottom: 8 * $unit;
+    }
+
+    @include bp(lg) {
+        margin-bottom: 9 * $unit;
+    }
+}
+
+// section headers
+.section-header {
+    overflow: hidden;
+
+    @include bp(md) {
+        display: flex;
+        position: relative;
+    }
+
+    h2 {
+        text-align: center;
+        position: relative;
+        margin-bottom: 2* $unit;
+
+        @include bp(md) {
+            text-align: left;
+        }
+    }
+
+    svg {
+        display: none;
+
+        @include bp(md) {
+            display: block;
+            height: $unit * 4;
+            width: $unit * 4;
+            fill: $color-grayscale;
+            margin-left: auto;
+            opacity: 0;
+            transform: translateX(#{4 * $unit});
+            transition: $easing .5s;
+        }
+
+        .scroll-anchor--seen & {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+
+}
+
 // buttons
 .button {
     position: relative;
@@ -48,7 +103,7 @@
     }
 }
 
-// icon button
+// icon buttons
 .button {
     &--icon {
 
@@ -74,7 +129,7 @@
     }
 }
 
-// tab
+// tabs
 .tab {
     outline: none;
 
@@ -125,7 +180,7 @@
     }
 }
 
-// list
+// lists
 .plain-list {
     padding-left: 0;
     list-style: none;
@@ -146,19 +201,25 @@ textarea {
     box-shadow: $box-shadow-input;
     transition: $transition-default;
 
-    @include bp(sm) {
-        padding: $unit 2 * $unit;
-    }
-
     &:focus {
         background: #fff;
         transition: unset;
     }
 }
 
+input[type="email"] {
+    @include bp(sm) {
+        padding: $unit 2 * $unit;
+    }
+}
+
 textarea {
     resize: vertical;
-    min-height: 8 * $unit;
+    min-height: 10 * $unit;
+
+    @include bp(sm) {
+        padding: $unit * 2
+    }
 }
 
 // images
@@ -166,71 +227,6 @@ img {
     max-width: 100%;
     display: block;
 }
-
-// heading motif
-.heading-motif {
-    position: relative;
-    z-index: 0;
-    margin-bottom: 2* $unit;
-
-    // &::before{
-    //     content:"";
-    //     width:300px;
-    //     background:$color-primary;
-    //     height:25%;
-    //     position: absolute;
-    //     bottom:12px;
-    //     left:8px;
-    //     z-index: -1;
-    //     opacity: .25;
-    // }
-
-    // &__anchor {
-    //     @include bp(xs){
-    //         position: relative;
-    //         z-index: 0;
-    //     }
-
-    //     &::before {
-    //         display: none;
-
-    //         @include bp(xs) {
-    //             display:block;
-    //             content: "";
-    //             position: absolute;
-    //             width: 11 * $unit;
-    //             height: 4 * $unit;
-    //             top: -1.5 * $unit;
-    //             left: -1 * $unit;
-    //             background: transparent url('/portfolio/img/heading-motif-wide.svg') no-repeat 0% 0%;
-    //             z-index: -1;
-    //         }
-
-    //         @include bp(md){
-    //             left: -2 * $unit;
-    //         }
-    //         @include bp(lg){
-    //             transform: translateX(-#{6 * $unit});
-    //             transform-origin: 50% 50%;
-    //             opacity:0;
-    //             transition: .6s $easing;
-    //         }
-    //     }
-    // }
-
-    .scroll-anchor--seen & {
-        &__anchor {
-            &::before {
-                @include bp(lg) {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-        }
-    }
-}
-
-
 
 // card
 .card {
@@ -250,7 +246,6 @@ img {
         margin-bottom: 2 * $unit;
     }
 }
-
 
 // accessible hide
 .accessible-hide {

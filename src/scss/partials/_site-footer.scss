@@ -1,14 +1,15 @@
 .site-footer {
+    background: $color-primary;
+
     @include bp(lg) {
         width: calc(100% - (#{3 * $unit}));
-        margin-left: 3 * $unit
+        margin-left: 3 * $unit;
     }
 
     p {
         text-align: center;
         margin: 0;
         padding: $unit / 2 $unit;
-        background: $color-primary;
         color: $color-grayscale;
     }
 }
