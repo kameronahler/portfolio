@@ -1,6 +1,6 @@
 // buttons
 .button {
-    position:relative;
+    position: relative;
     z-index: 0;
     overflow: hidden;
     display: inline-block;
@@ -14,45 +14,46 @@
     border-radius: $border-radius-card;
     transition: $transition-default, 0s outline;
 
-    span{
+    span {
         opacity: .9;
         transition: $transition-default;
     }
 
-    &::before{
-        content:"";
+    &::before {
+        content: "";
         width: 200%;
-        height:100%;
-        position:absolute;
-        left:0;
-        top:0;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
         background: $gradient-button;
         transition: $transition-default;
         z-index: -2;
     }
 
-    &:hover{
-        @include bp(md){
+    &:hover {
+        @include bp(md) {
             box-shadow: $box-shadow-button--hover;
         }
 
-        span{
+        span {
             opacity: 1;
         }
 
-        &::before{
-            @include bp(md){
-                transform:translateX(-50%);
+        &::before {
+            @include bp(md) {
+                transform: translateX(-50%);
             }
         }
     }
 }
 
 // icon button
-.button{
-    &--icon{
+.button {
+    &--icon {
+
         svg,
-        img{
+        img {
             width: 18px;
             height: 18px;
             fill: #fff;
@@ -62,9 +63,10 @@
             opacity: .9;
         }
 
-        &:hover{
+        &:hover {
+
             svg,
-            img{
+            img {
                 opacity: 1;
                 transition: $transition-default;
             }
@@ -73,50 +75,50 @@
 }
 
 // tab
-.tab{
-    outline:none;
+.tab {
+    outline: none;
 
-    span{
-        transition: unset;   
+    span {
+        transition: unset;
     }
 
-    &::before{
+    &::before {
         width: 100%;
     }
 
-    &:hover{
-        &::before{
-           transform: none;
+    &:hover {
+        &::before {
+            transform: none;
         }
     }
 
-    &:not(.tab--active){
+    &:not(.tab--active) {
         box-shadow: $box-shadow-tab--inactive;
 
-        span{
+        span {
             color: $color-grayscale;
         }
 
-        &::before{
+        &::before {
             background: $color-background-gray--darker;
         }
-    
-        &:hover{
+
+        &:hover {
             box-shadow: $box-shadow-tab--inactive-hover;
         }
     }
 
-    &--active{
+    &--active {
         box-shadow: $box-shadow-tab--active;
 
-        &::before{
+        &::before {
             opacity: .9;
         }
 
-        &:hover{
+        &:hover {
             box-shadow: $box-shadow-tab--active-hover;
 
-            &::before{
+            &::before {
                 opacity: 1;
             }
         }
@@ -124,7 +126,7 @@
 }
 
 // list
-.plain-list{
+.plain-list {
     padding-left: 0;
     list-style: none;
     margin-top: unset;
@@ -136,7 +138,7 @@ input[type="email"],
 textarea {
     width: 100%;
     height: 4 * $unit;
-    padding: $unit; 
+    padding: $unit;
     margin-bottom: $unit;
     border: none;
     border-radius: $border-radius-card;
@@ -144,10 +146,11 @@ textarea {
     box-shadow: $box-shadow-input;
     transition: $transition-default;
 
-    @include bp(sm){                
+    @include bp(sm) {
         padding: $unit 2 * $unit;
     }
-    &:focus{
+
+    &:focus {
         background: #fff;
         transition: unset;
     }
@@ -166,45 +169,61 @@ img {
 
 // heading motif
 .heading-motif {
-    &__anchor {
-        @include bp(xs){
-            position: relative;
-            z-index: 0;
-        }
+    position: relative;
+    z-index: 0;
+    margin-bottom: 2* $unit;
 
-        &::before {
-            display: none;
-            
-            @include bp(xs) {
-                display:block;
-                content: "";
-                position: absolute;
-                width: 11 * $unit;
-                height: 4 * $unit;
-                top: -1.5 * $unit;
-                left: -1 * $unit;
-                background: transparent url('/portfolio/img/heading-motif-wide.svg') no-repeat 0% 0%;
-                z-index: -1;
-            }
+    // &::before{
+    //     content:"";
+    //     width:300px;
+    //     background:$color-primary;
+    //     height:25%;
+    //     position: absolute;
+    //     bottom:12px;
+    //     left:8px;
+    //     z-index: -1;
+    //     opacity: .25;
+    // }
 
-            @include bp(md){
-                left: -2 * $unit;
-            }
-            @include bp(lg){
-                transform: translateX(-#{6 * $unit});
-                transform-origin: 50% 50%;
-                opacity:0;
-                transition: .6s $easing;
-            }
-        }
-    }
+    // &__anchor {
+    //     @include bp(xs){
+    //         position: relative;
+    //         z-index: 0;
+    //     }
 
-    .scroll-anchor--seen &{
-        &__anchor{
-            &::before{
-                @include bp(lg){
+    //     &::before {
+    //         display: none;
+
+    //         @include bp(xs) {
+    //             display:block;
+    //             content: "";
+    //             position: absolute;
+    //             width: 11 * $unit;
+    //             height: 4 * $unit;
+    //             top: -1.5 * $unit;
+    //             left: -1 * $unit;
+    //             background: transparent url('/portfolio/img/heading-motif-wide.svg') no-repeat 0% 0%;
+    //             z-index: -1;
+    //         }
+
+    //         @include bp(md){
+    //             left: -2 * $unit;
+    //         }
+    //         @include bp(lg){
+    //             transform: translateX(-#{6 * $unit});
+    //             transform-origin: 50% 50%;
+    //             opacity:0;
+    //             transition: .6s $easing;
+    //         }
+    //     }
+    // }
+
+    .scroll-anchor--seen & {
+        &__anchor {
+            &::before {
+                @include bp(lg) {
                     transform: translateX(0);
-                    opacity:1;
+                    opacity: 1;
                 }
             }
         }
@@ -227,13 +246,13 @@ img {
     margin-bottom: $unit;
     width: 100%;
 
-    @include bp(sm){
+    @include bp(sm) {
         margin-bottom: 2 * $unit;
     }
 }
 
 
 // accessible hide
-.accessible-hide{
+.accessible-hide {
     @include hide();
 }

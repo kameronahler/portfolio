@@ -6,27 +6,28 @@
         p {
             text-align: center;
 
-            @include bp(sm){
+            @include bp(sm) {
                 text-align: left;
             }
         }
     }
+
     // portfolio tablist - hidden under 992
     &__tablist {
         display: none;
 
-        @include bp(md){
+        @include bp(md) {
             display: flex;
             justify-content: center;
             margin-bottom: 2 * $unit;
         }
 
-        &-tab{
-            @include bp(md){
+        &-tab {
+            @include bp(md) {
                 margin-right: 2 * $unit
             }
 
-            &:last-of-type{
+            &:last-of-type {
                 margin-right: 0;
             }
         }
@@ -37,8 +38,8 @@
         padding: 0;
         margin-bottom: 2 * $unit;
         overflow: hidden;
-        
-        @include bp(md){
+
+        @include bp(md) {
             max-height: 0;
             visibility: hidden;
             transform: translateY(-#{$unit});
@@ -46,8 +47,8 @@
             margin-bottom: 0;
         }
 
-        &--active{
-            @include bp(md){
+        &--active {
+            @include bp(md) {
                 max-height: 100%;
                 visibility: visible;
                 transform: translateY(0);
@@ -60,7 +61,7 @@
         &-header {
             padding: 0 $unit;
 
-            @include bp(sm){                
+            @include bp(sm) {
                 padding: 0 2 * $unit;
             }
 
@@ -73,7 +74,7 @@
         &-description {
             padding: 0 $unit $unit;
 
-            @include bp(sm){                
+            @include bp(sm) {
                 padding: 0 2 * $unit 2 * $unit;
             }
 
@@ -89,28 +90,28 @@
 
 // grid support for lg bp
 
-@supports (display:grid){
-    .portfolio{
-        @include bp(lg){
+@supports (display:grid) {
+    .portfolio {
+        @include bp(lg) {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);           
+            grid-template-columns: repeat(12, 1fr);
             grid-gap: 0 2 * $unit;
         }
 
-        &__header{
-            @include bp(lg){
+        &__header {
+            @include bp(lg) {
                 grid-column: 1 / -1
             }
         }
 
-        &__tablist{
-            @include bp(lg){
+        &__tablist {
+            @include bp(lg) {
                 grid-column: 1 / 4;
                 display: block;
             }
 
-            &-tab{
-                @include bp(lg){
+            &-tab {
+                @include bp(lg) {
                     margin-bottom: 2 * $unit;
                     width: 100%;
                     text-align: left;
@@ -118,26 +119,26 @@
             }
         }
 
-        &__intro{
-            @include bp(lg){
+        &__intro {
+            @include bp(lg) {
                 grid-column: 1 / -1;
                 grid-row-start: 2;
             }
         }
 
-        &__examples{
-            @include bp(lg){
+        &__examples {
+            @include bp(lg) {
                 grid-column: 4 / -1;
             }
         }
 
-        &__example{
-            @include bp(lg){
+        &__example {
+            @include bp(lg) {
                 transform: translateX(#{$unit});
             }
 
-            &--active{
-                @include bp(lg){
+            &--active {
+                @include bp(lg) {
                     transform: translateX(0);
                 }
             }

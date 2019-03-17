@@ -2,8 +2,8 @@
 .designer-type {
 
     // card wrapper - non-grid support
-    &__cards{
-        @include bp(md){
+    &__cards {
+        @include bp(md) {
             display: flex;
             justify-content: space-between;
         }
@@ -13,7 +13,7 @@
     &__card {
         margin-bottom: 2 * $unit;
 
-        @include bp(md){
+        @include bp(md) {
             width: calc((100% - (4 * #{$unit})) / 3);
             padding: 0;
             margin-bottom: 0;
@@ -22,7 +22,7 @@
         &:last-of-type {
             margin-bottom: 0;
 
-            @include bp(md){
+            @include bp(md) {
                 margin-bottom: unset;
             }
         }
@@ -36,7 +36,7 @@
             border-radius: $border-radius-card;
             margin-bottom: $unit;
 
-            @include bp(md){
+            @include bp(md) {
                 margin-bottom: 2 * $unit;
             }
         }
@@ -46,7 +46,7 @@
             h3 {
                 text-align: center;
 
-                @include bp(md){
+                @include bp(md) {
                     padding: 0 2 * $unit;
                 }
             }
@@ -56,7 +56,7 @@
         &-description {
             margin-bottom: 0;
 
-            @include bp(md){
+            @include bp(md) {
                 padding: 0 2 * $unit 2 * $unit;
             }
         }
@@ -67,10 +67,10 @@
 // css grid supported cards - change structure for even odd
 @supports(display:grid) {
     .designer-type {
-        
+
         // card wrapper
-        &__cards{
-            @include bp(md){
+        &__cards {
+            @include bp(md) {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 grid-gap: 2 * $unit;
@@ -83,12 +83,12 @@
             grid-gap: 0 $unit;
             grid-template-columns: 1fr 1fr;
 
-            @include bp(sm){
+            @include bp(sm) {
                 padding: 0;
                 grid-gap: 0 2 * $unit
             }
 
-            @include bp(md){
+            @include bp(md) {
                 display: block;
                 width: unset;
                 grid-gap: unset;
@@ -103,13 +103,15 @@
                 }
 
                 .designer-type__card-image {
-                    @include bp(sm){
+                    @include bp(sm) {
                         height: 100%;
                         grid-row: span 2;
                         border-radius: 0 $border-radius-card $border-radius-card 0;
                     }
-                    @include bp(md){
-                        height: 9 * $unit;;
+
+                    @include bp(md) {
+                        height: 9 * $unit;
+                        ;
                         grid-row: unset;
                         border-radius: $border-radius-card $border-radius-card 0 0;
                         margin-bottom: 2 * $unit;
@@ -117,22 +119,24 @@
                 }
 
                 .designer-type__card-header {
-                    @include bp(sm){
+                    @include bp(sm) {
                         padding: 2 * $unit 0 0 2 * $unit;
-                    }                    
-                    @include bp(md){
+                    }
+
+                    @include bp(md) {
                         padding: 0 2 * $unit;
-                    }                
+                    }
                 }
 
                 .designer-type__card-description {
-                    @include bp(sm){
+                    @include bp(sm) {
                         grid-column: 1 / 2;
-                        padding: 0 0 2 * $unit 2 * $unit ;
+                        padding: 0 0 2 * $unit 2 * $unit;
                     }
-                    @include bp(md){
+
+                    @include bp(md) {
                         grid-column: unset;
-                        padding: 0 2 * $unit 2 * $unit ;
+                        padding: 0 2 * $unit 2 * $unit;
                     }
                 }
 
@@ -143,14 +147,15 @@
                 grid-column: span 1;
                 margin-bottom: 0;
 
-                @include bp(sm){
+                @include bp(sm) {
                     height: 100%;
                     grid-row: span 2;
                     border-radius: $border-radius-card 0 0 $border-radius-card
                 }
 
-                @include bp(md){
-                    height: 9 * $unit;;
+                @include bp(md) {
+                    height: 9 * $unit;
+                    ;
                     margin-bottom: 2 * $unit;
                     grid-row: unset;
                     border-radius: $border-radius-card $border-radius-card 0 0;
@@ -164,17 +169,18 @@
                 align-items: center;
                 grid-column: span 1;
 
-                @include bp(sm){
+                @include bp(sm) {
                     grid-row: span 1;
                     padding: 2 * $unit 2 * $unit 0 0;
                 }
-                @include bp(md){
+
+                @include bp(md) {
                     grid-row: unset;
                     padding: 0 2 * $unit;
                 }
 
-                h3{
-                    @include bp(md){
+                h3 {
+                    @include bp(md) {
                         padding: 0;
                     }
                 }
@@ -185,14 +191,15 @@
                 grid-column: span 2;
                 margin-top: $unit;
 
-                @include bp(sm){
-                    margin-top:0;
+                @include bp(sm) {
+                    margin-top: 0;
                     grid-column: 2 / 3;
                     padding: 0 2 * $unit 2 * $unit 0;
                 }
-                @include bp(md){
+
+                @include bp(md) {
                     grid-column: unset;
-                    padding: 0 2 * $unit 2 * $unit ;
+                    padding: 0 2 * $unit 2 * $unit;
                 }
             }
         }

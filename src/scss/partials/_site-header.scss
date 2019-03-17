@@ -8,16 +8,17 @@
     align-content: center;
     padding: 0 $unit;
 
-    @include bp(sm){
+    @include bp(sm) {
         min-height: 24 * $unit;
         padding: 8 * $unit $unit * 2;
     }
-    @include bp(md){
+
+    @include bp(md) {
         min-height: 30 * $unit;
         padding: 8 * $unit $unit * 4;
     }
 
-    @include bp(lg){
+    @include bp(lg) {
         width: calc(100% - (#{3 * $unit}));
         margin-left: 3 * $unit
     }
@@ -46,17 +47,19 @@
         background-size: 400px 800px;
         z-index: -2;
 
-        @supports(filter:grayscale(1)){
+        @supports(filter: grayscale(1)) {
             filter: saturate(.5)
         }
 
-        @include bp(sm){
+        @include bp(sm) {
             background-position: 50% 25%;
         }
-        @include bp(md){
+
+        @include bp(md) {
             background-position: 92% 10%;
         }
-        @include bp(lg){
+
+        @include bp(lg) {
             background-size: 700px 800px;
             background-position: 100% 0%;
         }
@@ -68,7 +71,7 @@
         flex-basis: 100%;
         color: $color-primary;
 
-        @include bp(md){
+        @include bp(md) {
             text-align: left;
         }
     }

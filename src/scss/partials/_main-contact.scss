@@ -6,17 +6,18 @@
     z-index: 0;
     padding: 5 * $unit $unit 8 * $unit $unit;
 
-    @include bp(sm){
+    @include bp(sm) {
         padding: 8 * $unit $unit * 2;
     }
-    @include bp(md){
+
+    @include bp(md) {
         padding: 8 * $unit $unit * 4;
     }
 
     h2 {
         text-align: center;
 
-        @include bp(md){
+        @include bp(md) {
             text-align: left;
         }
     }
@@ -51,7 +52,7 @@
         p {
             text-align: center;
 
-            @include bp(sm){
+            @include bp(sm) {
                 text-align: left;
             }
         }
@@ -64,7 +65,7 @@
         justify-content: center;
         margin-bottom: 2 * $unit;
 
-        li{
+        li {
             display: block;
             margin: $unit;
 
@@ -89,7 +90,7 @@
         border-radius: 50%;
         padding: 0;
 
-        &::after{
+        &::after {
             border-radius: 99em;
         }
 
@@ -103,12 +104,13 @@
             opacity: .9;
             transition: $transition-default;
         }
-        
+
         // hover styles for social icons
-        &:hover{
+        &:hover {
+
             svg,
-            img{
-                @include bp(md){
+            img {
+                @include bp(md) {
                     opacity: 1;
                 }
             }
@@ -126,7 +128,7 @@
             .button {
                 width: 100%;
 
-                @include bp(sm){
+                @include bp(sm) {
                     width: auto;
                     min-width: 200px;
                 }
@@ -135,29 +137,30 @@
 
         // ajax submission stuff
         // form is submitting
-        &.js-submitting{
+        &.js-submitting {
+
             // inputs
             input[type="email"],
-            textarea{
+            textarea {
                 cursor: not-allowed;
-                background: rgba(white,.75);
+                background: rgba(white, .75);
                 box-shadow: none;
             }
 
             // submit button and icons
-            .contact__form-section-wrapper--submit{
-                .button{
+            .contact__form-section-wrapper--submit {
+                .button {
                     // change color
                     opacity: .75;
-                    
+
                     // @supports(filter:grayscale(1)){
                     //     opacity: 1;
                     //     filter: grayscale(1);
                     // }
-                    
+
                     // js adds new icon, and we add css3 animation
                     svg,
-                    img{
+                    img {
                         animation: submit-button-icon-spin .5s infinite forwards linear;
                     }
                 }
@@ -165,32 +168,33 @@
         }
 
         // form has been submitted
-        &.js-submitted{
+        &.js-submitted {
 
             // inputs
             input[type="email"],
-            textarea{
+            textarea {
                 cursor: not-allowed;
-                background: rgba(white,.75);
+                background: rgba(white, .75);
                 box-shadow: none;
             }
-            
+
             // submit button and icons
-            .contact__form-section-wrapper--submit{
-                .button{
+            .contact__form-section-wrapper--submit {
+                .button {
                     color: $color-grayscale--light;
                     box-shadow: none;
                     cursor: not-allowed;
 
-                    &::before{
-                        background: rgba(white,.75);
+                    &::before {
+                        background: rgba(white, .75);
                     }
 
-                    svg{
+                    svg {
                         fill: $color-grayscale;
                     }
-                    img{
-                        display:none;
+
+                    img {
+                        display: none;
                     }
                 }
             }
@@ -199,57 +203,61 @@
 }
 
 // css grid enabled md bp and above
-@supports (display:grid){
-    .contact{
-        @include bp(md){
+@supports (display:grid) {
+    .contact {
+        @include bp(md) {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 0 2 * $unit;
         }
 
-        &__header{
-            @include bp(md){
+        &__header {
+            @include bp(md) {
                 grid-column: 1 / -1;
                 grid-row: 1 / 2;
             }
 
-            h2{
-                @include bp(md){
+            h2 {
+                @include bp(md) {
                     margin-bottom: 2 * $unit
                 }
             }
         }
-        &__intro{
-            @include bp(md){
+
+        &__intro {
+            @include bp(md) {
                 grid-column: 1 / 2;
                 grid-row: 2 / 3;
             }
 
-            h2{
-                @include bp(md){
+            h2 {
+                @include bp(md) {
                     margin-bottom: 2 * $unit
                 }
             }
         }
-        &__social-icons{
-            @include bp(md){
-                justify-content: flex-start            
+
+        &__social-icons {
+            @include bp(md) {
+                justify-content: flex-start
             }
         }
-        &__forms{
-            @include bp(md){
+
+        &__forms {
+            @include bp(md) {
                 grid-column: 2 / 3;
                 grid-row: 2 / span 2;
             }
         }
-        &__form{
-            &-section-wrapper--submit{
-                @include bp(md){
+
+        &__form {
+            &-section-wrapper--submit {
+                @include bp(md) {
                     text-align: right;
                 }
 
-                .button{
-                    @include bp(md){
+                .button {
+                    @include bp(md) {
                         min-width: unset;
                     }
                 }

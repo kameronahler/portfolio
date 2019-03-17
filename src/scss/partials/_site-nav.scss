@@ -1,80 +1,80 @@
 // nav 1200 and above
 
-.site-nav{
-	@include bp(max-lg){
-		@include hide;
-	}
+.site-nav {
+    @include bp(max-lg) {
+        @include hide;
+    }
 
-	@include bp(lg){
-		position: fixed;
-		width: $unit * 3;
-		height: 100%;
-		top: 0;
-		z-index: 99;
-		background: $color-grayscale;
-		display: flex;
-		justify-content: center;
-	}
-	
-	&__link{
-		@include bp(lg){
-			position:relative;
-			display: flex;
-			width: 3 * $unit;
-			height: 3 * $unit;
-			transition: $transition-default;
-		}
+    @include bp(lg) {
+        position: fixed;
+        width: $unit * 3;
+        height: 100%;
+        top: 0;
+        z-index: 99;
+        background: $color-grayscale;
+        display: flex;
+        justify-content: center;
+    }
 
-		svg{
-			@include bp(lg){
-				width: 33%;
-				height: 33%;
-				margin: auto;
-				opacity: .9;
-				fill: $color-primary;
-			}
-		}
+    &__link {
+        @include bp(lg) {
+            position: relative;
+            display: flex;
+            width: 3 * $unit;
+            height: 3 * $unit;
+            transition: $transition-default;
+        }
 
-		&:hover{
-			@include bp(lg){
-				background: rgba(white, .05);
-			}
+        svg {
+            @include bp(lg) {
+                width: 33%;
+                height: 33%;
+                margin: auto;
+                opacity: .9;
+                fill: $color-primary;
+            }
+        }
 
-			svg{
-				@include bp(lg){
-					opacity: 1;
-				}
-			}
-		}
+        &:hover {
+            @include bp(lg) {
+                background: rgba(white, .05);
+            }
 
-		&--current{
-			@include bp(lg){
-				background: $gradient-primary;
-			}
+            svg {
+                @include bp(lg) {
+                    opacity: 1;
+                }
+            }
+        }
 
-			&:hover{
-				@include bp(lg){
-					background: $gradient-primary;
-				}
-			}
+        &--current {
+            @include bp(lg) {
+                background: $gradient-primary;
+            }
 
-			svg{
-				@include bp(lg){
-					fill: $color-grayscale;
-				}
-			}
-		}
+            &:hover {
+                @include bp(lg) {
+                    background: $gradient-primary;
+                }
+            }
 
-		&-tooltip{
-			@include bp(lg){
-				position:absolute;
-				display:inline-block;
-				height: 100%;
-				top:0;
-				left: 110%;
-				background: white;
-				text-align: left;
-			}
-		}
-	}
+            svg {
+                @include bp(lg) {
+                    fill: $color-grayscale;
+                }
+            }
+        }
+
+        &-tooltip {
+            @include bp(lg) {
+                position: absolute;
+                display: inline-block;
+                height: 100%;
+                top: 0;
+                left: 110%;
+                background: white;
+                text-align: left;
+            }
+        }
+    }
 }
