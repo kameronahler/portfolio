@@ -8,7 +8,7 @@
     align-content: center;
     padding: 0 $unit;
     z-index: 0;
-    background: transparent url('/img/site-header-bg-grid.svg');
+    background: transparent url('/portfolio/img/site-header-bg-grid.svg');
     background-size: 100px 100px;
 
     @include bp(sm) {
@@ -44,7 +44,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        background: transparent url('/img/site-header-bg.svg') no-repeat 50% 25%;
+        background: transparent url('/portfolio/img/site-header-bg.svg') no-repeat 50% 25%;
         background-size: 400px 800px;
         z-index: -3;
 
