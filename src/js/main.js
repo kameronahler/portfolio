@@ -418,7 +418,7 @@
                 if (el.id == href) {
                     var anchorDistance = el.offsetTop;
                     window.scrollTo({
-                        top: anchorDistance - 216,
+                        top: anchorDistance - 96,
                         left: 0,
                         behavior: 'smooth'
                     });

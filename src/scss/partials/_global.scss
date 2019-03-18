@@ -36,27 +36,41 @@
         }
     }
 
-    svg {
+    &__icon-wrapper{
         display: none;
-
-        @include bp(md) {
+        
+        @include bp(md){
             display: block;
-            height: $unit * 4;
-            width: $unit * 4;
-            fill: $color-grayscale;
+            position: relative;
             margin-left: auto;
             opacity: 0;
-            transform: translateX(#{4 * $unit});
+            transform-origin: 100% 50%;
+            transform: translateX(#{4 * $unit}) scale(0);
             transition: $easing .5s;
         }
 
         .scroll-anchor--seen & {
-            transform: translateX(0);
-            opacity: 1;
+            @include bp(md){
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
         }
     }
 
+    &__svg-wrapper {
+        @include bp(md){
+            height: $unit * 4;
+            width: $unit * 4;
+        }
 
+        svg{
+            @include bp(md){
+                width: 100%;
+                height: 100%;
+                fill: $color-grayscale;
+            }
+        }
+    }
 }
 
 // buttons
