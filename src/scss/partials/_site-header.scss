@@ -7,7 +7,9 @@
     justify-content: center;
     align-content: center;
     padding: 0 $unit;
-    background: $gradient-primary;
+    z-index: 0;
+    background: transparent url('/img/site-header-bg-grid.svg');
+    background-size: 100px 100px;
 
     @include bp(sm) {
         min-height: 24 * $unit;
@@ -20,10 +22,9 @@
     }
 
     @include bp(lg) {
-        width: calc(100% - (#{3 * $unit}));
-        margin-left: 3 * $unit
+        width: 100%
     }
-
+    
     // grid
     &::before {
         content: "";
@@ -32,10 +33,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        opacity: .5;
-        background: transparent url('/portfolio/img/site-header-bg-grid.svg');
-        background-size: 100px 100px;
-        z-index: -2;
+        background: $gradient-primary;
     }
 
     // background image
@@ -46,9 +44,9 @@
         position: absolute;
         left: 0;
         top: 0;
-        background: transparent url('/portfolio/img/site-header-bg.svg') no-repeat 50% 25%;
+        background: transparent url('/img/site-header-bg.svg') no-repeat 50% 25%;
         background-size: 400px 800px;
-        z-index: -1;
+        z-index: -3;
 
         @supports(filter: grayscale(1)) {
             filter: saturate(.5)
@@ -66,6 +64,10 @@
             background-size: 700px 800px;
             background-position: 100% 0%;
         }
+    }
+
+    .wrapper{
+        z-index: 0;        
     }
 
     h1,
