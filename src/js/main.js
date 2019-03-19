@@ -313,19 +313,18 @@
                 return child !== this;
             });
 
-            // loop sibling array and remove active classes
+            // loop sibling array and remove active classes and aria
             function removeSiblingClasses() {
                 Array.prototype.forEach.call(siblings, function(el, i) {
                     el.classList.remove('tab--active');
+                    el.setAttribute('aria-selected','');
                 });
             }
             removeSiblingClasses();
 
-            // get this tab's article value
-            var dataArticle = this.getAttribute('data-article');
-
-            // add active class to this tab
+            // add active class and aria selected to this tab
             this.classList.add('tab--active');
+            this.setAttribute('aria-selected','true');
 
             // check to see if the article number matches the data attribute of the tab being clicked, remove classes, and 
             function checkArticle() {

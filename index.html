@@ -16,40 +16,41 @@
 
 <body>
     <nav class="site-nav">
+        <span id="nav-title" class="accessible-hide">Navigate to</span>
         <ul class="plain-list">
             <li>
-                <a href="#home" class="site-nav__link site-nav__link--current">
+                <a href="#home" aria-labelledby="nav-title nav-home-title" class="site-nav__link site-nav__link--current">
                     <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-home"></svg>
                 </a>
-                <span class="accessible-hide">Home</span></li>
+                <span id="nav-home-title" class="accessible-hide">Home</span></li>
             <li>
-                <a href="#designer-type" class="site-nav__link">
+                <a href="#designer-type" aria-labelledby="nav-title nav-designer-type-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-wizard"></svg>
-                    <span class="accessible-hide">What Kind of Designer Am I?</span>
+                    <span id="nav-designer-type-title" class="accessible-hide">What Kind of Designer Am I?</span>
                 </a>
             </li>
             <li>
-                <a href="#skills-and-tools" class="site-nav__link">
+                <a href="#skills-and-tools" aria-labelledby="nav-title nav-skills-and-tools-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-pencil-ruler"></svg>
-                    <span class="accessible-hide">Skills & Tools</span>
+                    <span id="nav-skills-and-tools-title" class="accessible-hide">Skills & Tools</span>
                 </a>
             </li>
             <li>
-                <a href="#portfolio" class="site-nav__link">
+                <a href="#portfolio" aria-labelledby="nav-title nav-portfolio-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-toolbox"></svg>
-                    <span class="accessible-hide">Portfolio</span>
+                    <span id="nav-portfolio-title" class="accessible-hide">Portfolio</span>
                 </a>
             </li>
             <li>
-                <a href="#about-me" class="site-nav__link">
+                <a href="#about-me" aria-labelledby="nav-title nav-about-me-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-astronaut"></svg>
-                    <span class="accessible-hide">About Me</span>
+                    <span id="nav-about-me-title" class="accessible-hide">About Me</span>
                 </a>
             </li>
             <li>
-                <a href="#contact" class="site-nav__link">
+                <a href="#contact" aria-labelledby="nav-title nav-contact-me-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-envelope"></svg>
-                    <span class="accessible-hide">Contact</span>
+                    <span id="nav-contact-me-title" class="accessible-hide">Contact Me</span>
                 </a>
             </li>
         </ul>
@@ -67,8 +68,8 @@
                     <header class="section-header designer-type__header">
                         <h2>Kind of Cat That I Am</h2>
                         <div class="section-header__icon-wrapper">
-                            <div class="section-header__svg-wrapper">
-                                <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-wizard"><svg>
+                            <div aria-hidden="true" class="section-header__svg-wrapper">
+                                <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-wizard"><svg>
                             </div>
                         </div>
                     </header>
@@ -105,9 +106,9 @@
                 <section id="skills-and-tools" class="content-section skills scroll-anchor">
                     <header class="section-header skills__header">
                         <h2>Cat Skills & Tools</h2>
-                        <div class="section-header__icon-wrapper">
+                        <div aria-hidden="true" class="section-header__icon-wrapper">
                             <div class="section-header__svg-wrapper">
-                                <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-pencil-ruler"><svg>
+                                <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-pencil-ruler"><svg>
                             </div>
                         </div>
                     </header>
@@ -125,23 +126,23 @@
                 <section id="portfolio" class="content-section portfolio scroll-anchor">
                     <header class="section-header portfolio__header">
                         <h2>Catastrophes</h2>
-                        <div class="section-header__icon-wrapper">
+                        <div aria-hidden="true" class="section-header__icon-wrapper">
                             <div class="section-header__svg-wrapper">
-                                <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-toolbox"><svg>
+                                <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-toolbox"><svg>
                             </div>
                         </div>
                     </header>
-                    <section id="portfolio-tablist" role="tablist" aria-hidden="true" class="portfolio__tablist portfolio__tablist--active">
-                        <button data-article="article1" class="portfolio__tablist-tab tab button tab--active"><span>Boop</span></button>
-                        <button data-article="article2" class="portfolio__tablist-tab tab button"><span>Booper</span></button>
-                        <button data-article="article3" class="portfolio__tablist-tab tab button"><span>Boopier</span></button>
-                        <button data-article="article4" class="portfolio__tablist-tab tab button"><span>Boopiestest</span></button>
+                    <section id="portfolio-tablist" role="tablist" class="portfolio__tablist portfolio__tablist--active">
+                        <button id="portfolio-tab-1" role="tab" aria-control="portfolio-tablist" aria-selected="true" data-article="article1" class="portfolio__tablist-tab tab button tab--active"><span>Boop</span></button>
+                        <button id="portfolio-tab-2" role="tab" aria-control="portfolio-tablist" aria-selected data-article="article2" class="portfolio__tablist-tab tab button"><span>Booper</span></button>
+                        <button id="portfolio-tab-3" role="tab" aria-control="portfolio-tablist" aria-selected data-article="article3" class="portfolio__tablist-tab tab button"><span>Boopier</span></button>
+                        <button id="portfolio-tab-4" role="tab" aria-control="portfolio-tablist" aria-selected data-article="article4" class="portfolio__tablist-tab tab button"><span>Boopiestest</span></button>
                     </section>
                     <section class="portfolio__intro">
                         <p>Want to hear more? Due to NDAs I’m unable to show certain work. <a class="inline-link" href="#contact">Contact me</a> if you’d like to chat about about my work experience.</p>
                     </section>
                     <section class="portfolio__examples">
-                        <article id="article1" class="portfolio__example portfolio__example--active card">
+                        <article id="article1" aria-labelledby="portfolio-tab-1" class="portfolio__example portfolio__example--active card">
                             <img aria-hidden="true" src="https://picsum.photos/800/400?image=543" alt="coming soon" class="portfolio__example-hero card-hero">
                             <header class="portfolio__example-header">
                                 <h3>Babila Ebwele</h3>
@@ -150,7 +151,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
                             </section>
                         </article>
-                        <article id="article2" class="portfolio__example card">
+                        <article id="article2" aria-labelledby="portfolio-tab-2" class="portfolio__example card">
                             <img aria-hidden="true" src="https://picsum.photos/800/400?image=544" alt="coming soon" class="portfolio__example-hero card-hero">
                             <header class="portfolio__example-header">
                                 <h3>Babila Ebwele</h3>
@@ -159,7 +160,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
                             </section>
                         </article>
-                        <article id="article3" class="portfolio__example card">
+                        <article id="article3" aria-labelledby="portfolio-tab-3" class="portfolio__example card">
                             <img aria-hidden="true" src="https://picsum.photos/800/400?image=545" alt="coming soon" class="portfolio__example-hero card-hero">
                             <header class="portfolio__example-header">
                                 <h3>Babila Ebwele</h3>
@@ -168,7 +169,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
                             </section>
                         </article>
-                        <article id="article4" class="portfolio__example card">
+                        <article id="article4" aria-labelledby="portfolio-tab-4" class="portfolio__example card">
                             <img aria-hidden="true" src="https://picsum.photos/800/400?image=546" alt="coming soon" class="portfolio__example-hero card-hero">
                             <header class="portfolio__example-header">
                                 <h3>Babila Ebwele</h3>
@@ -182,9 +183,9 @@
                 <section id="about-me" class="about scroll-anchor">
                     <header class="section-header about__header">
                         <h2>What's My Tail?</h2>
-                        <div class="section-header__icon-wrapper">
+                        <div aria-hidden="true" class="section-header__icon-wrapper">
                             <div class="section-header__svg-wrapper">
-                                <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-astronaut"><svg>
+                                <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-astronaut"><svg>
                             </div>
                         </div>
                     </header>
@@ -207,33 +208,38 @@
                 <div class="wrapper">
                     <header class="section-header contact__header">
                         <h2>Cat I Just Text?</h2>
-                        <div class="section-header__icon-wrapper">
+                        <div aria-hidden="true" class="section-header__icon-wrapper">
                             <div class="section-header__svg-wrapper">
-                                <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-envelope"><svg>
+                                <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-envelope"><svg>
                             </div>
                         </div>
                     </header>
                     <section class="contact__intro">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum veniam deleniti illo reprehenderit ut, aut beatae minus nulla est? Facilis in doloribus reprehenderit quibusdam quae perspiciatis quas sed et quisquam.</p>
-                        <ul class="plain-list contact__social-icons">
+                        <ul aria-labelledby="social-links-title" class="plain-list contact__social-icons">
+                            <span id="social-links-title" class="accessible-hide">Find me on</span>
                             <li>
-                                <a href="#0" class="contact__social-icon button">
-                                    <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-codepen"></svg>
+                                <a aria-labelledby="social-links-title social-links-codepen-title" href="#0" class="contact__social-icon button">
+                                    <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-codepen"></svg>
+                                    <span id="social-links-codepen-title" class="accessible-hide">Codepen</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#0" class="contact__social-icon button">
-                                    <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-github"></svg>
+                                <a aria-labelledby="social-links-title social-links-github-title" href="#0" class="contact__social-icon button">
+                                    <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-github"></svg>
+                                    <span id="social-links-github-title" class="accessible-hide">Github</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#0" class="contact__social-icon button">
-                                    <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-instagram"></svg>
+                                <a aria-labelledby="social-links-title social-links-instagram-title" href="#0" class="contact__social-icon button">
+                                    <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-instagram"></svg>
+                                    <span id="social-links-instagram-title" class="accessible-hide">Instagram</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#0" class="contact__social-icon button">
-                                    <svg role="img"><use xlink:href="/portfolio/img/icons.svg#icon-linkedin"></svg>
+                                <a aria-labelledby="social-links-title social-links-linkedin-title" href="#0" class="contact__social-icon button">
+                                    <svg aria-hidden="true" role="img"><use xlink:href="/portfolio/img/icons.svg#icon-linkedin"></svg>
+                                    <span id="social-links-linkedin-title" class="accessible-hide">Linked In</span>
                                 </a>
                             </li>
                         </ul>
