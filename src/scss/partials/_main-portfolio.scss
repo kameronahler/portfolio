@@ -16,15 +16,23 @@
     &__tablist {
         display: none;
 
-        @include bp(md) {
+        @include bp(xs) {
             display: flex;
             justify-content: center;
-            margin-bottom: 2 * $unit;
+            flex-wrap: wrap;
         }
 
         &-tab {
+            overflow: unset;
+            text-overflow: unset;
+            white-space: unset;
+
+            @include bp(xs) {
+                margin: 0 1 * $unit 1 * $unit;
+            }
+
             @include bp(md) {
-                margin-right: 2 * $unit
+                margin: 0 1 * $unit 2 * $unit 0;
             }
 
             &:last-of-type {
@@ -39,7 +47,7 @@
         margin-bottom: 2 * $unit;
         overflow: hidden;
 
-        @include bp(md) {
+        @include bp(xs) {
             max-height: 0;
             visibility: hidden;
             transform: translateY(-#{$unit});
@@ -48,7 +56,7 @@
         }
 
         &--active {
-            @include bp(md) {
+            @include bp(xs) {
                 max-height: 100%;
                 visibility: visible;
                 transform: translateY(0);
