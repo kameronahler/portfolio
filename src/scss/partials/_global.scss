@@ -104,6 +104,7 @@
         background: $gradient-button;
         transition: $transition-default;
         z-index: -2;
+        border-radius: $unit / 8;
     }
 
     &:hover {
@@ -151,8 +152,6 @@
 
 // tabs
 .tab {
-    outline: none;
-
     span {
         transition: unset;
     }
