@@ -3,9 +3,11 @@
 
     // tiles wrapper - non-grid
     &__tiles {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        >ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
     }
 
     // tiles (images) - non-grid
@@ -18,6 +20,8 @@
         height: 50%;
         display: block;
         flex: 0 1 auto;
+        text-align: center;
+        padding: $unit $unit $unit/2;
 
         @include bp(sm) {
             width: calc((100% - #{6 * $unit}) / 4);
@@ -41,27 +45,60 @@
         &:nth-last-of-type(-n+4) {
             margin-bottom: 0;
         }
+
+        header {
+            h3 {
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        g.illustration-placeholder{
+            display: block;
+        }
+
+        g.illustration-animation{
+            display: none;
+        }
     }
 
     // css grid supported tiles    
     @supports (display:grid) {
         &__tiles {
-            display: grid;
-            flex-wrap: initial;
-            justify-content: initial;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 2 * $unit;
+            >ul {
+                display: grid;
+                flex-wrap: initial;
+                justify-content: initial;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 2 * $unit;
 
-            @include bp(sm) {
-                grid-template-columns: repeat(4, 1fr);
+                @include bp(sm) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                @include bp(md) {
+                    grid-template-columns: repeat(4, 1fr);
+                }
             }
         }
 
         &__tile {
             width: 100%;
-            height: initial;
+            height: auto;
             flex: initial;
             margin-bottom: 0;
+
+            @include bp(md) {
+                display: flex;
+                flex-direction: column;
+                padding: $unit;
+            }
 
             &:nth-of-type(odd) {
                 margin-right: initial;
@@ -69,6 +106,541 @@
 
             &:nth-last-of-type(-n+2) {
                 margin-bottom: initial;
+            }
+
+            header {
+                @include bp(md) {
+                    order: 2;
+                }
+            }
+
+            svg {
+                @include bp(md) {
+                    order: 1;
+                }
+            }
+        }
+    }
+}
+
+
+// hover animations for skill tiles
+@supports(transform:translate3d(0, 0, 0)) {
+    @include bp(md) {
+        .skills__tile {
+            &:hover{            
+                g.illustration-placeholder{
+                    display: none;
+                }
+
+                g.illustration-animation{
+                    display: block;
+                }
+            }
+        }
+
+        .illustration-prototyping {
+            cursor: default;
+
+            &__button {
+                rect {
+                    fill: none;
+                    opacity: 0;
+
+                    .skills__tile:hover & {
+                        fill: url(#g1);
+                        opacity: 1;
+                        transition: .5s ease .25s
+                    }
+                }
+            }
+
+            &__menu {
+                opacity: 0;
+                transform-origin: 50% 50%;
+                transform: translate3d(0, -20px, 0);
+
+                .skills__tile:hover & {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                    transition: .5s ease .75s
+                }
+            }
+        }
+
+        .illustration-ui {
+            &__middle {
+                transform: translate3d(-20px, 0, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                    transition: .5s ease .25s;
+                }
+            }
+
+            &__right {
+                transform: translate3d(-20px, 0, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transform: translate3d(0, 0, 0);
+                    transition: .5s ease .75s;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .illustration-ia {
+            &__row2 {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transform: translate3d(0, 0, 0);
+                    transition: .5s ease .25s;
+                    opacity: 1;
+                }
+            }
+
+            &__row3 {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transform: translate3d(0, 0, 0);
+                    transition: .5s ease .75s;
+                    opacity: 1;
+                }
+            }
+
+            &__row4 {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transform: translate3d(0, 0, 0);
+                    transition: .5s ease 1.25s;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .illustration-design-systems {
+            &__second {
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    opacity: 1;
+                }
+            }
+
+            &__third {
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    opacity: 1;
+                }
+            }
+
+            &__fourth {
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.25s;
+                    opacity: 1;
+                }
+            }
+
+            &__fifth {
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.75s;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .illustration-design-ops {
+            &__check-top {
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    opacity: 1;
+                }
+            }
+
+            &__check-bottom {
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    opacity: 1;
+                }
+            }
+
+            &__new {
+                opacity: 0;
+                transform: translate3d(0, -20px, 0);
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.25s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+        }
+
+        .illustration-ux-research {
+            &__first {
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+
+            &__second {
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+
+            &__third {
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.25s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+        }
+
+        .illustration-code {
+            &__left {
+                transform: translate3d(0, 0, 0);
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: translate3d(-8px, 0, 0);
+                }
+            }
+
+            &__right {
+                transform: translate3d(0, 0, 0);
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: translate3d(8px, 0, 0);
+                }
+            }
+
+            &__slash {
+                transform-origin: 50% 50%;
+                transform: scale(1);
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .illustration-analytics {
+            &__third {
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: scaleY(1);
+                    opacity: 1;
+                }
+            }
+
+            &__fourth {
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    transform: scaleY(1);
+                    opacity: 1;
+                }
+            }
+        }
+
+        .illustration-agile {
+            &__dot1 {
+                circle{
+                    fill: #fff;
+    
+                    .skills__tile:hover & {
+                        fill: $color-primary;
+                        transition: .5s ease .25s;
+                    }
+                }
+            }
+            &__dot2 {
+                circle{
+                    fill: #fff;
+    
+                    .skills__tile:hover & {
+                        fill: $color-primary;
+                        transition: .5s ease .75s;
+                    }
+                }
+            }
+            &__dot3 {
+                circle{
+                    fill: #fff;
+    
+                    .skills__tile:hover & {
+                        fill: $color-primary;
+                        transition: .5s ease 1.25s;
+                    }
+                }
+            }
+            &__circle1{
+                opacity: 0;
+                
+                .skills__tile:hover & {
+                    opacity: 1;
+                    transition: .5s ease 1.75s;
+                }
+            }
+            &__dot4 {
+                circle{
+                    fill: #fff;
+    
+                    .skills__tile:hover & {
+                        fill: $color-primary;
+                        transition: .5s ease 2s;
+                    }
+                }
+            }
+            &__circle2{
+                opacity: 0;
+                
+                .skills__tile:hover & {
+                    opacity: 1;
+                    transition: .5s ease 2.75s;
+                }
+            }
+            &__circle3{
+                opacity: 0;
+                
+                .skills__tile:hover & {
+                    opacity: 1;
+                    transition: .5s ease 3.25s;
+                }
+            }
+        }
+
+        .illustration-accessibility{
+            &__middle{
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__bottom{
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+        }
+        .illustration-sketch{
+            &__button{
+                rect{
+    
+                    .skills__tile:hover & {
+                        transition: .5s ease .25s;
+                        fill: $color-secondary-purple
+                    }
+                }
+            }
+            &__artboard{
+                rect{
+                    stroke: #EEE;
+
+                    .skills__tile:hover & {
+                        transition: .5s ease .75s;
+                        stroke: $color-primary;
+                    }                    
+                }
+            }
+            &__layers-bottom{
+                transform: translate3d(0, -24px, 0);
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            &__layers-top{
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+        }
+        .illustration-sketch{
+            &__button{
+                rect{
+        
+                    .skills__tile:hover & {
+                        transition: .5s ease .25s;
+                        fill: $color-secondary-purple
+                    }
+                }
+            }
+            &__artboard{
+                rect{
+                    stroke: #EEE;
+
+                    .skills__tile:hover & {
+                        transition: .5s ease .75s;
+                        stroke: $color-primary;
+                    }                    
+                }
+            }
+            &__layers-bottom{
+                transform: translate3d(0, -24px, 0);
+
+                .skills__tile:hover & {
+                    transition: .5s ease .75s;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            &__layers-top{
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.25s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+        }
+        .illustration-invision{
+            &__tile1{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .25s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile2{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .35s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile3{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease .45s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile4{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile5{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.1s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile6{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.2s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile7{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.7s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile8{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.8s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+            &__tile9{
+                transform: translate3d(0, -8px, 0);
+                opacity: 0;
+
+                .skills__tile:hover & {
+                    transition: .5s ease 1.9s;
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
             }
         }
     }
