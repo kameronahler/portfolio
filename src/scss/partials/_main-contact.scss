@@ -1,6 +1,6 @@
 // contact
 .contact {
-    
+
     // section-level
     position: relative;
     min-height: 24 * $unit;
@@ -85,41 +85,6 @@
         }
     }
 
-    // social icons
-    &__social-icon {
-        display: flex;
-        width: 4 * $unit;
-        height: 4 * $unit;
-        border-radius: 50%;
-        padding: 0;
-
-        &::after {
-            border-radius: 99em;
-        }
-
-        svg,
-        img {
-            display: block;
-            width: 50%;
-            height: 50%;
-            fill: #fff;
-            margin: auto;
-            opacity: .9;
-            transition: $transition-default;
-        }
-
-        // hover styles for social icons
-        &:hover {
-
-            svg,
-            img {
-                @include bp(md) {
-                    opacity: 1;
-                }
-            }
-        }
-    }
-
     // contact form
     &__form {
 
@@ -163,7 +128,7 @@
                         animation: submit-button-icon-spin .5s infinite forwards linear;
                     }
 
-                    &::before{
+                    &::before {
                         transform: translateX(-50%);
                     }
                 }
@@ -208,7 +173,7 @@
 // css grid enabled md bp and above
 @supports (display:grid) {
     .contact {
-        .wrapper{
+        .wrapper {
             @include bp(md) {
                 display: grid;
                 grid-template-columns: 1fr 1fr;

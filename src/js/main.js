@@ -301,79 +301,46 @@
 
 
 
-// portfolio article switcher
-(function() {
-    document.addEventListener("DOMContentLoaded", function() {
-        var tabs = document.querySelectorAll('.portfolio__tablist-tab');
-        var articles = document.querySelectorAll('.portfolio__example');
-        var tabClick = function() {
-            // create sibling array for this tab by looking for all of children of parent that aren't this tab
-            var tabArticle = this.getAttribute('data-article');
-            var siblings = Array.prototype.filter.call(this.parentNode.children, function(child) {
-                return child !== this;
-            });
-
-            // loop sibling array and remove active classes and aria
-            function removeSiblingClasses() {
-                Array.prototype.forEach.call(siblings, function(el, i) {
-                    el.classList.remove('tab--active');
-                    el.setAttribute('aria-selected','');
-                });
-            }
-            removeSiblingClasses();
-
-            // add active class and aria selected to this tab
-            this.classList.add('tab--active');
-            this.setAttribute('aria-selected','true');
-
-            // check to see if the article number matches the data attribute of the tab being clicked, remove classes, and 
-            function checkArticle() {
-                Array.prototype.forEach.call(articles, function(el, i) {
-                    if (el.id == tabArticle) {
-                        el.classList.add('portfolio__example--active');
-                    } else {
-                        el.classList.remove('portfolio__example--active')
-                    };
-                });
-            }
-            checkArticle();
-        };
-
-        function addTabListeners() {
-            Array.prototype.forEach.call(tabs, function(el, i) {
-                el.addEventListener('click', tabClick);
-            });
-        };
-
-        addTabListeners();
-    }, false);
-})();
-
-
-
-
 
 
 // scroll to polyfill https://github.com/iamdustan/smoothscroll
 (function() {
     document.addEventListener('DOMContentLoaded', function() {
-        ! function() { "use strict";
+        ! function() {
+            "use strict";
 
-            function o() { var o = window,
-                    t = document; if (!("scrollBehavior" in t.documentElement.style && !0 !== o.__forceSmoothScrollPolyfill__)) { var l, e = o.HTMLElement || o.Element,
+            function o() {
+                var o = window,
+                    t = document;
+                if (!("scrollBehavior" in t.documentElement.style && !0 !== o.__forceSmoothScrollPolyfill__)) {
+                    var l, e = o.HTMLElement || o.Element,
                         r = 468,
                         i = { scroll: o.scroll || o.scrollTo, scrollBy: o.scrollBy, elementScroll: e.prototype.scroll || n, scrollIntoView: e.prototype.scrollIntoView },
                         s = o.performance && o.performance.now ? o.performance.now.bind(o.performance) : Date.now,
                         c = (l = o.navigator.userAgent, new RegExp(["MSIE ", "Trident/", "Edge/"].join("|")).test(l) ? 1 : 0);
-                    o.scroll = o.scrollTo = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? h.call(o, t.body, void 0 !== arguments[0].left ? ~~arguments[0].left : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? ~~arguments[0].top : o.scrollY || o.pageYOffset) : i.scroll.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : o.scrollY || o.pageYOffset)) }, o.scrollBy = function() { void 0 !== arguments[0] && (f(arguments[0]) ? i.scrollBy.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : 0, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : 0) : h.call(o, t.body, ~~arguments[0].left + (o.scrollX || o.pageXOffset), ~~arguments[0].top + (o.scrollY || o.pageYOffset))) }, e.prototype.scroll = e.prototype.scrollTo = function() { if (void 0 !== arguments[0])
-                            if (!0 !== f(arguments[0])) { var o = arguments[0].left,
+                    o.scroll = o.scrollTo = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? h.call(o, t.body, void 0 !== arguments[0].left ? ~~arguments[0].left : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? ~~arguments[0].top : o.scrollY || o.pageYOffset) : i.scroll.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : o.scrollY || o.pageYOffset)) }, o.scrollBy = function() { void 0 !== arguments[0] && (f(arguments[0]) ? i.scrollBy.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : 0, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : 0) : h.call(o, t.body, ~~arguments[0].left + (o.scrollX || o.pageXOffset), ~~arguments[0].top + (o.scrollY || o.pageYOffset))) }, e.prototype.scroll = e.prototype.scrollTo = function() {
+                        if (void 0 !== arguments[0])
+                            if (!0 !== f(arguments[0])) {
+                                var o = arguments[0].left,
                                     t = arguments[0].top;
-                                h.call(this, this, void 0 === o ? this.scrollLeft : ~~o, void 0 === t ? this.scrollTop : ~~t) } else { if ("number" == typeof arguments[0] && void 0 === arguments[1]) throw new SyntaxError("Value could not be converted");
-                                i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left : "object" != typeof arguments[0] ? ~~arguments[0] : this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top : void 0 !== arguments[1] ? ~~arguments[1] : this.scrollTop) } }, e.prototype.scrollBy = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? this.scroll({ left: ~~arguments[0].left + this.scrollLeft, top: ~~arguments[0].top + this.scrollTop, behavior: arguments[0].behavior }) : i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left + this.scrollLeft : ~~arguments[0] + this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top + this.scrollTop : ~~arguments[1] + this.scrollTop)) }, e.prototype.scrollIntoView = function() { if (!0 !== f(arguments[0])) { var l = function(o) { var l, e, r, i;
-                                    do { l = (o = o.parentNode) === t.body } while (!1 === l && !1 === (r = p(e = o, "Y") && a(e, "Y"), i = p(e, "X") && a(e, "X"), r || i)); return l = null, o }(this),
+                                h.call(this, this, void 0 === o ? this.scrollLeft : ~~o, void 0 === t ? this.scrollTop : ~~t)
+                            } else {
+                                if ("number" == typeof arguments[0] && void 0 === arguments[1]) throw new SyntaxError("Value could not be converted");
+                                i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left : "object" != typeof arguments[0] ? ~~arguments[0] : this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top : void 0 !== arguments[1] ? ~~arguments[1] : this.scrollTop)
+                            }
+                    }, e.prototype.scrollBy = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? this.scroll({ left: ~~arguments[0].left + this.scrollLeft, top: ~~arguments[0].top + this.scrollTop, behavior: arguments[0].behavior }) : i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left + this.scrollLeft : ~~arguments[0] + this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top + this.scrollTop : ~~arguments[1] + this.scrollTop)) }, e.prototype.scrollIntoView = function() {
+                        if (!0 !== f(arguments[0])) {
+                            var l = function(o) {
+                                    var l, e, r, i;
+                                    do { l = (o = o.parentNode) === t.body } while (!1 === l && !1 === (r = p(e = o, "Y") && a(e, "Y"), i = p(e, "X") && a(e, "X"), r || i));
+                                    return l = null, o
+                                }(this),
                                 e = l.getBoundingClientRect(),
                                 r = this.getBoundingClientRect();
-                            l !== t.body ? (h.call(this, l, l.scrollLeft + r.left - e.left, l.scrollTop + r.top - e.top), "fixed" !== o.getComputedStyle(l).position && o.scrollBy({ left: e.left, top: e.top, behavior: "smooth" })) : o.scrollBy({ left: r.left, top: r.top, behavior: "smooth" }) } else i.scrollIntoView.call(this, void 0 === arguments[0] || arguments[0]) } }
+                            l !== t.body ? (h.call(this, l, l.scrollLeft + r.left - e.left, l.scrollTop + r.top - e.top), "fixed" !== o.getComputedStyle(l).position && o.scrollBy({ left: e.left, top: e.top, behavior: "smooth" })) : o.scrollBy({ left: r.left, top: r.top, behavior: "smooth" })
+                        } else i.scrollIntoView.call(this, void 0 === arguments[0] || arguments[0])
+                    }
+                }
 
                 function n(o, t) { this.scrollLeft = o, this.scrollTop = t }
 
@@ -383,11 +350,18 @@
 
                 function a(t, l) { var e = o.getComputedStyle(t, null)["overflow" + l]; return "auto" === e || "scroll" === e }
 
-                function d(t) { var l, e, i, c, n = (s() - t.startTime) / r;
-                    c = n = n > 1 ? 1 : n, l = .5 * (1 - Math.cos(Math.PI * c)), e = t.startX + (t.x - t.startX) * l, i = t.startY + (t.y - t.startY) * l, t.method.call(t.scrollable, e, i), e === t.x && i === t.y || o.requestAnimationFrame(d.bind(o, t)) }
+                function d(t) {
+                    var l, e, i, c, n = (s() - t.startTime) / r;
+                    c = n = n > 1 ? 1 : n, l = .5 * (1 - Math.cos(Math.PI * c)), e = t.startX + (t.x - t.startX) * l, i = t.startY + (t.y - t.startY) * l, t.method.call(t.scrollable, e, i), e === t.x && i === t.y || o.requestAnimationFrame(d.bind(o, t))
+                }
 
-                function h(l, e, r) { var c, f, p, a, h = s();
-                    l === t.body ? (c = o, f = o.scrollX || o.pageXOffset, p = o.scrollY || o.pageYOffset, a = i.scroll) : (c = l, f = l.scrollLeft, p = l.scrollTop, a = n), d({ scrollable: c, method: a, startTime: h, startX: f, startY: p, x: e, y: r }) } } "object" == typeof exports && "undefined" != typeof module ? module.exports = { polyfill: o } : o() }();
+                function h(l, e, r) {
+                    var c, f, p, a, h = s();
+                    l === t.body ? (c = o, f = o.scrollX || o.pageXOffset, p = o.scrollY || o.pageYOffset, a = i.scroll) : (c = l, f = l.scrollLeft, p = l.scrollTop, a = n), d({ scrollable: c, method: a, startTime: h, startX: f, startY: p, x: e, y: r })
+                }
+            }
+            "object" == typeof exports && "undefined" != typeof module ? module.exports = { polyfill: o } : o()
+        }();
     });
 })();
 
@@ -480,5 +454,245 @@
             // fire function when user stops for 500ms
             isScrolling = setTimeout(doneScrolling, 500);
         }, false);
+    }, false);
+})();
+
+
+
+
+
+// portfolio section tablist
+(function() {
+    document.addEventListener("DOMContentLoaded", function() {
+        var tabs = document.querySelectorAll('.portfolio__tablist-tab');
+        var sections = document.querySelectorAll('.portfolio__section');
+        var currentSection = document.getElementById('portfolio-section-1');
+        var currentSectionNumber = parseInt(currentSection.getAttribute('data-section'));
+        var currentArticleNumber = parseInt(currentSection.children[0].getAttribute('data-article'));
+        var nextArticleNumber = currentArticleNumber+1;
+        var previousArticleNumber = currentArticleNumber-1;
+        var tabClick = function() {
+
+            // create sibling array for this tab by looking for all of children of parent that aren't this tab
+            var tabSection = this.getAttribute('data-section');
+            var siblings = Array.prototype.filter.call(this.parentNode.children, function(child) {
+                return child !== this;
+            });
+
+            // loop sibling array and remove active classes and aria
+            function removeSiblingClasses() {
+                Array.prototype.forEach.call(siblings, function(el, i) {
+                    el.classList.remove('tab--active');
+                    el.setAttribute('aria-selected', '');
+                });
+            }
+            removeSiblingClasses();
+
+            // add active class and aria selected to this tab
+            this.classList.add('tab--active');
+            this.setAttribute('aria-selected', 'true');
+
+            // check to see if the section number matches the data attribute of the tab being clicked, remove classes
+            function checkArticle() {
+                Array.prototype.forEach.call(sections, function(el, i) {
+                    if (el.id == tabSection) {
+                        el.classList.add('portfolio__section--active');
+                        currentSection = el;
+                        currentSectionNumber = parseInt(el.getAttribute('data-section'));
+                        // console.log('current section is ' + currentSectionNumber + ' and current article is ' + currentArticleNumber);
+                        getNewSection();
+                    } else {
+                        el.classList.remove('portfolio__section--active')
+                        return false;
+                    };
+                });
+            }
+            checkArticle();
+        };
+
+        function addTabListeners() {
+            Array.prototype.forEach.call(tabs, function(el, i) {
+                el.addEventListener('click', tabClick);
+            });
+        };
+
+        addTabListeners();
+
+
+
+        // article picker
+
+        var nextArticleButton = document.getElementById('portfolio-article-next');
+        var previousArticleButton = document.getElementById('portfolio-article-previous');
+        var newArticlePath;
+        var nextArticlePath;
+
+        function checkPreviousArticleButton(){
+            if (previousArticleNumber <= 0) {
+                previousArticleButton.disabled = true;
+            } else if (previousArticleNumber >= 1) {
+                previousArticleButton.disabled = false;
+            } else {
+                return false;
+            }
+        };
+
+        function checkNextArticleButton(){
+            var nextRequest = new XMLHttpRequest();      
+
+            nextRequest.open('GET', nextArticlePath, true);
+            nextRequest.onload = function(){
+                if(nextRequest.status >= 200 && nextRequest.status < 400){
+                    // console.log('there is a file after this');
+                    nextArticleButton.disabled = false;
+                    return false;
+                } else {
+                    // console.log('no file after this');
+                    nextArticleButton.disabled = true;
+                    return false;
+                }
+                nextRequest.onerror = function() {
+                    // console.log('connection error');
+                };
+            }
+            nextRequest.send();
+        };
+
+        function requestNewSectionArticle(){
+            var request = new XMLHttpRequest();
+
+            request.open('GET', newArticlePath, true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    currentSection.innerHTML = request.response;
+                    currentSection.children[0].classList.remove('portfolio__article--loading');
+                    checkNextArticleButton();
+                    return false;
+                } else {
+                    // console.log('fail');
+                    return false;
+                }
+
+                request.onerror = function() {
+                    // console.log('connection error');
+                };
+            };
+            request.send();
+        };
+
+
+        function requestNewArticle(){
+            var request = new XMLHttpRequest();
+            
+            request.open('GET', newArticlePath, true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    currentSection.innerHTML = request.response;
+                    window.setTimeout(function(){
+                        currentSection.children[0].classList.add('portfolio__article--active');
+                        
+                    }, 500, function(){
+                        currentSection.children[0].classList.remove('portfolio__article--loading');
+                    });
+                    checkNextArticleButton();
+                    return false;
+                } else {
+                    // console.log('fail');
+                    return false;
+                }
+
+                request.onerror = function() {
+                    // console.log('connection error');
+                };
+            };
+            request.send();
+        };
+
+        function getNewSection(){
+            currentArticleNumber == 1;
+            newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-001.html';          
+            nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-002.html';          
+            requestNewSectionArticle();
+        };
+
+        function getNextArticle(){
+            if (currentArticleNumber <=999 && currentArticleNumber >=100){
+                currentArticleNumber++;                
+                nextArticleNumber = currentArticleNumber+1;
+                previousArticleNumber = currentArticleNumber-1;
+                newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(currentArticleNumber)+'.html';
+                nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(nextArticleNumber)+'.html';
+                requestNewArticle();
+                checkPreviousArticleButton();
+                return false;
+            } else if (currentArticleNumber <=99 && currentArticleNumber >=10) {
+                currentArticleNumber++;                
+                nextArticleNumber = currentArticleNumber+1;
+                previousArticleNumber = currentArticleNumber-1;
+                newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(currentArticleNumber)+'.html';
+                nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(nextArticleNumber)+'.html';
+                requestNewArticle();
+                checkPreviousArticleButton();
+                return false;
+            } else if (currentArticleNumber <=9 && currentArticleNumber >=1) {
+                currentArticleNumber++;                
+                nextArticleNumber = currentArticleNumber+1;
+                previousArticleNumber = currentArticleNumber-1;
+                newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(currentArticleNumber)+'.html';
+                nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(nextArticleNumber)+'.html';
+                requestNewArticle();
+                checkPreviousArticleButton();
+                return false;
+            }
+        };
+
+        function getPreviousArticle(){
+            if (currentArticleNumber <=999 && currentArticleNumber >=100){
+                currentArticleNumber--;                
+                nextArticleNumber = currentArticleNumber+1;
+                previousArticleNumber = currentArticleNumber-1;
+                newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(currentArticleNumber)+'.html';
+                nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(nextArticleNumber)+'.html';
+                requestNewArticle();
+                checkPreviousArticleButton();
+                nextArticleButton.disabled = false;
+                return false;
+            } else if (currentArticleNumber <=99 && currentArticleNumber >=10) {
+                currentArticleNumber--;                
+                nextArticleNumber = currentArticleNumber+1;
+                previousArticleNumber = currentArticleNumber-1;
+                newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(currentArticleNumber)+'.html';
+                nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(nextArticleNumber)+'.html';
+                requestNewArticle();
+                checkPreviousArticleButton();
+                nextArticleButton.disabled = false;
+                return false;
+            } else if (currentArticleNumber <=9 && currentArticleNumber >=1) {
+                currentArticleNumber--;                
+                nextArticleNumber = currentArticleNumber+1;
+                previousArticleNumber = currentArticleNumber-1;
+                newArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(currentArticleNumber)+'.html';
+                nextArticlePath = '/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(nextArticleNumber)+'.html';
+                requestNewArticle();
+                checkPreviousArticleButton();
+                nextArticleButton.disabled = false;
+                return false;
+            }
+        };
+
+        var nextArticleListener = function(){
+            getNextArticle();
+            // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
+        };
+
+        var previousArticleListener = function(){
+            getPreviousArticle();
+            // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
+        };
+
+        // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
+        nextArticleButton.addEventListener('click', nextArticleListener);
+        previousArticleButton.addEventListener('click', previousArticleListener);
+
     }, false);
 })();
