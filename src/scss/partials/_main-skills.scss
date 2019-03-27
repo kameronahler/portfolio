@@ -28,6 +28,7 @@
             margin-right: 2 * $unit;
         }
 
+
         &:nth-of-type(odd) {
             margin-right: 2 * $unit;
 
@@ -58,12 +59,12 @@
             width: 100%;
             height: auto;
         }
-        
-        g.illustration-placeholder{
+
+        g.illustration-placeholder {
             display: block;
         }
 
-        g.illustration-animation{
+        g.illustration-animation {
             display: none;
         }
     }
@@ -75,30 +76,43 @@
                 display: grid;
                 flex-wrap: initial;
                 justify-content: initial;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
                 grid-gap: 2 * $unit;
 
                 @include bp(sm) {
-                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
 
                 @include bp(md) {
-                    grid-template-columns: repeat(4, 1fr);                    
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
                     grid-gap: 3 * $unit;
                 }
             }
         }
 
         &__tile {
-            width: 100%;
+            width: auto;
             height: auto;
             flex: initial;
             margin-bottom: 0;
+            margin-right: unset;
 
-            @include bp(md) {
+            @include bp(sm) {
                 display: flex;
                 flex-direction: column;
-                padding: $unit;
+                padding: 1.5*$unit 3*$unit $unit
+            }
+
+            @include bp(md) {
+                width: 100%;
+            }
+
+            @include bp(lg) {
+                padding: 1.5*$unit 3*$unit 2*$unit
+            }
+
+            @include bp(xl) {
+                padding: 2*$unit 4*$unit 2*$unit;
             }
 
             &:nth-of-type(odd) {
@@ -119,22 +133,39 @@
                 @include bp(md) {
                     order: 1;
                 }
+
+                @include bp(xl) {
+                    margin-bottom: $unit;
+                }
             }
         }
     }
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // hover animations for skill tiles
 @supports(transform:translate3d(0, 0, 0)) {
     @include bp(md) {
         .skills__tile {
-            &:hover{            
-                g.illustration-placeholder{
+            &:hover {
+                g.illustration-placeholder {
                     display: none;
                 }
 
-                g.illustration-animation{
+                g.illustration-animation {
                     display: block;
                 }
             }
@@ -388,64 +419,70 @@
 
         .illustration-agile {
             &__dot1 {
-                circle{
+                circle {
                     fill: #fff;
-    
+
                     .skills__tile:hover & {
                         fill: $color-primary;
                         transition: .5s ease .25s;
                     }
                 }
             }
+
             &__dot2 {
-                circle{
+                circle {
                     fill: #fff;
-    
+
                     .skills__tile:hover & {
                         fill: $color-primary;
                         transition: .5s ease .75s;
                     }
                 }
             }
+
             &__dot3 {
-                circle{
+                circle {
                     fill: #fff;
-    
+
                     .skills__tile:hover & {
                         fill: $color-primary;
                         transition: .5s ease 1.25s;
                     }
                 }
             }
-            &__circle1{
+
+            &__circle1 {
                 opacity: 0;
-                
+
                 .skills__tile:hover & {
                     opacity: 1;
                     transition: .5s ease 1.75s;
                 }
             }
+
             &__dot4 {
-                circle{
+                circle {
                     fill: #fff;
-    
+
                     .skills__tile:hover & {
                         fill: $color-primary;
                         transition: .5s ease 2s;
                     }
                 }
             }
-            &__circle2{
+
+            &__circle2 {
                 opacity: 0;
-                
+
                 .skills__tile:hover & {
                     opacity: 1;
                     transition: .5s ease 2.75s;
                 }
             }
-            &__circle3{
+
+            &__circle3 {
                 opacity: 0;
-                
+
                 .skills__tile:hover & {
                     opacity: 1;
                     transition: .5s ease 3.25s;
@@ -453,8 +490,8 @@
             }
         }
 
-        .illustration-accessibility{
-            &__middle{
+        .illustration-accessibility {
+            &__middle {
                 transform: translate3d(0, -10px, 0);
                 opacity: 0;
 
@@ -464,7 +501,8 @@
                     opacity: 1;
                 }
             }
-            &__bottom{
+
+            &__bottom {
                 transform: translate3d(0, -10px, 0);
                 opacity: 0;
 
@@ -475,27 +513,30 @@
                 }
             }
         }
-        .illustration-sketch{
-            &__button{
-                rect{
-    
+
+        .illustration-sketch {
+            &__button {
+                rect {
+
                     .skills__tile:hover & {
                         transition: .5s ease .25s;
                         fill: $color-secondary-purple
                     }
                 }
             }
-            &__artboard{
-                rect{
+
+            &__artboard {
+                rect {
                     stroke: #EEE;
 
                     .skills__tile:hover & {
                         transition: .5s ease .75s;
                         stroke: $color-primary;
-                    }                    
+                    }
                 }
             }
-            &__layers-bottom{
+
+            &__layers-bottom {
                 transform: translate3d(0, -24px, 0);
 
                 .skills__tile:hover & {
@@ -503,7 +544,8 @@
                     transform: translate3d(0, 0, 0);
                 }
             }
-            &__layers-top{
+
+            &__layers-top {
                 transform: translate3d(0, -10px, 0);
                 opacity: 0;
 
@@ -513,27 +555,30 @@
                 }
             }
         }
-        .illustration-sketch{
-            &__button{
-                rect{
-        
+
+        .illustration-sketch {
+            &__button {
+                rect {
+
                     .skills__tile:hover & {
                         transition: .5s ease .25s;
                         fill: $color-secondary-purple
                     }
                 }
             }
-            &__artboard{
-                rect{
+
+            &__artboard {
+                rect {
                     stroke: #EEE;
 
                     .skills__tile:hover & {
                         transition: .5s ease .75s;
                         stroke: $color-primary;
-                    }                    
+                    }
                 }
             }
-            &__layers-bottom{
+
+            &__layers-bottom {
                 transform: translate3d(0, -24px, 0);
 
                 .skills__tile:hover & {
@@ -541,7 +586,8 @@
                     transform: translate3d(0, 0, 0);
                 }
             }
-            &__layers-top{
+
+            &__layers-top {
                 transform: translate3d(0, -10px, 0);
                 opacity: 0;
 
@@ -552,8 +598,9 @@
                 }
             }
         }
-        .illustration-invision{
-            &__tile1{
+
+        .illustration-invision {
+            &__tile1 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -563,7 +610,8 @@
                     opacity: 1;
                 }
             }
-            &__tile2{
+
+            &__tile2 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -573,7 +621,8 @@
                     opacity: 1;
                 }
             }
-            &__tile3{
+
+            &__tile3 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -583,7 +632,8 @@
                     opacity: 1;
                 }
             }
-            &__tile4{
+
+            &__tile4 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -593,7 +643,8 @@
                     opacity: 1;
                 }
             }
-            &__tile5{
+
+            &__tile5 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -603,7 +654,8 @@
                     opacity: 1;
                 }
             }
-            &__tile6{
+
+            &__tile6 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -613,7 +665,8 @@
                     opacity: 1;
                 }
             }
-            &__tile7{
+
+            &__tile7 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -623,7 +676,8 @@
                     opacity: 1;
                 }
             }
-            &__tile8{
+
+            &__tile8 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 
@@ -633,7 +687,8 @@
                     opacity: 1;
                 }
             }
-            &__tile9{
+
+            &__tile9 {
                 transform: translate3d(0, -8px, 0);
                 opacity: 0;
 

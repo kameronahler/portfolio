@@ -24,7 +24,7 @@
     @include bp(lg) {
         width: 100%
     }
-    
+
     // grid
     &::before {
         content: "";
@@ -64,22 +64,26 @@
             background-size: 700px 800px;
             background-position: 100% 0%;
         }
+
         @media (min-width:101em) {
             background-position: 95% 0%;
         }
+
         @media (min-width:120em) {
             background-position: 87% 0%;
         }
+
         @media (min-width:140em) {
             background-position: 80% 0%;
         }
+
         @media (min-width:160em) {
             background-position: 73% 0%;
         }
     }
 
-    .wrapper{
-        z-index: 0;        
+    .wrapper {
+        z-index: 0;
     }
 
     h1,
