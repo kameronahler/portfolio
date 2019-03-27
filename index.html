@@ -1007,36 +1007,38 @@
                         <button id="portfolio-tab-4" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-4" class="portfolio__tablist-tab tab button"><span>Heuristics</span></button>
                         <button id="portfolio-tab-5" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-5" class="portfolio__tablist-tab tab button"><span>Agile Methodology</span></button>
                     </section>
-                    <section class="portfolio__sections">
+                    <section id="portfolio-sections" class="portfolio__sections">
                         <section class="portfolio__article-nav">
-                            <button disabled="true" title="Previous Portfolio Item" id="portfolio-article-previous" aria-labelledby="portfolio-article-back-title" class="portfolio__article-nav--previous button button--icon">
+                            <button disabled="true" title="Previous Portfolio Item" aria-control="portfolio-content" id="portfolio-article-previous" aria-labelledby="portfolio-article-back-title" class="portfolio__article-nav--previous button button--icon">
                                 <svg aria-hidden="true" role="img">
                                     <use xlink:href="img/icons.svg#icon-chevron-left">
                                 </svg>
                                 <span id="portfolio-article-previous-title" class="accessible-hide">Previous Portfolio Item</span>
                             </button>
-                            <button title="Next Portfolio Item" id="portfolio-article-next" aria-labelledby="portfolio-article-next-title" class="portfolio__article-nav--next button button button--icon">
+                            <button title="Next Portfolio Item" aria-control="portfolio-content" id="portfolio-article-next" aria-labelledby="portfolio-article-next-title" class="portfolio__article-nav--next button button button--icon">
                                 <svg aria-hidden="true" role="img">
                                     <use xlink:href="img/icons.svg#icon-chevron-right">
                                 </svg>
                                 <span id="portfolio-article-next-title" class="accessible-hide">Next Portfolio Item</span>
                             </button>
                         </section>
-                        <section data-section="1" id="portfolio-section-1" class="portfolio__section portfolio__section--active" aria-labelledby="portfolio-tab-1">
-                            <article data-article="1" class="portfolio__article card">
-                                <header class="portfolio__article-header">
-                                    <h3>Babila Ebwele</h3>
-                                </header>
-                                <section class="portfolio__article-content">
-                                    <img aria-hidden="true" src="https://picsum.photos/800/300?image=101" alt="" class="portfolio__article-hero card-hero">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
-                                </section>
-                            </article>
+                        <section id="portfolio-content">
+                            <section data-section="1" id="portfolio-section-1" class="portfolio__section portfolio__section--active" aria-labelledby="portfolio-tab-1">
+                                <article data-article="1" class="portfolio__article card">
+                                    <header class="portfolio__article-header">
+                                        <h3>Babila Ebwele</h3>
+                                    </header>
+                                    <section class="portfolio__article-content">
+                                        <img aria-hidden="true" src="https://picsum.photos/800/300?image=101" alt="" class="portfolio__article-hero card-hero">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
+                                    </section>
+                                </article>
+                            </section>
+                            <section data-section="2" id="portfolio-section-2" class="portfolio__section" aria-labelledby="portfolio-tab-2"></section>
+                            <section data-section="3" id="portfolio-section-3" class="portfolio__section" aria-labelledby="portfolio-tab-3"></section>
+                            <section data-section="4" id="portfolio-section-4" class="portfolio__section" aria-labelledby="portfolio-tab-4"></section>
+                            <section data-section="5" id="portfolio-section-5" class="portfolio__section" aria-labelledby="portfolio-tab-5"></section>
                         </section>
-                        <section data-section="2" id="portfolio-section-2" class="portfolio__section" aria-labelledby="portfolio-tab-2"></section>
-                        <section data-section="3" id="portfolio-section-3" class="portfolio__section" aria-labelledby="portfolio-tab-3"></section>
-                        <section data-section="4" id="portfolio-section-4" class="portfolio__section" aria-labelledby="portfolio-tab-4"></section>
-                        <section data-section="5" id="portfolio-section-5" class="portfolio__section" aria-labelledby="portfolio-tab-5"></section>
                     </section>
                 </section>
                 <section id="about-me" class="about scroll-anchor">
