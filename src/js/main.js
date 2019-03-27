@@ -469,8 +469,8 @@
         var currentSection = document.getElementById('portfolio-section-1');
         var currentSectionNumber = parseInt(currentSection.getAttribute('data-section'));
         var currentArticleNumber = parseInt(currentSection.children[0].getAttribute('data-article'));
-        var nextArticleNumber = currentArticleNumber+1;
-        var previousArticleNumber = currentArticleNumber-1;
+        var nextArticleNumber = currentArticleNumber + 1;
+        var previousArticleNumber = currentArticleNumber - 1;
         var tabClick = function() {
 
             // create sibling array for this tab by looking for all of children of parent that aren't this tab
@@ -527,7 +527,7 @@
         var newArticlePath;
         var nextArticlePath;
 
-        function checkPreviousArticleButton(){
+        function checkPreviousArticleButton() {
             if (previousArticleNumber <= 0) {
                 previousArticleButton.disabled = true;
             } else if (previousArticleNumber >= 1) {
@@ -537,12 +537,12 @@
             }
         };
 
-        function checkNextArticleButton(){
-            var nextRequest = new XMLHttpRequest();      
+        function checkNextArticleButton() {
+            var nextRequest = new XMLHttpRequest();
 
             nextRequest.open('GET', nextArticlePath, true);
-            nextRequest.onload = function(){
-                if(nextRequest.status >= 200 && nextRequest.status < 400){
+            nextRequest.onload = function() {
+                if (nextRequest.status >= 200 && nextRequest.status < 400) {
                     // console.log('there is a file after this');
                     nextArticleButton.disabled = false;
                     return false;
@@ -558,7 +558,7 @@
             nextRequest.send();
         };
 
-        function requestNewSectionArticle(){
+        function requestNewSectionArticle() {
             var request = new XMLHttpRequest();
 
             request.open('GET', newArticlePath, true);
@@ -581,17 +581,17 @@
         };
 
 
-        function requestNewArticle(){
+        function requestNewArticle() {
             var request = new XMLHttpRequest();
-            
+
             request.open('GET', newArticlePath, true);
             request.onload = function() {
                 if (request.status >= 200 && request.status < 400) {
                     currentSection.innerHTML = request.response;
-                    window.setTimeout(function(){
+                    window.setTimeout(function() {
                         currentSection.children[0].classList.add('portfolio__article--active');
-                        
-                    }, 500, function(){
+
+                    }, 500, function() {
                         currentSection.children[0].classList.remove('portfolio__article--loading');
                     });
                     checkNextArticleButton();
@@ -608,71 +608,71 @@
             request.send();
         };
 
-        function getNewSection(){
+        function getNewSection() {
             currentArticleNumber == 1;
-            newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-001.html';          
-            nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-002.html';          
+            newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-001.html';
+            nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-002.html';
             requestNewSectionArticle();
         };
 
-        function getNextArticle(){
-            if (currentArticleNumber <=999 && currentArticleNumber >=100){
-                currentArticleNumber++;                
-                nextArticleNumber = currentArticleNumber+1;
-                previousArticleNumber = currentArticleNumber-1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(currentArticleNumber)+'.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(nextArticleNumber)+'.html';
+        function getNextArticle() {
+            if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
+                currentArticleNumber++;
+                nextArticleNumber = currentArticleNumber + 1;
+                previousArticleNumber = currentArticleNumber - 1;
+                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
                 requestNewArticle();
                 checkPreviousArticleButton();
                 return false;
-            } else if (currentArticleNumber <=99 && currentArticleNumber >=10) {
-                currentArticleNumber++;                
-                nextArticleNumber = currentArticleNumber+1;
-                previousArticleNumber = currentArticleNumber-1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(currentArticleNumber)+'.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(nextArticleNumber)+'.html';
+            } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
+                currentArticleNumber++;
+                nextArticleNumber = currentArticleNumber + 1;
+                previousArticleNumber = currentArticleNumber - 1;
+                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
                 requestNewArticle();
                 checkPreviousArticleButton();
                 return false;
-            } else if (currentArticleNumber <=9 && currentArticleNumber >=1) {
-                currentArticleNumber++;                
-                nextArticleNumber = currentArticleNumber+1;
-                previousArticleNumber = currentArticleNumber-1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(currentArticleNumber)+'.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(nextArticleNumber)+'.html';
+            } else if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
+                currentArticleNumber++;
+                nextArticleNumber = currentArticleNumber + 1;
+                previousArticleNumber = currentArticleNumber - 1;
+                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
                 requestNewArticle();
                 checkPreviousArticleButton();
                 return false;
             }
         };
 
-        function getPreviousArticle(){
-            if (currentArticleNumber <=999 && currentArticleNumber >=100){
-                currentArticleNumber--;                
-                nextArticleNumber = currentArticleNumber+1;
-                previousArticleNumber = currentArticleNumber-1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(currentArticleNumber)+'.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-'+(nextArticleNumber)+'.html';
+        function getPreviousArticle() {
+            if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
+                currentArticleNumber--;
+                nextArticleNumber = currentArticleNumber + 1;
+                previousArticleNumber = currentArticleNumber - 1;
+                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
                 requestNewArticle();
                 checkPreviousArticleButton();
                 nextArticleButton.disabled = false;
                 return false;
-            } else if (currentArticleNumber <=99 && currentArticleNumber >=10) {
-                currentArticleNumber--;                
-                nextArticleNumber = currentArticleNumber+1;
-                previousArticleNumber = currentArticleNumber-1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(currentArticleNumber)+'.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-0'+(nextArticleNumber)+'.html';
+            } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
+                currentArticleNumber--;
+                nextArticleNumber = currentArticleNumber + 1;
+                previousArticleNumber = currentArticleNumber - 1;
+                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
                 requestNewArticle();
                 checkPreviousArticleButton();
                 nextArticleButton.disabled = false;
                 return false;
-            } else if (currentArticleNumber <=9 && currentArticleNumber >=1) {
-                currentArticleNumber--;                
-                nextArticleNumber = currentArticleNumber+1;
-                previousArticleNumber = currentArticleNumber-1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(currentArticleNumber)+'.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-'+currentSectionNumber+'-article-00'+(nextArticleNumber)+'.html';
+            } else if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
+                currentArticleNumber--;
+                nextArticleNumber = currentArticleNumber + 1;
+                previousArticleNumber = currentArticleNumber - 1;
+                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
                 requestNewArticle();
                 checkPreviousArticleButton();
                 nextArticleButton.disabled = false;
@@ -680,12 +680,12 @@
             }
         };
 
-        var nextArticleListener = function(){
+        var nextArticleListener = function() {
             getNextArticle();
             // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
         };
 
-        var previousArticleListener = function(){
+        var previousArticleListener = function() {
             getPreviousArticle();
             // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
         };

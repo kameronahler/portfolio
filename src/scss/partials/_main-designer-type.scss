@@ -31,13 +31,25 @@
         &-image {
             width: 100%;
             height: 9 * $unit;
-            background: transparent url('https://picsum.photos/800?image=299') no-repeat 50% 50%;
-            background-size: cover;
             border-radius: $border-radius-card;
             margin-bottom: $unit;
 
             @include bp(md) {
-                margin-bottom: 2 * $unit;
+                margin-bottom: $unit;
+                padding-top: $unit
+            }
+
+            @include bp(lg) {
+                padding-top: 2 * $unit;
+            }
+
+            svg,
+            img {
+                display: block;
+                fill: none;
+                height: 100%;
+                width: auto;
+                margin: auto;
             }
         }
 
@@ -49,6 +61,7 @@
                 @include bp(sm) {
                     margin-bottom: $unit;
                 }
+
                 @include bp(md) {
                     padding: 0 2 * $unit;
                 }
@@ -75,20 +88,21 @@
         &__cards {
             @include bp(md) {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, minmax(0, 1fr));
                 grid-gap: 2 * $unit;
             }
         }
 
-        // individual cards
+        // all cards
         &__card {
             display: grid;
             grid-gap: 0 $unit;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
 
             @include bp(sm) {
                 padding: 0;
-                grid-gap: 0 2 * $unit
+                grid-gap: 0 2 * $unit;
+                grid-template-columns: 200px minmax(0, 1fr);
             }
 
             @include bp(md) {
@@ -101,6 +115,11 @@
 
             // even card rearrange order
             &:nth-of-type(even) {
+
+                @include bp(sm) {
+                    grid-template-columns: minmax(0, 1fr) 200px;
+                }
+
                 .designer-type__card-header {
                     order: -1;
                 }
@@ -114,10 +133,8 @@
 
                     @include bp(md) {
                         height: 9 * $unit;
-                        ;
                         grid-row: unset;
                         border-radius: $border-radius-card $border-radius-card 0 0;
-                        margin-bottom: 2 * $unit;
                     }
                 }
 
@@ -153,15 +170,25 @@
                 @include bp(sm) {
                     height: 100%;
                     grid-row: span 2;
-                    border-radius: $border-radius-card 0 0 $border-radius-card
+                    border-radius: $border-radius-card 0 0 $border-radius-card;
+                    padding: $unit 0;
                 }
 
                 @include bp(md) {
                     height: 9 * $unit;
-                    ;
-                    margin-bottom: 2 * $unit;
                     grid-row: unset;
                     border-radius: $border-radius-card $border-radius-card 0 0;
+                }
+
+                svg,
+                img {
+                    width: 100%;
+                    height: auto;
+
+                    @include bp(md) {
+                        height: 100%;
+                        width: auto;
+                    }
                 }
             }
 
@@ -191,7 +218,7 @@
 
             // description spans both columns
             &-description {
-                grid-column: span 2;
+                grid-column: span 3;
                 margin-top: $unit;
 
                 @include bp(sm) {

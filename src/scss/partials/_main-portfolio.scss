@@ -42,7 +42,7 @@
     }
 
     // sections
-    &__sections{
+    &__sections {
         position: relative;
     }
 
@@ -81,13 +81,13 @@
             display: flex;
             text-align: center;
             justify-content: space-between;
-            position:absolute;
-            left:0;
-            top:0;
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 100%;
             padding: $unit $unit 0;
-            
-            @include bp(sm){
+
+            @include bp(sm) {
                 padding: $unit * 2 $unit * 2 0;
             }
 
@@ -96,7 +96,7 @@
                 height: 3 * $unit;
                 z-index: 1;
 
-                &:disabled{
+                &:disabled {
                     color: $color-grayscale--light;
                     box-shadow: none;
                     cursor: not-allowed;
@@ -111,17 +111,17 @@
         // header
         &-header {
             padding: $unit 5 * $unit 0;
-            
-            @include bp(sm){
+
+            @include bp(sm) {
                 padding: 2 * $unit 6 * $unit 0;
             }
 
             h3 {
                 min-height: 3 * $unit;
                 width: 100%;
-                position:relative;
+                position: relative;
                 z-index: 99;
-                display:flex;
+                display: flex;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
@@ -145,13 +145,14 @@
         }
 
 
-        &--loading{
+        &--loading {
             transform: translateX(#{$unit});
             transition: $transition-default;
             opacity: 0;
         }
-        &--active{
-            transform:translateX(0);
+
+        &--active {
+            transform: translateX(0);
             opacity: 1;
         }
     }
@@ -164,7 +165,7 @@
     .portfolio {
         @include bp(lg) {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(12, minmax(0, 1fr));
             grid-gap: 0 2 * $unit;
         }
 
@@ -214,13 +215,14 @@
                     }
                 }
             }
-            &-header{
-                @include bp(lg){
+
+            &-header {
+                @include bp(lg) {
                     padding: 2 * $unit 10 * $unit 0 2 * $unit;
                 }
 
-                h3{
-                    @include bp(lg){
+                h3 {
+                    @include bp(lg) {
                         justify-content: flex-start;
                         text-align: left;
                     }
