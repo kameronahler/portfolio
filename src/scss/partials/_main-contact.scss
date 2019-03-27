@@ -68,12 +68,14 @@
         justify-content: center;
         margin-bottom: 2 * $unit;
 
+
         li {
             display: block;
             margin: $unit;
 
+
             @include bp(xs) {
-                margin: 0 $unit 0 0;
+                margin: 0 2 * $unit 0 0;
             }
 
             // fix margin on last of type
@@ -82,6 +84,11 @@
                     margin-right: 0;
                 }
             }
+        }
+
+        .button--icon {
+            width: 3 * $unit;
+            height: 3 * $unit;
         }
     }
 
