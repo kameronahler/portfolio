@@ -240,7 +240,7 @@
                 window.setTimeout(function() {
                     form.classList.remove('js-submitting'); // remove waiting class
                     form.classList.add('js-submitted'); // add finished state class
-                    icon.setAttribute('xlink:href', '../img/icons.svg#icon-check'); // change icon on button back
+                    icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-check'); // change icon on button back
                     button.querySelector('span').innerHTML = "Sent"; // change button text
                 }, 4000)
                 // var formElements = form.querySelector(".contact__form-elements")
