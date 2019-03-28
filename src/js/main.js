@@ -612,7 +612,7 @@
         };
 
         // ajax in article for next button press
-        var requestNewArticle = function() {
+        var requestNextArticle = function() {
             var request = new XMLHttpRequest();
 
             request.open('GET', newArticlePath, true);
@@ -621,13 +621,49 @@
 
                     // we fill empty section
                     currentSection.innerHTML = request.response;
+                    currentSection.children[0].classList.add('portfolio__article--next');
 
                     // wait half a second and add active class to article
                     window.setTimeout(function() {
                         currentSection.children[0].classList.add('portfolio__article--active');
-                    }, 500, function() {
                         currentSection.children[0].classList.remove('portfolio__article--loading');
-                    });
+                    }, 500);
+
+                    // check to see if buttons button needs to be disabled by seeing if another article exists after this
+                    checkNextArticleButton();
+                    return false;
+
+                } else {
+
+                    // console.log('fail');
+                    return false;
+                }
+
+                request.onerror = function() {
+                    console.log('connection error');
+                };
+            };
+            request.send();
+        };
+
+        // ajax in article for previous button press
+        var requestPreviousArticle = function() {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', newArticlePath, true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+
+                    // we fill empty section
+                    currentSection.innerHTML = request.response;
+                    currentSection.children[0].classList.add('portfolio__article--previous');
+
+                    // wait half a second and add active class to article
+                    window.setTimeout(function() {
+                        currentSection.children[0].classList.add('portfolio__article--active');
+                        currentSection.children[0].classList.remove('portfolio__article--loading');
+                        currentSection.children[0].classList.remove('portfolio__article--loading');
+                    }, 500);
 
                     // check to see if buttons button needs to be disabled by seeing if another article exists after this
                     checkNextArticleButton();
@@ -715,7 +751,7 @@
             console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
             // after we have paths, we ask for article ajax
-            requestNewArticle();
+            requestNextArticle();
 
             // we know we can enable the previous article button because someone just clicked next
             previousArticleButton.disabled = false;
@@ -761,7 +797,7 @@
             pathCreator();
 
             // after we have paths, we ask for article ajax
-            requestNewArticle();
+            requestPreviousArticle();
 
             // check to see if we should disable previous button
             checkPreviousArticleButton();

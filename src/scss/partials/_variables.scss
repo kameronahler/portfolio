@@ -55,7 +55,7 @@ $padding-button--focus: 23px 31px 21px;
 
 // transitions
 $easing: cubic-bezier(.75, .25, .6, .9);
-$transition-default: $easing .2s all;
+$transition-default: $easing .2s;
 
 // typography
 $font-family-fallback: system-ui,

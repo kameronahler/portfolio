@@ -46,7 +46,7 @@
             opacity: 0;
             transform-origin: 100% 50%;
             transform: translateX(#{4 * $unit}) scale(0);
-            transition: $easing .5s;
+            transition: transform $easing .5s;
         }
 
         .scroll-anchor--seen & {
@@ -78,7 +78,6 @@
 .button {
     position: relative;
     z-index: 0;
-    overflow: hidden;
     display: inline-block;
     max-width: 100%;
     padding: $padding-button;
@@ -88,11 +87,11 @@
     text-decoration: none;
     box-shadow: $box-shadow-button;
     border-radius: $border-radius-card;
-    transition: $transition-default, 0s outline;
+    transition: $transition-default box-shadow;
 
     span {
         opacity: .9;
-        transition: $transition-default;
+        transition: $transition-default opacity;
     }
 
     &::before {
@@ -103,9 +102,9 @@
         left: 0;
         top: 0;
         background: $gradient-button;
-        transition: $transition-default;
         z-index: -2;
         border-radius: $unit / 8;
+        transition: $transition-default transform;
     }
 
     &:hover {
@@ -125,6 +124,10 @@
             }
         }
     }
+
+    &:active {
+        outline: none;
+    }
 }
 
 // icon buttons
@@ -138,7 +141,7 @@
             fill: #fff;
             margin-right: $unit;
             transform: translateY(2px);
-            transition: $transition-default;
+            transition: $transition-default opacity;
             opacity: .9;
         }
 
@@ -148,7 +151,6 @@
             img {
                 @include bp(md) {
                     opacity: 1;
-                    transition: $transition-default;
                 }
             }
         }
@@ -173,7 +175,7 @@
             fill: #fff;
             margin: auto;
             opacity: .9;
-            transition: $transition-default;
+            transition: $transition-default opacity;
         }
 
         // hover styles for social icons
@@ -193,31 +195,17 @@
 
 // tabs
 .tab {
-    span {
-        transition: unset;
-    }
 
     &::before {
-        width: 100%;
-    }
-
-    &:hover {
-        &::before {
-            @include bp(md) {
-                transform: none;
-            }
-        }
+        content: unset;
     }
 
     &:not(.tab--active) {
         box-shadow: $box-shadow-tab--inactive;
+        background: $color-background-gray--darker;
 
         span {
             color: $color-grayscale;
-        }
-
-        &::before {
-            background: $color-background-gray--darker;
         }
 
         &:hover {
@@ -229,17 +217,13 @@
 
     &--active {
         box-shadow: $box-shadow-tab--active;
-
-        &::before {
-            opacity: .9;
-        }
+        background: $gradient-button;
+        opacity: .9;
+        transition: $transition-default opacity;
 
         &:hover {
             box-shadow: $box-shadow-tab--active-hover;
-
-            &::before {
-                opacity: 1;
-            }
+            opacity: 1;
         }
     }
 }
@@ -263,11 +247,10 @@ textarea {
     border-radius: $border-radius-card;
     background: $color-background-gray--darker;
     box-shadow: $box-shadow-input;
-    transition: $transition-default;
+    transition: $transition-default background;
 
     &:focus {
         background: #fff;
-        transition: unset;
     }
 }
 
