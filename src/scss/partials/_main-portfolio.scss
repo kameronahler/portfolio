@@ -14,13 +14,9 @@
 
     // portfolio tablist - hidden under 992
     &__tablist {
-        display: none;
-
-        @include bp(xs) {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
 
         &-tab {
             overflow: unset;
@@ -44,7 +40,11 @@
     // sections
     &__sections {
         position: relative;
-        min-height: 300px;
+        min-height: 350px;
+
+        @include bp(sm) {
+            min-height: 400px;
+        }
     }
 
     // section
@@ -61,13 +61,9 @@
     }
 
 
-    // article
+    // article nav
+    // nav
     &__article {
-        padding: 0;
-        opacity: 0;
-        transition: opacity .2s .2s $easing;
-
-        // nav
         &-nav {
             display: flex;
             text-align: center;
@@ -87,17 +83,28 @@
                 height: 3 * $unit;
                 z-index: 1;
 
-                &:disabled {
-                    color: $color-grayscale--light;
-                    box-shadow: none;
-                    cursor: not-allowed;
+                svg {
+                    fill: $color-secondary-blue;
+                }
 
-                    &::before {
-                        opacity: .2;
-                    }
+                &::before {
+                    content: unset
+                }
+
+                &:disabled {
+                    opacity: .2;
                 }
             }
         }
+    }
+
+
+    // article
+    &__article {
+        padding: 0;
+        opacity: 0;
+        transition: opacity .2s .2s $easing, transform .2s .2s $easing;
+
 
         // header
         &-header {
@@ -135,8 +142,17 @@
             }
         }
 
+        &--next {
+            transform: translateX(#{$unit});
+        }
+
+        &--previous {
+            transform: translateX(-#{$unit});
+        }
+
         &--active {
             opacity: 1;
+            transform: translateX(0);
         }
     }
 }

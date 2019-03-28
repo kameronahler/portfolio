@@ -22,7 +22,7 @@
             display: flex;
             width: 3 * $unit;
             height: 3 * $unit;
-            transition: $transition-default;
+            transition: $transition-default background;
         }
 
         svg {
@@ -32,6 +32,7 @@
                 margin: auto;
                 opacity: .9;
                 fill: $color-primary;
+                transition: $transition-default opacity;
             }
         }
 
