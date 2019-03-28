@@ -93,5 +93,6 @@ typings/
 # dotenv environment variables file
 .env
 
+portfolio/
 
 # End of https://www.gitignore.io/api/node,macos
