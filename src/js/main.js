@@ -240,7 +240,7 @@
                 window.setTimeout(function() {
                     form.classList.remove('js-submitting'); // remove waiting class
                     form.classList.add('js-submitted'); // add finished state class
-                    icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-check'); // change icon on button back
+                    icon.setAttribute('xlink:href', '../img/icons.svg#icon-check'); // change icon on button back
                     button.querySelector('span').innerHTML = "Sent"; // change button text
                 }, 4000)
                 // var formElements = form.querySelector(".contact__form-elements")
@@ -284,7 +284,7 @@
     };
 
     function disableAllButtons(form) {
-        icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-form-spinner');
+        icon.setAttribute('xlink:href', '../img/icons.svg#icon-form-spinner');
         button.querySelector('span').innerHTML = "Sending";
         button.disabled = true;
         form.classList.add('js-submitting');
@@ -464,52 +464,98 @@
 // portfolio section tablist
 (function() {
     document.addEventListener("DOMContentLoaded", function() {
+
         var tabs = document.querySelectorAll('.portfolio__tablist-tab');
         var sections = document.querySelectorAll('.portfolio__section');
+
         var currentSection = document.getElementById('portfolio-section-1');
         var currentSectionNumber = parseInt(currentSection.getAttribute('data-section'));
+
         var currentArticleNumber = parseInt(currentSection.children[0].getAttribute('data-article'));
         var nextArticleNumber = currentArticleNumber + 1;
         var previousArticleNumber = currentArticleNumber - 1;
+
+        // create function for when tab is clicked
         var tabClick = function() {
 
+            // define target of event
+            var target = this;
+
+            // define tab's data-section which will later match with a section id
+            var tabSection = target.getAttribute('data-section');
+
             // create sibling array for this tab by looking for all of children of parent that aren't this tab
-            var tabSection = this.getAttribute('data-section');
-            var siblings = Array.prototype.filter.call(this.parentNode.children, function(child) {
-                return child !== this;
+            var siblings = Array.prototype.filter.call(target.parentNode.children, function(child) {
+                return child !== target;
             });
 
             // loop sibling array and remove active classes and aria
-            function removeSiblingClasses() {
+            var removeSiblingClasses = function() {
                 Array.prototype.forEach.call(siblings, function(el, i) {
                     el.classList.remove('tab--active');
                     el.setAttribute('aria-selected', '');
                 });
             }
-            removeSiblingClasses();
-
-            // add active class and aria selected to this tab
-            this.classList.add('tab--active');
-            this.setAttribute('aria-selected', 'true');
 
             // check to see if the section number matches the data attribute of the tab being clicked, remove classes
-            function checkArticle() {
+            var checkSection = function() {
                 Array.prototype.forEach.call(sections, function(el, i) {
                     if (el.id == tabSection) {
-                        el.classList.add('portfolio__section--active');
+                        // define the new current section
                         currentSection = el;
+
+                        // add classes to new current section
+                        el.classList.add('portfolio__section--active');
+
+                        // define new section number for ajax pathes
                         currentSectionNumber = parseInt(el.getAttribute('data-section'));
                         // console.log('current section is ' + currentSectionNumber + ' and current article is ' + currentArticleNumber);
+
+                        // fire new section function
                         getNewSection();
+
                     } else {
+                        // clear all other section's content except new current section
+                        el.innerHTML = '';
+
+                        // remove active classes from other sections
                         el.classList.remove('portfolio__section--active')
                         return false;
                     };
                 });
             }
-            checkArticle();
+
+            // fire events, add classes to this tab, remove classes from siblings, check for a section match in content area
+            target.classList.add('tab--active');
+            target.setAttribute('aria-selected', 'true');
+            removeSiblingClasses();
+            checkSection();
         };
 
+
+        // trigger for new section click from tablist
+        var getNewSection = function() {
+
+            // reset internal vars for article numbers because we know it should go back to beginning of section articles
+            previousArticleNumber = 0;
+            currentArticleNumber = 1;
+            nextArticleNumber = 2;
+
+            // we also know that these buttons can be enabled or disabled
+            previousArticleButton.disabled = true;
+            nextArticleButton.disabled = false;
+
+            // define new article path path, we know what section number it is and article number has to be 1
+            newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-001.html';
+
+            // define next article after new article's path, we know this has to be 2 because the current article number is 1
+            nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-002.html';
+
+            // request ajax for new section article
+            requestNewSectionArticle();
+        };
+
+        // listen for tab clicks
         function addTabListeners() {
             Array.prototype.forEach.call(tabs, function(el, i) {
                 el.addEventListener('click', tabClick);
@@ -524,20 +570,85 @@
 
         var nextArticleButton = document.getElementById('portfolio-article-next');
         var previousArticleButton = document.getElementById('portfolio-article-previous');
+        var sectionContent = document.getElementById('portfolio-content');
         var newArticlePath;
         var nextArticlePath;
 
-        function checkPreviousArticleButton() {
-            if (previousArticleNumber <= 0) {
-                previousArticleButton.disabled = true;
-            } else if (previousArticleNumber >= 1) {
-                previousArticleButton.disabled = false;
-            } else {
-                return false;
-            }
+
+
+        // check current active section's height
+        var getSectionHeight = function() {
+            console.log(currentSection.height)
         };
 
-        function checkNextArticleButton() {
+
+        // ajax first article in for new section
+        var requestNewSectionArticle = function() {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', newArticlePath, true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    currentSection.innerHTML = request.response;
+
+                    // trigger transitions for article
+                    currentSection.children[0].classList.add('portfolio__article--active');
+
+                    // check to see if buttons button needs to be disabled
+                    checkNextArticleButton();
+
+                    return false;
+                } else {
+                    // console.log('fail');
+                    return false;
+                }
+
+                request.onerror = function() {
+                    console.log('connection error');
+                };
+            };
+            request.send();
+            console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+        };
+
+        // ajax in article for next button press
+        var requestNewArticle = function() {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', newArticlePath, true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+
+                    // we fill empty section
+                    currentSection.innerHTML = request.response;
+
+                    // wait half a second and add active class to article
+                    window.setTimeout(function() {
+                        currentSection.children[0].classList.add('portfolio__article--active');
+                    }, 500, function() {
+                        currentSection.children[0].classList.remove('portfolio__article--loading');
+                    });
+
+                    // check to see if buttons button needs to be disabled by seeing if another article exists after this
+                    checkNextArticleButton();
+                    return false;
+
+                } else {
+
+                    // console.log('fail');
+                    return false;
+                }
+
+                request.onerror = function() {
+                    console.log('connection error');
+                };
+            };
+            request.send();
+        };
+
+
+        // check that next article up exists by ajax calling, and determine button's status if failed
+        var checkNextArticleButton = function() {
             var nextRequest = new XMLHttpRequest();
 
             nextRequest.open('GET', nextArticlePath, true);
@@ -551,148 +662,122 @@
                     nextArticleButton.disabled = true;
                     return false;
                 }
-                nextRequest.onerror = function() {
-                    // console.log('connection error');
-                };
             }
             nextRequest.send();
         };
 
-        function requestNewSectionArticle() {
-            var request = new XMLHttpRequest();
-
-            request.open('GET', newArticlePath, true);
-            request.onload = function() {
-                if (request.status >= 200 && request.status < 400) {
-                    currentSection.innerHTML = request.response;
-                    currentSection.children[0].classList.remove('portfolio__article--loading');
-                    checkNextArticleButton();
-                    return false;
-                } else {
-                    // console.log('fail');
-                    return false;
-                }
-
-                request.onerror = function() {
-                    // console.log('connection error');
-                };
-            };
-            request.send();
-        };
-
-
-        function requestNewArticle() {
-            var request = new XMLHttpRequest();
-
-            request.open('GET', newArticlePath, true);
-            request.onload = function() {
-                if (request.status >= 200 && request.status < 400) {
-                    currentSection.innerHTML = request.response;
-                    window.setTimeout(function() {
-                        currentSection.children[0].classList.add('portfolio__article--active');
-
-                    }, 500, function() {
-                        currentSection.children[0].classList.remove('portfolio__article--loading');
-                    });
-                    checkNextArticleButton();
-                    return false;
-                } else {
-                    // console.log('fail');
-                    return false;
-                }
-
-                request.onerror = function() {
-                    // console.log('connection error');
-                };
-            };
-            request.send();
-        };
-
-        function getNewSection() {
-            currentArticleNumber == 1;
-            newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-001.html';
-            nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-002.html';
-            requestNewSectionArticle();
-        };
-
-        function getNextArticle() {
-            if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
-                currentArticleNumber++;
-                nextArticleNumber = currentArticleNumber + 1;
-                previousArticleNumber = currentArticleNumber - 1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
-                requestNewArticle();
-                checkPreviousArticleButton();
-                return false;
-            } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
-                currentArticleNumber++;
-                nextArticleNumber = currentArticleNumber + 1;
-                previousArticleNumber = currentArticleNumber - 1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
-                requestNewArticle();
-                checkPreviousArticleButton();
-                return false;
-            } else if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
-                currentArticleNumber++;
-                nextArticleNumber = currentArticleNumber + 1;
-                previousArticleNumber = currentArticleNumber - 1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
-                requestNewArticle();
-                checkPreviousArticleButton();
-                return false;
+        // check that previous article var and disables previous button if it's less than 1 meaning the current article is at least number 1
+        var checkPreviousArticleButton = function() {
+            if (previousArticleNumber < 1) {
+                previousArticleButton.disabled = true;
+            } else if (previousArticleNumber >= 1) {
+                previousArticleButton.disabled = false;
             }
         };
 
-        function getPreviousArticle() {
-            if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
-                currentArticleNumber--;
-                nextArticleNumber = currentArticleNumber + 1;
-                previousArticleNumber = currentArticleNumber - 1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
-                requestNewArticle();
-                checkPreviousArticleButton();
-                nextArticleButton.disabled = false;
-                return false;
-            } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
-                currentArticleNumber--;
-                nextArticleNumber = currentArticleNumber + 1;
-                previousArticleNumber = currentArticleNumber - 1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
-                requestNewArticle();
-                checkPreviousArticleButton();
-                nextArticleButton.disabled = false;
-                return false;
-            } else if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
-                currentArticleNumber--;
-                nextArticleNumber = currentArticleNumber + 1;
-                previousArticleNumber = currentArticleNumber - 1;
-                newArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/portfolio/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
-                requestNewArticle();
-                checkPreviousArticleButton();
-                nextArticleButton.disabled = false;
-                return false;
+        // combine all functions when previous and next article button is clicked
+        var getNextArticle = function() {
+
+            previousArticleNumber++;
+            currentArticleNumber++;
+            nextArticleNumber++;
+
+            // get path for article that will be ajaxed in, need zero padding ifs
+            function pathCreator() {
+                if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
+                    // console.log(currentArticleNumber);
+                    // 1-9
+                    newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
+                    // console.log(newArticlePath);
+                    return false;
+
+                } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
+                    // console.log(currentArticleNumber);
+                    // 10-99
+                    newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
+                    return false;
+
+                } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
+                    // console.log(currentArticleNumber);
+                    // 100-999
+                    newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
+                    return false;
+
+                } else {
+                    return false;
+                };
             }
+            pathCreator();
+
+            console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+
+            // after we have paths, we ask for article ajax
+            requestNewArticle();
+
+            // we know we can enable the previous article button because someone just clicked next
+            previousArticleButton.disabled = false;
+        }
+
+
+
+        // combine all functions when previous and previous article button is clicked
+        var getPreviousArticle = function() {
+
+            previousArticleNumber--;
+            currentArticleNumber--;
+            nextArticleNumber--;
+
+            function pathCreator() {
+                // get path for article that will be ajaxed in, need zero padding ifs
+                if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
+
+                    // 1-9
+                    newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
+
+                    return false;
+
+                } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
+
+                    // 10-99
+                    newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
+                    return false;
+
+                } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
+
+                    // 100-999
+                    newArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '../article/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
+                    return false;
+
+                } else {
+                    return false;
+                };
+            }
+            pathCreator();
+
+            // after we have paths, we ask for article ajax
+            requestNewArticle();
+
+            // check to see if we should disable previous button
+            checkPreviousArticleButton();
+
+            // we know we can enable next article button because someone just clicked previous
+            nextArticleButton.disabled = false;
+
+            console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
-        var nextArticleListener = function() {
-            getNextArticle();
-            // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
-        };
+        // add listeners
+        nextArticleButton.addEventListener('click', getNextArticle);
+        previousArticleButton.addEventListener('click', getPreviousArticle);
 
-        var previousArticleListener = function() {
-            getPreviousArticle();
-            // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
-        };
+        console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
-        // console.log(currentSectionNumber + ' ' + previousArticleNumber + ' ' + currentArticleNumber + ' ' + nextArticleNumber + ' ' + newArticlePath + ' ' + nextArticlePath);
-        nextArticleButton.addEventListener('click', nextArticleListener);
-        previousArticleButton.addEventListener('click', previousArticleListener);
 
     }, false);
 })();
