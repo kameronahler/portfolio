@@ -45,7 +45,7 @@
         top: 0;
         opacity: .66;
         z-index: -2;
-        background: transparent url('/portfolio/img/site-header-bg-grid.svg');
+        background: transparent url('../img/site-header-bg-grid.svg');
         background-size: 100px 100px;
     }
 
@@ -72,17 +72,14 @@
         li {
             display: block;
             margin: $unit;
+            margin: 0 $unit/2 $unit/2 $unit/2;
 
-
-            @include bp(xs) {
-                margin: 0 2 * $unit 0 0;
+            @include bp(sm) {
+                margin: 0 $unit $unit $unit;
             }
 
-            // fix margin on last of type
-            &:last-of-type {
-                @include bp(xs) {
-                    margin-right: 0;
-                }
+            @include bp(md) {
+                margin: 0 $unit 0 0
             }
         }
 
