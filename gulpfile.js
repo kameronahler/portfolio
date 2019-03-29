@@ -12,9 +12,8 @@ var gulp = require('gulp'),
 
 gulp.task('sass', function() {
     var plugins = [
-        postcssautoprefixer({
-                browsers: ['last 2 versions', '> .5% in US']
-            }),
+        postcssautoprefixer({browsers: ['last 2 versions', '> .5% in US']
+}),
         postcsspxtorem({
             rootValue:16,
             unitPrecision:5,
