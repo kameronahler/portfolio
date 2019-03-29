@@ -453,7 +453,7 @@
             window.clearTimeout(isScrolling);
 
             // fire function when user stops for 500ms
-            isScrolling = setTimeout(doneScrolling, 500);
+            isScrolling = setTimeout(doneScrolling, 750);
         }, false);
     }, false);
 })();
@@ -609,7 +609,7 @@
                 };
             };
             request.send();
-            console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+            // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // ajax in article for next button press
@@ -749,7 +749,7 @@
             }
             pathCreator();
 
-            console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+            // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
             // after we have paths, we ask for article ajax
             requestNextArticle();
@@ -806,14 +806,14 @@
             // we know we can enable next article button because someone just clicked previous
             nextArticleButton.disabled = false;
 
-            console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+            // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // add listeners
         nextArticleButton.addEventListener('click', getNextArticle);
         previousArticleButton.addEventListener('click', getPreviousArticle);
 
-        console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+        // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
 
     }, false);

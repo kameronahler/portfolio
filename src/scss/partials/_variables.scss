@@ -3,16 +3,15 @@ $unit: 16px;
 
 // color
 $color-grayscale: rgba(black, .8);
-$color-grayscale--light: rgba(black, .65);
-$color-grayscale--lighter: rgba(black, .5);
+$color-grayscale--light: rgba(black, .67);
+$color-grayscale--lighter: rgba(black, .55);
 $color-primary: #FFE800;
-$color-secondary-blue: #005DA0;
+$color-secondary-blue: #005694;
 $color-secondary-blue--light: lighten($color-secondary-blue, 10%);
-$color-secondary-purple: #6000E6;
+$color-secondary-purple: #5C00DB;
 $color-background-gray: #FCFCFC;
 $color-background-gray--dark: #F8F8F8;
 $color-background-gray--darker: #F5F5F5;
-
 // breakpoints
 $bp-375: 23.4375em;
 $bp-768: 48em;

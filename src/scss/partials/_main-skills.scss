@@ -48,7 +48,7 @@
         }
 
         header {
-            h3 {
+            h4 {
                 overflow-x: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
@@ -96,11 +96,12 @@
             flex: initial;
             margin-bottom: 0;
             margin-right: unset;
+            padding-top: 1.5 * $unit;
 
             @include bp(sm) {
                 display: flex;
                 flex-direction: column;
-                padding: 1.5*$unit 3*$unit $unit
+                padding: 2*$unit 2*$unit $unit
             }
 
             @include bp(md) {
@@ -108,7 +109,7 @@
             }
 
             @include bp(lg) {
-                padding: 1.5*$unit 3*$unit 2*$unit
+                padding: 1.5*$unit 2*$unit 2*$unit
             }
 
             @include bp(xl) {
