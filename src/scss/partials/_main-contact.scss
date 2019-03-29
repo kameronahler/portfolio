@@ -43,7 +43,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        opacity: .66;
+        opacity: .4;
         z-index: -2;
         background: transparent url('../img/site-header-bg-grid.svg');
         background-size: 100px 100px;
@@ -54,10 +54,6 @@
     &__intro {
         p {
             text-align: center;
-
-            @include bp(sm) {
-                text-align: left;
-            }
         }
     }
 
@@ -207,6 +203,12 @@
             h2 {
                 @include bp(md) {
                     margin-bottom: 2 * $unit
+                }
+            }
+
+            p {
+                @include bp(md) {
+                    text-align: left;
                 }
             }
         }

@@ -13,6 +13,10 @@
     &__card {
         margin-bottom: 2 * $unit;
 
+        @include bp(sm) {
+            padding: 2 * $unit;
+        }
+
         @include bp(md) {
             width: calc((100% - (4 * #{$unit})) / 3);
             padding: 0;
@@ -79,7 +83,6 @@
     }
 
 }
-
 // css grid supported cards - change structure for even odd
 @supports(display:grid) {
     .designer-type {

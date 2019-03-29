@@ -6,6 +6,7 @@ body {
     font-family: $font-family-body, $font-family-fallback;
     font-size: 14px;
     line-height: 1.75;
+    color: $color-grayscale;
 
     @include bp(lg) {
         font-size: 18px;
@@ -15,10 +16,14 @@ body {
 
 p {
     margin-top: 0;
-    margin-bottom: 2 * $unit;
+    margin-bottom: 1 * $unit;
     overflow: hidden;
     text-overflow: ellipsis;
     color: $color-grayscale--light;
+
+    @include bp(md) {
+        margin-bottom: 2 * $unit;
+    }
 }
 
 .inline-link {
@@ -79,6 +84,21 @@ label {
 
     @include bp(lg) {
         font-size: 18px;
+    }
+}
+
+ul {
+    color: $color-grayscale--light;
+    margin-left: 0;
+    padding-left: 0;
+
+    @include bp(md) {
+        margin-bottom: $unit * 2
+    }
+
+    li {
+        margin-left: $unit * 2;
+        padding-left: 0;
     }
 }
 

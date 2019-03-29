@@ -234,6 +234,10 @@
     list-style: none;
     margin-top: unset;
     margin-bottom: unset;
+
+    li {
+        margin-left: 0;
+    }
 }
 
 // inputs

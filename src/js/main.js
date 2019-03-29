@@ -142,6 +142,7 @@
 
 
 // contact form
+// https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
 (function() {
 
     // add broader variables that are reused
@@ -284,7 +285,7 @@
     };
 
     function disableAllButtons(form) {
-        icon.setAttribute('xlink:href', '../img/icons.svg#icon-form-spinner');
+        icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-form-spinner');
         button.querySelector('span').innerHTML = "Sending";
         button.disabled = true;
         form.classList.add('js-submitting');
