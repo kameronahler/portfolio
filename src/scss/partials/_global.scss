@@ -90,7 +90,7 @@
     transition: $transition-default box-shadow;
 
     span {
-        opacity: .9;
+        opacity: .92;
         transition: $transition-default opacity;
     }
 
@@ -142,7 +142,7 @@
             margin-right: $unit;
             transform: translateY(2px);
             transition: $transition-default opacity;
-            opacity: .9;
+            opacity: .92;
         }
 
         &:hover {
@@ -174,7 +174,7 @@
             height: 50%;
             fill: #fff;
             margin: auto;
-            opacity: .9;
+            opacity: .92;
             transition: $transition-default opacity;
         }
 
@@ -218,7 +218,7 @@
     &--active {
         box-shadow: $box-shadow-tab--active;
         background: $gradient-button;
-        opacity: .9;
+        opacity: .92;
         transition: $transition-default opacity;
 
         &:hover {

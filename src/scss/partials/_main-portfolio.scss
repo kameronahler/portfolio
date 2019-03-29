@@ -82,17 +82,35 @@
                 width: 3 * $unit;
                 height: 3 * $unit;
                 z-index: 1;
+                box-shadow: none;
+                opacity: .92;
+                background: $gradient-button;
+                box-shadow: $box-shadow-button--hover;
+                transition: $transition-default opacity;
 
                 svg {
-                    fill: $color-secondary-blue;
+                    fill: #fff;
+                    opacity: 1;
                 }
 
-                &::before {
-                    content: unset
+                &:before {
+                    content: initial
+                }
+
+                &:hover {
+                    @include bp(md) {
+                        opacity: 1;
+                    }
                 }
 
                 &:disabled {
                     opacity: .2;
+
+                    &:hover {
+                        @include bp(md) {
+                            opacity: .2;
+                        }
+                    }
                 }
             }
         }
@@ -127,21 +145,16 @@
             }
         }
 
-        // card description
+        // card content area wrapper
         &-content {
             padding: 0 $unit $unit;
 
             @include bp(sm) {
                 padding: 0 2 * $unit 2 * $unit;
             }
-
-            p {
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
-            }
         }
 
+        // state
         &--next {
             transform: translateX(#{$unit});
         }
@@ -156,7 +169,6 @@
         }
     }
 }
-
 
 // grid support for lg bp
 
