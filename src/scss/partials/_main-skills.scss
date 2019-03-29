@@ -59,14 +59,6 @@
             width: 100%;
             height: auto;
         }
-
-        g.illustration-placeholder {
-            display: block;
-        }
-
-        g.illustration-animation {
-            display: none;
-        }
     }
 
     // css grid supported tiles    
@@ -143,35 +135,20 @@
     }
 }
 
+// (-ms-ime-align:auto) (-webkit-text-stroke:initial) or (-ms-ime-align:auto)
+// ((transform-style: preserve-3d) and (not ((-ms-ime-align:auto) or (-webkit-text-stroke:initial) or (-ms-ime-align:auto))))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// hover animations for skill tiles
-@supports(transform:translate3d(0, 0, 0)) {
+// hover animations for skill tiles, does not work for ie11 or edge
+@supports ((transform-style: preserve-3d) and (not(-ms-ime-align:auto)) or (not((-webkit-text-stroke:initial) or (-ms-ime-align:auto)))) {
     @include bp(md) {
         .skills__tile {
             &:hover {
                 g.illustration-placeholder {
                     display: none;
                 }
-
-                g.illustration-animation {
-                    display: block;
-                }
             }
-
-
         }
 
         .illustration-prototyping {
