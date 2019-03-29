@@ -138,10 +138,10 @@
 // (-ms-ime-align:auto) (-webkit-text-stroke:initial) or (-ms-ime-align:auto)
 // ((transform-style: preserve-3d) and (not ((-ms-ime-align:auto) or (-webkit-text-stroke:initial) or (-ms-ime-align:auto))))
 
-
+// @supports ((transform-style: preserve-3d) and (not(-ms-ime-align:auto)) or (not((-webkit-text-stroke:initial) or (-ms-ime-align:auto))))
 
 // hover animations for skill tiles, does not work for ie11 or edge
-@supports ((transform-style: preserve-3d) and (not(-ms-ime-align:auto)) or (not((-webkit-text-stroke:initial) or (-ms-ime-align:auto)))) {
+@supports (transform:translate3d(0, 0, 0)) {
     @include bp(md) {
         .skills__tile {
             &:hover {
