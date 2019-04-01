@@ -54,6 +54,20 @@
     &__intro {
         p {
             text-align: center;
+
+            @include bp(md) {
+                margin-bottom: $unit;
+            }
+
+            &:first-of-type {
+                @include bp(md) {
+                    margin-top: 2*$unit;
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: 2*$unit;
+            }
         }
     }
 
