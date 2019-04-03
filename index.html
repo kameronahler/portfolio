@@ -820,13 +820,12 @@
                         <p>Some of my past work can be found below. Due to NDAs, I might have left some things out here and there. <a class="inline-link" href="#contact">Contact me</a> if you’d like to know more about anything.</p>
                     </section>
                     <section id="portfolio-tablist" role="tablist" class="portfolio__tablist">
-                        <button id="portfolio-tab-1" role="tab" aria-control="portfolio-tablist" aria-selected="true" data-section="portfolio-section-1" class="portfolio__tablist-tab tab button tab--active"><span>UX</span></button>
-                        <button id="portfolio-tab-2" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-2" class="portfolio__tablist-tab tab button"><span>UI</span></button>
-                        <button id="portfolio-tab-3" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-3" class="portfolio__tablist-tab tab button"><span>Research</span></button>
-                        <button id="portfolio-tab-4" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-4" class="portfolio__tablist-tab tab button"><span>Design Systems</span></button>
-                        <button id="portfolio-tab-5" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-5" class="portfolio__tablist-tab tab button"><span>Heuristics</span></button>
-                        <button id="portfolio-tab-6" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-6" class="portfolio__tablist-tab tab button"><span>Agile Methodology</span></button>
-                        <button id="portfolio-tab-7" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-7" class="portfolio__tablist-tab tab button"><span>Visual</span></button>
+                        <button id="portfolio-tab-ux" role="tab" aria-control="portfolio-tablist" aria-selected="true" data-section="portfolio-section-ux" class="portfolio__tablist-tab tab button tab--active"><span>UX</span></button>
+                        <button id="portfolio-tab-ui" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-ui" class="portfolio__tablist-tab tab button"><span>UI</span></button>
+                        <button id="portfolio-tab-research" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-research" class="portfolio__tablist-tab tab button"><span>Research</span></button>
+                        <button id="portfolio-tab-design-systems" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-design-systems" class="portfolio__tablist-tab tab button"><span>Design Systems</span></button>
+                        <button id="portfolio-tab-management" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-management" class="portfolio__tablist-tab tab button"><span>Management</span></button>
+                        <button id="portfolio-tab-visual" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-visual" class="portfolio__tablist-tab tab button"><span>Visual</span></button>
                     </section>
                     <section id="portfolio-sections" class="portfolio__sections">
                         <section class="portfolio__article-nav">
@@ -844,7 +843,7 @@
                             </button>
                         </section>
                         <section id="portfolio-content">
-                            <section data-section="1" id="portfolio-section-1" class="portfolio__section portfolio__section--active" aria-labelledby="portfolio-tab-1">
+                            <section data-section="ux" id="portfolio-section-ux" class="portfolio__section portfolio__section--active" aria-labelledby="portfolio-tab-ux">
                                 <article data-article="1" class="portfolio__article portfolio__article--active card">
                                     <header class="portfolio__article-header">
                                         <h3>Section 1 Article 1</h3>
@@ -853,21 +852,20 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
                                         <figure class="cover">
                                             <div>
-                                                <img alt="" data-src="img/article/01-002-01.jpg" />
-                                                <img alt="" data-src="img/article/01-002-02.jpg" />
-                                                <img alt="" data-src="img/article/01-002-03.jpg" />
+                                                <img alt="" data-src="img/article/ux-002-01.jpg" />
+                                                <img alt="" data-src="img/article/ux-002-02.jpg" />
+                                                <img alt="" data-src="img/article/ux-002-03.jpg" />
                                             </div>
                                             <figcaption>Lorem ipsum dolor sit amet</figcaption>
                                         </figure>
                                     </section>
                                 </article>
                             </section>
-                            <section data-section="2" id="portfolio-section-2" class="portfolio__section" aria-labelledby="portfolio-tab-2"></section>
-                            <section data-section="3" id="portfolio-section-3" class="portfolio__section" aria-labelledby="portfolio-tab-3"></section>
-                            <section data-section="4" id="portfolio-section-4" class="portfolio__section" aria-labelledby="portfolio-tab-4"></section>
-                            <section data-section="5" id="portfolio-section-5" class="portfolio__section" aria-labelledby="portfolio-tab-5"></section>
-                            <section data-section="6" id="portfolio-section-6" class="portfolio__section" aria-labelledby="portfolio-tab-6"></section>
-                            <section data-section="7" id="portfolio-section-7" class="portfolio__section" aria-labelledby="portfolio-tab-7"></section>
+                            <section data-section="ui" id="portfolio-section-ui" class="portfolio__section" aria-labelledby="portfolio-tab-ui"></section>
+                            <section data-section="research" id="portfolio-section-research" class="portfolio__section" aria-labelledby="portfolio-tab-research"></section>
+                            <section data-section="design-systems" id="portfolio-section-design-systems" class="portfolio__section" aria-labelledby="portfolio-tab-design-systems"></section>
+                            <section data-section="management" id="portfolio-section-management" class="portfolio__section" aria-labelledby="portfolio-tab-management"></section>
+                            <section data-section="visual" id="portfolio-section-visual" class="portfolio__section" aria-labelledby="portfolio-tab-visual"></section>
                         </section>
                     </section>
                 </section>
@@ -883,11 +881,11 @@
                     </header>
                     <section class="about__content card">
                         <div aria-hidden="true" class="about__content-hero card-hero">
-                            <img alt="Kameron Ahler standing in front of a waterfall looking unreasonably excited" src="img/about-me-01.jpg" srcset="
-                                    img/about-me-01-600.jpg 600w,
-                                    img/about-me-01-900.jpg 900w,
-                                    img/about-me-01-1200.jpg 1200w,
-                                    img/about-me-01-1600.jpg 1600w" sizes=" (max-width:61.94em) 100vw, 40vw" />
+                            <img alt="Kameron Ahler standing in front of a waterfall looking unreasonably excited" src="img/about-me.jpg" srcset="
+                                    img/about-me@600.jpg 600w,
+                                    img/about-me@900.jpg 900w,
+                                    img/about-me@1200.jpg 1200w,
+                                    img/about-me@1600.jpg 1600w" sizes=" (max-width:61.94em) 100vw, 40vw" />
                         </div>
                         <div class="about__content-wrapper">
                             <header class="about__content-header">

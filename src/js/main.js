@@ -521,8 +521,8 @@
         var tabs = document.querySelectorAll('.portfolio__tablist-tab');
         var sections = document.querySelectorAll('.portfolio__section');
 
-        var currentSection = document.getElementById('portfolio-section-1');
-        var currentSectionNumber = parseInt(currentSection.getAttribute('data-section'));
+        var currentSection = document.getElementById('portfolio-section-ux');
+        var currentSectionData = currentSection.getAttribute('data-section');
 
         var currentArticleNumber = parseInt(currentSection.children[0].getAttribute('data-article'));
         var nextArticleNumber = currentArticleNumber + 1;
@@ -561,8 +561,8 @@
                         el.classList.add('portfolio__section--active');
 
                         // define new section number for ajax pathes
-                        currentSectionNumber = parseInt(el.getAttribute('data-section'));
-                        // console.log('current section is ' + currentSectionNumber + ' and current article is ' + currentArticleNumber);
+                        currentSectionData = el.getAttribute('data-section');
+                        // console.log('current section is ' + currentSectionData + ' and current article is ' + currentArticleNumber);
 
                         // fire new section function
                         getNewSection();
@@ -599,10 +599,10 @@
             nextArticleButton.disabled = false;
 
             // define new article path path, we know what section number it is and article number has to be 1
-            newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-001.html';
+            newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-001.html';
 
             // define next article after new article's path, we know this has to be 2 because the current article number is 1
-            nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-002.html';
+            nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-002.html';
 
             // request ajax for new section article
             requestNewSectionArticle();
@@ -663,7 +663,7 @@
                 };
             };
             request.send();
-            // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // ajax in article for next button press
@@ -812,23 +812,23 @@
                 if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
                     // console.log(currentArticleNumber);
                     // 1-9
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (nextArticleNumber) + '.html';
                     // console.log(newArticlePath);
                     return false;
 
                 } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
                     // console.log(currentArticleNumber);
                     // 10-99
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
                     // console.log(currentArticleNumber);
                     // 100-999
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else {
@@ -837,7 +837,7 @@
             }
             pathCreator();
 
-            // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
             // after we have paths, we ask for article ajax
             requestNextArticle();
@@ -860,23 +860,23 @@
                 if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
 
                     // 1-9
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-00' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-00' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (nextArticleNumber) + '.html';
 
                     return false;
 
                 } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
 
                     // 10-99
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-0' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-0' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
 
                     // 100-999
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionNumber + '-article-' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else {
@@ -894,14 +894,14 @@
             // we know we can enable next article button because someone just clicked previous
             nextArticleButton.disabled = false;
 
-            // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // add listeners
         nextArticleButton.addEventListener('click', getNextArticle);
         previousArticleButton.addEventListener('click', getPreviousArticle);
 
-        // console.log('Section: ' + currentSectionNumber + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+        // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
 
     }, false);
