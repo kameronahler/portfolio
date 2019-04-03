@@ -130,13 +130,13 @@ gulp.task('responsiveImages', function(done) {
                 quality: 50,
             }]
         }))
-        .pipe(gulp.dest('dist/portfolio/dist/img/article'));
+        .pipe(gulp.dest('portfolio/dist/img/article'));
     done();
 });
 
 //image optim
 gulp.task('imageOptim', function(done) {
-    return gulp.src('dist/portfolio/dist/img/article/**/*')
+    return gulp.src('portfolio/dist/img/article/**/*')
         .pipe(imageOptim.optimize())
         .pipe(gulp.dest('dist/img/article'));
     done();
