@@ -13,11 +13,11 @@
     // tiles (images) - non-grid
     &__tile {
         width: calc(50% - #{$unit});
+        height: 100%;
         border-radius: $border-radius-card;
         background: #fff;
         box-shadow: $box-shadow-card;
         margin-bottom: 2 * $unit;
-        height: 50%;
         display: block;
         flex: 0 1 auto;
         text-align: center;
@@ -44,7 +44,9 @@
         }
 
         &:nth-last-of-type(-n+4) {
-            margin-bottom: 0;
+            @include bp(sm) {
+                margin-bottom: 0;
+            }
         }
 
         header {
@@ -56,8 +58,9 @@
         }
 
         svg {
+            display: block;
             width: 100%;
-            height: auto;
+            height: 80%
         }
     }
 
@@ -87,7 +90,7 @@
             height: auto;
             flex: initial;
             margin-bottom: 0;
-            margin-right: unset;
+            margin-right: 0;
             padding-top: 1.5 * $unit;
 
             @include bp(sm) {
@@ -123,6 +126,8 @@
             }
 
             svg {
+                height: auto;
+
                 @include bp(md) {
                     order: 1;
                 }
@@ -135,12 +140,7 @@
     }
 }
 
-// (-ms-ime-align:auto) (-webkit-text-stroke:initial) or (-ms-ime-align:auto)
-// ((transform-style: preserve-3d) and (not ((-ms-ime-align:auto) or (-webkit-text-stroke:initial) or (-ms-ime-align:auto))))
-
-// @supports ((transform-style: preserve-3d) and (not(-ms-ime-align:auto)) or (not((-webkit-text-stroke:initial) or (-ms-ime-align:auto))))
-
-// hover animations for skill tiles, does not work for ie11 or edge
+// hover animations for skill tiles
 @supports (transform:translate3d(0, 0, 0)) {
     @include bp(md) {
         .skills__tile {

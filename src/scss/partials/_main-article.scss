@@ -20,7 +20,7 @@
             }
 
             @include bp(sm) {
-                max-height: 400px;
+                width: 50%;
                 box-shadow: 0 2px 12px -4px rgba(black, .1)
             }
         }
@@ -31,6 +31,16 @@
 
             @include bp(sm) {
                 margin-bottom: $unit*2;
+            }
+        }
+
+        &.max {
+            img {
+                @include bp(sm) {
+                    height: auto;
+                    max-height: none;
+                    width: 100%;
+                }
             }
         }
     }
@@ -54,6 +64,8 @@
             img {
                 @include bp(sm) {
                     margin: 0 auto;
+                    width: auto;
+                    max-height: 400px;
                 }
             }
 
@@ -69,22 +81,10 @@
                 img {
                     @supports(object-fit: cover) {
                         @include bp(sm) {
-                            max-height: unset;
+                            max-height: none;
                             height: 100%;
                             width: 100%;
                             object-fit: cover
-                        }
-                    }
-                }
-            }
-
-            &.max {
-                img {
-                    @supports(object-fit: cover) {
-                        @include bp(sm) {
-                            height: auto;
-                            max-height: unset;
-                            width: 100%;
                         }
                     }
                 }

@@ -147,7 +147,7 @@
                 }
 
                 @include bp(md) {
-                    width: unset;
+                    width: auto;
                 }
 
                 @include bp(lg) {

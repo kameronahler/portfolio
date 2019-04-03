@@ -197,12 +197,14 @@
 .tab {
 
     &::before {
-        content: unset;
+        content: none;
     }
 
     &:not(.tab--active) {
         box-shadow: $box-shadow-tab--inactive;
         background: $color-background-gray--darker;
+
+        &::before {}
 
         span {
             color: $color-grayscale;
@@ -232,8 +234,8 @@
 .plain-list {
     padding-left: 0;
     list-style: none;
-    margin-top: unset;
-    margin-bottom: unset;
+    margin-top: 0;
+    margin-bottom: 0;
 
     li {
         margin-left: 0;

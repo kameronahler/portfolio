@@ -1,11 +1,10 @@
 // site header
 .site-header {
     position: relative;
+    height: 0;
     min-height: 24 * $unit;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
     padding: 0 $unit;
     z-index: 0;
     background: transparent url('../img/site-header-bg-grid.svg');
@@ -47,9 +46,11 @@
         background: transparent url('../img/site-header-bg.svg') no-repeat 50% 25%;
         background-size: 400px 800px;
         z-index: -3;
+        opacity: .9;
 
         @supports(filter: grayscale(1)) {
-            filter: saturate(.5)
+            filter: grayscale(1);
+            opacity: 1;
         }
 
         @include bp(sm) {

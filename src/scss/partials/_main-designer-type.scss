@@ -27,7 +27,7 @@
             margin-bottom: 0;
 
             @include bp(md) {
-                margin-bottom: unset;
+                margin-bottom: 0;
             }
         }
 
@@ -113,9 +113,9 @@
 
             @include bp(md) {
                 display: block;
-                width: unset;
-                grid-gap: unset;
-                grid-template-columns: unset;
+                width: auto;
+                grid-gap: 0;
+                grid-template-columns: none;
                 border-radius: $border-radius-card;
             }
 
@@ -139,7 +139,7 @@
 
                     @include bp(md) {
                         height: 12 * $unit;
-                        grid-row: unset;
+                        grid-row: none;
                         border-radius: $border-radius-card $border-radius-card 0 0;
                     }
                 }
@@ -161,7 +161,7 @@
                     }
 
                     @include bp(md) {
-                        grid-column: unset;
+                        grid-column: none;
                         padding: 0 2 * $unit 2 * $unit;
                     }
                 }
@@ -182,7 +182,7 @@
 
                 @include bp(md) {
                     height: 12 * $unit;
-                    grid-row: unset;
+                    grid-row: none;
                     border-radius: $border-radius-card $border-radius-card 0 0;
                 }
 
@@ -211,7 +211,7 @@
                 }
 
                 @include bp(md) {
-                    grid-row: unset;
+                    grid-row: none;
                     padding: 0 2 * $unit;
                 }
 
@@ -234,7 +234,7 @@
                 }
 
                 @include bp(md) {
-                    grid-column: unset;
+                    grid-column: none;
                     padding: 0 2 * $unit 2 * $unit;
                 }
             }
