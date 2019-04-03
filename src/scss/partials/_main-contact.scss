@@ -15,14 +15,6 @@
         padding: 8 * $unit $unit * 4;
     }
 
-    h2 {
-        text-align: center;
-
-        @include bp(md) {
-            text-align: left;
-        }
-    }
-
     // section-level background gradient
     &::after {
         content: "";
@@ -50,13 +42,44 @@
     }
 
 
+    .wrapper {
+        @include bp(lg) {
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap
+        }
+    }
+
+    &__header {
+        @include bp(lg) {
+            flex-basis: 100%
+        }
+
+        h2 {
+            text-align: center;
+
+            @include bp(md) {
+                text-align: left;
+            }
+        }
+    }
+
+
     // intro
     &__intro {
+        @include bp(lg) {
+            flex-basis: 50%
+        }
+
         p {
             text-align: center;
 
             @include bp(md) {
                 margin-bottom: $unit;
+            }
+
+            @include bp(lg) {
+                text-align: left;
             }
 
             &:first-of-type {
@@ -78,11 +101,15 @@
         justify-content: center;
         margin-bottom: 2 * $unit;
 
+        @include bp(lg) {
+            justify-content: flex-start
+        }
+
 
         li {
             display: block;
             margin: $unit;
-            margin: 0 $unit/2 $unit/2 $unit/2;
+            margin: 0 $unit/4 $unit/4 $unit/4;
 
             @include bp(sm) {
                 margin: 0 $unit $unit $unit;
@@ -100,12 +127,23 @@
     }
 
     // contact form
+    &__forms {
+
+        @include bp(lg) {
+            flex-basis: 50%
+        }
+    }
+
     &__form {
 
         // button area
         &-section-wrapper--submit {
             margin-top: $unit;
             text-align: center;
+
+            @include bp(lg) {
+                text-align: right
+            }
 
             .button {
                 width: 100%;
@@ -192,6 +230,7 @@
                 display: grid;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 grid-gap: 0 2 * $unit;
+                margin: auto;
             }
         }
 
@@ -248,7 +287,7 @@
 
                 .button {
                     @include bp(md) {
-                        min-width: unset;
+                        min-width: none;
                     }
                 }
             }

@@ -122,7 +122,9 @@
         return svg;
     }
     return svg4everybody;
+});
 
+(function() {
     svg4everybody({
         fallback: function(src, use) {
             // src: current xlink:href String 
@@ -132,7 +134,7 @@
             return 'fallback.png'; // ok, always return fallback.png
         }
     });
-});
+})();
 
 
 
@@ -293,7 +295,7 @@
                     form.classList.add('js-submitted'); // add finished state class
                     icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-check'); // change icon on button back
                     button.querySelector('span').innerHTML = "Sent"; // change button text
-                }, 4000)
+                }, 2000)
                 // var formElements = form.querySelector(".contact__form-elements")
                 // if (formElements) {
                 //     formElements.style.display = "none"; // hide form
@@ -467,7 +469,7 @@
             for (var i = 0; i < scrollAnchors.length; i++) {
 
                 // if user scroll loop count is not last loop, and both window position is above current sections's distance to top, but less than the next section's distance to top 
-                if ((i < scrollAnchors.length - 1) && ((window.scrollY >= scrollAnchors[i].offsetTop - 216) && (window.scrollY < scrollAnchors[i + 1].offsetTop - 216))) {
+                if ((i < scrollAnchors.length - 1) && ((window.pageYOffset >= scrollAnchors[i].offsetTop - 216) && (window.pageYOffset < scrollAnchors[i + 1].offsetTop - 216))) {
                     // remove all js-active states in nav and content sections
                     Array.prototype.forEach.call(navLinks, function(el, i) {
                         el.classList.remove('site-nav__link--current');
