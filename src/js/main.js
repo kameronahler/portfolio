@@ -1,4 +1,4 @@
-// svg4everybody
+// svg4everybody polyfill
 ! function(root, factory) {
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
         define([], function() {
@@ -133,6 +133,56 @@
         }
     });
 });
+
+
+
+
+
+
+
+
+
+// add srcsets to article images
+(function() {
+    var srcSetSizes;
+
+    var srcSet = function() {
+        var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
+
+        Array.prototype.forEach.call(figures, function(el, i) {
+            var imgs = el.querySelectorAll('img');
+            // console.log(imgs);
+
+            Array.prototype.forEach.call(imgs, function(el, i) {
+                var srcPath = el.getAttribute('data-src');
+                var srcSetValue =
+                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
+                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
+                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
+                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
+                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
+
+                if (imgs.length == 1) {
+                    srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
+                } else if (imgs.length == 2) {
+                    srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
+                } else {
+                    srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
+                }
+
+                el.setAttribute('srcset', srcSetValue);
+                el.setAttribute('sizes', srcSetSizes);
+                el.setAttribute('src', el.getAttribute('data-src'));
+            })
+        })
+    }
+    window.addEventListener("DOMContentLoaded", srcSet())
+})();
+
+
+
+
+
 
 
 
@@ -591,12 +641,14 @@
             request.onload = function() {
                 if (request.status >= 200 && request.status < 400) {
                     currentSection.innerHTML = request.response;
+                    srcSet();
 
                     // trigger transitions for article
                     currentSection.children[0].classList.add('portfolio__article--active');
 
                     // check to see if buttons button needs to be disabled
                     checkNextArticleButton();
+
 
                     return false;
                 } else {
@@ -622,6 +674,7 @@
 
                     // we fill empty section
                     currentSection.innerHTML = request.response;
+                    srcSet();
                     currentSection.children[0].classList.add('portfolio__article--next');
 
                     // wait half a second and add active class to article
@@ -657,6 +710,7 @@
 
                     // we fill empty section
                     currentSection.innerHTML = request.response;
+                    srcSet();
                     currentSection.children[0].classList.add('portfolio__article--previous');
 
                     // wait half a second and add active class to article
@@ -710,6 +764,38 @@
             } else if (previousArticleNumber >= 1) {
                 previousArticleButton.disabled = false;
             }
+        };
+
+        var srcSet = function() {
+            var srcSetSizes;
+            var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
+
+            Array.prototype.forEach.call(figures, function(el, i) {
+                var imgs = el.querySelectorAll('img');
+                // console.log(imgs);
+
+                Array.prototype.forEach.call(imgs, function(el, i) {
+                    var srcPath = el.getAttribute('data-src');
+                    var srcSetValue =
+                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
+                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
+                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
+                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
+                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
+
+                    if (imgs.length == 1) {
+                        srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
+                    } else if (imgs.length == 2) {
+                        srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
+                    } else {
+                        srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
+                    }
+
+                    el.setAttribute('srcset', srcSetValue);
+                    el.setAttribute('sizes', srcSetSizes);
+                    el.setAttribute('src', el.getAttribute('data-src'));
+                })
+            })
         };
 
         // combine all functions when previous and next article button is clicked

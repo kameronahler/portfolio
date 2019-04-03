@@ -40,7 +40,8 @@
 
             @include bp(md) {
                 margin-bottom: $unit;
-                padding-top: $unit
+                padding-top: $unit;
+                height: 12 * $unit;
             }
 
             @include bp(lg) {
@@ -53,6 +54,7 @@
                 fill: none;
                 height: 100%;
                 width: auto;
+                max-width: 100%;
                 margin: auto;
             }
         }
@@ -136,7 +138,7 @@
                     }
 
                     @include bp(md) {
-                        height: 9 * $unit;
+                        height: 12 * $unit;
                         grid-row: unset;
                         border-radius: $border-radius-card $border-radius-card 0 0;
                     }
@@ -179,7 +181,7 @@
                 }
 
                 @include bp(md) {
-                    height: 9 * $unit;
+                    height: 12 * $unit;
                     grid-row: unset;
                     border-radius: $border-radius-card $border-radius-card 0 0;
                 }
