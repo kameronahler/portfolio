@@ -44,7 +44,7 @@ gulp.task('sass', function() {
     return gulp.src('src/scss/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(plugins))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('dist/css'))
         .pipe(browserSync.reload({
             stream: true
         }));
@@ -54,7 +54,7 @@ gulp.task('js', function() {
     return gulp.src(['src/js/**/*.js'])
         .pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.reload({
             stream: true
         }));
@@ -85,60 +85,60 @@ gulp.task('responsiveImages', function(done) {
         .pipe(responsiveImages({
             '*.jpg': [{
                 width: 400,
-                quality: 100,
+                quality: 90,
                 suffix: '@400'
             }, {
                 width: 800,
-                quality: 80,
+                quality: 70,
                 suffix: '@800'
             }, {
                 width: 1200,
-                quality: 70,
+                quality: 60,
                 suffix: '@1200'
             }, {
                 width: 1600,
-                quality: 60,
+                quality: 50,
                 suffix: '@1600'
             }, {
                 width: 2000,
-                quality: 50,
+                quality: 40,
                 suffix: '@2000'
             }, {
-                quality: 90,
+                quality: 50,
             }],
             '*.png': [{
                 width: 400,
-                quality: 100,
+                quality: 90,
                 suffix: '@400'
             }, {
                 width: 800,
-                quality: 80,
+                quality: 70,
                 suffix: '@800'
             }, {
                 width: 1200,
-                quality: 70,
+                quality: 60,
                 suffix: '@1200'
             }, {
                 width: 1600,
-                quality: 60,
+                quality: 50,
                 suffix: '@1600'
             }, {
                 width: 2000,
-                quality: 50,
+                quality: 40,
                 suffix: '@2000'
             }, {
-                quality: 90,
+                quality: 50,
             }]
         }))
-        .pipe(gulp.dest('portfolio/img/article'));
+        .pipe(gulp.dest('dist/portfolio/dist/img/article'));
     done();
 });
 
 //image optim
 gulp.task('imageOptim', function(done) {
-    return gulp.src('portfolio/img/article/**/*')
+    return gulp.src('dist/portfolio/dist/img/article/**/*')
         .pipe(imageOptim.optimize())
-        .pipe(gulp.dest('img/article'));
+        .pipe(gulp.dest('dist/img/article'));
     done();
 });
 

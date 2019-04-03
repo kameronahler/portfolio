@@ -293,7 +293,7 @@
                 window.setTimeout(function() {
                     form.classList.remove('js-submitting'); // remove waiting class
                     form.classList.add('js-submitted'); // add finished state class
-                    icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-check'); // change icon on button back
+                    icon.setAttribute('xlink:href', '/dist/portfolio/dist/img/icons.svg#icon-check'); // change icon on button back
                     button.querySelector('span').innerHTML = "Sent"; // change button text
                 }, 2000)
                 // var formElements = form.querySelector(".contact__form-elements")
@@ -337,7 +337,7 @@
     };
 
     function disableAllButtons(form) {
-        icon.setAttribute('xlink:href', '/portfolio/img/icons.svg#icon-form-spinner');
+        icon.setAttribute('xlink:href', '/dist/portfolio/dist/img/icons.svg#icon-form-spinner');
         button.querySelector('span').innerHTML = "Sending";
         button.disabled = true;
         form.classList.add('js-submitting');
@@ -599,10 +599,10 @@
             nextArticleButton.disabled = false;
 
             // define new article path path, we know what section number it is and article number has to be 1
-            newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-001.html';
+            newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-001.html';
 
             // define next article after new article's path, we know this has to be 2 because the current article number is 1
-            nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-002.html';
+            nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-002.html';
 
             // request ajax for new section article
             requestNewSectionArticle();
@@ -812,23 +812,23 @@
                 if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
                     // console.log(currentArticleNumber);
                     // 1-9
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
                     // console.log(newArticlePath);
                     return false;
 
                 } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
                     // console.log(currentArticleNumber);
                     // 10-99
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
                     // console.log(currentArticleNumber);
                     // 100-999
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else {
@@ -860,23 +860,23 @@
                 if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
 
                     // 1-9
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-00' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
 
                     return false;
 
                 } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
 
                     // 10-99
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-0' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
 
                     // 100-999
-                    newArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/article/portfolio-section-' + currentSectionData + '-article-' + (nextArticleNumber) + '.html';
+                    newArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
+                    nextArticlePath = '/dist/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
                     return false;
 
                 } else {
