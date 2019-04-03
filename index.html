@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UX & UI Design Portfolio – Kameron Ahler – 2019</title>
+    <title>UX & Product Design | Kameron Ahler</title>
     <meta name="description" content="UX, UI, and Product designer based out of Denver, CO" />
     <meta name="author" content="Kameron Ahler" />
     <meta name="robots" content="noindex" />
+    <script>document.documentElement.classList.remove('no-js');</script>
     <!-- links -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Assistant:400,700|Hind:700" rel="stylesheet">
@@ -80,7 +81,7 @@
         <header id="home" class="site-header scroll-anchor">
             <div class="wrapper">
                 <h1>Hey, I'm Kameron</h1>
-                <h2>UX and Product Designer</h2>
+                <h2>UX and Product Design Portfolio</h2>
             </div>
         </header>
         <div class="main-padded">
@@ -106,7 +107,7 @@
                                 <h4>User Experience</h4>
                             </header>
                             <p class="designer-type__card-description">
-                                UX can be a fuzzy term these days. It includes many things, like architecture, interface, interaction, and strategy. I keep user needs in mind through all of those aspects of an experience, and look to expand and inform those ideas through research whenever possible. I'm here to help at all stages of the UX design process.
+                                UX can be a fuzzy term these days. It includes many things, like architecture, interface, interaction, and strategy. Products require touch points with user experience designers at many stages. I keep user needs in mind through the product design lifecycle, while expanding on ideas and discovering new ones through research whenever possible.
                             </p>
                         </div>
                         <div class="card designer-type__card">
@@ -849,8 +850,15 @@
                                         <h3>Section 1 Article 1</h3>
                                     </header>
                                     <section class="portfolio__article-content">
-                                        <img aria-hidden="true" src="https://picsum.photos/800/400?image=101" alt="" class="portfolio__article-hero card-hero">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
+                                        <figure class="cover">
+                                            <div>
+                                                <img alt="" data-src="img/article/01-002-01.jpg" />
+                                                <img alt="" data-src="img/article/01-002-02.jpg" />
+                                                <img alt="" data-src="img/article/01-002-03.jpg" />
+                                            </div>
+                                            <figcaption>Lorem ipsum dolor sit amet</figcaption>
+                                        </figure>
                                     </section>
                                 </article>
                             </section>
@@ -875,11 +883,11 @@
                     </header>
                     <section class="about__content card">
                         <div aria-hidden="true" class="about__content-hero card-hero">
-                            <img alt="Kameron Ahler standing in front of a waterfall looking unreasonably excited" src="img/about-me-01-300.jpg" srcset="
+                            <img alt="Kameron Ahler standing in front of a waterfall looking unreasonably excited" src="img/about-me-01.jpg" srcset="
                                     img/about-me-01-600.jpg 600w,
                                     img/about-me-01-900.jpg 900w,
                                     img/about-me-01-1200.jpg 1200w,
-                                    img/about-me-01-1600.jpg 1600w" />
+                                    img/about-me-01-1600.jpg 1600w" sizes=" (max-width:61.94em) 100vw, 40vw" />
                         </div>
                         <div class="about__content-wrapper">
                             <header class="about__content-header">
@@ -991,6 +999,11 @@
     <footer class="site-footer">
         <p>&copy;2019 Kameron Ahler</p>
     </footer>
+    <noscript>
+        <div style="position:fixed;top:0;right:0;z-index:9999">
+            <p style="background:#c70707;font-weight:bold;color:#fff;margin-bottom:0;text-align:center;padding:10px">Javascript required for some images</p>
+        </div>
+    </noscript>
     <!-- Scripts -->
     <script type="text/javascript" src="js/main.js"></script>
 </body>

@@ -8,155 +8,87 @@
         margin-top: $unit;
     }
 
-    .img-row {
-        @include bp(sm) {
-            display: flex;
-        }
 
-        figure {
-            margin: 0;
+    figure {
+        margin: 0;
 
-            @include bp(sm) {
-                flex: 1 1 100%;
-                display: flex;
-                justify-content: flex-end;
-                flex-direction: column;
+        img {
+            margin: 0 auto $unit;
+
+            &:last-of-type {
+                margin-bottom: 0;
             }
 
-            figcaption {
-                margin-top: $unit/2;
-                margin-bottom: $unit*1.5;
+            @include bp(sm) {
+                max-height: 400px;
+                box-shadow: 0 2px 12px -4px rgba(black, .1)
+            }
+        }
 
+        figcaption {
+            margin-top: $unit/2;
+            margin-bottom: $unit*1.5;
+
+            @include bp(sm) {
+                margin-bottom: $unit*2;
+            }
+        }
+    }
+}
+
+
+@supports (display:grid) {
+    .portfolio__article-content {
+        figure {
+            >div {
                 @include bp(sm) {
-                    margin-bottom: $unit*1;
-                    text-align: center;
-                }
-
-                @include bp(md) {
-                    margin-bottom: $unit*1.5
+                    display: grid;
+                    grid-template-columns: minmax(0, 1fr);
+                    grid-auto-columns: minmax(0, 1fr);
+                    grid-auto-flow: column;
+                    grid-gap: 0 2*$unit;
+                    align-items: end;
                 }
             }
 
             img {
-                margin: auto;
-
                 @include bp(sm) {
-                    margin: unset;
-                    width: 100%;
-                    align-self: center;
+                    margin: 0 auto;
                 }
             }
 
-            // 1 of 1 images
-            &:nth-child(1):nth-last-child(1) {
-                figcaption {
-                    @include bp(sm) {
-                        padding: 0 2*$unit;
+            &.cover {
+                >div {
+                    @supports(object-fit: cover) {
+                        @include bp(sm) {
+                            height: 400px;
+                        }
+                    }
+                }
+
+                img {
+                    @supports(object-fit: cover) {
+                        @include bp(sm) {
+                            max-height: unset;
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover
+                        }
                     }
                 }
             }
 
-            // 1 of 2 images
-            &:nth-child(1):nth-last-child(2) {
-                @include bp(sm) {
-                    padding-right: $unit;
-                }
-            }
-
-            // 2 of 2 figures
-            &:nth-child(2):nth-last-child(1) {
-                @include bp(sm) {
-                    padding-left: $unit;
-                }
-            }
-
-
-            // 1 of 3 figures
-            &:nth-child(1):nth-last-child(3) {
-                @include bp(sm) {
-                    padding-right: $unit;
-                }
-            }
-
-            // 2 of 3 figures
-            &:nth-child(2):nth-last-child(2) {
-                @include bp(sm) {
-                    padding-right: $unit;
-                    padding-left: $unit;
-                }
-            }
-
-            // 3 of 3 figures
-            &:nth-child(3):nth-last-child(1) {
-                @include bp(sm) {
-                    padding-left: $unit;
-                }
-            }
-
-
-            // 1 of 4 figures
-            &:nth-child(1):nth-last-child(4) {
-                @include bp(sm) {
-                    padding-right: $unit;
-                }
-            }
-
-            // 2 of 4 figures
-            &:nth-child(2):nth-last-child(3) {
-                @include bp(sm) {
-                    padding-right: $unit;
-                    padding-left: $unit;
-                }
-            }
-
-            // 3 of 4 figures
-            &:nth-child(3):nth-last-child(2) {
-                @include bp(sm) {
-                    padding-right: $unit;
-                    padding-left: $unit;
-                }
-            }
-
-            // 4 of 4 figures
-            &:nth-child(4):nth-last-child(1) {
-                @include bp(sm) {
-                    padding-left: $unit;
-                }
-            }
-
-            &.img-75 {
+            &.max {
                 img {
-                    @include bp(sm) {
-                        width: 75%;
-                    }
-                }
-            }
-
-            &.img-50 {
-                img {
-                    @include bp(sm) {
-                        width: 50%;
-                    }
-                }
-            }
-
-            &.img-33 {
-                img {
-                    @include bp(sm) {
-                        width: 33.3334%;
-                    }
-                }
-            }
-
-            &.img-25 {
-                img {
-                    @include bp(sm) {
-                        width: 25%;
+                    @supports(object-fit: cover) {
+                        @include bp(sm) {
+                            height: auto;
+                            max-height: unset;
+                            width: 100%;
+                        }
                     }
                 }
             }
         }
-
-
     }
 }
