@@ -123,7 +123,6 @@
     }
     return svg4everybody;
 });
-
 (function() {
     svg4everybody({
         fallback: function(src, use) {
@@ -144,15 +143,93 @@
 
 
 
-// add srcsets to article images
+
+
+// scroll to polyfill https://github.com/iamdustan/smoothscroll
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        ! function() {
+            "use strict";
+
+            function o() {
+                var o = window,
+                    t = document;
+                if (!("scrollBehavior" in t.documentElement.style && !0 !== o.__forceSmoothScrollPolyfill__)) {
+                    var l, e = o.HTMLElement || o.Element,
+                        r = 468,
+                        i = { scroll: o.scroll || o.scrollTo, scrollBy: o.scrollBy, elementScroll: e.prototype.scroll || n, scrollIntoView: e.prototype.scrollIntoView },
+                        s = o.performance && o.performance.now ? o.performance.now.bind(o.performance) : Date.now,
+                        c = (l = o.navigator.userAgent, new RegExp(["MSIE ", "Trident/", "Edge/"].join("|")).test(l) ? 1 : 0);
+                    o.scroll = o.scrollTo = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? h.call(o, t.body, void 0 !== arguments[0].left ? ~~arguments[0].left : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? ~~arguments[0].top : o.scrollY || o.pageYOffset) : i.scroll.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : o.scrollY || o.pageYOffset)) }, o.scrollBy = function() { void 0 !== arguments[0] && (f(arguments[0]) ? i.scrollBy.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : 0, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : 0) : h.call(o, t.body, ~~arguments[0].left + (o.scrollX || o.pageXOffset), ~~arguments[0].top + (o.scrollY || o.pageYOffset))) }, e.prototype.scroll = e.prototype.scrollTo = function() {
+                        if (void 0 !== arguments[0])
+                            if (!0 !== f(arguments[0])) {
+                                var o = arguments[0].left,
+                                    t = arguments[0].top;
+                                h.call(this, this, void 0 === o ? this.scrollLeft : ~~o, void 0 === t ? this.scrollTop : ~~t)
+                            } else {
+                                if ("number" == typeof arguments[0] && void 0 === arguments[1]) throw new SyntaxError("Value could not be converted");
+                                i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left : "object" != typeof arguments[0] ? ~~arguments[0] : this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top : void 0 !== arguments[1] ? ~~arguments[1] : this.scrollTop)
+                            }
+                    }, e.prototype.scrollBy = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? this.scroll({ left: ~~arguments[0].left + this.scrollLeft, top: ~~arguments[0].top + this.scrollTop, behavior: arguments[0].behavior }) : i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left + this.scrollLeft : ~~arguments[0] + this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top + this.scrollTop : ~~arguments[1] + this.scrollTop)) }, e.prototype.scrollIntoView = function() {
+                        if (!0 !== f(arguments[0])) {
+                            var l = function(o) {
+                                    var l, e, r, i;
+                                    do { l = (o = o.parentNode) === t.body } while (!1 === l && !1 === (r = p(e = o, "Y") && a(e, "Y"), i = p(e, "X") && a(e, "X"), r || i));
+                                    return l = null, o
+                                }(this),
+                                e = l.getBoundingClientRect(),
+                                r = this.getBoundingClientRect();
+                            l !== t.body ? (h.call(this, l, l.scrollLeft + r.left - e.left, l.scrollTop + r.top - e.top), "fixed" !== o.getComputedStyle(l).position && o.scrollBy({ left: e.left, top: e.top, behavior: "smooth" })) : o.scrollBy({ left: r.left, top: r.top, behavior: "smooth" })
+                        } else i.scrollIntoView.call(this, void 0 === arguments[0] || arguments[0])
+                    }
+                }
+
+                function n(o, t) { this.scrollLeft = o, this.scrollTop = t }
+
+                function f(o) { if (null === o || "object" != typeof o || void 0 === o.behavior || "auto" === o.behavior || "instant" === o.behavior) return !0; if ("object" == typeof o && "smooth" === o.behavior) return !1; throw new TypeError("behavior member of ScrollOptions " + o.behavior + " is not a valid value for enumeration ScrollBehavior.") }
+
+                function p(o, t) { return "Y" === t ? o.clientHeight + c < o.scrollHeight : "X" === t ? o.clientWidth + c < o.scrollWidth : void 0 }
+
+                function a(t, l) { var e = o.getComputedStyle(t, null)["overflow" + l]; return "auto" === e || "scroll" === e }
+
+                function d(t) {
+                    var l, e, i, c, n = (s() - t.startTime) / r;
+                    c = n = n > 1 ? 1 : n, l = .5 * (1 - Math.cos(Math.PI * c)), e = t.startX + (t.x - t.startX) * l, i = t.startY + (t.y - t.startY) * l, t.method.call(t.scrollable, e, i), e === t.x && i === t.y || o.requestAnimationFrame(d.bind(o, t))
+                }
+
+                function h(l, e, r) {
+                    var c, f, p, a, h = s();
+                    l === t.body ? (c = o, f = o.scrollX || o.pageXOffset, p = o.scrollY || o.pageYOffset, a = i.scroll) : (c = l, f = l.scrollLeft, p = l.scrollTop, a = n), d({ scrollable: c, method: a, startTime: h, startX: f, startY: p, x: e, y: r })
+                }
+            }
+            "object" == typeof exports && "undefined" != typeof module ? module.exports = { polyfill: o } : o()
+        }();
+    });
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// add srcsets and lightbox to article images
 (function() {
     var srcSetSizes;
+    var lightboxWrapper = document.querySelector('.lightbox-wrapper');
 
     var srcSet = function() {
         var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
 
         Array.prototype.forEach.call(figures, function(el, i) {
-            var imgs = el.querySelectorAll('img');
+            var imgs = el.querySelectorAll('img[data-src]');
             // console.log(imgs);
 
             Array.prototype.forEach.call(imgs, function(el, i) {
@@ -175,6 +252,23 @@
                 el.setAttribute('srcset', srcSetValue);
                 el.setAttribute('sizes', srcSetSizes);
                 el.setAttribute('src', el.getAttribute('data-src'));
+                el.classList.add('lightbox');
+                el.addEventListener('click', function() {
+                    var imgs = document.querySelectorAll('.lightbox-wrapper img');
+
+                    if (imgs.length > 0) {
+                        Array.prototype.forEach.call(imgs, function(el, i) {
+                            el.remove();
+                        });
+                    }
+
+                    var newImage = document.createElement('img');
+                    newImage.setAttribute('src', this.getAttribute('src'));
+                    newImage.setAttribute('alt', this.getAttribute('alt'));
+                    lightboxWrapper.appendChild(newImage);
+                    lightboxWrapper.setAttribute('aria-hidden', 'false');
+                    window.setTimeout(function() { document.body.classList.add('js-lightbox-active') }, 200)
+                })
             })
         })
     }
@@ -185,6 +279,15 @@
 
 
 
+
+
+
+
+//lightbox close
+function lightboxClose() {
+    event.currentTarget.parentNode.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('js-lightbox-active');
+}
 
 
 
@@ -356,69 +459,6 @@
 
 
 
-// scroll to polyfill https://github.com/iamdustan/smoothscroll
-(function() {
-    document.addEventListener('DOMContentLoaded', function() {
-        ! function() {
-            "use strict";
-
-            function o() {
-                var o = window,
-                    t = document;
-                if (!("scrollBehavior" in t.documentElement.style && !0 !== o.__forceSmoothScrollPolyfill__)) {
-                    var l, e = o.HTMLElement || o.Element,
-                        r = 468,
-                        i = { scroll: o.scroll || o.scrollTo, scrollBy: o.scrollBy, elementScroll: e.prototype.scroll || n, scrollIntoView: e.prototype.scrollIntoView },
-                        s = o.performance && o.performance.now ? o.performance.now.bind(o.performance) : Date.now,
-                        c = (l = o.navigator.userAgent, new RegExp(["MSIE ", "Trident/", "Edge/"].join("|")).test(l) ? 1 : 0);
-                    o.scroll = o.scrollTo = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? h.call(o, t.body, void 0 !== arguments[0].left ? ~~arguments[0].left : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? ~~arguments[0].top : o.scrollY || o.pageYOffset) : i.scroll.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : o.scrollX || o.pageXOffset, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : o.scrollY || o.pageYOffset)) }, o.scrollBy = function() { void 0 !== arguments[0] && (f(arguments[0]) ? i.scrollBy.call(o, void 0 !== arguments[0].left ? arguments[0].left : "object" != typeof arguments[0] ? arguments[0] : 0, void 0 !== arguments[0].top ? arguments[0].top : void 0 !== arguments[1] ? arguments[1] : 0) : h.call(o, t.body, ~~arguments[0].left + (o.scrollX || o.pageXOffset), ~~arguments[0].top + (o.scrollY || o.pageYOffset))) }, e.prototype.scroll = e.prototype.scrollTo = function() {
-                        if (void 0 !== arguments[0])
-                            if (!0 !== f(arguments[0])) {
-                                var o = arguments[0].left,
-                                    t = arguments[0].top;
-                                h.call(this, this, void 0 === o ? this.scrollLeft : ~~o, void 0 === t ? this.scrollTop : ~~t)
-                            } else {
-                                if ("number" == typeof arguments[0] && void 0 === arguments[1]) throw new SyntaxError("Value could not be converted");
-                                i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left : "object" != typeof arguments[0] ? ~~arguments[0] : this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top : void 0 !== arguments[1] ? ~~arguments[1] : this.scrollTop)
-                            }
-                    }, e.prototype.scrollBy = function() { void 0 !== arguments[0] && (!0 !== f(arguments[0]) ? this.scroll({ left: ~~arguments[0].left + this.scrollLeft, top: ~~arguments[0].top + this.scrollTop, behavior: arguments[0].behavior }) : i.elementScroll.call(this, void 0 !== arguments[0].left ? ~~arguments[0].left + this.scrollLeft : ~~arguments[0] + this.scrollLeft, void 0 !== arguments[0].top ? ~~arguments[0].top + this.scrollTop : ~~arguments[1] + this.scrollTop)) }, e.prototype.scrollIntoView = function() {
-                        if (!0 !== f(arguments[0])) {
-                            var l = function(o) {
-                                    var l, e, r, i;
-                                    do { l = (o = o.parentNode) === t.body } while (!1 === l && !1 === (r = p(e = o, "Y") && a(e, "Y"), i = p(e, "X") && a(e, "X"), r || i));
-                                    return l = null, o
-                                }(this),
-                                e = l.getBoundingClientRect(),
-                                r = this.getBoundingClientRect();
-                            l !== t.body ? (h.call(this, l, l.scrollLeft + r.left - e.left, l.scrollTop + r.top - e.top), "fixed" !== o.getComputedStyle(l).position && o.scrollBy({ left: e.left, top: e.top, behavior: "smooth" })) : o.scrollBy({ left: r.left, top: r.top, behavior: "smooth" })
-                        } else i.scrollIntoView.call(this, void 0 === arguments[0] || arguments[0])
-                    }
-                }
-
-                function n(o, t) { this.scrollLeft = o, this.scrollTop = t }
-
-                function f(o) { if (null === o || "object" != typeof o || void 0 === o.behavior || "auto" === o.behavior || "instant" === o.behavior) return !0; if ("object" == typeof o && "smooth" === o.behavior) return !1; throw new TypeError("behavior member of ScrollOptions " + o.behavior + " is not a valid value for enumeration ScrollBehavior.") }
-
-                function p(o, t) { return "Y" === t ? o.clientHeight + c < o.scrollHeight : "X" === t ? o.clientWidth + c < o.scrollWidth : void 0 }
-
-                function a(t, l) { var e = o.getComputedStyle(t, null)["overflow" + l]; return "auto" === e || "scroll" === e }
-
-                function d(t) {
-                    var l, e, i, c, n = (s() - t.startTime) / r;
-                    c = n = n > 1 ? 1 : n, l = .5 * (1 - Math.cos(Math.PI * c)), e = t.startX + (t.x - t.startX) * l, i = t.startY + (t.y - t.startY) * l, t.method.call(t.scrollable, e, i), e === t.x && i === t.y || o.requestAnimationFrame(d.bind(o, t))
-                }
-
-                function h(l, e, r) {
-                    var c, f, p, a, h = s();
-                    l === t.body ? (c = o, f = o.scrollX || o.pageXOffset, p = o.scrollY || o.pageYOffset, a = i.scroll) : (c = l, f = l.scrollLeft, p = l.scrollTop, a = n), d({ scrollable: c, method: a, startTime: h, startX: f, startY: p, x: e, y: r })
-                }
-            }
-            "object" == typeof exports && "undefined" != typeof module ? module.exports = { polyfill: o } : o()
-        }();
-    });
-})();
-
-
 
 
 
@@ -444,7 +484,7 @@
                 if (el.id == href) {
                     var anchorDistance = el.offsetTop;
                     window.scrollTo({
-                        top: anchorDistance - 96,
+                        top: anchorDistance - 128,
                         left: 0,
                         behavior: 'smooth'
                     });
@@ -469,7 +509,7 @@
             for (var i = 0; i < scrollAnchors.length; i++) {
 
                 // if user scroll loop count is not last loop, and both window position is above current sections's distance to top, but less than the next section's distance to top 
-                if ((i < scrollAnchors.length - 1) && ((window.pageYOffset >= scrollAnchors[i].offsetTop - 216) && (window.pageYOffset < scrollAnchors[i + 1].offsetTop - 216))) {
+                if ((i < scrollAnchors.length - 1) && ((window.pageYOffset >= scrollAnchors[i].offsetTop - 272) && (window.pageYOffset < scrollAnchors[i + 1].offsetTop - 272))) {
                     // remove all js-active states in nav and content sections
                     Array.prototype.forEach.call(navLinks, function(el, i) {
                         el.classList.remove('site-nav__link--current');
@@ -509,6 +549,12 @@
         }, false);
     }, false);
 })();
+
+
+
+
+
+
 
 
 

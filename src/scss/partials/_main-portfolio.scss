@@ -19,9 +19,6 @@
         flex-wrap: wrap;
 
         &-tab {
-            // overflow: unset;
-            // text-overflow: unset;
-            // white-space: unset;
             margin: 0 1 * $unit 1 * $unit;
 
             @include bp(md) {
@@ -123,12 +120,6 @@
 
         // header
         &-header {
-            padding: $unit 5 * $unit 0;
-
-            @include bp(sm) {
-                padding: 2 * $unit 6 * $unit 0;
-            }
-
             h3 {
                 min-height: 3 * $unit;
                 width: 100%;
@@ -139,16 +130,22 @@
                 align-items: center;
                 text-align: center;
                 margin-bottom: $unit;
-            }
-        }
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 5 * $unit $unit 0;
 
-        // card content area wrapper
-        &-content {
-            padding: 0 $unit $unit;
 
-            @include bp(sm) {
-                padding: 0 2 * $unit 2 * $unit;
+                @include bp(xs) {
+                    margin-bottom: $unit * 2;
+                    padding: $unit 5 * $unit 0;
+                    white-space: normal;
+                }
+
+                @include bp(sm) {
+                    padding: 2 * $unit 6 * $unit 0;
+                }
             }
+
         }
 
         // state
@@ -225,12 +222,10 @@
             }
 
             &-header {
-                @include bp(lg) {
-                    padding: 2 * $unit 10 * $unit 0 2 * $unit;
-                }
 
                 h3 {
                     @include bp(lg) {
+                        padding: 2.5 * $unit 10 * $unit .5 * $unit 2 * $unit;
                         justify-content: flex-start;
                         text-align: left;
                     }

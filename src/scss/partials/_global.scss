@@ -44,14 +44,14 @@
             position: relative;
             margin-left: auto;
             opacity: 0;
-            transform-origin: 100% 50%;
-            transform: translateX(#{4 * $unit}) scale(0);
-            transition: transform $easing .5s;
+            transform-origin: 50% 50%;
+            transform: translateY(5em);
+            transition: opacity $easing .5s, transform $easing .5s;
         }
 
         .scroll-anchor--seen & {
             @include bp(md) {
-                transform: translateX(0) scale(1);
+                transform: translateY(0);
                 opacity: 1;
             }
         }
@@ -203,8 +203,7 @@
     &:not(.tab--active) {
         box-shadow: $box-shadow-tab--inactive;
         background: $color-background-gray--darker;
-
-        &::before {}
+        color: $color-grayscale;
 
         span {
             color: $color-grayscale;
@@ -302,4 +301,85 @@ img {
 // accessible hide
 .accessible-hide {
     @include hide();
+}
+
+
+// lightbox
+body {
+    &.js-lightbox-active {
+        overflow: hidden;
+    }
+}
+
+.lightbox-wrapper {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: $unit;
+    visibility: hidden;
+    z-index: -999;
+    overflow: auto;
+
+    @include bp(sm) {
+        padding: 6 * $unit;
+    }
+
+
+    &__close {
+        position: absolute;
+        top: $unit;
+        right: $unit;
+        z-index: 2;
+        cursor: pointer;
+
+        .button--icon {
+            width: 3 * $unit;
+            height: 3 * $unit;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: $color-grayscale;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    img {
+        display: block;
+        width: auto;
+        position: relative;
+        height: auto;
+        max-height: 100%;
+        margin: auto;
+        z-index: 3;
+        transform: translateY(-#{$unit});
+        opacity: 0;
+    }
+
+    .js-lightbox-active & {
+        visibility: visible;
+        z-index: 999;
+
+        &__overlay {
+
+            opacity: 1;
+            transition: opacity $transition-default;
+        }
+
+        img {
+            transform: translateY(0);
+            opacity: 1;
+            transition: $transition-default .3s;
+        }
+    }
 }

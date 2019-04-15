@@ -83,6 +83,43 @@
         }
     }
 
+    // social icons list
+    &__social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: $unit;
+
+        @include bp(md) {
+            justify-content: flex-start
+        }
+
+
+        li {
+            display: block;
+            margin: $unit;
+            margin: 0 $unit/4 $unit/4 $unit/4;
+
+            @include bp(xs) {
+                margin: 0 $unit / 2 $unit $unit / 2;
+            }
+
+            @include bp(md) {
+                margin: 0 $unit 0 0
+            }
+        }
+
+        .button--icon {
+            width: 2 * $unit;
+            height: 2 * $unit;
+
+            @include bp(md) {
+                width: 3 * $unit;
+                height: 3 * $unit;
+            }
+        }
+    }
+
     .wrapper {
         z-index: 0;
     }
@@ -98,7 +135,12 @@
         }
     }
 
-    h3 {
+    h1 {
         margin-bottom: 0
     }
+
+    h3 {
+        margin-bottom: 2 * $unit
+    }
+
 }

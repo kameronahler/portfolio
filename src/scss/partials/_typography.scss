@@ -40,16 +40,21 @@ p {
 }
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 label {
     color: $color-grayscale;
     font-weight: 700;
     margin-top: 0;
 }
 
-h1 {
+h1,
+.h1 {
     font-family: $font-family-heading, $font-family-fallback;
     font-size: 16vw;
     line-height: 1.05;
@@ -62,7 +67,8 @@ h1 {
     }
 }
 
-h2 {
+h2,
+.h2 {
     font-family: $font-family-heading, $font-family-fallback;
     font-size: 11vw;
     line-height: 1.56;
@@ -75,19 +81,21 @@ h2 {
     }
 }
 
-h3 {
+h3,
+.h3 {
     font-family: $font-family-heading, $font-family-fallback;
-    font-size: 5vw;
-    line-height: 1.6;
+    font-size: 6vw;
+    line-height: 1.4545;
     letter-spacing: -0.25px;
-    margin-bottom: 0;
+    margin-bottom: $unit;
 
     @include bp(xs) {
-        font-size: 20px;
+        font-size: 22px;
     }
 }
 
 h4,
+.h4,
 label {
     font-family: $font-family-heading, $font-family-fallback;
     font-size: 14px;
@@ -130,6 +138,7 @@ figcaption {
     line-height: 1.5;
     color: $color-grayscale--lighter;
     text-align: center;
+    font-style: italic;
 
     @include bp(md) {
         font-size: 14px;
