@@ -27,6 +27,7 @@
             </linearGradient>
         </defs>
     </svg>
+    <!-- site nav -->
     <nav class="site-nav">
         <span id="nav-title" class="accessible-hide">Navigate to</span>
         <ul class="plain-list">
@@ -80,14 +81,58 @@
         </ul>
     </nav>
     <main class="site-main">
+        <!-- site header -->
         <header id="home" class="site-header scroll-anchor">
             <div class="wrapper">
                 <h1>Hey, I'm Kameron</h1>
                 <h3>Welcome to my UX and Product Design Portfolio</h3>
+                <ul aria-labelledby="social-links-title" class="plain-list site-header__social-icons">
+                    <span id="social-links-title" class="accessible-hide">Find me on</span>
+                    <li>
+                        <a title="Dribbble" aria-labelledby="social-links-title social-links-dribbble-title" href="https://dribbble.com/kamtr0n" class="contact__social-icon button button--icon">
+                            <svg aria-hidden="true" role="img">
+                                <use xlink:href="dist/img/icons.svg#icon-dribbble">
+                            </svg>
+                            <span id="social-links-dribbble-title" class="accessible-hide">Dribbble</span>
+                        </a>
+                    <li>
+                        <a title="Codepen" aria-labelledby="social-links-title social-links-codepen-title" href="https://codepen.io/kamtr0n" class="contact__social-icon button button--icon">
+                            <svg aria-hidden="true" role="img">
+                                <use xlink:href="dist/img/icons.svg#icon-codepen">
+                            </svg>
+                            <span id="social-links-codepen-title" class="accessible-hide">Codepen</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="GitHub" aria-labelledby="social-links-title social-links-github-title" href="https://github.com/kameronahler" class="contact__social-icon button button--icon">
+                            <svg aria-hidden="true" role="img">
+                                <use xlink:href="dist/img/icons.svg#icon-github">
+                            </svg>
+                            <span id="social-links-github-title" class="accessible-hide">Github</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Instagram" aria-labelledby="social-links-title social-links-instagram-title" href="https://www.instagram.com/hashtagkameron" class="contact__social-icon button button--icon">
+                            <svg aria-hidden="true" role="img">
+                                <use xlink:href="dist/img/icons.svg#icon-instagram">
+                            </svg>
+                            <span id="social-links-instagram-title" class="accessible-hide">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="LinkedIn" aria-labelledby="social-links-title social-links-linkedin-title" href="https://www.linkedin.com/in/kameron-ahler-bbb340bb" class="contact__social-icon button button--icon">
+                            <svg aria-hidden="true" role="img">
+                                <use xlink:href="dist/img/icons.svg#icon-linkedin">
+                            </svg>
+                            <span id="social-links-linkedin-title" class="accessible-hide">Linked In</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </header>
         <div class="main-padded">
             <div class="wrapper">
+                <!-- designer type -->
                 <section id="designer-type" class="content-section designer-type scroll-anchor">
                     <header class="section-header designer-type__header">
                         <h2>What Kind of Designer Am I?</h2>
@@ -138,6 +183,7 @@
                         </div>
                     </section>
                 </section>
+                <!-- skills and tools -->
                 <section id="skills-and-tools" class="content-section skills scroll-anchor">
                     <header class="section-header skills__header">
                         <h2>I Can Do The Things</h2>
@@ -808,6 +854,7 @@
                         </ul>
                     </section>
                 </section>
+                <!-- portfolio -->
                 <section id="portfolio" class="content-section portfolio scroll-anchor">
                     <header class="section-header portfolio__header">
                         <h2>Past Work</h2>
@@ -824,9 +871,7 @@
                     <section id="portfolio-tablist" role="tablist" class="portfolio__tablist">
                         <button id="portfolio-tab-ux" role="tab" aria-control="portfolio-tablist" aria-selected="true" data-section="portfolio-section-ux" class="portfolio__tablist-tab tab button tab--active"><span>UX</span></button>
                         <button id="portfolio-tab-ui" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-ui" class="portfolio__tablist-tab tab button"><span>UI</span></button>
-                        <button id="portfolio-tab-research" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-research" class="portfolio__tablist-tab tab button"><span>Research</span></button>
-                        <button id="portfolio-tab-design-systems" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-design-systems" class="portfolio__tablist-tab tab button"><span>Design Systems</span></button>
-                        <button id="portfolio-tab-management" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-management" class="portfolio__tablist-tab tab button"><span>Management</span></button>
+                        <button id="portfolio-tab-design-ops" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-design-ops" class="portfolio__tablist-tab tab button"><span>Design Ops</span></button>
                         <button id="portfolio-tab-visual" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-visual" class="portfolio__tablist-tab tab button"><span>Visual</span></button>
                     </section>
                     <section id="portfolio-sections" class="portfolio__sections">
@@ -848,29 +893,254 @@
                             <section data-section="ux" id="portfolio-section-ux" class="portfolio__section portfolio__section--active" aria-labelledby="portfolio-tab-ux">
                                 <article data-article="1" class="portfolio__article portfolio__article--active card">
                                     <header class="portfolio__article-header">
-                                        <h3>UX Article 1</h3>
-                                    </header>
-                                    <section class="portfolio__article-content">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
-                                        <figure class="cover">
-                                            <div>
-                                                <img alt="" data-src="dist/img/article/ux-002-01.jpg" />
-                                                <img alt="" data-src="dist/img/article/ux-002-02.jpg" />
-                                                <img alt="" data-src="dist/img/article/ux-002-03.jpg" />
+                                        <h3>UX | Improving the Usability of Existing Analytic Dashboards</h3>
+                                        <figure>
+                                            <div class="hero">
+                                                <img aria-hidden="true" alt="" data-src="dist/img/article/ux-analytics-dashboard-hero.png" />
                                             </div>
-                                            <figcaption>Lorem ipsum dolor sit amet</figcaption>
                                         </figure>
-                                    </section>
+                                    </header>
+                                    <div class="portfolio__article-content">
+                                        <section>
+                                            <header>
+                                                <h3>Overview</h3>
+                                            </header>
+                                            <section>
+                                                <p>Creating improvements to a web app’s analytic dashboard framework to help improve management, ease of use, and speed of creation for users.</p>
+                                                <div class="lists">
+                                                    <ul>
+                                                        <header>
+                                                            <h4>Challenges</h4>
+                                                        </header>
+                                                        <li>Take an existing dashboard framework, and improve upon its foundation by addressing heuristic and user needs that were not present in the MVP version of the feature.</li>
+                                                        <li>Accomplish project over time.</li>
+                                                        <li>Solve for multiple usability challenges at each step.</li>
+                                                    </ul>
+                                                    <ul>
+                                                        <header>
+                                                            <h4>Goals</h4>
+                                                        </header>
+                                                        <li>Create a streamlined update to the dashboard framework.</li>
+                                                        <li>Ease the creation of dashboards, editing of charts, and encourage users to adopt dashboards into their workflow.</li>
+                                                        <li>Make the feature set friendly to a wide variety of personas.</li>
+                                                    </ul>
+                                                    <ul>
+                                                        <header>
+                                                            <h4>Good to Know</h4>
+                                                        </header>
+                                                        <li>The purpose of the dashboards were to create an overview of users’ marketing and communication presence and effect in their industry.</li>
+                                                        <li>The existing framework was brought to market in an MVP fashion and was now ready to be iterated on after early adoption.</li>
+                                                        <li>The framework would be used in multiple places throughout the app.</li>
+                                                        <li>Desktop users were the prescribed target audience.</li>
+                                                    </ul>
+                                                    <ul>
+                                                        <header>
+                                                            <h4>Role</h4>
+                                                        </header>
+                                                        <li>I was involved in multiple fashions throughout this project, including wireframing, user flow, UI, discovery research, and usability testing.</li>
+                                                    </ul>
+                                                </div>
+                                            </section>
+                                        </section>
+                                        <section>
+                                            <header>
+                                                <h3>Design Process</h3>
+                                            </header>
+                                            <section>
+                                                <header>
+                                                    <h4>Before</h4>
+                                                </header>
+                                                <figure>
+                                                    <div class="cover">
+                                                        <img alt="" data-src="dist/img/article/ux-analytics-dashboard-before.jpg" />
+                                                    </div>
+                                                    <figcaption></figcaption>
+                                                </figure>
+                                            </section>
+                                            <section>
+                                                <header>
+                                                    <h4>Discovery</h4>
+                                                </header>
+                                                <section>
+                                                    <p>Through stakeholder feedback we generated some areas to begin exploring later with research and design. Several stakeholders had the thought that users would be more likely to adopt dashboards if they had more control over them, and could customize them with ease. Most stakeholders believed that dashboards were formidable and that there was much to be desired in terms of on-boarding.</p>
+                                                </section>
+                                            </section>
+                                            <section>
+                                                <header>
+                                                    <h4>Research</h4>
+                                                </header>
+                                                <section>
+                                                    <p>Through user research we came away with a few key insights, and validated and invalidated some early assumptions:</p>
+                                                    <ul>
+                                                        <li>Users found dashboard creation to be tedious.</li>
+                                                        <li>Some users did not know that they were editable at all.</li>
+                                                        <li>A large number of steps were required to edit charts and groupings.</li>
+                                                        <li>UI was not streamlined and outdated.</li>
+                                                        <li>Users were unfamiliar with many of the possible data types.</li>
+                                                        <li>Users appeared to use their dashboards in a wide variety of ways.</li>
+                                                        <li>Users’ first dashboards were created by support specialists.</li>
+                                                        <li>Users generally used their dashboards for periodic reporting but would use their dashboards to generate assets for other reporting channels.</li>
+                                                    </ul>
+                                                </section>
+                                            </section>
+                                            <section>
+                                                <header>
+                                                    <h4>Design</h4>
+                                                </header>
+                                                <section>
+                                                    <p>We began by tackling the flow and UI of the dashboard system in general. I focused on rearranging charts, grouping charts together, resizing charts, as well as an overall updated look.</p>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-ui.png" />
+                                                        </div>
+                                                        <figcaption>Updated card design, new sections for grouping, improved spacing, and fewer borders to help scanability.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-chart-option.png" />
+                                                        </div>
+                                                        <figcaption>Borrowing from a popular prototyping software 🙂. Users were given the ability to A) change the size of their charts without entering an edit modal, and B) download their chart assets individually to help their reporting needs.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-create-new.png" />
+                                                        </div>
+                                                        <figcaption>Creating a new dashboard was changed from an instantaneous blank dashboard to a naming feature, an option to copy an existing dashboard, saving some very redundant steps.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-reorder.png" />
+                                                        </div>
+                                                        <figcaption>Users were given the ability to rearrange a chart on the fly without entering an “editing mode”.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-section-creation.png" />
+                                                        </div>
+                                                        <figcaption>Sections were added to aide grouping for reporting or different clients, including the ability to reorder, minimize, and maximize sections.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-fullscreen.png" />
+                                                        </div>
+                                                        <figcaption>Expanding a chart would reveal commenting details, and allow for annotations.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div>
+                                                            <img alt="" data-src="dist/img/article/ux-analytics-dashboard-commenting.png" />
+                                                        </div>
+                                                        <figcaption>Comment notifiers were added to encourage team interactions and annotation for reporting.</figcaption>
+                                                    </figure>
+                                                    <p>Various scenarios and variations were created to account for various state and edge cases, with prototypes to test with and share specifications and scenarios with Developers.</p>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard.png" alt="">
+                                                        </div>
+                                                        <figcaption></figcaption>
+                                                    </figure>
+                                                    <p>The second phase of the project was to improve the editing of a chart. The research showed users spent wasted amounts of time creating new charts because editing older charts wasz not flexible. I tried to expand the options within the editing modal to help the users with their reporting needs.</p>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-edit-chart-old.png" alt="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-edit-chart-new.png" alt="">
+                                                        </div>
+                                                        <figcaption>Before and after, showing new features for allowing easier data pivoting, more explanations, and faster overrides</figcaption>
+                                                    </figure>
+                                                    <p>The third phase of the project was to improve the speed of creating a dashboard. However, there were many ways we could go about this, so I sought to understand how users were grouping and creating their dashboards currently by examining server-side data with the help of some analysts.</p>
+                                                    <p>I learned that A) users created sections within existing dashboards over creating new dashboards, B) they seemed to be treating their dashboards with scoped context – meaning they would make one for a period of time, or for a particular campaign/theme. This allowed me to make the recommendation to product owners that we focus mostly on allowing them to add pre-assembled bundles of charts rather than pre-assembled dashboards, as users would be looking to build on existing dashboards.</p>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-research.png" alt="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-research-section.png" alt="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-research-dashboard.png" alt="">
+                                                        </div>
+                                                        <figcaption></figcaption>
+                                                    </figure>
+                                                    <p>I then began architecting solutions for creating bundles of charts for other designers who would focus on the UI later.</p>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-add-section-flow.png" alt="">
+                                                        </div>
+                                                        <figcaption>User flow for the creation of a bundle of charts as a new section</figcaption>
+                                                    </figure>
+                                                    <p>Then I wireframed the start of a clickable prototype.</p>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-add-section.png" alt="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-add-section-onpage.png" alt="">
+                                                        </div>
+                                                        <figcaption>Options for bundles on the dashboard itself after being triggered. Allowing for fewer modals and a less jarring experience.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-add-section-bundle.png" alt="">
+                                                        </div>
+                                                        <figcaption>Pre-configured chart types to allow for descriptions and themes for users.</figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <div class="">
+                                                            <img data-src="dist/img/article/ux-analytics-dashboard-add-section-custom.png" alt="">
+                                                        </div>
+                                                        <figcaption>Allowing users to create a custom-created section for power users.</figcaption>
+                                                    </figure>
+                                                </section>
+                                            </section>
+                                            <section>
+                                                <header>
+                                                    <h4>Iteration</h4>
+                                                </header>
+                                                <section>
+                                                    <p>Over time this project was completed in an ongoing, agile fashion. Throughout the process, we utilized feedback sessions with users and internal stakeholders to iterate and learn from our designs. Testing showed a positive reaction to the new framework and validated our ideas for dashboard duplication, and avoiding modals. However, we did iterate over time due to negative feedback on section editing, and the placement of controls for charts.</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section>
+                                            <header>
+                                                <h3>Results and Conclusions</h3>
+                                            </header>
+                                            <section>
+                                                <header>
+                                                    <h4>Results</h4>
+                                                </header>
+                                                <section>
+                                                    <p>Long term behavioral feedback showed that users were not utilizing Section controls in the new framework, and less effort was put forth toward those features.</p>
+                                                    <p>Usage of dashboards showed a steady increase, and usage of section bundles was higher than blank sections beforehand.</p>
+                                                    <p>Qualitative feedback was positive for the features that made it to production.</p>
+                                                </section>
+                                            </section>
+                                            <section>
+                                                <header>
+                                                    <h4>Next Steps</h4>
+                                                </header>
+                                                <section>
+                                                    <p>Continue to improve on reporting features for users, as this was their primary end-goal, such as the ability to export different types of reports.</p>
+                                                    <p>Eventually I would go on to work on improving the reports from the app as a next step.</p>
+                                                </section>
+                                            </section>
+                                            <section>
+                                                <header>
+                                                    <h4>Learning Opportunities</h4>
+                                                </header>
+                                                <section>
+                                                    <p>This project was a little more waterfall than I would have liked, but at times we were strapped for users to test with as the demographic on it was small (at the time).</p>
+                                                    <p>Utilizing data before making product decisions is always a positive, and allowed us to invest in the right calories for section creation.</p>
+                                                    <p>While iterative improvement is a cornerstone of agile development, this project introduced UI that would take other areas of the app longer to adopt, creating occasional jarring user experiences elsewhere.</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <div class="portfolio__article-back-to-top">
+                                            <a class="inline-link" href="#portfolio">Back to Top</a>
+                                        </div>
+                                    </div>
                                 </article>
                             </section>
                             <section data-section="ui" id="portfolio-section-ui" class="portfolio__section" aria-labelledby="portfolio-tab-ui"></section>
-                            <section data-section="research" id="portfolio-section-research" class="portfolio__section" aria-labelledby="portfolio-tab-research"></section>
-                            <section data-section="design-systems" id="portfolio-section-design-systems" class="portfolio__section" aria-labelledby="portfolio-tab-design-systems"></section>
-                            <section data-section="management" id="portfolio-section-management" class="portfolio__section" aria-labelledby="portfolio-tab-management"></section>
+                            <section data-section="design-ops" id="portfolio-section-design-ops" class="portfolio__section" aria-labelledby="portfolio-tab-design-ops"></section>
                             <section data-section="visual" id="portfolio-section-visual" class="portfolio__section" aria-labelledby="portfolio-tab-visual"></section>
                         </section>
                     </section>
                 </section>
+                <!-- about me -->
                 <section id="about-me" class="about scroll-anchor">
                     <header class="section-header about__header">
                         <h2>Who Even Am I?</h2>
@@ -916,6 +1186,7 @@
             </div>
         </div>
         <div class="main-not-padded">
+            <!-- contact -->
             <section id="contact" class="contact scroll-anchor">
                 <div class="wrapper">
                     <header class="section-header contact__header">
@@ -932,20 +1203,17 @@
                         <p>Not down with forms? Cash me outside on some other networks.</p>
                         <p>I look forward to talking soon!</p>
                         <ul aria-labelledby="social-links-title" class="plain-list contact__social-icons">
-                            <span id="social-links-title" class="accessible-hide">Find me on</span>
                             <li>
                                 <a title="Dribbble" aria-labelledby="social-links-title social-links-dribbble-title" href="https://dribbble.com/kamtr0n" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-dribbble">
                                     </svg>
-                                    <span id="social-links-dribbble-title" class="accessible-hide">Dribbble</span>
                                 </a>
                             <li>
                                 <a title="Codepen" aria-labelledby="social-links-title social-links-codepen-title" href="https://codepen.io/kamtr0n" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-codepen">
                                     </svg>
-                                    <span id="social-links-codepen-title" class="accessible-hide">Codepen</span>
                                 </a>
                             </li>
                             <li>
@@ -953,7 +1221,6 @@
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-github">
                                     </svg>
-                                    <span id="social-links-github-title" class="accessible-hide">Github</span>
                                 </a>
                             </li>
                             <li>
@@ -961,7 +1228,6 @@
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-instagram">
                                     </svg>
-                                    <span id="social-links-instagram-title" class="accessible-hide">Instagram</span>
                                 </a>
                             </li>
                             <li>
@@ -969,7 +1235,6 @@
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-linkedin">
                                     </svg>
-                                    <span id="social-links-linkedin-title" class="accessible-hide">Linked In</span>
                                 </a>
                             </li>
                         </ul>
@@ -995,9 +1260,19 @@
             </section>
         </div>
     </main>
+    <!-- footer -->
     <footer class="site-footer">
         <p>&copy;2019 Kameron Ahler</p>
     </footer>
+    <div aria-labelledby="lightbox-wrapper-close" aria-hidden="true" id="lightbox-wrapper" class="lightbox-wrapper">
+        <button class="lightbox-wrapper__close button button--icon" onclick="lightboxClose()">
+            <svg aria-hidden="true" role="img">
+                <use xlink:href="dist/img/icons.svg#icon-close">
+            </svg>
+            <span id="lightbox-wrapper-close" class="accessible-hide">Close Lightbox</span>
+        </button>
+        <div class="lightbox-wrapper__overlay" onclick="lightboxClose()"></div>
+    </div>
     <noscript>
         <div style="position:fixed;top:0;right:0;z-index:9999">
             <p style="background:#c70707;font-weight:bold;color:#fff;margin-bottom:0;text-align:center;padding:10px">Javascript required for some images</p>

@@ -12,6 +12,7 @@ $color-secondary-purple: #5C00DB;
 $color-background-gray: #FCFCFC;
 $color-background-gray--dark: #F8F8F8;
 $color-background-gray--darker: #F5F5F5;
+
 // breakpoints
 $bp-375: 23.4375em;
 $bp-768: 48em;
@@ -29,6 +30,8 @@ $border-radius-card: $unit/8;
 $border-radius-portfolio-hero: $unit/8 $unit/8 0 0;
 
 // box shadows
+$box-shadow-article-image: 0 4px 4px rgba(0, 0, 0, 0.075);
+
 $box-shadow-card: 0 40px 40px -24px rgba(0, 0, 0, 0.075);
 
 $box-shadow-button: 0 14px 14px -10px rgba(0, 0, 0, 0.20);
