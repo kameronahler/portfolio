@@ -220,82 +220,6 @@
 
 
 
-// add srcsets and lightbox to article images
-(function() {
-    var srcSetSizes;
-    var lightboxWrapper = document.querySelector('.lightbox-wrapper');
-
-    var srcSet = function() {
-        var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
-
-        Array.prototype.forEach.call(figures, function(el, i) {
-            var imgs = el.querySelectorAll('img[data-src]');
-            // console.log(imgs);
-
-            Array.prototype.forEach.call(imgs, function(el, i) {
-                var srcPath = el.getAttribute('data-src');
-                var srcSetValue =
-                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
-                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
-                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
-                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
-                    srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
-
-                if (imgs.length == 1) {
-                    srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
-                } else if (imgs.length == 2) {
-                    srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
-                } else {
-                    srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
-                }
-
-                el.setAttribute('srcset', srcSetValue);
-                el.setAttribute('sizes', srcSetSizes);
-                el.setAttribute('src', el.getAttribute('data-src'));
-                el.classList.add('lightbox');
-                el.addEventListener('click', function() {
-                    var imgs = document.querySelectorAll('.lightbox-wrapper img');
-
-                    if (imgs.length > 0) {
-                        Array.prototype.forEach.call(imgs, function(el, i) {
-                            el.remove();
-                        });
-                    }
-
-                    var newImage = document.createElement('img');
-                    newImage.setAttribute('src', this.getAttribute('src'));
-                    newImage.setAttribute('alt', this.getAttribute('alt'));
-                    lightboxWrapper.appendChild(newImage);
-                    lightboxWrapper.setAttribute('aria-hidden', 'false');
-                    window.setTimeout(function() { document.body.classList.add('js-lightbox-active') }, 200)
-                })
-            })
-        })
-    }
-    window.addEventListener("DOMContentLoaded", srcSet())
-})();
-
-
-
-
-
-
-
-
-
-//lightbox close
-function lightboxClose() {
-    event.currentTarget.parentNode.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('js-lightbox-active');
-}
-
-
-
-
-
-
-
-
 // contact form
 // https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
 (function() {
@@ -560,7 +484,84 @@ function lightboxClose() {
 
 
 
-// portfolio section tablist
+
+
+
+// srcsets and lightbox to article images (global)
+function srcSet() {
+    var srcSetSizes;
+    var lightboxWrapper = document.querySelector('.lightbox-wrapper');
+    var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
+
+    Array.prototype.forEach.call(figures, function(el, i) {
+        var imgs = el.querySelectorAll('img[data-src]');
+        // console.log(imgs);
+
+        Array.prototype.forEach.call(imgs, function(el, i) {
+            var srcPath = el.getAttribute('data-src');
+            var srcSetValue =
+                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
+                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
+                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
+                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
+                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
+
+            if (imgs.length == 1) {
+                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
+            } else if (imgs.length == 2) {
+                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
+            } else {
+                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
+            }
+
+            el.setAttribute('srcset', srcSetValue);
+            el.setAttribute('sizes', srcSetSizes);
+            el.setAttribute('src', el.getAttribute('data-src'));
+            el.classList.add('lightbox');
+            el.addEventListener('click', function() {
+                var imgs = document.querySelectorAll('.lightbox-wrapper img');
+
+                if (imgs.length > 0) {
+                    Array.prototype.forEach.call(imgs, function(el, i) {
+                        el.remove();
+                    });
+                }
+
+                var newImage = document.createElement('img');
+                newImage.setAttribute('src', this.getAttribute('src'));
+                newImage.setAttribute('alt', this.getAttribute('alt'));
+                lightboxWrapper.appendChild(newImage);
+                lightboxWrapper.setAttribute('aria-hidden', 'false');
+                window.setTimeout(function() { document.body.classList.add('js-lightbox-active') }, 200)
+            })
+        })
+    })
+}(function() {
+    window.addEventListener("DOMContentLoaded", srcSet())
+})();
+
+
+
+//lightbox close (global)
+function lightboxClose() {
+    event.currentTarget.parentNode.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('js-lightbox-active');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// portfolio section
 (function() {
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -709,7 +710,6 @@ function lightboxClose() {
                 };
             };
             request.send();
-            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // ajax in article for next button press
@@ -814,37 +814,35 @@ function lightboxClose() {
             }
         };
 
-        var srcSet = function() {
-            var srcSetSizes;
-            var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
 
-            Array.prototype.forEach.call(figures, function(el, i) {
-                var imgs = el.querySelectorAll('img');
-                // console.log(imgs);
+        // zero attain path for new article with zero padding rules
+        var pathCreator = function() {
+            if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
 
-                Array.prototype.forEach.call(imgs, function(el, i) {
-                    var srcPath = el.getAttribute('data-src');
-                    var srcSetValue =
-                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
-                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
-                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
-                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
-                        srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
+                // 1-9
+                newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
 
-                    if (imgs.length == 1) {
-                        srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
-                    } else if (imgs.length == 2) {
-                        srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
-                    } else {
-                        srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
-                    }
+                return false;
 
-                    el.setAttribute('srcset', srcSetValue);
-                    el.setAttribute('sizes', srcSetSizes);
-                    el.setAttribute('src', el.getAttribute('data-src'));
-                })
-            })
-        };
+            } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
+
+                // 10-99
+                newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
+                return false;
+
+            } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
+
+                // 100-999
+                newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
+                nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
+                return false;
+
+            } else {
+                return false;
+            };
+        }
 
         // combine all functions when previous and next article button is clicked
         var getNextArticle = function() {
@@ -854,36 +852,8 @@ function lightboxClose() {
             nextArticleNumber++;
 
             // get path for article that will be ajaxed in, need zero padding ifs
-            function pathCreator() {
-                if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
-                    // console.log(currentArticleNumber);
-                    // 1-9
-                    newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
-                    // console.log(newArticlePath);
-                    return false;
-
-                } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
-                    // console.log(currentArticleNumber);
-                    // 10-99
-                    newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
-                    return false;
-
-                } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
-                    // console.log(currentArticleNumber);
-                    // 100-999
-                    newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
-                    return false;
-
-                } else {
-                    return false;
-                };
-            }
             pathCreator();
 
-            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
             // after we have paths, we ask for article ajax
             requestNextArticle();
@@ -901,35 +871,9 @@ function lightboxClose() {
             currentArticleNumber--;
             nextArticleNumber--;
 
-            function pathCreator() {
-                // get path for article that will be ajaxed in, need zero padding ifs
-                if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
-
-                    // 1-9
-                    newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
-
-                    return false;
-
-                } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
-
-                    // 10-99
-                    newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
-                    return false;
-
-                } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
-
-                    // 100-999
-                    newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
-                    nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
-                    return false;
-
-                } else {
-                    return false;
-                };
-            }
+            // get path for article that will be ajaxed in, need zero padding ifs
             pathCreator();
+
 
             // after we have paths, we ask for article ajax
             requestPreviousArticle();
@@ -940,7 +884,6 @@ function lightboxClose() {
             // we know we can enable next article button because someone just clicked previous
             nextArticleButton.disabled = false;
 
-            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // add listeners

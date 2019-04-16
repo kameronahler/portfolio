@@ -82,16 +82,6 @@
             }
         }
 
-        &:last-of-type {
-            margin-bottom: 0;
-            padding-bottom: 0;
-
-            &::after {
-                @include bp(sm) {
-                    content: none;
-                }
-            }
-        }
 
         >header {
             h3 {
@@ -148,8 +138,7 @@
 
         >div {
             padding: $unit;
-            background: $color-background-gray;
-            border: 1px solid $color-background-gray--darker;
+            // background: #fcfcfc;
 
             @include bp(md) {
                 display: flex;
@@ -165,7 +154,8 @@
 
         img {
             margin: 0 auto $unit;
-            box-shadow: $box-shadow-article-image;
+            // box-shadow: $box-shadow-article-image;
+            border: 1px solid $color-background-gray--darker;
             cursor: pointer;
 
             &:last-of-type {
