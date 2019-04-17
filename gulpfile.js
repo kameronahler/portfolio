@@ -81,64 +81,50 @@ gulp.task('browserSyncReload', function(done) {
 
 // responsive images
 gulp.task('responsiveImages', function(done) {
-    gulp.src('src/img/article/**/*')
+    gulp.src('src/img/*')
         .pipe(responsiveImages({
             '*.jpg': [{
                 width: 400,
-                quality: 90,
                 suffix: '@400'
             }, {
                 width: 800,
-                quality: 70,
                 suffix: '@800'
             }, {
                 width: 1200,
-                quality: 60,
                 suffix: '@1200'
             }, {
                 width: 1600,
-                quality: 50,
                 suffix: '@1600'
             }, {
                 width: 2000,
-                quality: 40,
                 suffix: '@2000'
-            }, {
-                quality: 50,
-            }],
+            }, {}],
             '*.png': [{
                 width: 400,
-                quality: 90,
                 suffix: '@400'
             }, {
                 width: 800,
-                quality: 70,
                 suffix: '@800'
             }, {
                 width: 1200,
-                quality: 60,
                 suffix: '@1200'
             }, {
                 width: 1600,
-                quality: 50,
                 suffix: '@1600'
             }, {
                 width: 2000,
-                quality: 40,
                 suffix: '@2000'
-            }, {
-                quality: 50,
-            }]
+            }, {}]
         }))
-        .pipe(gulp.dest('portfolio/dist/img/article'));
+        .pipe(gulp.dest('src/img/sized'));
     done();
 });
 
 //image optim
 gulp.task('imageOptim', function(done) {
-    return gulp.src('portfolio/dist/img/article/**/*')
+    return gulp.src('src/img/sized/*')
         .pipe(imageOptim.optimize())
-        .pipe(gulp.dest('dist/img/article'));
+        .pipe(gulp.dest('src/img/optimized'));
     done();
 });
 
