@@ -135,13 +135,14 @@ textarea {
 
 figcaption {
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 1.23;
     color: $color-grayscale--lighter;
     text-align: center;
     font-style: italic;
 
     @include bp(md) {
         font-size: 14px;
+        line-height: 1.14;
     }
 }
 

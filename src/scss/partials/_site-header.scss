@@ -83,6 +83,32 @@
         }
     }
 
+    .wrapper {
+        z-index: 0;
+    }
+
+
+
+
+    h1,
+    h3 {
+        text-align: center;
+        flex-basis: 100%;
+        color: $color-grayscale;
+
+        @include bp(md) {
+            text-align: left;
+        }
+    }
+
+    h1 {
+        margin-bottom: 0
+    }
+
+    h3 {
+        margin-bottom: 2 * $unit
+    }
+
     // social icons list
     &__social-icons {
         display: flex;
@@ -120,27 +146,6 @@
         }
     }
 
-    .wrapper {
-        z-index: 0;
-    }
 
-    h1,
-    h3 {
-        text-align: center;
-        flex-basis: 100%;
-        color: $color-grayscale;
-
-        @include bp(md) {
-            text-align: left;
-        }
-    }
-
-    h1 {
-        margin-bottom: 0
-    }
-
-    h3 {
-        margin-bottom: 2 * $unit
-    }
 
 }

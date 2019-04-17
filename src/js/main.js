@@ -490,6 +490,7 @@
 // srcsets and lightbox to article images (global)
 function srcSet() {
     var srcSetSizes;
+    var domain = "dist/img/article/";
     var lightboxWrapper = document.querySelector('.lightbox-wrapper');
     var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
 
@@ -500,11 +501,11 @@ function srcSet() {
         Array.prototype.forEach.call(imgs, function(el, i) {
             var srcPath = el.getAttribute('data-src');
             var srcSetValue =
-                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
-                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
-                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
-                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
-                srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
 
             if (imgs.length == 1) {
                 srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
@@ -516,7 +517,7 @@ function srcSet() {
 
             el.setAttribute('srcset', srcSetValue);
             el.setAttribute('sizes', srcSetSizes);
-            el.setAttribute('src', el.getAttribute('data-src'));
+            el.setAttribute('src', domain + el.getAttribute('data-src'));
             el.classList.add('lightbox');
             el.addEventListener('click', function() {
                 var imgs = document.querySelectorAll('.lightbox-wrapper img');
