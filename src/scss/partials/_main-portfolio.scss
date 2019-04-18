@@ -166,6 +166,18 @@
     }
 }
 
+#portfolio-section-recent {
+    .portfolio {
+
+        // article
+        &__article {
+            &:not(.portfolio__article--active) {
+                display: none;
+            }
+        }
+    }
+}
+
 // grid support for lg bp
 
 @supports (display:grid) {

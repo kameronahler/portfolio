@@ -354,9 +354,50 @@
     document.addEventListener("DOMContentLoaded", loaded, false);
 })();
 
+// dribbble
+(function() {
+    var dribbbleFeed = document.getElementById('dribbble-feed');
 
+    var dribbble = function() {
+        // set access token from dribbble/postman
+        var accessToken = 'bd8865cd4ff712d9f421cb8526fa8560062dfd67da1fac1645a4229b43500d24';
 
+        // open new xhr request
+        var request = new XMLHttpRequest();
 
+        request.open('GET', 'https://api.dribbble.com/v2/user/shots?per_page=6&access_token=' + accessToken, true);
+
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+
+                // get the json
+                var data = JSON.parse(request.responseText);
+
+                if (data.length > 0) {
+                    var fragment = document.createDocumentFragment();
+
+                    Array.prototype.forEach.call(data, function(el, i) {
+                        var newEl = document.createElement('a');
+                        newEl.setAttribute('href', el.html_url);
+                        newEl.setAttribute('target', '_blank');
+                        newEl.setAttribute('title', el.title);
+                        newEl.innerHTML = '<img aria-hidden="true" src="' + el.images.hidpi + '" />'
+
+                        // newEl.innerHTML = el.images.hidpi;
+                        fragment.appendChild(newEl);
+                        console.log(el)
+                    });
+
+                    // add images to dribbble feed article area
+                    dribbbleFeed.appendChild(fragment);
+
+                }
+            }
+        };
+        request.send();
+    };
+    dribbble();
+})();
 
 
 
@@ -377,9 +418,6 @@
 
 
 /* -------- custom global -------- */
-
-
-
 
 // srcsets and lightbox to article images (global)
 function srcSet() {
@@ -446,49 +484,6 @@ function lightboxClose() {
 
 
 /* -------- custom -------- */
-
-
-// dribbble
-// (function() {
-//     function dribbble() {
-//         // set access token from dribbble/postman
-//         var accessToken = 'bd8865cd4ff712d9f421cb8526fa8560062dfd67da1fac1645a4229b43500d24';
-
-//         // open new xhr request
-//         var request = new XMLHttpRequest();
-
-//         request.open('GET', 'https://api.dribbble.com/v2/user/shots?access_token=' + accessToken, true);
-
-//         request.onload = function() {
-//             if (request.status >= 200 && request.status < 400) {
-
-//                 // get the json
-//                 var data = JSON.parse(request.responseText);
-
-//                 if (data.length > 0) {
-//                     var fragment = document.createDocumentFragment();
-
-//                     Array.prototype.forEach.call(data, function(el, i) {
-//                         var newEl = document.createElement('a');
-//                         newEl.setAttribute('href', el.html_url);
-//                         newEl.setAttribute('target', '_blank');
-//                         newEl.setAttribute('title', el.title);
-//                         newEl.innerHTML = '<img aria-hidden="true" src="' + el.images.hidpi + '" />'
-
-//                         // newEl.innerHTML = el.images.hidpi;
-//                         fragment.appendChild(newEl);
-//                     });
-//                 }
-//             }
-//         };
-//         request.send();
-//     };
-//     dribbble();
-// })();
-
-
-
-
 // site nav scroll
 (function() {
     document.addEventListener("DOMContentLoaded", function() {
@@ -585,7 +580,7 @@ function lightboxClose() {
         var tabs = document.querySelectorAll('.portfolio__tablist-tab');
         var sections = document.querySelectorAll('.portfolio__section');
 
-        var currentSection = document.getElementById('portfolio-section-ux');
+        var currentSection = document.getElementById('portfolio-section-recent');
         var currentSectionData = currentSection.getAttribute('data-section');
 
         var currentArticleNumber = parseInt(currentSection.children[0].getAttribute('data-article'));
@@ -629,7 +624,13 @@ function lightboxClose() {
                         // console.log('current section is ' + currentSectionData + ' and current article is ' + currentArticleNumber);
 
                         // fire new section function
-                        getNewSection();
+                        getNewSection(el);
+
+                    } else if (el.id == 'portfolio-section-recent') {
+                        // remove active classes from other sections
+                        el.classList.remove('portfolio__section--active');
+                        el.children[0].classList.remove('portfolio__article--active');
+                        el.setAttribute('aria-hidden', 'true');
 
                     } else {
                         // clear all other section's content except new current section
@@ -651,16 +652,14 @@ function lightboxClose() {
 
 
         // trigger for new section click from tablist
-        var getNewSection = function() {
+        var getNewSection = function(el) {
 
             // reset internal vars for article numbers because we know it should go back to beginning of section articles
             previousArticleNumber = 0;
             currentArticleNumber = 1;
             nextArticleNumber = 2;
 
-            // we also know that these buttons can be enabled or disabled
-            previousArticleButton.disabled = true;
-            nextArticleButton.disabled = false;
+
 
             // define new article path path, we know what section number it is and article number has to be 1
             newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-001.html';
@@ -668,8 +667,30 @@ function lightboxClose() {
             // define next article after new article's path, we know this has to be 2 because the current article number is 1
             nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-002.html';
 
-            // request ajax for new section article
-            requestNewSectionArticle();
+            if (el.id == 'portfolio-section-recent') {
+                el.classList.add('portfolio__section--active');
+                el.children[0].classList.add('portfolio__article--active');
+                el.setAttribute('aria-hidden', 'false');
+                // we also know that these buttons can be enabled or disabled
+                previousArticleButton.disabled = true;
+                nextArticleButton.disabled = true;
+
+                // troubleshoot
+                // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+
+                return false;
+            } else {
+                //troubleshoot
+
+                // troubleshoot
+                // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+
+                previousArticleButton.disabled = true;
+                nextArticleButton.disabled = false;
+                // request ajax for new section article
+                requestNewSectionArticle();
+                // we also know that these buttons can be enabled or disabled
+            }
         };
 
         // listen for tab clicks
@@ -877,6 +898,10 @@ function lightboxClose() {
 
             // we know we can enable the previous article button because someone just clicked next
             previousArticleButton.disabled = false;
+
+            // troubleshoot
+            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
+
         }
 
 
@@ -901,12 +926,16 @@ function lightboxClose() {
             // we know we can enable next article button because someone just clicked previous
             nextArticleButton.disabled = false;
 
+            // troubleshoot
+            // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
         };
 
         // add listeners
         nextArticleButton.addEventListener('click', getNextArticle);
         previousArticleButton.addEventListener('click', getPreviousArticle);
 
+
+        // troubleshoot
         // console.log('Section: ' + currentSectionData + ' Previous: ' + previousArticleNumber + ' Current: ' + currentArticleNumber + ' Next: ' + nextArticleNumber)
 
 
