@@ -201,6 +201,48 @@
     }
 }
 
+
+
+// dribbble article content section only
+
+#portfolio-section-recent {
+    >article {
+        @include bp(sm) {
+            padding-bottom: 2*$unit
+        }
+    }
+}
+
+#dribbble-feed {
+
+    @include bp(sm) {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2*$unit 2*$unit 0;
+        justify-content: space-between;
+        background: $color-background-gray;
+        margin: 0 2 * $unit;
+    }
+
+    a {
+        display: block;
+        opacity: 1;
+        margin-bottom: 2 * $unit;
+
+        @include bp(sm) {
+            flex-basis: 48%;
+        }
+    }
+
+    img {
+        border: 1px solid $color-background-gray--darker;
+    }
+}
+
+
+
+
+// grid support
 @supports (display:grid) {
     .portfolio__article-content {
         .hero {
@@ -238,31 +280,7 @@
 }
 
 
-
-// dribbble article content section only
-#dribbble-feed {
-    @include bp(sm) {
-        display: flex;
-        flex-wrap: wrap;
-
-        @include bp(sm) {
-            justify-content: space-between
-        }
-    }
-
-    a {
-        opacity: 1;
-        margin-bottom: 2 * $unit;
-
-        @include bp(sm) {
-            flex-basis: 48%;
-        }
-    }
-
-    img {
-        border: 1px solid $color-background-gray--darker;
-    }
-}
+// grid with object fit support
 
 @supports (display:grid) and (object-fit:cover) {
     .portfolio__article-content {
