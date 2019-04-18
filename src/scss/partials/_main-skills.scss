@@ -1,5 +1,14 @@
 // skills
 .skills {
+    &__intro {
+        p {
+            text-align: center;
+
+            @include bp(md) {
+                text-align: left
+            }
+        }
+    }
 
     // tiles wrapper - non-grid
     &__tiles {

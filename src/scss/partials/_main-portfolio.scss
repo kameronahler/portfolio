@@ -18,7 +18,8 @@
         justify-content: center;
         flex-wrap: wrap;
 
-        &-tab {
+        &-tab,
+        &-recent {
             margin: 0 1 * $unit 1 * $unit;
 
             @include bp(md) {
@@ -187,7 +188,8 @@
                 display: block;
             }
 
-            &-tab {
+            &-tab,
+            &-recent {
                 @include bp(lg) {
                     margin-bottom: 2 * $unit;
                     width: 100%;

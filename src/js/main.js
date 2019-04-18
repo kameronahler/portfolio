@@ -1,3 +1,5 @@
+/* ------3rd party------- */
+
 // svg4everybody polyfill
 ! function(root, factory) {
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
@@ -135,16 +137,6 @@
     });
 })();
 
-
-
-
-
-
-
-
-
-
-
 // scroll to polyfill https://github.com/iamdustan/smoothscroll
 (function() {
     document.addEventListener('DOMContentLoaded', function() {
@@ -206,19 +198,6 @@
         }();
     });
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // contact form
 // https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
@@ -386,6 +365,130 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+/* -------- custom global -------- */
+
+
+
+
+// srcsets and lightbox to article images (global)
+function srcSet() {
+    var srcSetSizes;
+    var domain = "dist/img/article/";
+    var lightboxWrapper = document.querySelector('.lightbox-wrapper');
+    var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
+
+    Array.prototype.forEach.call(figures, function(el, i) {
+        var imgs = el.querySelectorAll('img[data-src]');
+        // console.log(imgs);
+
+        Array.prototype.forEach.call(imgs, function(el, i) {
+            var srcPath = el.getAttribute('data-src');
+            var srcSetValue =
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
+                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
+
+            if (imgs.length == 1) {
+                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
+            } else if (imgs.length == 2) {
+                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
+            } else {
+                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
+            }
+
+            el.setAttribute('srcset', srcSetValue);
+            el.setAttribute('sizes', srcSetSizes);
+            el.setAttribute('src', domain + el.getAttribute('data-src'));
+            el.classList.add('lightbox');
+            el.addEventListener('click', function() {
+                var imgs = document.querySelectorAll('.lightbox-wrapper img');
+
+                if (imgs.length > 0) {
+                    Array.prototype.forEach.call(imgs, function(el, i) {
+                        el.remove();
+                    });
+                }
+
+                var newImage = document.createElement('img');
+                newImage.setAttribute('src', this.getAttribute('src'));
+                newImage.setAttribute('alt', this.getAttribute('alt'));
+                lightboxWrapper.appendChild(newImage);
+                lightboxWrapper.setAttribute('aria-hidden', 'false');
+                window.setTimeout(function() { document.body.classList.add('js-lightbox-active') }, 200)
+            })
+        })
+    })
+}(function() {
+    window.addEventListener("DOMContentLoaded", srcSet())
+})();
+
+
+//lightbox close (global)
+function lightboxClose() {
+    event.currentTarget.parentNode.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('js-lightbox-active');
+}
+
+
+
+
+/* -------- custom -------- */
+
+
+// dribbble
+// (function() {
+//     function dribbble() {
+//         // set access token from dribbble/postman
+//         var accessToken = 'bd8865cd4ff712d9f421cb8526fa8560062dfd67da1fac1645a4229b43500d24';
+
+//         // open new xhr request
+//         var request = new XMLHttpRequest();
+
+//         request.open('GET', 'https://api.dribbble.com/v2/user/shots?access_token=' + accessToken, true);
+
+//         request.onload = function() {
+//             if (request.status >= 200 && request.status < 400) {
+
+//                 // get the json
+//                 var data = JSON.parse(request.responseText);
+
+//                 if (data.length > 0) {
+//                     var fragment = document.createDocumentFragment();
+
+//                     Array.prototype.forEach.call(data, function(el, i) {
+//                         var newEl = document.createElement('a');
+//                         newEl.setAttribute('href', el.html_url);
+//                         newEl.setAttribute('target', '_blank');
+//                         newEl.setAttribute('title', el.title);
+//                         newEl.innerHTML = '<img aria-hidden="true" src="' + el.images.hidpi + '" />'
+
+//                         // newEl.innerHTML = el.images.hidpi;
+//                         fragment.appendChild(newEl);
+//                     });
+//                 }
+//             }
+//         };
+//         request.send();
+//     };
+//     dribbble();
+// })();
+
+
+
+
 // site nav scroll
 (function() {
     document.addEventListener("DOMContentLoaded", function() {
@@ -473,93 +576,6 @@
         }, false);
     }, false);
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// srcsets and lightbox to article images (global)
-function srcSet() {
-    var srcSetSizes;
-    var domain = "dist/img/article/";
-    var lightboxWrapper = document.querySelector('.lightbox-wrapper');
-    var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
-
-    Array.prototype.forEach.call(figures, function(el, i) {
-        var imgs = el.querySelectorAll('img[data-src]');
-        // console.log(imgs);
-
-        Array.prototype.forEach.call(imgs, function(el, i) {
-            var srcPath = el.getAttribute('data-src');
-            var srcSetValue =
-                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@400" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 400w,' +
-                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@800" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 800w,' +
-                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1200" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1200w,' +
-                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
-                domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
-
-            if (imgs.length == 1) {
-                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
-            } else if (imgs.length == 2) {
-                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
-            } else {
-                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
-            }
-
-            el.setAttribute('srcset', srcSetValue);
-            el.setAttribute('sizes', srcSetSizes);
-            el.setAttribute('src', domain + el.getAttribute('data-src'));
-            el.classList.add('lightbox');
-            el.addEventListener('click', function() {
-                var imgs = document.querySelectorAll('.lightbox-wrapper img');
-
-                if (imgs.length > 0) {
-                    Array.prototype.forEach.call(imgs, function(el, i) {
-                        el.remove();
-                    });
-                }
-
-                var newImage = document.createElement('img');
-                newImage.setAttribute('src', this.getAttribute('src'));
-                newImage.setAttribute('alt', this.getAttribute('alt'));
-                lightboxWrapper.appendChild(newImage);
-                lightboxWrapper.setAttribute('aria-hidden', 'false');
-                window.setTimeout(function() { document.body.classList.add('js-lightbox-active') }, 200)
-            })
-        })
-    })
-}(function() {
-    window.addEventListener("DOMContentLoaded", srcSet())
-})();
-
-
-
-//lightbox close (global)
-function lightboxClose() {
-    event.currentTarget.parentNode.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('js-lightbox-active');
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // portfolio section
