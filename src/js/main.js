@@ -385,7 +385,6 @@
 
                         // newEl.innerHTML = el.images.hidpi;
                         fragment.appendChild(newEl);
-                        console.log(el)
                     });
 
                     // add images to dribbble feed article area
@@ -420,11 +419,33 @@
 /* -------- custom global -------- */
 
 // srcsets and lightbox to article images (global)
+function oneOffLightbox(target) {
+    var imgs = document.querySelectorAll('.lightbox-wrapper img');
+    var lightboxWrapper = document.querySelector('.lightbox-wrapper');
+
+    if (imgs.length > 0) {
+        Array.prototype.forEach.call(imgs, function(el, i) {
+            el.remove();
+        });
+    }
+    console.log(target)
+    var newImage = document.createElement('img');
+    newImage.setAttribute('src', target.currentTarget.getAttribute('src'));
+    newImage.setAttribute('alt', target.currentTarget.getAttribute('alt'));
+    lightboxWrapper.appendChild(newImage);
+    lightboxWrapper.setAttribute('aria-hidden', 'false');
+    window.setTimeout(function() { document.body.classList.add('js-lightbox-active') }, 200)
+}
+
+
+
+// srcsets and lightbox to article images (global)
 function srcSet() {
     var srcSetSizes;
     var domain = "dist/img/article/";
     var lightboxWrapper = document.querySelector('.lightbox-wrapper');
     var figures = document.getElementById('portfolio-content').querySelectorAll('figure > div');
+
 
     Array.prototype.forEach.call(figures, function(el, i) {
         var imgs = el.querySelectorAll('img[data-src]');
