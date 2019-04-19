@@ -874,7 +874,7 @@ function lightboxClose() {
         };
 
 
-        // zero attain path for new article with zero padding rules
+        // attain path for new article with zero padding rules
         var pathCreator = function() {
             if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
 
