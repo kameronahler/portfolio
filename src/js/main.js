@@ -299,7 +299,7 @@
                 window.setTimeout(function() {
                     form.classList.remove('js-submitting'); // remove waiting class
                     form.classList.add('js-submitted'); // add finished state class
-                    icon.setAttribute('xlink:href', '/portfolio/dist/img/icons.svg#icon-check'); // change icon on button back
+                    icon.setAttribute('xlink:href', 'dist/img/icons.svg#icon-check'); // change icon on button back
                     button.querySelector('span').innerHTML = "Sent"; // change button text
                 }, 2000)
                 // var formElements = form.querySelector(".contact__form-elements")
@@ -343,7 +343,7 @@
     };
 
     function disableAllButtons(form) {
-        icon.setAttribute('xlink:href', '/portfolio/dist/img/icons.svg#icon-form-spinner');
+        icon.setAttribute('xlink:href', 'dist/img/icons.svg#icon-form-spinner');
         button.querySelector('span').innerHTML = "Sending";
         button.disabled = true;
         form.classList.add('js-submitting');
@@ -683,11 +683,9 @@ function lightboxClose() {
 
 
             // define new article path path, we know what section number it is and article number has to be 1
-            // newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-001.html';
             newArticlePath = 'dist/article/article-' + currentSectionData + '-001.html';
 
             // define next article after new article's path, we know this has to be 2 because the current article number is 1
-            // nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-002.html';
             nextArticlePath = 'dist/article/article-' + currentSectionData + '-002.html';
 
             if (el.id == 'portfolio-section-recent') {
@@ -880,29 +878,6 @@ function lightboxClose() {
         var pathCreator = function() {
             if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
 
-                //     // 1-9
-                //     newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
-                //     nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
-
-                //     return false;
-
-                // } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
-
-                //     // 10-99
-                //     newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
-                //     nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
-                //     return false;
-
-                // } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
-
-                //     // 100-999
-                //     newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
-                //     nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
-                //     return false;
-
-                // } else {
-                //     return false;
-                // };
                 // 1-9
                 newArticlePath = 'dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
                 nextArticlePath = 'dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
