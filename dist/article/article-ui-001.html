@@ -1,9 +1,142 @@
 <article data-article="1" class="portfolio__article card">
     <header class="portfolio__article-header">
-        <h3>UI Article 1</h3>
+        <h3>UI | Implementing a Centralized Design System</h3>
+        <figure>
+            <div class="hero">
+                <img aria-hidden="true" alt="" data-src="ui-design-system-hero.png" />
+            </div>
+        </figure>
     </header>
-    <section class="portfolio__article-content">
-        <img aria-hidden="true" src="https://picsum.photos/800/300?image=201" alt="" class="portfolio__article-hero card-hero">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, minima assumenda culpa fugit amet pariatur repellat suscipit dolore alias temporibus numquam aliquid vel asperiores id, reiciendis, fugiat ex repudiandae. Labore.</p>
-    </section>
+    <div class="portfolio__article-content">
+        <section>
+            <header>
+                <h3>Overview</h3>
+            </header>
+            <section>
+                <p>This initiative involved utilizing a central library of components for designers spread over three locations, while utilizing as few third party options as possible, and improving the flexibility of our design assets at the same time.</p>
+                <p>Previously, our team was utilizing InVision Craft for symbols, but the system was hard to catalog, and difficult to scale. There was also no versioning or ownership over the system. Upon my arrival I took the task of owning our design system to migrate it to a point where it was ready to become a decentralized systems with distributed ownership.</p>
+                <div class="lists">
+                    <ul>
+                        <header>
+                            <h4>Challenges</h4>
+                        </header>
+                        <li>Our design assets must be ready for both expert and novice designers alike.</li>
+                        <li>The system had previously been owned by Development, and was organized to fit their needs.</li>
+                        <li>InVision Craft was previously used to house symbols, but pushing changes to those symbols was impossible after they were implemented into design files.</li>
+                        <li>Our developers were utilizing a centeral interface library, and changes to the components would equate to potentially costly changes for their code components.</li>
+                        <li>Third party apps were difficult to get approved for our team, and thusly, we needed a solution that was barebones but efficient.</li>
+                        <li>Previous designers had relied heavily on screenshots.</li>
+                        <li>There was no central design file for UI componentry.</li>
+                    </ul>
+                    <ul>
+                        <header>
+                            <h4>Goals</h4>
+                        </header>
+                        <li>Create a system of responsive symbols that would mimic existing components.</li>
+                        <li>Make additions to the library to allow designers to create designs completely out of existing symbols.</li>
+                        <li>Utilize <a href="http://atomicdesign.bradfrost.com/chapter-2/">Atomic Design</a> theories.</li>
+                        <li>Document and educate other designers on implementation.</li>
+                        <li>Create responsive components wherever possible.</li>
+                        <li>Allow for future symbols to be created by other designers, but implement an approval system for component additions/updates.</li>
+                        <li>Let components be updated from a central library with as little friction as possible.</li>
+                    </ul>
+                    <ul>
+                        <header>
+                            <h4>Good to Know</h4>
+                        </header>
+                        <li>The current design team did not have much previous experience with Atomic Design principles.</li>
+                        <li>Many of the existing components were created by a mish-mash of a previous branding company and developers at the product's MVP stage.</li>
+                        <li>The app was focused on desktop sized applications.</li>
+                        <li>Tools utilized were, Sketch, Plant.io, and filesharing apps.</li>
+                    </ul>
+                    <ul>
+                        <header>
+                            <h4>Role</h4>
+                        </header>
+                        <li>I architected the component library for our designers, and provided documentation and training to other designers on our team for implementation.</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <header>
+                    <h3>Process</h3>
+                </header>
+                <header>
+                    <h4>Examining Our Needs</h4>
+                </header>
+                <section>
+                    <p>I've always been a systems kind of person. Order and procedure have always felt comforting to me. Having an opportunity to address and contribute to a system is always an exciting opportunity, in my opinion.</p>
+                    <p>When I arrived on our team, the current design stack was using Craft to house symbols. However, upon examination, it was difficult to know how to update those symbols effectively, and people could work on symbols at the same time, or overwrite their work. Still, Craft and Sketch combined was definitely efficient.</p>
+                    <figure>
+                        <div class="">
+                            <img data-src="ui-design-system-craft.png" alt="">
+                        </div>
+                        <figcaption></figcaption>
+                    </figure>
+                    <p>So we needed to stay efficient, but also clean up those symbols, and organize them more effectively. The Craft library of symbols was also dated, and in no way matched any sort of taxonomy with developers. And as a main focus, I realized that updated symbols via Craft did not allow me to push changes to other designers. Whatever solution I looked for needed to be easy enough to use that we could onboard novice Sketch designers in its usage.</p>
+                    <p>I explored InVision's Design System for a bit, as well as even potentially jumping ship to InVision Studio or Adobe XD. In the end, Sketch's native Shared Library feature made a lot of sense for our team, and required the fewest changes to our current process.</p>
+                    <figure>
+                        <div class="">
+                            <img data-src="ui-design-system-shared-libraries.png" alt="">
+                        </div>
+                        <figcaption></figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <header>
+                    <h3>Documenting Goals</h3>
+                </header>
+                <section>
+                    <p>This project was the beginning of a much more expanded design system initiative. I started by stating my goals, and documenting the things that a proper designs system should cover, including things such as:</p>
+                    <ul>
+                        <li>Design Process</li>
+                        <li>Usage Guidelines</li>
+                        <li>Resources</li>
+                        <li>System Logic</li>
+                        <li>UI Standards and Rules</li>
+                    </ul>
+                    <figure>
+                        <div class="">
+                            <img data-src="ui-design-system-documenting-goals.png" alt="">
+                        </div>
+                        <figcaption></figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <header>
+                    <h3>Designing A Central Component File</h3>
+                </header>
+                <section>
+                    <section>
+                        <header>
+                            <h3>Implementing Atomic Design Structure</h3>
+                        </header>
+                        <section>
+                            <p>One thing that bothered me about Craft was that overrriding symbols was not it's primary focus. Therefore, I wanted to implement Atomic Design so that we could think about UI components modularly rather than as finished pieces.</p>
+                            <p>However, one thing I realized was that Sketch required (at least, for our team at that point), a sub-layer of shared styles and shapes, that would then inform Atoms (Atomic's smallest element). Afterall, a rectangle of color is not exactly an HTML element. Therefore I used, what I called "Protons" to help symbol overrides.</p>
+                            <figure>
+                                <div class="">
+                                    <img data-src="ui-design-system-protons.png" alt="">
+                                </div>
+                                <figcaption></figcaption>
+                            </figure>
+                            <p>Because our components were organized in a certain way for developers, I couldn't restructure our design assets for Atomic taxonomy, so I relied on strict naming conventions to help organize things for other designers. They would look for the components they needed, which shared a common naming structure, but then choose between atoms, molecules, etc. rather than choosing from atoms and molecules first.</p>
+                            <figure>
+                                <div class="">
+                                    <img data-src="ui-design-system-naming-a.png" alt="">
+                                    <img data-src="ui-design-system-naming-b.png" alt="">
+                                </div>
+                                <figcaption></figcaption>
+                            </figure>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <div class="portfolio__article-back-to-top">
+                <a class="inline-link" href="#portfolio">Back to Top</a>
+            </div>
+        </section>
+    </div>
 </article>
