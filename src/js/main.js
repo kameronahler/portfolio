@@ -683,10 +683,12 @@ function lightboxClose() {
 
 
             // define new article path path, we know what section number it is and article number has to be 1
-            newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-001.html';
+            // newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-001.html';
+            newArticlePath = 'dist/article/article-' + currentSectionData + '-001.html';
 
             // define next article after new article's path, we know this has to be 2 because the current article number is 1
-            nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-002.html';
+            // nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-002.html';
+            nextArticlePath = 'dist/article/article-' + currentSectionData + '-002.html';
 
             if (el.id == 'portfolio-section-recent') {
                 el.classList.add('portfolio__section--active');
@@ -878,24 +880,47 @@ function lightboxClose() {
         var pathCreator = function() {
             if (currentArticleNumber <= 9 && currentArticleNumber >= 1) {
 
+                //     // 1-9
+                //     newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
+                //     nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
+
+                //     return false;
+
+                // } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
+
+                //     // 10-99
+                //     newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
+                //     nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
+                //     return false;
+
+                // } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
+
+                //     // 100-999
+                //     newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
+                //     nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
+                //     return false;
+
+                // } else {
+                //     return false;
+                // };
                 // 1-9
-                newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
+                newArticlePath = 'dist/article/article-' + currentSectionData + '-00' + (currentArticleNumber) + '.html';
+                nextArticlePath = 'dist/article/article-' + currentSectionData + '-00' + (nextArticleNumber) + '.html';
 
                 return false;
 
             } else if (currentArticleNumber <= 99 && currentArticleNumber >= 10) {
 
                 // 10-99
-                newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
+                newArticlePath = 'dist/article/article-' + currentSectionData + '-0' + (currentArticleNumber) + '.html';
+                nextArticlePath = 'dist/article/article-' + currentSectionData + '-0' + (nextArticleNumber) + '.html';
                 return false;
 
             } else if (currentArticleNumber <= 999 && currentArticleNumber >= 100) {
 
                 // 100-999
-                newArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
-                nextArticlePath = '/portfolio/dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
+                newArticlePath = 'dist/article/article-' + currentSectionData + '-' + (currentArticleNumber) + '.html';
+                nextArticlePath = 'dist/article/article-' + currentSectionData + '-' + (nextArticleNumber) + '.html';
                 return false;
 
             } else {
