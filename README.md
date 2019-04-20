@@ -1,4 +1,4 @@
 # 2019 Portfolio
-Just a simple HTML site (don't look at the number of commits, and you'll believe it was simple).
+Single page UX/product design portfolio. If you don't look at the number of commits, and you'll believe it was simple.
 
-Gulp preprocessing. Works with ie11+, and progressively enhances to all them other fancy browsers.
+Uses scrollto and svg xlink. AJAX for portfolio section. Progressive enhancements for CSS grid, CSS animation, and object-fit.
