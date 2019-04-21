@@ -53,20 +53,27 @@
     <!-- site nav -->
     <nav class="site-nav">
         <span id="nav-title" class="accessible-hide">Navigate to</span>
-        <ul class="plain-list">
+        <button class="site-nav__menu-button button button--icon" title="Menu" aria-labelledby="nav-title nav-home-title" onclick="mobileMenu(event)">
+            <svg aria-hidden="true" role="img">
+                <use xlink:href="dist/img/icons.svg#icon-menu">
+            </svg>
+            <span id="nav-button-title" class="accessible-hide">Menu Open / Close</span>
+        </button>
+        <ul class="site-nav__list plain-list">
             <li>
                 <a title="Home" href="#home" aria-labelledby="nav-title nav-home-title" class="site-nav__link site-nav__link--current">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-home">
                     </svg>
+                    <span id="nav-home-title">Home</span>
                 </a>
-                <span id="nav-home-title" class="accessible-hide">Home</span></li>
+            </li>
             <li>
                 <a title="What Kind of Designer Am I?" href="#designer-type" aria-labelledby="nav-title nav-designer-type-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-wizard">
                     </svg>
-                    <span id="nav-designer-type-title" class="accessible-hide">What Kind of Designer Am I?</span>
+                    <span id="nav-designer-type-title">What Kind of Designer Am I?</span>
                 </a>
             </li>
             <li>
@@ -74,7 +81,7 @@
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-toolbox">
                     </svg>
-                    <span id="nav-skills-and-tools-title" class="accessible-hide">My Skills & Tools</span>
+                    <span id="nav-skills-and-tools-title">My Skills & Tools</span>
                 </a>
             </li>
             <li>
@@ -82,7 +89,7 @@
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-pencil-ruler">
                     </svg>
-                    <span id="nav-portfolio-title" class="accessible-hide">Past Work</span>
+                    <span id="nav-portfolio-title">Past Work</span>
                 </a>
             </li>
             <li>
@@ -90,7 +97,7 @@
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-astronaut">
                     </svg>
-                    <span id="nav-about-me-title" class="accessible-hide">About Me</span>
+                    <span id="nav-about-me-title">About Me</span>
                 </a>
             </li>
             <li>
@@ -98,7 +105,7 @@
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-envelope">
                     </svg>
-                    <span id="nav-contact-me-title" class="accessible-hide">Contact Me</span>
+                    <span id="nav-contact-me-title">Contact Me</span>
                 </a>
             </li>
         </ul>
@@ -1069,7 +1076,7 @@
     </div>
     <noscript>
         <div style="position:fixed;top:0;right:0;z-index:9999">
-            <p style="background:#c70707;font-weight:bold;color:#fff;margin-bottom:0;text-align:center;padding:10px">Javascript required for some images</p>
+            <p style="background:#c70707;font-weight:bold;color:#fff;margin-bottom:0;text-align:center;padding:10px">Javascript required for portfolio</p>
         </div>
     </noscript>
     <!-- Scripts -->

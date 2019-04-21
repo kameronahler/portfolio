@@ -63,7 +63,6 @@
 @mixin hide {
     position: absolute !important;
     clip: rect(1px 1px 1px 1px) !important;
-    /* IE6, IE7 */
     clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px) !important;
     padding: 0 !important;
     border: 0 !important;
