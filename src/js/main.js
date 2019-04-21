@@ -418,6 +418,19 @@
 
 /* -------- custom global -------- */
 
+
+// mobile menu
+function mobileMenu(event) {
+
+    if (document.body.classList.contains('js-mobile-menu-active')) {
+        document.body.classList.remove('js-mobile-menu-active');
+        event.currentTarget.querySelector('use').setAttribute('xlink:href', 'dist/img/icons.svg#icon-menu');
+    } else {
+        document.body.classList.add('js-mobile-menu-active');
+        event.currentTarget.querySelector('use').setAttribute('xlink:href', 'dist/img/icons.svg#icon-close');
+    }
+}
+
 // srcsets and lightbox to article images (global)
 function oneOffLightbox(target) {
     var imgs = document.querySelectorAll('.lightbox-wrapper img');

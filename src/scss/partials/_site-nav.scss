@@ -2,21 +2,151 @@
 
 .site-nav {
     @include bp(max-lg) {
-        @include hide;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 97;
+        overflow: hidden;
     }
 
     @include bp(lg) {
-        position: fixed;
         width: $unit * 3;
         height: 100%;
         top: 0;
-        z-index: 99;
+        position: fixed;
+        z-index: 97;
         background: $color-grayscale;
         display: flex;
         justify-content: center;
     }
 
+    &__menu-button {
+        width: 2 * $unit;
+        height: 2 * $unit;
+        top: $unit;
+        right: $unit;
+
+        @include bp(sm) {
+            top: 2 * $unit;
+            right: 2 * $unit;
+            width: 3 * $unit;
+            height: 3 * $unit;
+        }
+
+        @include bp(max-lg) {
+            background: $color-grayscale;
+            position: fixed;
+            z-index: 98;
+        }
+
+        @include bp(lg) {
+            display: none;
+        }
+
+        &::before {
+            content: none;
+        }
+
+        .js-mobile-menu-active & {
+            @include bp(max-lg) {
+                background: none;
+            }
+        }
+
+        svg {
+            @include bp(max-lg) {
+                fill: $color-primary;
+            }
+
+            .js-mobile-menu-active & {
+                @include bp(max-lg) {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+
+    &__list {
+        @include bp(max-lg) {
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            max-height: 0;
+            transition: none;
+        }
+
+        .js-mobile-menu-active & {
+            @include bp(max-lg) {
+                padding: 4 * $unit 4 * $unit 2 * $unit;
+                max-height: 100%;
+            }
+        }
+
+        &::after {
+            @include bp(max-lg) {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background: rgba(black, .9);
+                position: absolute;
+                top: -50%;
+                left: 0;
+                border-radius: 50%;
+                transform-origin: 50% 50%;
+                transform: scale(0);
+            }
+
+            @include bp(lg) {
+                content: none;
+            }
+
+            .js-mobile-menu-active & {
+                @include bp(max-lg) {
+                    transform: scale(3);
+                    transition: transform $transition-default;
+                }
+            }
+        }
+
+        li {
+            @include bp(max-lg) {
+                display: block;
+                position: relative;
+                z-index: 99;
+                opacity: 0;
+                transform: translateY(-$unit);
+            }
+
+            .js-mobile-menu-active & {
+                @include bp(max-lg) {
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition: transform $transition-default .1s, opacity $transition-default .1s;
+                }
+
+                @for $i from 1 through 6 {
+                    &:nth-of-type(#{$i}) {
+                        @include bp(max-lg) {
+                            transition-delay: .1s * $i + .2s
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     &__link {
+        @include bp(max-lg) {
+            display: block;
+            text-decoration: none;
+            font-size: $unit;
+            font-weight: 700;
+            padding: $unit/2 0;
+            text-align: center;
+            font-family: $font-family-heading $font-family-fallback;
+        }
+
         @include bp(lg) {
             position: relative;
             display: flex;
@@ -25,14 +155,31 @@
             transition: $transition-default background;
         }
 
+
         svg {
+            @include bp(max-lg) {
+                display: none;
+            }
+
             @include bp(lg) {
+                display: block;
                 width: 33%;
                 height: 33%;
                 margin: auto;
                 opacity: .9;
                 fill: $color-primary;
                 transition: $transition-default opacity;
+            }
+        }
+
+        span {
+            @include bp(max-lg) {
+                display: block;
+                color: #fff;
+            }
+
+            @include bp(lg) {
+                @include hide();
             }
         }
 
@@ -64,18 +211,16 @@
                     fill: $color-grayscale;
                 }
             }
-        }
 
-        &-tooltip {
-            @include bp(lg) {
-                position: absolute;
-                display: inline-block;
-                height: 100%;
-                top: 0;
-                left: 110%;
-                background: white;
-                text-align: left;
+            span {
+                @include bp(max-lg) {
+                    color: $color-primary;
+                }
             }
         }
+    }
+
+    html.no-js & {
+        display: none;
     }
 }
