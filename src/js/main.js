@@ -265,7 +265,7 @@
         formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
         formData.formGoogleSendEmail = form.dataset.email || ""; // no email by default
 
-        console.log(formData);
+        // console.log(formData);
         return formData;
     }
 
@@ -452,7 +452,7 @@ function oneOffLightbox(target) {
             el.remove();
         });
     }
-    console.log(target)
+    // console.log(target)
     var newImage = document.createElement('img');
     newImage.setAttribute('src', target.currentTarget.getAttribute('src'));
     newImage.setAttribute('alt', target.currentTarget.getAttribute('alt'));
@@ -561,7 +561,7 @@ function lightboxClose() {
             event.preventDefault();
 
 
-            console.log(this);
+            // console.log(this);
 
             // check if this was a mobile menu click
             if (document.body.classList.contains('js-mobile-menu-active')) {
@@ -573,7 +573,7 @@ function lightboxClose() {
                 if (el.id == href) {
                     var anchorDistance = el.offsetTop;
 
-                    console.log(anchorDistance);
+                    // console.log(anchorDistance);
                     window.scrollTo({
                         top: anchorDistance - 128,
                         left: 0,
@@ -780,13 +780,6 @@ function lightboxClose() {
         var sectionContent = document.getElementById('portfolio-content');
         var newArticlePath;
         var nextArticlePath;
-
-
-
-        // check current active section's height
-        var getSectionHeight = function() {
-            console.log(currentSection.height)
-        };
 
 
         // ajax first article in for new section
