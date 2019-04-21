@@ -30,7 +30,6 @@
         flex: 0 1 auto;
         text-align: center;
         padding: $unit $unit $unit/2;
-        transition: box-shadow $transition-default, transform $transition-default;
         box-shadow: $box-shadow-card;
 
         @include bp(sm) {
@@ -39,7 +38,7 @@
         }
 
         @include bp(md) {
-            box-shadow: none;
+            box-shadow: $box-shadow-card;
         }
 
         &:nth-of-type(odd) {
@@ -59,13 +58,6 @@
         &:nth-last-of-type(-n+4) {
             @include bp(sm) {
                 margin-bottom: 0;
-            }
-        }
-
-        &:hover {
-            @include bp(md) {
-                box-shadow: $box-shadow-card;
-                transform: scale(1.05);
             }
         }
 

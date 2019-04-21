@@ -51,14 +51,14 @@
         </defs>
     </svg>
     <!-- site nav -->
+    <button id="mobile-button" class="menu-button button button--icon" title="Menu" aria-labelledby="nav-title nav-home-title" onclick="mobileMenu()">
+        <svg aria-hidden="true" role="img">
+            <use xlink:href="dist/img/icons.svg#icon-menu">
+        </svg>
+        <span id="nav-button-title" class="accessible-hide">Menu Open / Close</span>
+    </button>
     <nav class="site-nav">
         <span id="nav-title" class="accessible-hide">Navigate to</span>
-        <button class="site-nav__menu-button button button--icon" title="Menu" aria-labelledby="nav-title nav-home-title" onclick="mobileMenu(event)">
-            <svg aria-hidden="true" role="img">
-                <use xlink:href="dist/img/icons.svg#icon-menu">
-            </svg>
-            <span id="nav-button-title" class="accessible-hide">Menu Open / Close</span>
-        </button>
         <ul class="site-nav__list plain-list">
             <li>
                 <a title="Home" href="#home" aria-labelledby="nav-title nav-home-title" class="site-nav__link site-nav__link--current">
@@ -110,7 +110,7 @@
             </li>
         </ul>
     </nav>
-    <main class="site-main">
+    <main id="" class="site-main">
         <!-- site header -->
         <header id="home" class="site-header scroll-anchor">
             <div class="wrapper">

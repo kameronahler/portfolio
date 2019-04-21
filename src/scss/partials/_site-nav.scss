@@ -1,13 +1,70 @@
-// nav 1200 and above
+.menu-button {
+    width: 2 * $unit;
+    height: 2 * $unit;
+    top: $unit;
+    right: $unit;
+
+
+    @include bp(md) {
+        top: 2 * $unit;
+        right: 2 * $unit;
+        width: 3 * $unit;
+        height: 3 * $unit;
+    }
+
+    @include bp(max-lg) {
+        background: $color-grayscale--light;
+        position: fixed;
+        z-index: 98;
+        border-radius: $unit/8;
+        transition: $transition-default background;
+    }
+
+    @include bp(lg) {
+        display: none;
+    }
+
+    &:hover {
+        @include bp(md) {
+            background: $color-grayscale;
+        }
+    }
+
+    &::before {
+        @include bp(max-lg) {
+            content: none;
+        }
+    }
+
+    svg {
+        @include bp(max-lg) {
+            fill: $color-primary;
+        }
+    }
+
+    .js-lightbox-active & {
+        @include bp(max-lg) {
+            display: none;
+        }
+    }
+
+    .js-mobile-menu-active & {
+        @include bp(max-lg) {
+            background: none;
+        }
+    }
+}
+
+
 
 .site-nav {
     @include bp(max-lg) {
         width: 100vw;
+        height: 100%;
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 97;
-        overflow: hidden;
+        z-index: -999;
     }
 
     @include bp(lg) {
@@ -21,49 +78,9 @@
         justify-content: center;
     }
 
-    &__menu-button {
-        width: 2 * $unit;
-        height: 2 * $unit;
-        top: $unit;
-        right: $unit;
-
-        @include bp(sm) {
-            top: 2 * $unit;
-            right: 2 * $unit;
-            width: 3 * $unit;
-            height: 3 * $unit;
-        }
-
+    .js-mobile-menu-active & {
         @include bp(max-lg) {
-            background: $color-grayscale;
-            position: fixed;
-            z-index: 98;
-        }
-
-        @include bp(lg) {
-            display: none;
-        }
-
-        &::before {
-            content: none;
-        }
-
-        .js-mobile-menu-active & {
-            @include bp(max-lg) {
-                background: none;
-            }
-        }
-
-        svg {
-            @include bp(max-lg) {
-                fill: $color-primary;
-            }
-
-            .js-mobile-menu-active & {
-                @include bp(max-lg) {
-                    fill: #fff;
-                }
-            }
+            z-index: 97;
         }
     }
 
@@ -71,15 +88,19 @@
         @include bp(max-lg) {
             padding: 0;
             height: 100%;
-            overflow: hidden;
             max-height: 0;
+            overflow: hidden;
             transition: none;
         }
 
         .js-mobile-menu-active & {
             @include bp(max-lg) {
-                padding: 4 * $unit 4 * $unit 2 * $unit;
+                padding: 4 * $unit 8 * $unit;
                 max-height: 100%;
+            }
+
+            @include bp(max-md) {
+                padding: 4 * $unit 4 * $unit;
             }
         }
 
@@ -91,7 +112,7 @@
                 background: rgba(black, .9);
                 position: absolute;
                 top: -50%;
-                left: 0;
+                right: -50%;
                 border-radius: 50%;
                 transform-origin: 50% 50%;
                 transform: scale(0);
@@ -104,7 +125,7 @@
             .js-mobile-menu-active & {
                 @include bp(max-lg) {
                     transform: scale(3);
-                    transition: transform $transition-default;
+                    transition: transform $easing .3s;
                 }
             }
         }
@@ -116,6 +137,7 @@
                 z-index: 99;
                 opacity: 0;
                 transform: translateY(-$unit);
+                margin-bottom: $unit;
             }
 
             .js-mobile-menu-active & {
@@ -142,7 +164,6 @@
             text-decoration: none;
             font-size: $unit;
             font-weight: 700;
-            padding: $unit/2 0;
             text-align: center;
             font-family: $font-family-heading $font-family-fallback;
         }
@@ -175,7 +196,9 @@
         span {
             @include bp(max-lg) {
                 display: block;
-                color: #fff;
+                color: rgba($color-primary, .75);
+                display: inline-block;
+                padding: $unit/2 2*$unit;
             }
 
             @include bp(lg) {
@@ -193,17 +216,17 @@
                     opacity: 1;
                 }
             }
+
+            span {
+                @include bp(md) {
+                    color: rgba($color-primary, 1);
+                }
+            }
         }
 
         &--current {
             @include bp(lg) {
                 background: $gradient-primary;
-            }
-
-            &:hover {
-                @include bp(lg) {
-                    background: $gradient-primary;
-                }
             }
 
             svg {
@@ -214,7 +237,21 @@
 
             span {
                 @include bp(max-lg) {
-                    color: $color-primary;
+                    color: $color-grayscale;
+
+                    background: $color-primary;
+                }
+            }
+
+            &:hover {
+                @include bp(lg) {
+                    background: $gradient-primary;
+                }
+
+                span {
+                    @include bp(md) {
+                        color: $color-grayscale;
+                    }
                 }
             }
         }

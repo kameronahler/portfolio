@@ -67,8 +67,7 @@
             @include bp(md) {
                 width: 100%;
                 height: 100%;
-                fill: $color-grayscale;
-                opacity: .1;
+                fill: $color-grayscale--lighter;
             }
         }
     }
@@ -158,8 +157,8 @@
 
     &--icon {
         display: flex;
-        width: 4 * $unit;
-        height: 4 * $unit;
+        width: 3 * $unit;
+        height: 3 * $unit;
         border-radius: 50%;
         padding: 0;
 
@@ -170,6 +169,7 @@
         svg,
         img {
             display: block;
+            border: 1px solid transparent;
             width: 50%;
             height: 50%;
             fill: #fff;
@@ -336,9 +336,9 @@ body {
         z-index: 2;
         cursor: pointer;
 
-        .button--icon {
-            width: 3 * $unit;
-            height: 3 * $unit;
+        @include bp(md) {
+            top: 2 * $unit;
+            right: 2 * $unit;
         }
     }
 
@@ -346,7 +346,7 @@ body {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: $color-grayscale;
+        background: rgba(black, .9);
         top: 0;
         right: 0;
         z-index: 1;

@@ -420,14 +420,25 @@
 
 
 // mobile menu
-function mobileMenu(event) {
+function mobileMenuClose() {
+    var mobileMenuButtonUse = document.querySelector('#mobile-button use');
+    document.body.classList.remove('js-mobile-menu-active');
+    mobileMenuButtonUse.setAttribute('xlink:href', 'dist/img/icons.svg#icon-menu');
+}
+
+function mobileMenuOpen() {
+    var mobileMenuButtonUse = document.querySelector('#mobile-button use');
+    document.body.classList.add('js-mobile-menu-active');
+    mobileMenuButtonUse.setAttribute('xlink:href', 'dist/img/icons.svg#icon-close');
+}
+
+function mobileMenu() {
+    var mobileMenuButtonUse = document.querySelector('#mobile-button use');
 
     if (document.body.classList.contains('js-mobile-menu-active')) {
-        document.body.classList.remove('js-mobile-menu-active');
-        event.currentTarget.querySelector('use').setAttribute('xlink:href', 'dist/img/icons.svg#icon-menu');
+        mobileMenuClose()
     } else {
-        document.body.classList.add('js-mobile-menu-active');
-        event.currentTarget.querySelector('use').setAttribute('xlink:href', 'dist/img/icons.svg#icon-close');
+        mobileMenuOpen()
     }
 }
 
@@ -517,6 +528,20 @@ function lightboxClose() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* -------- custom -------- */
 // site nav scroll
 (function() {
@@ -535,10 +560,20 @@ function lightboxClose() {
             var href = this.getAttribute('href').replace('#', '');
             event.preventDefault();
 
+
+            console.log(this);
+
+            // check if this was a mobile menu click
+            if (document.body.classList.contains('js-mobile-menu-active')) {
+                mobileMenuClose();
+            }
+
             // loop through id'd sections that have certain classes
             Array.prototype.forEach.call(scrollAnchors, function(el, i) {
                 if (el.id == href) {
                     var anchorDistance = el.offsetTop;
+
+                    console.log(anchorDistance);
                     window.scrollTo({
                         top: anchorDistance - 128,
                         left: 0,
