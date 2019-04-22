@@ -57,10 +57,12 @@
                     </ul>
                 </div>
             </section>
+        </section>
+        <section>
+            <header>
+                <h3>Process</h3>
+            </header>
             <section>
-                <header>
-                    <h3>Process</h3>
-                </header>
                 <header>
                     <h4>Examining Needs</h4>
                 </header>
@@ -83,175 +85,179 @@
                     </figure>
                 </section>
             </section>
+        </section>
+        <section>
+            <header>
+                <h3>Documenting Goals</h3>
+            </header>
             <section>
-                <header>
-                    <h3>Documenting Goals</h3>
-                </header>
-                <section>
-                    <p>This project was the beginning of a much more expanded design system initiative. I started by stating my goals and documenting the things that a proper designs system should cover, including things such as:</p>
-                    <ul>
-                        <li>Design Process</li>
-                        <li>Usage Guidelines</li>
-                        <li>Resources</li>
-                        <li>System Logic</li>
-                        <li>UI Standards and Rules</li>
-                    </ul>
-                    <figure>
-                        <div class="">
-                            <img data-src="ui-design-system-documenting-goals.png" alt="">
-                        </div>
-                        <figcaption></figcaption>
-                    </figure>
-                </section>
+                <p>This project was the beginning of a much more expanded design system initiative. I started by stating my goals and documenting the things that a proper designs system should cover, including things such as:</p>
+                <ul>
+                    <li>Design Process</li>
+                    <li>Usage Guidelines</li>
+                    <li>Resources</li>
+                    <li>System Logic</li>
+                    <li>UI Standards and Rules</li>
+                </ul>
+                <figure>
+                    <div class="">
+                        <img data-src="ui-design-system-documenting-goals.png" alt="">
+                    </div>
+                    <figcaption></figcaption>
+                </figure>
             </section>
+        </section>
+        <section>
+            <header>
+                <h3>Designing the Central Component File</h3>
+            </header>
             <section>
-                <header>
-                    <h3>Designing the Central Component File</h3>
-                </header>
                 <section>
+                    <header>
+                        <h4>Implementing Atomic Design Structure</h4>
+                    </header>
                     <section>
-                        <header>
-                            <h4>Implementing Atomic Design Structure</h4>
-                        </header>
-                        <section>
-                            <p>One thing that bothered me about Craft was that overriding symbols was not its primary focus. Therefore, I wanted to implement Atomic Design so that the team could think about UI components modularly rather than as finished pieces.</p>
-                            <p>However, one thing I realized was that Sketch required (at least, for the team at that point), a sub-layer of shared style, text styles, backgrounds, and colors that would then inform Atoms (Atomic's smallest element). In a way, they were very similar to SASS or CSS variables. After all, a rectangle of color is not exactly a semantic HTML element yet. Therefore, I used "Protons" beneath Atoms to ease symbol overrides.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-protons.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                            <p>Because the components were organized in part way for developers, I couldn't completely restructure the design assets for Atomic taxonomy, so I relied on strict naming conventions to help organize things for other designers. They would look for the components they needed, which shared a common naming structure, but then choose between atoms, molecules, etc. rather than choosing from atoms and molecules first.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-naming-a.png" alt="">
-                                    <img data-src="ui-design-system-naming-b.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                        </section>
-                    </section>
-                    <section>
-                        <header>
-                            <h4>Creating Flexibility</h4>
-                        </header>
-                        <section>
-                            <p>I focused on multiple states for any given component that needed to be replicated, with the goal being that designers could easily create state for their teams with little work. The strategy would be that they just needed to select a single parent symbol and start swapping things in and out as needed, rather than having a different parent symbol for every state.</p>
-                            <p>To keep atoms, molecules, and protons associated with one another, I started a practice of aligning all of its unique (not shared with other symbols) together in a hierarchy. Versions of parent symbols would then be aligned top to bottom.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-breakdown.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                            <p>After making all the sizes for smaller elements like atoms and molecules the same size, all of the symbols became overrideable for state and style, like hover and focus.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-overrides.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                        </section>
-                    </section>
-                    <section>
-                        <header>
-                            <h4>Future-Proofing Sizes</h4>
-                        </header>
-                        <section>
-                            <p>By ensuring all symbols were A) properly-sized, and B) correctly pinned, I was able to make their instances reusable and resizable in ~95% of the scenarios. There are always components, especially organisms and layouts, that are impossible to have fully resizable in Sketch in an unlimited fashion (without the help of additional plugins), but having the majority of them ready for resizing and implementation on the fly was a great benefit.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-sizing.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                        </section>
-                    </section>
-                    <section>
-                        <header>
-                            <h4>Accommodating for Complexity</h4>
-                        </header>
-                        <section>
-                            <p>With almost 1,000 symbols within the system, I knew that a drill down menu wasn't going to cut it for other designers. Craft had a handy search tool, and despite the structure of the new system, the sheer number of components was not easily traversable in Sketch alone. Enter Sketch Runner, which allowed us to easily type ahead for different components and narrow to a specific Atomic element size.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-sketch-runner.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                        </section>
-                    </section>
-                    <section>
-                        <header>
-                            <h4>Putting It All Together</h4>
-                        </header>
-                        <section>
-                            <figure>
-                                <div class="">
-                                    <img src="ui-design-system-start-to-finish.gif" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                            <p>After completing the design file, and sharing/connecting it amongst team members, I created internal documentation in the form of a wiki on how the file was created, onboarding, Atomic principles, overriding, and how to configure Sketch for proper usage.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-documentation.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                        </section>
+                        <p>One thing that bothered me about Craft was that overriding symbols was not its primary focus. Therefore, I wanted to implement Atomic Design so that the team could think about UI components modularly rather than as finished pieces.</p>
+                        <p>However, one thing I realized was that Sketch required (at least, for the team at that point), a sub-layer of shared style, text styles, backgrounds, and colors that would then inform Atoms (Atomic's smallest element). In a way, they were very similar to SASS or CSS variables. After all, a rectangle of color is not exactly a semantic HTML element yet. Therefore, I used "Protons" beneath Atoms to ease symbol overrides.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-protons.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
+                        <p>Because the components were organized in part way for developers, I couldn't completely restructure the design assets for Atomic taxonomy, so I relied on strict naming conventions to help organize things for other designers. They would look for the components they needed, which shared a common naming structure, but then choose between atoms, molecules, etc. rather than choosing from atoms and molecules first.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-naming-a.png" alt="">
+                                <img data-src="ui-design-system-naming-b.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
                     </section>
                 </section>
-            </section>
-            <section>
-                <header>
-                    <h3>Next Steps</h3>
-                </header>
                 <section>
+                    <header>
+                        <h4>Creating Flexibility</h4>
+                    </header>
                     <section>
-                        <header>
-                            <h4>Version Control</h4>
-                        </header>
-                        <section>
-                            <p>I utilized Plant to create versions of the centralized component file. As the number of team members grew, so too would the changes to this system over time. Therefore, I needed to have a history of changes. This would eventually lead to my team being able to review changes and approve them in the future as well.</p>
-                            <figure>
-                                <div class="">
-                                    <img data-src="ui-design-system-plant.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                        </section>
+                        <p>I focused on multiple states for any given component that needed to be replicated, with the goal being that designers could easily create state for their teams with little work. The strategy would be that they just needed to select a single parent symbol and start swapping things in and out as needed, rather than having a different parent symbol for every state.</p>
+                        <p>To keep atoms, molecules, and protons associated with one another, I started a practice of aligning all of its unique (not shared with other symbols) together in a hierarchy. Versions of parent symbols would then be aligned top to bottom.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-breakdown.png" alt="">
+                            </div>
+                            <div class="">
+                                <img data-src="ui-design-system-many-symbols.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
+                        <p>After making all the sizes for smaller elements like atoms and molecules the same size, all of the symbols became overrideable for state and style, like hover and focus.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-overrides.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
                     </section>
+                </section>
+                <section>
+                    <header>
+                        <h4>Future-Proofing Sizes</h4>
+                    </header>
                     <section>
-                        <header>
-                            <h4>Upgrading Components Over Time</h4>
-                        </header>
-                        <section>
-                            <p>Eventually, the design system required newer and updated components. Whenever this was necessary I would create individual prototypes for the changes and spec them for development teams.</p>
-                            <figure>
-                                <div class="cover">
-                                    <img data-src="ui-design-systems-components-a.png" alt="">
-                                    <img data-src="ui-design-systems-components-b.png" alt="">
-                                </div>
-                                <figcaption></figcaption>
-                            </figure>
-                            <p>These would then be integrated into the design and pushed to other designers after being worked on by product teams.</p>
-                        </section>
+                        <p>By ensuring all symbols were A) properly-sized, and B) correctly pinned, I was able to make their instances reusable and resizable in ~95% of the scenarios. There are always components, especially organisms and layouts, that are impossible to have fully resizable in Sketch in an unlimited fashion (without the help of additional plugins), but having the majority of them ready for resizing and implementation on the fly was a great benefit.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-sizing.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
+                    </section>
+                </section>
+                <section>
+                    <header>
+                        <h4>Accommodating for Complexity</h4>
+                    </header>
+                    <section>
+                        <p>With almost 1,000 symbols within the system, I knew that a drill down menu wasn't going to cut it for other designers. Craft had a handy search tool, and despite the structure of the new system, the sheer number of components was not easily traversable in Sketch alone. Enter Sketch Runner, which allowed us to easily type ahead for different components and narrow to a specific Atomic element size.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-sketch-runner.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
+                    </section>
+                </section>
+                <section>
+                    <header>
+                        <h4>Putting It All Together</h4>
+                    </header>
+                    <section>
+                        <!-- <figure>
+                            <div class="">
+                                <img onclick="oneOffLightbox(event)" src="dist/img/article/ui-design-system-start-to-finish.gif" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure> -->
+                        <p>After completing the design file, and sharing/connecting it amongst team members, I created internal documentation in the form of a wiki on how the file was created, onboarding, Atomic principles, overriding, and how to configure Sketch for proper usage.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-documentation.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
                     </section>
                 </section>
             </section>
+        </section>
+        <section>
+            <header>
+                <h3>Next Steps</h3>
+            </header>
             <section>
-                <header>
-                    <h3>Conclusions</h3>
-                </header>
                 <section>
-                    <p>Creating a design system is a must for any company at scale these days. Thinking in terms of components also allows designers to mesh with the mentality of developers. Future steps to this initiative would come in the form of documentation for usage and explanations for developers, and working with developers to hone and fine-tune components that needed attention as they were utilized in regular sprint work.</p>
+                    <header>
+                        <h4>Version Control</h4>
+                    </header>
+                    <section>
+                        <p>I utilized Plant to create versions of the centralized component file. As the number of team members grew, so too would the changes to this system over time. Therefore, I needed to have a history of changes. This would eventually lead to my team being able to review changes and approve them in the future as well.</p>
+                        <figure>
+                            <div class="">
+                                <img data-src="ui-design-system-plant.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
+                    </section>
+                </section>
+                <section>
+                    <header>
+                        <h4>Upgrading Components Over Time</h4>
+                    </header>
+                    <section>
+                        <p>Eventually, the design system required newer and updated components. Whenever this was necessary I would create individual prototypes for the changes and spec them for development teams.</p>
+                        <figure>
+                            <div class="cover">
+                                <img data-src="ui-design-systems-components-a.png" alt="">
+                                <img data-src="ui-design-systems-components-b.png" alt="">
+                            </div>
+                            <figcaption></figcaption>
+                        </figure>
+                        <p>These would then be integrated into the design and pushed to other designers after being worked on by product teams.</p>
+                    </section>
                 </section>
             </section>
-            <div class="portfolio__article-back-to-top">
-                <a class="inline-link" href="#portfolio">Back to Top</a>
-            </div>
+        </section>
+        <section>
+            <header>
+                <h3>Conclusions</h3>
+            </header>
+            <section>
+                <p>Creating a design system is a must for any company at scale these days. Thinking in terms of components also allows designers to mesh with the mentality of developers. Future steps to this initiative would come in the form of documentation for usage and explanations for developers, and working with developers to hone and fine-tune components that needed attention as they were utilized in regular sprint work.</p>
+            </section>
+        </section>
+        <div class="portfolio__article-back-to-top">
+            <a class="inline-link" href="#portfolio">Back to Top</a>
+        </div>
         </section>
     </div>
 </article>
