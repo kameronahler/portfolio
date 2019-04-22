@@ -419,19 +419,21 @@
 /* -------- custom global -------- */
 
 
-// mobile menu
+// mobile menu close
 function mobileMenuClose() {
     var mobileMenuButtonUse = document.querySelector('#mobile-button use');
     document.body.classList.remove('js-mobile-menu-active');
     mobileMenuButtonUse.setAttribute('xlink:href', 'dist/img/icons.svg#icon-menu');
 }
 
+// mobile menu open
 function mobileMenuOpen() {
     var mobileMenuButtonUse = document.querySelector('#mobile-button use');
     document.body.classList.add('js-mobile-menu-active');
     mobileMenuButtonUse.setAttribute('xlink:href', 'dist/img/icons.svg#icon-close');
 }
 
+// // mobile menu hamburger button
 function mobileMenu() {
     var mobileMenuButtonUse = document.querySelector('#mobile-button use');
 
@@ -442,7 +444,7 @@ function mobileMenu() {
     }
 }
 
-// srcsets and lightbox to article images (global)
+// one off lightbox for single image (basically something that doesn't get srcset)
 function oneOffLightbox(target) {
     var imgs = document.querySelectorAll('.lightbox-wrapper img');
     var lightboxWrapper = document.querySelector('.lightbox-wrapper');
@@ -463,7 +465,7 @@ function oneOffLightbox(target) {
 
 
 
-// srcsets and lightbox to article images (global)
+// add srcsets and sizes from data-src attribute on article images and add lightbox classes to article images
 function srcSet() {
     var srcSetSizes;
     var domain = "dist/img/article/";
@@ -484,12 +486,12 @@ function srcSet() {
                 domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@1600" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 1600w,' +
                 domain + srcPath.substring(0, srcPath.lastIndexOf(".")) + "@2000" + srcPath.substring(srcPath.lastIndexOf(".")) + ' 2000w';
 
-            if (imgs.length == 1) {
-                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 49.93em, 62.94em";
+            if (imgs.length == 1) { //images can only be so wide because of max width for article content
+                srcSetSizes = "(max-width:23.4375em) 84vw, (max-width:50em) 92vw, (max-width:74.9375em) 84vw, (max-width:100em) 62vw, 1007px";
             } else if (imgs.length == 2) {
-                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 24.96em, 31.47em";
+                srcSetSizes = "(max-width:23.4375em) 84vw, (min-width:48em) 288px";
             } else {
-                srcSetSizes = "(max-width:47.9375em) 90vw, (max-width:61.9375) 16.64em, 20.98em";
+                srcSetSizes = "(max-width:23.4375em) 84vw, (min-width:48em) 181px";
             }
 
             el.setAttribute('srcset', srcSetValue);
@@ -642,7 +644,7 @@ function lightboxClose() {
 })();
 
 
-// portfolio section
+// portfolio section tab and article controls
 (function() {
     document.addEventListener("DOMContentLoaded", function() {
 

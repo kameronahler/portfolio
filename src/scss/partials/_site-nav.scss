@@ -1,26 +1,18 @@
 .menu-button {
-    width: 2 * $unit;
-    height: 2 * $unit;
-    top: $unit;
-    right: $unit;
+    width: 3 * $unit;
+    height: 3 * $unit;
+    top: 0;
+    left: 0;
 
-
-    @include bp(md) {
-        top: 2 * $unit;
-        right: 2 * $unit;
-        width: 3 * $unit;
-        height: 3 * $unit;
-    }
-
-    @include bp(max-lg) {
+    @include bp(max-md) {
         background: $color-grayscale--light;
         position: fixed;
         z-index: 98;
-        border-radius: $unit/8;
+        border-radius: 0;
         transition: $transition-default background;
     }
 
-    @include bp(lg) {
+    @include bp(md) {
         display: none;
     }
 
@@ -31,25 +23,25 @@
     }
 
     &::before {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             content: none;
         }
     }
 
     svg {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             fill: $color-primary;
         }
     }
 
     .js-lightbox-active & {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             display: none;
         }
     }
 
     .js-mobile-menu-active & {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             background: none;
         }
     }
@@ -58,7 +50,7 @@
 
 
 .site-nav {
-    @include bp(max-lg) {
+    @include bp(max-md) {
         width: 100vw;
         height: 100%;
         position: fixed;
@@ -67,7 +59,7 @@
         z-index: -999;
     }
 
-    @include bp(lg) {
+    @include bp(md) {
         width: $unit * 3;
         height: 100%;
         top: 0;
@@ -79,13 +71,13 @@
     }
 
     .js-mobile-menu-active & {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             z-index: 97;
         }
     }
 
     &__list {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             padding: 0;
             height: 100%;
             max-height: 0;
@@ -94,7 +86,7 @@
         }
 
         .js-mobile-menu-active & {
-            @include bp(max-lg) {
+            @include bp(max-md) {
                 padding: 4 * $unit 8 * $unit;
                 max-height: 100%;
             }
@@ -105,25 +97,25 @@
         }
 
         &::after {
-            @include bp(max-lg) {
+            @include bp(max-md) {
                 content: '';
                 width: 100%;
                 height: 100%;
                 background: rgba(black, .9);
                 position: absolute;
                 top: -50%;
-                right: -50%;
+                left: -50%;
                 border-radius: 50%;
                 transform-origin: 50% 50%;
                 transform: scale(0);
             }
 
-            @include bp(lg) {
+            @include bp(md) {
                 content: none;
             }
 
             .js-mobile-menu-active & {
-                @include bp(max-lg) {
+                @include bp(max-md) {
                     transform: scale(3);
                     transition: transform $easing .3s;
                 }
@@ -131,7 +123,7 @@
         }
 
         li {
-            @include bp(max-lg) {
+            @include bp(max-md) {
                 display: block;
                 position: relative;
                 z-index: 99;
@@ -141,7 +133,7 @@
             }
 
             .js-mobile-menu-active & {
-                @include bp(max-lg) {
+                @include bp(max-md) {
                     opacity: 1;
                     transform: translateY(0);
                     transition: transform $transition-default .1s, opacity $transition-default .1s;
@@ -149,7 +141,7 @@
 
                 @for $i from 1 through 6 {
                     &:nth-of-type(#{$i}) {
-                        @include bp(max-lg) {
+                        @include bp(max-md) {
                             transition-delay: .1s * $i + .2s
                         }
                     }
@@ -159,7 +151,7 @@
     }
 
     &__link {
-        @include bp(max-lg) {
+        @include bp(max-md) {
             display: block;
             text-decoration: none;
             font-size: $unit;
@@ -168,7 +160,7 @@
             font-family: $font-family-heading $font-family-fallback;
         }
 
-        @include bp(lg) {
+        @include bp(md) {
             position: relative;
             display: flex;
             width: 3 * $unit;
@@ -178,11 +170,11 @@
 
 
         svg {
-            @include bp(max-lg) {
+            @include bp(max-md) {
                 display: none;
             }
 
-            @include bp(lg) {
+            @include bp(md) {
                 display: block;
                 width: 33%;
                 height: 33%;
@@ -194,25 +186,25 @@
         }
 
         span {
-            @include bp(max-lg) {
+            @include bp(max-md) {
                 display: block;
                 color: rgba($color-primary, .75);
                 display: inline-block;
                 padding: $unit/2 2*$unit;
             }
 
-            @include bp(lg) {
+            @include bp(md) {
                 @include hide();
             }
         }
 
         &:hover {
-            @include bp(lg) {
+            @include bp(md) {
                 background: rgba(white, .05);
             }
 
             svg {
-                @include bp(lg) {
+                @include bp(md) {
                     opacity: 1;
                 }
             }
@@ -225,18 +217,18 @@
         }
 
         &--current {
-            @include bp(lg) {
+            @include bp(md) {
                 background: $gradient-primary;
             }
 
             svg {
-                @include bp(lg) {
+                @include bp(md) {
                     fill: $color-grayscale;
                 }
             }
 
             span {
-                @include bp(max-lg) {
+                @include bp(max-md) {
                     color: $color-grayscale;
 
                     background: $color-primary;
@@ -244,7 +236,7 @@
             }
 
             &:hover {
-                @include bp(lg) {
+                @include bp(md) {
                     background: $gradient-primary;
                 }
 

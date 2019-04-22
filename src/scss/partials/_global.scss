@@ -319,14 +319,15 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: $unit;
+    padding: 5* $unit $unit 3*$unit $unit;
     visibility: hidden;
     z-index: -999;
-    overflow: auto;
+    overflow: hidden;
 
-    @include bp(sm) {
-        padding: 6 * $unit;
+    @include bp(md) {
+        padding: 7* $unit 3*$unit 3*$unit 3*$unit;
     }
+
 
 
     &__close {
@@ -335,6 +336,7 @@ body {
         right: $unit;
         z-index: 2;
         cursor: pointer;
+        opacity: 0;
 
         @include bp(md) {
             top: 2 * $unit;
@@ -347,11 +349,13 @@ body {
         width: 100%;
         height: 100%;
         background: rgba(black, .9);
-        top: 0;
-        right: 0;
+        top: -50%;
+        right: -50%;
         z-index: 1;
         cursor: pointer;
-        opacity: 0;
+        transform-origin: 50% 50%;
+        transform: scale(0);
+        border-radius: 50%;
     }
 
     img {
@@ -371,9 +375,14 @@ body {
         z-index: 999;
 
         &__overlay {
-
-            opacity: 1;
             transition: opacity $transition-default;
+            transform: scale(3);
+            transition: transform $easing .3s;
+        }
+
+        &__close {
+            opacity: 1;
+            transition: opacity $transition-default .3s;
         }
 
         img {
