@@ -25,10 +25,6 @@
             @include bp(md) {
                 margin: 0 1 * $unit 2 * $unit 0;
             }
-
-            &:last-of-type {
-                margin-right: 0;
-            }
         }
     }
 
@@ -206,61 +202,63 @@
 
 @supports (display:grid) {
     .portfolio {
-        @include bp(lg) {
+        @include bp(md) {
             display: grid;
             grid-template-columns: repeat(12, minmax(0, 1fr));
             grid-gap: 0 2 * $unit;
         }
 
         &__header {
-            @include bp(lg) {
+            @include bp(md) {
                 grid-column: 1 / -1
             }
         }
 
         &__tablist {
-            @include bp(lg) {
+            @include bp(md) {
                 grid-column: 1 / 4;
                 display: block;
             }
 
             &-tab,
             &-recent {
-
                 @include bp(md) {
-                    margin: 0 $unit $unit * 2;
-                }
-
-                @include bp(lg) {
                     margin: 0 $unit * 2 $unit * 2 0;
                     margin-bottom: 2 * $unit;
                     width: 100%;
                     text-align: left;
+                    padding-left: $unit;
+                    padding-right: $unit;
+                }
+
+                @include bp(lg) {
+                    padding-left: 2*$unit;
+                    padding-right: 2*$unit
                 }
             }
         }
 
         &__intro {
-            @include bp(lg) {
+            @include bp(md) {
                 grid-column: 1 / -1;
                 grid-row-start: 2;
             }
         }
 
         &__sections {
-            @include bp(lg) {
+            @include bp(md) {
                 grid-column: 4 / -1;
             }
         }
 
         &__article {
             &-nav {
-                @include bp(lg) {
+                @include bp(md) {
                     justify-content: flex-end;
                 }
 
                 &--previous {
-                    @include bp(lg) {
+                    @include bp(md) {
                         margin-right: $unit;
                     }
                 }
@@ -268,14 +266,14 @@
 
             &-header {
                 .subject {
-                    @include bp(lg) {
+                    @include bp(md) {
                         padding: 2 * $unit 10 * $unit 0 2 * $unit;
                         text-align: left;
                     }
                 }
 
                 h3 {
-                    @include bp(lg) {
+                    @include bp(md) {
                         padding: 0 10 * $unit 0 2 * $unit;
                         justify-content: flex-start;
                         text-align: left;
