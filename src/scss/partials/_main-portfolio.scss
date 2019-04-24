@@ -236,6 +236,10 @@
                     padding-right: 2*$unit
                 }
             }
+
+            &-tab-count {
+                font-weight: 400;
+            }
         }
 
         &__intro {
