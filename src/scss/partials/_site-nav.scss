@@ -87,12 +87,11 @@
 
         .js-mobile-menu-active & {
             @include bp(max-md) {
-                padding: 4 * $unit 8 * $unit;
                 max-height: 100%;
             }
 
             @include bp(max-md) {
-                padding: 4 * $unit 4 * $unit;
+                padding: 4 * $unit 0;
             }
         }
 
@@ -130,6 +129,8 @@
                 opacity: 0;
                 transform: translateY(-$unit);
                 margin-bottom: $unit;
+                width: 100%;
+                padding: 0 4 * $unit;
             }
 
             .js-mobile-menu-active & {

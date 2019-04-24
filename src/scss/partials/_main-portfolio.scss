@@ -20,7 +20,7 @@
 
         &-tab,
         &-recent {
-            margin: 0 1 * $unit 1 * $unit;
+            margin: 0 $unit / 2 1 * $unit;
 
             @include bp(md) {
                 margin: 0 1 * $unit 2 * $unit 0;
@@ -226,7 +226,13 @@
 
             &-tab,
             &-recent {
+
+                @include bp(md) {
+                    margin: 0 $unit $unit * 2;
+                }
+
                 @include bp(lg) {
+                    margin: 0 $unit * 2 $unit * 2 0;
                     margin-bottom: 2 * $unit;
                     width: 100%;
                     text-align: left;
