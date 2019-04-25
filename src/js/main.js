@@ -381,6 +381,7 @@
                         newEl.setAttribute('href', el.html_url);
                         newEl.setAttribute('target', '_blank');
                         newEl.setAttribute('title', el.title);
+                        newEl.setAttribute('onclick', 'gtagOutbound("past work","dribbble")');
                         newEl.innerHTML = '<img aria-hidden="true" src="' + el.images.hidpi + '" />'
 
                         // newEl.innerHTML = el.images.hidpi;

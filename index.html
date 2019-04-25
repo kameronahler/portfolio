@@ -17,8 +17,24 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="dist/css/main.css">
     <script>document.documentElement.classList.remove('no-js');</script>
+    <link rel="stylesheet" href="dist/css/main.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8799208-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-8799208-2');
+        var gtagOutbound = function(category,action) {
+          gtag('event', 'click', {
+            'event_category': category,
+            'event_action': action,
+            'event_label': event.currentTarget.getAttribute('href'),
+            'transport_type': 'beacon',
+            'event_callback': function(){document.location = event.currentTarget.getAttribute('href');}
+          });
+        }
+    </script>
     <script>
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -28,13 +44,6 @@
             r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8799208-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-8799208-2');
     </script>
 </head>
 
@@ -48,8 +57,8 @@
         </defs>
     </svg>
     <!-- site nav -->
-    <button id="mobile-button" class="menu-button button button--icon" title="Menu" aria-labelledby="nav-title nav-home-title" onclick="mobileMenu()">
-        <svg aria-hidden="true" role="img">
+    <button id="mobile-button" class="menu-button button button--icon" title="Menu" aria-labelledby="nav-title nav-home-title" onclick="mobileMenu();gtag('event','click',{event_category:'site nav',event_action:'mobile menu',event_label:event.currentTarget.innerText})">
+        <svg aria-hidden=" true" role="img">
             <use xlink:href="dist/img/icons.svg#icon-menu">
         </svg>
         <span id="nav-button-title" class="accessible-hide">Menu Open / Close</span>
@@ -58,7 +67,7 @@
         <span id="nav-title" class="accessible-hide">Navigate to</span>
         <ul class="site-nav__list plain-list">
             <li>
-                <a title="Home" href="#home" aria-labelledby="nav-title nav-home-title" class="site-nav__link site-nav__link--current">
+                <a onclick="gtagOutbound('site nav','home')" title="Home" href="#home" aria-labelledby="nav-title nav-home-title" class="site-nav__link site-nav__link--current">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-home">
                     </svg>
@@ -66,7 +75,7 @@
                 </a>
             </li>
             <li>
-                <a title="What Kind of Designer Am I?" href="#designer-type" aria-labelledby="nav-title nav-designer-type-title" class="site-nav__link">
+                <a onclick="gtagOutbound('site nav','what kind of designer am i')" title="What Kind of Designer Am I?" href="#designer-type" aria-labelledby="nav-title nav-designer-type-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-wizard">
                     </svg>
@@ -74,7 +83,7 @@
                 </a>
             </li>
             <li>
-                <a title="My Skills & Tools" href="#skills-and-tools" aria-labelledby="nav-title nav-skills-and-tools-title" class="site-nav__link">
+                <a onclick="gtagOutbound('site nav','skills and tools')" title="My Skills & Tools" href="#skills-and-tools" aria-labelledby="nav-title nav-skills-and-tools-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-toolbox">
                     </svg>
@@ -82,7 +91,7 @@
                 </a>
             </li>
             <li>
-                <a title="Past Work" href="#portfolio" aria-labelledby="nav-title nav-portfolio-title" class="site-nav__link">
+                <a onclick="gtagOutbound('site nav','past work')" title="Past Work" href="#portfolio" aria-labelledby="nav-title nav-portfolio-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-pencil-ruler">
                     </svg>
@@ -90,7 +99,7 @@
                 </a>
             </li>
             <li>
-                <a title="About Me" href="#about-me" aria-labelledby="nav-title nav-about-me-title" class="site-nav__link">
+                <a onclick="gtagOutbound('site nav','about me')" title="About Me" href="#about-me" aria-labelledby="nav-title nav-about-me-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-astronaut">
                     </svg>
@@ -98,7 +107,7 @@
                 </a>
             </li>
             <li>
-                <a title="Contact Me" href="#contact" aria-labelledby="nav-title nav-contact-me-title" class="site-nav__link">
+                <a onclick="gtagOutbound('site nav','contact me')" title="Contact Me" href="#contact" aria-labelledby="nav-title nav-contact-me-title" class="site-nav__link">
                     <svg aria-hidden="true" role="img">
                         <use xlink:href="dist/img/icons.svg#icon-envelope">
                     </svg>
@@ -116,14 +125,15 @@
                 <ul aria-labelledby="social-links-title" class="plain-list site-header__social-icons">
                     <span id="social-links-title" class="accessible-hide">Find me on</span>
                     <li>
-                        <a title="Dribbble" aria-labelledby="social-links-title social-links-dribbble-title" href="https://dribbble.com/kamtr0n" class="contact__social-icon button button--icon">
+                        <!-- event.currentTarget.getAttribute('href') -->
+                        <a onclick="gtagOutbound('site header','dribbble')" title="Dribbble" aria-labelledby="social-links-title social-links-dribbble-title" href="https://dribbble.com/kamtr0n" class="contact__social-icon button button--icon">
                             <svg aria-hidden="true" role="img">
                                 <use xlink:href="dist/img/icons.svg#icon-dribbble">
                             </svg>
                             <span id="social-links-dribbble-title" class="accessible-hide">Dribbble</span>
                         </a>
                     <li>
-                        <a title="Codepen" aria-labelledby="social-links-title social-links-codepen-title" href="https://codepen.io/kamtr0n" class="contact__social-icon button button--icon">
+                        <a onclick="gtagOutbound('site header','codepen')" title="Codepen" aria-labelledby="social-links-title social-links-codepen-title" href="https://codepen.io/kamtr0n" class="contact__social-icon button button--icon">
                             <svg aria-hidden="true" role="img">
                                 <use xlink:href="dist/img/icons.svg#icon-codepen">
                             </svg>
@@ -131,7 +141,7 @@
                         </a>
                     </li>
                     <li>
-                        <a title="GitHub" aria-labelledby="social-links-title social-links-github-title" href="https://github.com/kameronahler" class="contact__social-icon button button--icon">
+                        <a onclick="gtagOutbound('site header','github')" title="GitHub" aria-labelledby="social-links-title social-links-github-title" href="https://github.com/kameronahler" class="contact__social-icon button button--icon">
                             <svg aria-hidden="true" role="img">
                                 <use xlink:href="dist/img/icons.svg#icon-github">
                             </svg>
@@ -139,7 +149,7 @@
                         </a>
                     </li>
                     <li>
-                        <a title="Instagram" aria-labelledby="social-links-title social-links-instagram-title" href="https://www.instagram.com/hashtagkameron" class="contact__social-icon button button--icon">
+                        <a onclick="gtagOutbound('site header','instagram')" title="Instagram" aria-labelledby="social-links-title social-links-instagram-title" href="https://www.instagram.com/hashtagkameron" class="contact__social-icon button button--icon">
                             <svg aria-hidden="true" role="img">
                                 <use xlink:href="dist/img/icons.svg#icon-instagram">
                             </svg>
@@ -147,7 +157,7 @@
                         </a>
                     </li>
                     <li>
-                        <a title="LinkedIn" aria-labelledby="social-links-title social-links-linkedin-title" href="https://www.linkedin.com/in/kameron-ahler-bbb340bb" class="contact__social-icon button button--icon">
+                        <a onclick="gtagOutbound('site header','linkedin')" title="LinkedIn" aria-labelledby="social-links-title social-links-linkedin-title" href="https://www.linkedin.com/in/kameron-ahler-bbb340bb" class="contact__social-icon button button--icon">
                             <svg aria-hidden="true" role="img">
                                 <use xlink:href="dist/img/icons.svg#icon-linkedin">
                             </svg>
@@ -222,7 +232,7 @@
                         </div>
                     </header>
                     <section class="skills__intro">
-                        <p>Some of my design skills can be found below. <a target="_blank" class="inline-link" href="dist/assets/201902.pdf">Prefer a resume instead?</a></p>
+                        <p>Some of my design skills can be found below. <a onclick="gtagOutbound('skills and tools','download resume')" target="_blank" class="inline-link" href="dist/assets/201902.pdf">Prefer a resume instead?</a></p>
                     </section>
                     <section class="skills__tiles">
                         <ul class="plain-list">
@@ -896,24 +906,24 @@
                         </div>
                     </header>
                     <section class="portfolio__intro">
-                        <p>Explore some of my past work below. Due to NDAs, I might have left some things out here and there. <a class="inline-link" href="#contact">Contact me</a> if you’d like to know more about anything.</p>
+                        <p>Explore some of my past work below. Due to NDAs, I might have left some things out here and there. <a onclick="gtagOutbound('past work','contact me')" class="inline-link" href="#contact">Contact me</a> if you’d like to know more about anything.</p>
                     </section>
                     <section id="portfolio-tablist" role="tablist" class="portfolio__tablist">
-                        <button id="portfolio-tab-recent" role="tab" aria-control="portfolio-tablist" aria-selected="true" data-section="portfolio-section-recent" class="portfolio__tablist-tab tab button tab--active"><span>Recent</span></button>
-                        <button id="portfolio-tab-ux" role="tab" aria-control="portfolio-tablist" aria-selected="false" data-section="portfolio-section-ux" class="portfolio__tablist-tab tab button"><span>UX<span class="portfolio__tablist-tab-count">&nbsp;&nbsp;(3)</span></span></button>
-                        <button id="portfolio-tab-ui" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-ui" class="portfolio__tablist-tab tab button"><span>UI<span class="portfolio__tablist-tab-count">&nbsp;&nbsp;(1)</span></span></button>
-                        <button id="portfolio-tab-design-ops" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-design-ops" class="portfolio__tablist-tab tab button"><span>Design Ops&nbsp;&nbsp;(1)</span></button>
-                        <!--  <button id="portfolio-tab-visual" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-visual" class="portfolio__tablist-tab tab button"><span>Visual</span></button> -->
+                        <button onclick="gtag('event','click',{event_category:'past work',event_action:'subject tablist - recent',event_label:event.currentTarget.innerText})" id="portfolio-tab-recent" role="tab" aria-control="portfolio-tablist" aria-selected="true" data-section="portfolio-section-recent" class="portfolio__tablist-tab tab button tab--active"><span>Recent</span></button>
+                        <button onclick="gtag('event','click',{event_category:'past work',event_action:'subject tablist - ux',event_label:event.currentTarget.innerText})" id="portfolio-tab-recent" role="tab" id="portfolio-tab-ux" role="tab" aria-control="portfolio-tablist" aria-selected="false" data-section="portfolio-section-ux" class="portfolio__tablist-tab tab button"><span>UX<span class="portfolio__tablist-tab-count">&nbsp;&nbsp;(3)</span></span></button>
+                        <button onclick="gtag('event','click',{event_category:'past work',event_action:'subject tablist - ui',event_label:event.currentTarget.innerText})" id="portfolio-tab-recent" role="tab" id="portfolio-tab-ui" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-ui" class="portfolio__tablist-tab tab button"><span>UI<span class="portfolio__tablist-tab-count">&nbsp;&nbsp;(1)</span></span></button>
+                        <button onclick="gtag('event','click',{event_category:'past work',event_action:'subject tablist - design ops',event_label:event.currentTarget.innerText})" id="portfolio-tab-recent" role="tab" id="portfolio-tab-design-ops" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-design-ops" class="portfolio__tablist-tab tab button"><span>Design Ops&nbsp;&nbsp;(1)</span></button>
+                        <!--  <button onclick="gtag('event','click',{event_category:'past work',event_action:'subject tablist - visual',event_label:event.currentTarget.innerText})" id="portfolio-tab-recent" role="tab" id="portfolio-tab-visual" role="tab" aria-control="portfolio-tablist" aria-selected data-section="portfolio-section-visualpreviousArticleButton" class="portfolio__tablist-tab tab button"><span>Visual</span></button> -->
                     </section>
                     <section id="portfolio-sections" class="portfolio__sections">
                         <section class="portfolio__article-nav">
-                            <button disabled="true" title="Previous" aria-control="portfolio-content" id="portfolio-article-previous" aria-labelledby="portfolio-article-back-title" class="portfolio__article-nav--previous button button--icon">
+                            <button onclick="gtag('event','click',{event_category:'past work',event_action:'article nav - previous',event_label:event.currentTarget.innerText})" disabled="true" title="Previous" aria-control="portfolio-content" id="portfolio-article-previous" aria-labelledby="portfolio-article-back-title" class="portfolio__article-nav--previous button button--icon">
                                 <svg aria-hidden="true" role="img">
                                     <use xlink:href="dist/img/icons.svg#icon-chevron-left">
                                 </svg>
                                 <span id="portfolio-article-previous-title" class="accessible-hide">Previous Portfolio Item</span>
                             </button>
-                            <button disabled="true" title="Next" aria-control="portfolio-content" id="portfolio-article-next" aria-labelledby="portfolio-article-next-title" class="portfolio__article-nav--next button button button--icon">
+                            <button onclick="gtag('event','click',{event_category:'past work',event_action:'article nav - next',event_label:event.currentTarget.innerText})" disabled="true" title="Next" aria-control="portfolio-content" id="portfolio-article-next" aria-labelledby="portfolio-article-next-title" class="portfolio__article-nav--next button button button--icon">
                                 <svg aria-hidden="true" role="img">
                                     <use xlink:href="dist/img/icons.svg#icon-chevron-right">
                                 </svg>
@@ -999,37 +1009,37 @@
                     </header>
                     <section class="contact__intro">
                         <p>Welp, you’ve made it this far. Why not drop me a line?</p>
-                        <p>Looking for <a target="_blank" href="dist/assets/201902.pdf" class="inline-link">my resume</a> instead?</p>
+                        <p>Looking for <a onclick="gtagOutbound('contact me','download resume')" target="_blank" href="dist/assets/201902.pdf" class="inline-link">my resume</a> instead?</p>
                         <ul aria-labelledby="social-links-title" class="plain-list contact__social-icons">
                             <li>
-                                <a title="Dribbble" aria-labelledby="social-links-title social-links-dribbble-title" href="https://dribbble.com/kamtr0n" class="contact__social-icon button button--icon">
+                                <a onclick="gtagOutbound('contact me','dribbble')" title="Dribbble" aria-labelledby="social-links-title social-links-dribbble-title" href="https://dribbble.com/kamtr0n" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-dribbble">
                                     </svg>
                                 </a>
                             <li>
-                                <a title="Codepen" aria-labelledby="social-links-title social-links-codepen-title" href="https://codepen.io/kamtr0n" class="contact__social-icon button button--icon">
+                                <a onclick="gtagOutbound('contact me','codepen')" title="Codepen" aria-labelledby="social-links-title social-links-codepen-title" href="https://codepen.io/kamtr0n" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-codepen">
                                     </svg>
                                 </a>
                             </li>
                             <li>
-                                <a title="GitHub" aria-labelledby="social-links-title social-links-github-title" href="https://github.com/kameronahler" class="contact__social-icon button button--icon">
+                                <a onclick="gtagOutbound('contact me','github')" title="GitHub" aria-labelledby="social-links-title social-links-github-title" href="https://github.com/kameronahler" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-github">
                                     </svg>
                                 </a>
                             </li>
                             <li>
-                                <a title="Instagram" aria-labelledby="social-links-title social-links-instagram-title" href="https://www.instagram.com/hashtagkameron" class="contact__social-icon button button--icon">
+                                <a onclick="gtagOutbound('contact me','instagram')" title="Instagram" aria-labelledby="social-links-title social-links-instagram-title" href="https://www.instagram.com/hashtagkameron" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-instagram">
                                     </svg>
                                 </a>
                             </li>
                             <li>
-                                <a title="LinkedIn" aria-labelledby="social-links-title social-links-linkedin-title" href="https://www.linkedin.com/in/kameron-ahler-bbb340bb" class="contact__social-icon button button--icon">
+                                <a onclick="gtagOutbound('contact me','linkedin')" title="LinkedIn" aria-labelledby="social-links-title social-links-linkedin-title" href="https://www.linkedin.com/in/kameron-ahler-bbb340bb" class="contact__social-icon button button--icon">
                                     <svg aria-hidden="true" role="img">
                                         <use xlink:href="dist/img/icons.svg#icon-linkedin">
                                     </svg>
@@ -1041,14 +1051,14 @@
                         <form id="contact-form" role="form" method="POST" action="https://script.google.com/macros/s/AKfycbzV5pj_tHcXaqeHdZirBXBU4UoFzb5HUvI6rLDTVrpnXtdTYCU/exec" class="contact__form">
                             <div class="contact__form-section-wrapper contact__form-section-wrapper--email">
                                 <label for="contact-form-email">Email *</label>
-                                <input required id="contact-form-email" placeholder="jane@doe.com" name="email" type="email">
+                                <input onclick="gtag('event','click',{event_category:'contact me',event_action:'form - email',event_label:event.currentTarget.innerText})" required id="contact-form-email" placeholder="jane@doe.com" name="email" type="email">
                             </div>
                             <div class="contact__form-section-wrapper contact__form-section-wrapper--message">
                                 <label for="contact-form-message">Message *</label>
-                                <textarea required id="contact-form-message" placeholder="Kameron, I am your father ..." name="message"></textarea>
+                                <textarea onclick="gtag('event','click',{event_category:'contact me',event_action:'form - message',event_label:event.currentTarget.innerText})" required id="contact-form-message" placeholder="Kameron, I am your father ..." name="message"></textarea>
                             </div>
                             <div class="contact__form-section-wrapper contact__form-section-wrapper--submit">
-                                <button id="contact-form-submit-button" type="submit" class="button button--icon-with-text"><svg aria-hidden="true" role="img">
+                                <button onclick="gtag('event','click',{event_category:'contact me',event_action:'form - send',event_label:event.currentTarget.innerText})" id="contact-form-submit-button" type="submit" class="button button--icon-with-text"><svg aria-hidden="true" role="img">
                                         <use id="contact-form-submit-button-icon" xlink:href="dist/img/icons.svg#icon-plane">
                                     </svg><span>Send</span></button>
                             </div>
