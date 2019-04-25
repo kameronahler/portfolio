@@ -269,7 +269,7 @@
          }
 
          &-header {
-            .subject {
+            &-subject {
                @include bp(md) {
                   padding: 2 * $unit 10 * $unit 0 2 * $unit;
                   text-align: left;
