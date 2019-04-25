@@ -1,289 +1,289 @@
 // portfolio
 .portfolio {
 
-    // portfolio section intro
-    &__intro {
-        p {
-            text-align: center;
+   // portfolio section intro
+   &__intro {
+      p {
+         text-align: center;
 
-            @include bp(md) {
-                text-align: left;
+         @include bp(md) {
+            text-align: left;
+         }
+      }
+   }
+
+   // portfolio tablist - hidden under 992
+   &__tablist {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      &-tab,
+      &-recent {
+         margin: 0 $unit / 2 1 * $unit;
+
+         @include bp(md) {
+            margin: 0 1 * $unit 2 * $unit 0;
+         }
+      }
+   }
+
+   // sections
+   &__sections {
+      position: relative;
+      min-height: 350px;
+
+      @include bp(sm) {
+         min-height: 400px;
+      }
+   }
+
+   // section
+   &__section {
+      padding: 0;
+      opacity: 0;
+      transform: translateY(-#{$unit});
+      transition: transform .5s .5s $easing, opacity .5s .5s $easing;
+
+      &--active {
+         opacity: 1;
+         transform: translateY(0);
+      }
+   }
+
+
+   // article nav
+   // nav
+   &__article {
+      &-nav {
+         display: flex;
+         text-align: center;
+         justify-content: space-between;
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 100%;
+         padding: $unit $unit 0;
+
+         @include bp(sm) {
+            padding: $unit * 2 $unit * 2 0;
+         }
+
+         .button {
+            width: 3 * $unit;
+            height: 3 * $unit;
+            z-index: 1;
+            box-shadow: none;
+            opacity: .92;
+            background: $gradient-button;
+            box-shadow: $box-shadow-button--hover;
+            transition: $transition-default opacity;
+
+            svg {
+               fill: #fff;
+               opacity: 1;
             }
-        }
-    }
 
-    // portfolio tablist - hidden under 992
-    &__tablist {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        &-tab,
-        &-recent {
-            margin: 0 $unit / 2 1 * $unit;
-
-            @include bp(md) {
-                margin: 0 1 * $unit 2 * $unit 0;
+            &:before {
+               content: initial
             }
-        }
-    }
 
-    // sections
-    &__sections {
-        position: relative;
-        min-height: 350px;
+            &:hover {
+               @include bp(md) {
+                  opacity: 1;
+               }
+            }
 
-        @include bp(sm) {
-            min-height: 400px;
-        }
-    }
+            &:disabled {
+               opacity: .2;
 
-    // section
-    &__section {
-        padding: 0;
-        opacity: 0;
-        transform: translateY(-#{$unit});
-        transition: transform .5s .5s $easing, opacity .5s .5s $easing;
-
-        &--active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+               &:hover {
+                  @include bp(md) {
+                     opacity: .2;
+                  }
+               }
+            }
+         }
+      }
+   }
 
 
-    // article nav
-    // nav
-    &__article {
-        &-nav {
-            display: flex;
+   // article
+   &__article {
+      padding: 0;
+      opacity: 0;
+      transition: opacity .2s .2s $easing, transform .2s .2s $easing;
+
+
+      // header
+      &-header {
+         &-subject {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: $color-grayscale--lighter;
             text-align: center;
-            justify-content: space-between;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: $unit $unit 0;
+            margin-bottom: 0;
+            padding: 5 * $unit $unit 0;
+            line-height: 1;
+
+            @include bp(xs) {
+               padding: $unit 5 * $unit 0;
+            }
 
             @include bp(sm) {
-                padding: $unit * 2 $unit * 2 0;
+               padding: 2 * $unit 6 * $unit 0;
             }
 
-            .button {
-                width: 3 * $unit;
-                height: 3 * $unit;
-                z-index: 1;
-                box-shadow: none;
-                opacity: .92;
-                background: $gradient-button;
-                box-shadow: $box-shadow-button--hover;
-                transition: $transition-default opacity;
-
-                svg {
-                    fill: #fff;
-                    opacity: 1;
-                }
-
-                &:before {
-                    content: initial
-                }
-
-                &:hover {
-                    @include bp(md) {
-                        opacity: 1;
-                    }
-                }
-
-                &:disabled {
-                    opacity: .2;
-
-                    &:hover {
-                        @include bp(md) {
-                            opacity: .2;
-                        }
-                    }
-                }
+            @include bp(md) {
+               font-size: 14px;
             }
-        }
-    }
+         }
+
+         h3 {
+            min-height: 3 * $unit;
+            width: 100%;
+            position: relative;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: $unit;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 $unit 0;
 
 
-    // article
-    &__article {
-        padding: 0;
-        opacity: 0;
-        transition: opacity .2s .2s $easing, transform .2s .2s $easing;
-
-
-        // header
-        &-header {
-            .subject {
-                display: block;
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: $color-grayscale--lighter;
-                text-align: center;
-                margin-bottom: 0;
-                padding: 5 * $unit $unit 0;
-                line-height: 1;
-
-                @include bp(xs) {
-                    padding: $unit 5 * $unit 0;
-                }
-
-                @include bp(sm) {
-                    padding: 2 * $unit 6 * $unit 0;
-                }
-
-                @include bp(md) {
-                    font-size: 14px;
-                }
+            @include bp(xs) {
+               margin-bottom: $unit * 2;
+               padding: 0 5 * $unit 0;
+               white-space: normal;
             }
 
-            h3 {
-                min-height: 3 * $unit;
-                width: 100%;
-                position: relative;
-                z-index: 99;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                margin-bottom: $unit;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                padding: 0 $unit 0;
-
-
-                @include bp(xs) {
-                    margin-bottom: $unit * 2;
-                    padding: 0 5 * $unit 0;
-                    white-space: normal;
-                }
-
-                @include bp(sm) {
-                    padding: 0 6 * $unit 0;
-                    margin-bottom: $unit * 3;
-                }
+            @include bp(sm) {
+               padding: 0 6 * $unit 0;
+               margin-bottom: $unit * 3;
             }
+         }
 
-        }
+      }
 
-        // state
-        &--next {
-            transform: translateX(#{$unit});
-        }
+      // state
+      &--next {
+         transform: translateX(#{$unit});
+      }
 
-        &--previous {
-            transform: translateX(-#{$unit});
-        }
+      &--previous {
+         transform: translateX(-#{$unit});
+      }
 
-        &--active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
+      &--active {
+         opacity: 1;
+         transform: translateX(0);
+      }
+   }
 }
 
 #portfolio-section-recent {
-    .portfolio {
+   .portfolio {
 
-        // article
-        &__article {
-            &:not(.portfolio__article--active) {
-                display: none;
-            }
-        }
-    }
+      // article
+      &__article {
+         &:not(.portfolio__article--active) {
+            display: none;
+         }
+      }
+   }
 }
 
 // grid support for lg bp
 
 @supports (display:grid) {
-    .portfolio {
-        @include bp(md) {
-            display: grid;
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-            grid-gap: 0 2 * $unit;
-        }
+   .portfolio {
+      @include bp(md) {
+         display: grid;
+         grid-template-columns: repeat(12, minmax(0, 1fr));
+         grid-gap: 0 2 * $unit;
+      }
 
-        &__header {
+      &__header {
+         @include bp(md) {
+            grid-column: 1 / -1
+         }
+      }
+
+      &__tablist {
+         @include bp(md) {
+            grid-column: 1 / 4;
+            display: block;
+         }
+
+         &-tab,
+         &-recent {
             @include bp(md) {
-                grid-column: 1 / -1
+               margin: 0 $unit * 2 $unit * 2 0;
+               margin-bottom: 2 * $unit;
+               width: 100%;
+               text-align: left;
+               padding-left: $unit;
+               padding-right: $unit;
             }
-        }
 
-        &__tablist {
+            @include bp(lg) {
+               padding-left: 2*$unit;
+               padding-right: 2*$unit
+            }
+         }
+
+         &-tab-count {
+            font-weight: 400;
+         }
+      }
+
+      &__intro {
+         @include bp(md) {
+            grid-column: 1 / -1;
+            grid-row-start: 2;
+         }
+      }
+
+      &__sections {
+         @include bp(md) {
+            grid-column: 4 / -1;
+         }
+      }
+
+      &__article {
+         &-nav {
             @include bp(md) {
-                grid-column: 1 / 4;
-                display: block;
+               justify-content: flex-end;
             }
 
-            &-tab,
-            &-recent {
-                @include bp(md) {
-                    margin: 0 $unit * 2 $unit * 2 0;
-                    margin-bottom: 2 * $unit;
-                    width: 100%;
-                    text-align: left;
-                    padding-left: $unit;
-                    padding-right: $unit;
-                }
+            &--previous {
+               @include bp(md) {
+                  margin-right: $unit;
+               }
+            }
+         }
 
-                @include bp(lg) {
-                    padding-left: 2*$unit;
-                    padding-right: 2*$unit
-                }
+         &-header {
+            .subject {
+               @include bp(md) {
+                  padding: 2 * $unit 10 * $unit 0 2 * $unit;
+                  text-align: left;
+               }
             }
 
-            &-tab-count {
-                font-weight: 400;
+            h3 {
+               @include bp(md) {
+                  padding: 0 10 * $unit 0 2 * $unit;
+                  justify-content: flex-start;
+                  text-align: left;
+               }
             }
-        }
-
-        &__intro {
-            @include bp(md) {
-                grid-column: 1 / -1;
-                grid-row-start: 2;
-            }
-        }
-
-        &__sections {
-            @include bp(md) {
-                grid-column: 4 / -1;
-            }
-        }
-
-        &__article {
-            &-nav {
-                @include bp(md) {
-                    justify-content: flex-end;
-                }
-
-                &--previous {
-                    @include bp(md) {
-                        margin-right: $unit;
-                    }
-                }
-            }
-
-            &-header {
-                .subject {
-                    @include bp(md) {
-                        padding: 2 * $unit 10 * $unit 0 2 * $unit;
-                        text-align: left;
-                    }
-                }
-
-                h3 {
-                    @include bp(md) {
-                        padding: 0 10 * $unit 0 2 * $unit;
-                        justify-content: flex-start;
-                        text-align: left;
-                    }
-                }
-            }
-        }
-    }
+         }
+      }
+   }
 }

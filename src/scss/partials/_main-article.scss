@@ -133,8 +133,8 @@
             @include bp(sm) {
                 flex: 0 0 calc(50% - #{2*$unit});
                 margin-top: 0;
-                margin-right: 2 * $unit;
-                margin-left: 0;
+                margin-right: $unit;
+                margin-left: $unit;
             }
 
 
