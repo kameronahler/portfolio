@@ -102,18 +102,26 @@
             h3 {
                 position: relative;
                 display: inline-block;
+                border-bottom: 4px solid $color-primary;
+
+                @include bp (sm) {
+                    border-bottom: none;
+                }
 
                 &:after {
-                    content: "";
-                    background: $color-primary;
-                    border-radius: 99em;
-                    position: absolute;
-                    left: 0;
-                    bottom: 4px;
-                    height: 8px;
-                    width: 108%;
-                    z-index: -1;
+                    @include bp(sm) {
+                        content: "";
+                        background: $color-primary;
+                        border-radius: 99em;
+                        position: absolute;
+                        left: 0;
+                        bottom: 4px;
+                        height: 8px;
+                        width: 108%;
+                        z-index: -1;
+                    }
                 }
+
             }
         }
     }

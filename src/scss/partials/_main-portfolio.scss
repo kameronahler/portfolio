@@ -125,15 +125,15 @@
             color: $color-grayscale--lighter;
             text-align: center;
             margin-bottom: 0;
-            padding: 5 * $unit $unit 0;
+            padding: 5 * $unit $unit $unit/2;
             line-height: 1;
 
             @include bp(xs) {
-               padding: $unit 5 * $unit 0;
+               padding: $unit * 1.5 5 * $unit $unit/2;
             }
 
             @include bp(sm) {
-               padding: 2 * $unit 6 * $unit 0;
+               padding: 2 * $unit 6 * $unit $unit/2;
             }
 
             @include bp(md) {
@@ -142,13 +142,12 @@
          }
 
          h3 {
-            min-height: 3 * $unit;
             width: 100%;
             position: relative;
             z-index: 99;
             display: flex;
             justify-content: center;
-            align-items: center;
+            // align-items: center;
             text-align: center;
             margin-bottom: $unit;
             overflow: hidden;
@@ -157,9 +156,9 @@
 
 
             @include bp(xs) {
-               margin-bottom: $unit * 2;
                padding: 0 5 * $unit 0;
                white-space: normal;
+               margin-bottom: $unit * 3;
             }
 
             @include bp(sm) {
@@ -271,7 +270,7 @@
          &-header {
             &-subject {
                @include bp(md) {
-                  padding: 2 * $unit 10 * $unit 0 2 * $unit;
+                  padding: 2 * $unit 10 * $unit $unit/2 2 * $unit;
                   text-align: left;
                }
             }
